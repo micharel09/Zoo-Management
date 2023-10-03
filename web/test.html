@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Employee_ID</th>
+          <th>Full name</th>
+          <th>Role ID</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Gender</th>
+
+          <th>Dependent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (UserDTO user : listUser1) { %>
+
+        <tr>
+          <td><%=user.getEmployee_ID()%></td>
+          <td><%=user.getFullname()%></td>
+          <td><%=user.getRoleID()%></td>
+          <td><%=user.getPhone()%></td>
+          <td><%=user.getEmail()%></td>
+          <td><%=user.getGender()%></td>
+          <td><%=user.getDependent()%></td>
+          <form action="MainController">
+            <td>
+              <input
+                type="hidden"
+                name="userID"
+                value="<%=user.getEmployee_ID()%>"
+              />
+              <input
+                type="hidden"
+                name="FullName"
+                value="<%=user.getFullname()%>"
+              />
+              <input
+                type="hidden"
+                name="RoleID"
+                value="<%=user.getRoleID()%>"
+              />
+              <input type="hidden" name="Phone" value="<%=user.getPhone()%>" />
+              <input type="hidden" name="Email" value="<%=user.getEmail()%>" />
+              <input
+                type="hidden"
+                name="Gender"
+                value="<%=user.getGender()%>"
+              />
+              <input
+                type="hidden"
+                name="Dêpndent"
+                value="<%=user.getDependent()%>"
+              />
+
+              <input type="hidden" name="search" value="<%=search%>" />
+              <input type="submit" name="action" name="Update" value="Update" />
+            </td>
+          </form>
+          <!-- xoa o day ne-->
+          <td>
+            <a
+              href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_ID()%>"
+              >Delete</a
+            >
+          </td>
+          <td>
+            <a
+              href="MainController?&action=Send_Notification&userID=<%= user.getEmployee_ID()%>"
+              >Send Notification</a
+            >
+          </td>
+        </tr>
+
+        <% } } %>
+      </tbody>
+    </table>
+  </body>
+</html>
