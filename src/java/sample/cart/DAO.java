@@ -177,7 +177,9 @@ public class DAO {
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
+            
             rs = ptm.executeQuery();
+            
             if (rs.next()) {
                 IdOrder = rs.getString("OrderDetail_ID");
             }
@@ -190,5 +192,26 @@ public class DAO {
         } catch (Exception e) {
         }
         return newIdOrder;
+    }
+
+    String getDiscount(String promotion) {
+         String sql = "select Discount from Table_Discount_Total where ID=?";
+     
+      String tmp="0";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1,promotion);
+            rs = ptm.executeQuery();
+            if(rs.next()){
+                tmp= rs.getString("Discount");
+               
+            }else{
+                tmp="0";
+            }
+            
+        } catch (Exception e) {
+        }
+        return tmp;
     }
 }
