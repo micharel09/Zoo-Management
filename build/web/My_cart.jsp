@@ -46,7 +46,7 @@
             }
         </style>
     </head>
-    <body class="w-full block overflow-x-hidden mx-auto">
+    <body class="w-[1500px] block overflow-x-hidden mx-auto">
         <!-- header -->
         <nav class="border-gray-200 bg-green-600">
             <div class="flex p-1">
@@ -265,13 +265,54 @@
             <!-- tickets select-->
 
             <!-- end ticket select -->
-  
+            <!-- images preview -->
+            <div class="mx-auto container px-6 xl:px-0 py-12">
+                <div class="flex flex-col">
+                    <div class="flex flex-col justify-center">
+                        <div class="relative">
+                            <img
+                                class="hidden sm:block w-full rounded-t-full"
+                                src="img/ppenal3.jpg"
+                                alt="sofa"
+                                />
+                            <img
+                                class="sm:hidden w-full"
+                                src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png"
+                                alt="sofa"
+                                />
+                        </div>
+                    </div>
+                    <!-- penal left -->
+                    <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+                        <div
+                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
+                            >
+                            <img
+                                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
+                                src="img/penal.png"
+                                alt="sofa-2"
+                                />
+                        </div>
+                        <!-- penal right -->
+                        <div
+                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
+                            >
+                            <img
+                                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
+                                src="img/97.jpg"
+                                alt="sofa-2"
+                                />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end preview -->
             <!-- cart -->
             <section class="bg-gray-100 text-gray-600 antialiased" x-data="app">
                 <div class="flex flex-col">
                     <!-- Table -->
                     <div
-                        class="w-full border border-gray-200 rounded-b- bg-white shadow-sm"
+                        class="w-[1500] border border-gray-200 rounded-b- bg-white shadow-sm"
                         >
                         <header class="border-b border-gray-100 px-5 py-4">
                             <div class="font-semibold text-gray-800">Manage Carts</div>
@@ -385,10 +426,13 @@
                         <div
                             class="flex justify-end pt-4 mb-4 mr-4 border-t border-gray-100"
                             >
-                            <a href="./checkout">
+                            <form action="./checkout.jsp" method="post">
+                                                           
                                 <input type="submit" value="checkout" class="text-base leading-none py-5 px-14 rounded-lg bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
                                        />
-                            </a>
+                            
+                            </form>
+
                            
 
 

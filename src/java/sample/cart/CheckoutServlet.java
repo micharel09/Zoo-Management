@@ -61,40 +61,7 @@ public class CheckoutServlet extends HttpServlet {
         String promotion = request.getParameter("promotion");
         double discount = 0.0; // Initialize discount to 0
         
-         // Tạo một StringBuilder để chứa các ký tự số
-        StringBuilder numbersStr = new StringBuilder();
-
-        // Lặp qua từng ký tự trong chuỗi đầu vào
-        for (char c : promotion.toCharArray()) {
-            // Nếu là ký tự số, thêm vào StringBuilder
-            if (Character.isDigit(c)) {
-                numbersStr.append(c);
-            }
-        }
-        int tmp;
-        // Ép kiểu chuỗi số thành số nguyên
-        if (numbersStr.length() > 0) {
-            try {
-                tmp= Integer.parseInt(numbersStr.toString());
-            } catch (NumberFormatException e) {
-                // Xử lý nếu không thể ép kiểu thành số nguyên
-                e.printStackTrace();
-                tmp =0;
-            }
-        } else {
-              tmp =0;
-        }
-    
-    
-    
-
-        if(tmp>100){
-            tmp= 100;
-        }else if(tmp<0){
-            tmp=0;
-        }
-            // Apply a discount of 10% if the promotion code is valid
-            discount = (double) tmp/100; // 10% discount
+  
         
         double totalMoney = cart.getTotalMoney(); // Store the totalMoney value
         double discountedTotal = totalMoney - (totalMoney * discount);
