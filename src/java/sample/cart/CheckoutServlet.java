@@ -24,7 +24,7 @@ import sample.cart.Product;
  *
  * @author ADMIN
  */
-@WebServlet(name = "CheckoutServlet", urlPatterns = {"/checkout"})
+@WebServlet(name = "CheckoutServlet", urlPatterns = { "/checkout" })
 
 public class CheckoutServlet extends HttpServlet {
 
@@ -32,10 +32,10 @@ public class CheckoutServlet extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,45 +59,34 @@ public class CheckoutServlet extends HttpServlet {
         String fullname = request.getParameter("fullname");
         String phone = request.getParameter("phone");
         String promotion = request.getParameter("promotion");
-        double discount = 0.0; // Initialize discount to 0
-        
-         // Tạo một StringBuilder để chứa các ký tự số
-        StringBuilder numbersStr = new StringBuilder();
+        int discount = 0; // Initialize discount to 0
 
-        // Lặp qua từng ký tự trong chuỗi đầu vào
-        for (char c : promotion.toCharArray()) {
+        String tmp = "0";
+        StringBuilder numbersStr = new StringBuilder();
+        tmp = d.getDiscount(promotion);
+
+        for (char c : tmp.toCharArray()) {
             // Nếu là ký tự số, thêm vào StringBuilder
             if (Character.isDigit(c)) {
                 numbersStr.append(c);
             }
         }
-        int tmp;
+
         // Ép kiểu chuỗi số thành số nguyên
         if (numbersStr.length() > 0) {
             try {
-                tmp= Integer.parseInt(numbersStr.toString());
+                discount = Integer.parseInt(numbersStr.toString());
             } catch (NumberFormatException e) {
                 // Xử lý nếu không thể ép kiểu thành số nguyên
                 e.printStackTrace();
-                tmp =0;
+                discount = 0;
             }
         } else {
-              tmp =0;
+            discount = 0;
         }
-    
-    
-    
 
-        if(tmp>100){
-            tmp= 100;
-        }else if(tmp<0){
-            tmp=0;
-        }
-            // Apply a discount of 10% if the promotion code is valid
-            discount = (double) tmp/100; // 10% discount
-        
         double totalMoney = cart.getTotalMoney(); // Store the totalMoney value
-        double discountedTotal = totalMoney - (totalMoney * discount);
+        double discountedTotal = totalMoney - (totalMoney * discount / 100);
 
         String orderid = d.getNewIdOrder();
         Order o = new Order(orderid, email, fullname, phone, date, discountedTotal);
@@ -111,7 +100,7 @@ public class CheckoutServlet extends HttpServlet {
 
         }
 
-// Remove the cart cookie after processing
+        // Remove the cart cookie after processing
         Cookie c = new Cookie("cart", "");
         c.setMaxAge(0);
         response.addCookie(c);
@@ -120,14 +109,15 @@ public class CheckoutServlet extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -138,10 +128,10 @@ public class CheckoutServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

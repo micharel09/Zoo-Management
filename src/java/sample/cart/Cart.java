@@ -43,13 +43,13 @@ public class Cart {
         }
     }
 
-    public double getTotalMoney() {
-        double t = 0;
-        for (Item i : items) {
-            t += (i.getQuantity() * i.getPrice());
+        public double getTotalMoney() {
+            double t = 0;
+            for (Item i : items) {
+                t += (i.getQuantity() * i.getPrice());
+            }
+            return t;
         }
-        return t;
-    }
 
     private Product getProductById(String id, List<Product> list) {
         for (Product i : list) {
