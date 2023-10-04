@@ -47,23 +47,77 @@ public class CheckoutServlet extends HttpServlet {
             for (Cookie o : arr) {
                 if (o.getName().equals("cart")) {
                     txt += o.getValue();
-
                 }
             }
         }
+
         Cart cart = new Cart(txt, list);
         request.setAttribute("cart", cart);
         String date = request.getParameter("date");
+        String date1 = request.getParameter("date1");
         String email = request.getParameter("email");
         String fullname = request.getParameter("fullname");
         String phone = request.getParameter("phone");
+        String promotion = request.getParameter("promotion");
+        double discount = 0.0; // Initialize discount to 0
+        
+         // Tạo một StringBuilder để chứa các ký tự số
+        StringBuilder numbersStr = new StringBuilder();
+
+        // Lặp qua từng ký tự trong chuỗi đầu vào
+        for (char c : promotion.toCharArray()) {
+            // Nếu là ký tự số, thêm vào StringBuilder
+            if (Character.isDigit(c)) {
+                numbersStr.append(c);
+            }
+        }
+        int tmp;
+        // Ép kiểu chuỗi số thành số nguyên
+        if (numbersStr.length() > 0) {
+            try {
+                tmp= Integer.parseInt(numbersStr.toString());
+            } catch (NumberFormatException e) {
+                // Xử lý nếu không thể ép kiểu thành số nguyên
+                e.printStackTrace();
+                tmp =0;
+            }
+        } else {
+              tmp =0;
+        }
+    
+    
+    
+
+        if(tmp>100){
+            tmp= 100;
+        }else if(tmp<0){
+            tmp=0;
+        }
+            // Apply a discount of 10% if the promotion code is valid
+            discount = (double) tmp/100; // 10% discount
+        
+        double totalMoney = cart.getTotalMoney(); // Store the totalMoney value
+        double discountedTotal = totalMoney - (totalMoney * discount);
+
         String orderid = d.getNewIdOrder();
-        Order o = new Order(orderid, email, fullname, phone, date, cart.getTotalMoney());
+        Order o = new Order(orderid, email, fullname, phone, date, discountedTotal);
         d.addOrder(o, cart);
+        for (Item i : cart.getItems()) {
+            String orderdetailid = d.getNewIdOrderDetail();
+            String tid = i.getProduct().getTid();
+            int quantity = cart.getQuantityById(tid);
+            OrderDetail od = new OrderDetail(orderdetailid, date1, tid, orderid, promotion, quantity);
+            d.addOrderDetail(od, cart);
+
+        }
+
+// Remove the cart cookie after processing
         Cookie c = new Cookie("cart", "");
         c.setMaxAge(0);
         response.addCookie(c);
+
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

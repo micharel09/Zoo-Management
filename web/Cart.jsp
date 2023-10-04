@@ -40,7 +40,7 @@
             }
         </style>
     </head>
-    <body class="w-full block overflow-x-hidden mx-auto">
+    <body class="w-[1500px] block overflow-x-hidden mx-auto">
         <!-- header -->
         <nav class="border-gray-200 bg-green-600">
             <div class="flex p-1">
@@ -257,59 +257,117 @@
             </div>
             <!-- end Progress Steps -->
             <!-- tickets select-->
-                    <form class="flex mx-auto ml-64" name="f" action="" method="post">  
-                        <input class="h-10 w-20 " style="text-align: center" type="number" name="num" value="1"/>
+            <div class="flex flex-col justify-center space-x-8">
+                <div class="relative m-3 flex flex-wrap mx-auto justify-center">
+                    <form name="f" action="" method="post">
+
+                        
+                        <hr/>
                         <c:forEach items="${requestScope.data}" var="p">
                             <c:set var="id" value="${p.tid}"/>
-                            <div class="ml-28 max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer bg-green-300">
+                            <div
+                                class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer bg-green-300"
+                                >
                                 <div class="overflow-x-hidden rounded-2xl relative">
-                                    <img class="h-40 rounded-2xl w-full object-cover" src="img/0747ebecc9541c0a4545.jpg"/>
+                                    <img
+                                        class="h-40 rounded-2xl w-full object-cover"
+                                        src="img/adultticket.jpg"
+                                        />
                                 </div>
                                 <div class="mt-4 pl-2 mb-2 flex justify-between">
                                     <div>
-                                        <p class="text-lg font-semibold text-gray-900 mb-0">${p.type}</p>
+                                        <p class="text-lg font-semibold text-gray-900 mb-0">
+                                            ${p.type}
+                                        </p>
                                         <p class="text-md text-gray-800 mt-0"><fmt:formatNumber pattern="##.#" value="${(p.price)}"/></p>
                                     </div>
                                     <!-- button select-->
                                     <div class="pt-2">
+
+
                                         <div class="flex items-center gap-1">
+                                        <input style="text-align: center" type="number" name="num" data-id="${id}" value="1"/>
+
                                             <input
                                                 type="button"
                                                 class="inline-block px-6 py-2 pt-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                                                onclick="buy('${id}')"
-                                                value="Buy item"
-                                            />
+                                                onclick="buy('${id}')" value="Buy item"/>
+
+
                                         </div>
                                     </div>
                                     <!-- end button -->
                                 </div>
                             </div>
                         </c:forEach>
-                        
+
                     </form>
+
                 </div>
 
-            
+            </div>
             <!-- end ticket select -->
-<a href="show" class="float-right mt-5 m-5 group relative inline-block overflow-hidden rounded border border-gray-100 bg-gray-200 px-12 py-3 text-sm font-medium text-slate-800 hover:text-violet-600 focus:outline-none focus:ring active:bg-indigo-600 active:text-white ml-auto">
-    <span class="ease absolute left-0 top-0 h-0 w-0 border-t-2 border-violet-600 transition-all duration-200 group-hover:w-full"></span>
-    <span class="ease absolute right-0 top-0 h-0 w-0 border-r-2 border-violet-600 transition-all duration-200 group-hover:h-full"></span>
-    <span class="ease absolute bottom-0 right-0 h-0 w-0 border-b-2 border-violet-600 transition-all duration-200 group-hover:w-full"></span>
-    <span class="ease absolute bottom-0 left-0 h-0 w-0 border-l-2 border-violet-600 transition-all duration-200 group-hover:h-full"></span>
-    View(${requestScope.size}) items
-</a>
+            <a href="show">View(${requestScope.size}) items</a>
 
-            <!-- total amount -->
+            <!-- images preview -->
+            <div class="mx-auto container px-6 xl:px-0 py-12">
+                <div class="flex flex-col">
+                    <div class="flex flex-col justify-center">
+                        <div class="relative">
+                            <img
+                                class="hidden sm:block w-full rounded-t-full"
+                                src="img/ppenal3.jpg"
+                                alt="sofa"
+                                />
+                            <img
+                                class="sm:hidden w-full"
+                                src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png"
+                                alt="sofa"
+                                />
+                        </div>
+                    </div>
+                    <!-- penal left -->
+                    <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
+                        <div
+                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
+                            >
+                            <img
+                                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
+                                src="img/penal.png"
+                                alt="sofa-2"
+                                />
+                        </div>
+                        <!-- penal right -->
+                        <div
+                            class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
+                            >
+                            <img
+                                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
+                                src="img/97.jpg"
+                                alt="sofa-2"
+                                />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end preview -->
+            <!-- cart -->
+
+
+                        <!-- total amount -->
            
         </div>
     </body>
 </html>
 <script type="text/javascript">
-    function buy(id) {
-        var m = document.f.num.value;
-        document.f.action = "buy?id=" + id + "&num=" + m;
-        document.f.submit();
-    }
+function buy(id) {
+    var inputNum = document.querySelector('input[data-id="' + id + '"]');
+    var m = inputNum.value;
+    document.f.action = "buy?id=" + id + "&num=" + m;
+    document.f.submit();
+}
+
+
 </script>
 
 

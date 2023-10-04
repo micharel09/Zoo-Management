@@ -10,45 +10,45 @@ package sample.cart;
  * @author ADMIN
  */
 public class OrderDetail {
-    private int oid,pid,tid;
+    private String oid,pid,tid;
     private String date;
+    private String promotion;
     private int quantity;
-    private double promotion;
     
 
     public OrderDetail() {
     }
 
-    public OrderDetail(int oid, int pid, int tid, String date, int quantity, double promotion) {
+    public OrderDetail(String oid, String date, String tid,String pid, String promotion, int quantity) {
         this.oid = oid;
         this.pid = pid;
         this.tid = tid;
         this.date = date;
-        this.quantity = quantity;
         this.promotion = promotion;
+        this.quantity = quantity;
     }
 
-    public int getOid() {
+    public String getOid() {
         return oid;
     }
 
-    public void setOid(int oid) {
+    public void setOid(String oid) {
         this.oid = oid;
     }
 
-    public int getPid() {
+    public String getPid() {
         return pid;
     }
 
-    public void setPid(int pid) {
+    public void setPid(String pid) {
         this.pid = pid;
     }
 
-    public int getTid() {
+    public String getTid() {
         return tid;
     }
 
-    public void setTid(int tid) {
+    public void setTid(String tid) {
         this.tid = tid;
     }
 
@@ -60,6 +60,14 @@ public class OrderDetail {
         this.date = date;
     }
 
+    public String getPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(String promotion) {
+        this.promotion = promotion;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -68,13 +76,9 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public double getPromotion() {
-        return promotion;
-    }
+    
 
-    public void setPromotion(double promotion) {
-        this.promotion = promotion;
-    }
+    
 
  
     

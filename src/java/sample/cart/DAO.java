@@ -69,8 +69,6 @@ public class DAO {
         return null;
     }
 
-
-
 //    public void addOrder(Order o, Cart cart){
 //        LocalDate curDate = LocalDate.now();
 //        String date =curDate.toString();
@@ -110,15 +108,11 @@ public class DAO {
 //        } catch (Exception e) {
 //        }
 //    }
-
-
-
-
     public void addOrder(Order o, Cart cart) {
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
-        String sql = "insert into Orders(Order_ID,Email,FullName,PhoneNumber,Date,TotalPrice)\n" +
-"values (?,?,?,?,?,?)";
+        String sql = "insert into Orders(Order_ID,Email,FullName,PhoneNumber,Date,TotalPrice)\n"
+                + "values (?,?,?,?,?,?)";
 
         try {
             conn = DBUtils.getConnection();
@@ -128,8 +122,9 @@ public class DAO {
             ptm.setString(3, o.getFullname());
             ptm.setString(4, o.getPhone());
             ptm.setString(5, date);
-            ptm.setDouble(6, cart.getTotalMoney());
+            ptm.setDouble(6, o.getTotalmoney());
             ptm.executeUpdate();
+         
 
         } catch (Exception e) {
         }
@@ -149,6 +144,46 @@ public class DAO {
             if (IdOrder != null && IdOrder.length() >= 4) {
                 String prefix = IdOrder.substring(0, 1);
                 int number = Integer.parseInt(IdOrder.substring(1));
+                number++;
+                newIdOrder = prefix + String.format("%03d", number);
+            }
+        } catch (Exception e) {
+        }
+        return newIdOrder;
+    }
+
+    public void addOrderDetail(OrderDetail od, Cart cart) {
+            String sql = " insert into OrderDetail(OrderDetail_ID,EntryDay,Ticket_ID,Order_ID,Promotion,Quantity)\n" +
+    "  values (?,?,?,?,?,?)";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            
+                ptm.setString(1, od.getOid());
+                ptm.setString(2, od.getDate());
+                ptm.setString(3, od.getTid());
+                ptm.setString(4, od.getPid());
+                ptm.setString(5, od.getPromotion());
+                ptm.setInt(6, od.getQuantity());
+                ptm.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public String getNewIdOrderDetail() {
+        String sql = "select top 1 OrderDetail_ID from orderdetail order by [OrderDetail_ID] desc";
+        String IdOrder = null;
+        String newIdOrder = null;
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            rs = ptm.executeQuery();
+            if (rs.next()) {
+                IdOrder = rs.getString("OrderDetail_ID");
+            }
+            if (IdOrder != null && IdOrder.length() >= 5) {
+                String prefix = IdOrder.substring(0, 2);
+                int number = Integer.parseInt(IdOrder.substring(2));
                 number++;
                 newIdOrder = prefix + String.format("%03d", number);
             }
