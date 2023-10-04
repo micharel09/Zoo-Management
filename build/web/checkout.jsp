@@ -10,7 +10,6 @@
     <h1>Checkout</h1>
     
     <form action="checkout" method="post">
-        <input type="hidden"  name="id" required><br>
 
         <label for="email">Email:</label>
 
@@ -21,13 +20,12 @@
 
         <label for="phone">Phone Number:</label>
         <input type="text" id="phone" name="phone" required><br>
-
+                <label for="phone">Date:</label>
+                <input type="date" id="phone" name="date1" required><br>
+        <label for="phone">Promotion:</label>
+        <input type="text" id="phone" name="promotion" required><br>
         <!-- Display Cart Information -->
-        <input type="hidden" name="date" required><br>
-
-        
-        <input type="hidden" name="total" required><br>
-
+                     
         <input type="submit" value="Finish">
     </form>
 </body>

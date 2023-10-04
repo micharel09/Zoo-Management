@@ -65,9 +65,10 @@ if (checkValidation) {
         String dayIn = request.getParameter("DayIn");
         String dayOut = request.getParameter("DayOut");
         String note = request.getParameter("Note");
+        String photo = request.getParameter("Photo");
         String animalCageId = request.getParameter("AnimalCage_ID");
         
-        AnimalDTO newAnimal = new AnimalDTO(animalId, name, dayIn, dayOut, note, animalCageId);
+        AnimalDTO newAnimal = new AnimalDTO(animalId, name, dayIn, dayOut, note, photo, animalCageId);
 
         // Call the DAO method to insert the new animal
         boolean checkInsert = dao.insertv2(newAnimal);

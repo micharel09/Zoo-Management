@@ -23,6 +23,7 @@
             <th>Day In</th>
             <th>Day Out</th>
             <th>Note</th>
+            <th>Photo</th>
             <th>Animal Cage ID</th>
             <!-- Add more columns for other animal attributes -->
         </tr>
@@ -33,6 +34,8 @@
                 <td>${animal.dayin}</td>
                 <td>${animal.dayout}</td>
                 <td>${animal.note}</td>
+                <td>
+            <img src="${animal.photo}" width="50" height="50"></img></td>
                 <td>${animal.animalcage_id}</td>
                 <td>
             <a href="DeleteAnimalController?animalID=${animal.animal_id}">Delete</a>

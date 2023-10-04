@@ -17,33 +17,32 @@ import sample.utils.DBUtils;
 
 /**
  *
- * @author HoangNQ
+ * @author dinhg
  */
 public class AnimalDAO {
-//    private static final String LOGIN = "SELECT Fullname,Phone,Email,Gender,Dependent,RoleID FROM Employee"
-//            + " WHERE Employee_ID = ? AND Password= ? ";
-    private static final String UPDATE0 = "SELECT Name,DayIn,DayOut,Note,AnimalCage_ID FROM Animal"
-            + " WHERE Animal = ?  ";
+
+    private static final String UPDATE0 = "SELECT Name,DayIn,DayOut,Note,Photo,AnimalCage_ID FROM Animal"
+            + " WHERE Animal_ID = ?  ";
     
     //SEARCH ANIMAL FROM LIST
-    private static final String SEARCH = "SELECT Animal_ID, Name, DayIn,DayOut,Note,AnimalCage_ID FROM Animal"
+    private static final String SEARCH = "SELECT Animal_ID, Name, DayIn,DayOut,Note,Photo,AnimalCage_ID FROM Animal"
             + " WHERE Animal_ID like ? ";
     
     
    private static final String DELETE = "DELETE Animal WHERE Animal_ID = ? ";
 
      private static final String UPDATE = "UPDATE Animal SET "
-            + "Name=?,DayIn=?,DayOut=? ,Note=? ,"
+            + "Name=?,DayIn=?,DayOut=? ,Note=? ,Photo=?"
             + "AnimalCage_ID=? WHERE Animal_ID= ?";
      
-    private static final String CHECK_DUPLICATE = "SELECT roleID FROM tblUsers WHERE userID = ?";
+   
     
     
     //INSERT NEW ANIMAL
-    private static final String INSERT = "INSERT INTO Animal (Animal_ID, Name, DayIn, DayOut, Note, AnimalCage_ID) VALUES (?,?,?,?,?,?) ";
+    private static final String INSERT = "INSERT INTO Animal (Animal_ID, Name, DayIn, DayOut, Note, Photo, AnimalCage_ID) VALUES (?,?,?,?,?,?,?) ";
 
       
-      // Delete Animal from list
+      // DELETE
 
    public boolean delete(String animal_id) throws SQLException {
         boolean check = false;
@@ -92,7 +91,8 @@ public class AnimalDAO {
                  ptm.setString(3, animal.getDayout());
                   ptm.setString(4, animal.getName());
                    ptm.setString(5, animal.getNote());
-                   ptm.setString(6, animal.getAnimalcage_id());
+                   ptm.setString(6, animal.getPhoto());
+                   ptm.setString(7, animal.getAnimalcage_id());
 //                    ptm.setString(6, animal.getQuantity());
 //                 ptm.setString(7, user.getEmployee_ID());
                     
@@ -125,7 +125,8 @@ public class AnimalDAO {
                 ptm.setString(3, animal.getDayout());
                 ptm.setString(4, animal.getName());
                 ptm.setString(5, animal.getNote());
-                ptm.setString(6, animal.getAnimalcage_id());
+                ptm.setString(6, animal.getPhoto());
+                ptm.setString(7, animal.getAnimalcage_id());
                
                 
                  
@@ -156,7 +157,7 @@ public class AnimalDAO {
     try {
         conn = DBUtils.getConnection();
         if (conn != null) {
-            ptm = conn.prepareStatement("SELECT Animal_ID, Name, DayIn, DayOut, Note, AnimalCage_ID FROM Animal");
+            ptm = conn.prepareStatement("SELECT Animal_ID, Name, DayIn, DayOut, Note, Photo, AnimalCage_ID FROM Animal");
             rs = ptm.executeQuery();
             
             while (rs.next()) {
@@ -165,9 +166,10 @@ public class AnimalDAO {
                 String dayin = rs.getString("DayIn");
                 String dayout = rs.getString("DayOut");
                 String note = rs.getString("Note");
+                String photo = rs.getString("Photo");
                 String animalcage_id = rs.getString("AnimalCage_ID");
                 
-                listAnimal.add(new AnimalDTO(animal_id, name, dayin, dayout, note, animalcage_id));
+                listAnimal.add(new AnimalDTO(animal_id, name, dayin, dayout, note, photo, animalcage_id));
             }
         }
     } catch (Exception e) {
@@ -205,9 +207,10 @@ public class AnimalDAO {
                     String DayIn = rs.getString("DayIn");
                     String DayOut = rs.getString("DayOut");
                     String Note = rs.getString("Note");
+                    String Photo = rs.getString("Photo");
                     String AnimalCage_ID = rs.getString("AnimalCage_ID");
                     
-                    animal = new  AnimalDTO(Animal_ID, Note, DayIn, DayOut, Note, AnimalCage_ID);
+                    animal = new  AnimalDTO(Animal_ID, Note, DayIn, DayOut, Note, Photo, AnimalCage_ID);
 
                 }
             }
@@ -236,7 +239,7 @@ public class AnimalDAO {
     try {
         conn = DBUtils.getConnection();
         if (conn != null) {
-            ptm = conn.prepareStatement("SELECT Animal_ID, Name, DayIn, DayOut, Note, AnimalCage_ID FROM Animal");
+            ptm = conn.prepareStatement("SELECT Animal_ID, Name, DayIn, DayOut, Note, Photo, AnimalCage_ID FROM Animal");
             rs = ptm.executeQuery();
             
             while (rs.next()) {
@@ -245,9 +248,10 @@ public class AnimalDAO {
                 String dayin = rs.getString("DayIn");
                 String dayout = rs.getString("DayOut");
                 String note = rs.getString("Note");
+                String photo = rs.getString("Photo");
                 String animalcage_id = rs.getString("AnimalCage_ID");
                 
-                listAnimal.add(new AnimalDTO(animal_id, name, dayin, dayout, note, animalcage_id));
+                listAnimal.add(new AnimalDTO(animal_id, name, dayin, dayout, note, photo, animalcage_id));
             }
         }
     } catch (Exception e) {
