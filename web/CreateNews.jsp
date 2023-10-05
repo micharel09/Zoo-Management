@@ -129,16 +129,11 @@
                     name="thumbnail-url"
                     type="text"
                     value=""
-                    required
                     placeholder="enter url here"
                     class="block w-full py-2.5 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5"
                   />
                 </div>
-  
-                <p class="mt-3 text-xs text-red-400">
-                </p>
               </div>
-  
               <!-- RELEASE DATE Input -->
               <div>
                 <label

@@ -361,20 +361,20 @@
         <div
           class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
         >
-        <div class="flex items-center justify-between pb-4">
+        <div class="flex items-center justify-between pb-4 p-5">
           <form action="MainController" class="flex items-center">
             <label for="search" class="mr-2">Search News_ID:</label>
             <input type="text" name="" id="" value="" />
             <input type="submit" name="action" value="" />
           </form>
-        
-          <div class="ml-2 ">
-            <a href="CreateNews.jsp">
-              <button class="px-6 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-100">
-                Add +
-              </button>
-            </a>
-          </div>
+        <!-- add button -->
+          <a href="CreateNews.jsp" 
+          class="flex animate-bounce items-center px-10 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span class="ml-1">Add</span>
+        </a>
         </div>
 <!-- table -->
           <table class="min-w-full">
@@ -473,6 +473,7 @@
             </button>
           </div>
       </div>
+      <!-- end button -->
     </div>
   </body>
 </html>
