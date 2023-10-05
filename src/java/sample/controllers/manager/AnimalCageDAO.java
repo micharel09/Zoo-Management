@@ -19,29 +19,6 @@ public class AnimalCageDAO {
         "JOIN Trainer t ON a.Area_ID = t.Area_ID " 
         ;
 
-//    public List<AnimalCageDTO> getCagesByAreaLocation() {
-//        List<AnimalCageDTO> cages = new ArrayList<>();
-//        Connection conn = null;
-//        PreparedStatement pstmt = null;
-//        ResultSet rs = null;
-//
-//        try {
-//            conn = DBUtils.getConnection();
-//            pstmt = conn.prepareStatement(SELECT_CAGES_BY_AREA_LOCATION);
-//            rs = pstmt.executeQuery();
-//
-//            while (rs.next()) {
-//                AnimalCageDTO a = new AnimalCageDTO(rs.getString("AreaLocation"),rs.getString("FullName"), rs.getString("AnimalCage_ID"),
-//                                        rs.getString("Name"));
-//                cages.add(a);
-//            }
-//        } catch (Exception e) {
-//            // Xử lý ngoại lệ SQL ở đây, ví dụ:
-//        } 
-//        
-//
-//        return cages;
-//    }
     public List<AnimalCageDTO> getAnimalCageById(String id){
             List<AnimalCageDTO> list = new ArrayList<>();
 
