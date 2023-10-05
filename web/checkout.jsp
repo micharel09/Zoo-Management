@@ -340,24 +340,25 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                 placeholder="Your Phone Number"
               />
               <div
-                class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
+              class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
+            >
+              <!-- Thay thế mã SVG ở đây -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 text-gray-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <svg
-                  class="h-4 w-4 text-gray-400"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M11 5.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1z"
-                  />
-                  <path
-                    d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm13 2v5H1V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm-1 9H2a1 1 0 0 1-1-1v-1h14v1a1 1 0 0 1-1 1z"
-                  />
-                </svg>
-              </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 1c-1.95 0-3.61.78-4.89 2.05C6.78 3.39 6 5.05 6 7h.01M6 7c0 2.21.9 4.21 2.36 5.65L10 14l2.65-2.65A7.96 7.96 0 0014 7h-.01M6 7v13a2 2 0 002 2h8a2 2 0 002-2V7m0-6h8a4 4 0 014 4v13a4 4 0 01-4 4H6a4 4 0 01-4-4V5a4 4 0 014-4z"
+                />
+              </svg>
+            </div>
+            
             </div>
             <input
             type="date"
@@ -391,10 +392,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               </div>
           </div>
         </div>
-        <button
-          class="mt-4 mb-8 w-1/3 mx-auto rounded-md bg-gray-900 px-6 py-3 font-medium text-white"
-        ><input type="submit" value="Finish" />
-        </button>
+        <button class="mt-4 mb-8 w-1/3 mx-auto px-6 py-3 flex items-center justify-center relative h-12 w-40 overflow-hidden bg-black text-white rounded-md
+        shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 
+        before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 
+        hover:before:opacity-80">
+            <input type="submit" value="FINISH" class="relative z-10 font-extralight" />
+          </button>                    
       </div>
     </form>
       <!-- end Main -->

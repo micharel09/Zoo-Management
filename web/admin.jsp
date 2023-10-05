@@ -39,7 +39,7 @@
         if (listUser1 != null && listUser1.size() > 0) {
     %>
     
-    <table>
+    <table> 
         <thead>
             <tr>
                 <th>Employee_ID</th>
