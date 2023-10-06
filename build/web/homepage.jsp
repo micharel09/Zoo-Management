@@ -1,5 +1,3 @@
-<%@page import="sample.user.UserDTO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +10,20 @@
     <script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
     <script src="https://kit.fontawesome.com/936766a5f7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="homepage.css">
-    
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
+    rel="stylesheet"
+  />
+  <script src="https://cdn-tailwindcss.vercel.app/"></script>
+  <script
+    src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+    defer
+  ></script>
+  <script
+    src="https://kit.fontawesome.com/5b0b34b925.js"
+    crossorigin="anonymous"
+  ></script>
+
     <title>HomePage</title>
 </head>
 <style>
@@ -166,7 +177,7 @@ body {
 </style>
 <body class=" block overflow-x mx-auto">
 <!-- header -->
-   <div class="bg-green-600  leading-6 h-10 ">
+   <div class="bg-green-600 leading-6 h-10 ">
         <div class="flex justify-end mr-72  ">       
             <i class="fa-brands fa-facebook-f mr-3 mt-4"></i>
             <i class="fa-brands fa-youtube  mr-3 mt-4"></i>
@@ -175,47 +186,51 @@ body {
     </div>
     
     <nav class="bg-white border-gray-200 dark:bg-gray-900">        
-        <div  class="border border-y-2 shadow-2xl  flex items-center justify-between mx-auto p-3">
-            <div class=" ml-11 items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">               
-                <ul class=" flex flex-col font-medium p-4 md:p-0 mt-4 ml-44 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <div class=" shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4">
+        <div class="mr-10 items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-user">
+                <ul class=" flex flex-col font-medium p-4 md:p-0 mt-4 ml-44 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 
+                md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Home</a>
+                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 
+                        after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded 
+                        md:bg-transparent md:p-0 text-green"aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">About us</a>
+                        <a href="About.jsp" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 
+                        after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded 
+                        md:bg-transparent md:p-0 text-green"aria-current="page">About us</a>
                     </li>
                     <li>
-                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Experience</a>
+                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 
+                        after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded 
+                        md:bg-transparent md:p-0 text-green"aria-current="page">Experience</a>
                     </li>
                 </ul>
             </div>
             
-            <div class=" items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
+            <div class="ml-5 items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
                 <ul class=" ml-80 flex flex-col font-medium p-4 md:p-0 mt-4 mr-6 border border-gray-100 bg-gray-50 md:flex-row  md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ">
                     <li>
-                        <a href="Animals.html" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Animals</a>
+                        <a href="animal.jsp" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Animals</a>
                     </li>
                     <li>
-                        <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">News</a>
+                        <a href="news.jsp" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">News</a>
                     </li>
                     <li>
                         <a href="Map.html" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Map</a>
                     </li>
                 </ul>
             </div>
-            
-            <div class="relative items-center md:order-2">
-                <a href="/shop" class="middle none center hidden rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-flex items-center"> <!-- Sử dụng lớp "inline-flex" và "items-center" -->
-                  <div class="h-4 w-4 mr-2"> <!-- Đã thêm lớp "mr-2" để tạo khoảng cách giữa hình ảnh và văn bản -->
-                    <img src="img/ticket.png" alt="">
-                  </div>
-                    <span>Buy Ticket</span>
-                </a>
-            </div>
+            <!-- buy ticket button -->
+            <!-- component -->
+              <div class="relative items-center md:order-2">
+                <button
+                class="bg-gradient-to-b w-max mx-auto text-blue-500 font-semibold from-slate-50 to-blue-100 px-5 py-1 rounded-2xl shadow-blue-400 shadow-md border-b-4 hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
+                <a href="/shop">Buy Ticket !</a></button>
+              </div>
         </div>        
     </nav>
 <!-- end header -->
-   
 <!--Auto Carousel-->
     <div class="background-img1">
         <div class="slideshow-container">
@@ -230,8 +245,10 @@ body {
             </div>
         </div>
         <!--LOGO HERE-->
-        <a href="/homepage.jsp"><img class="fsp-image " src="/img/FSP.png" alt=""></a>
-</div> 
+        <div class="">
+          <a href="/homepage.jsp"><img class="fsp-image" src="/img/FSP.png" alt=""></a>
+        </div>
+        s
 
     <div class="flex justify-center m-5 ">
         <marquee>OPEN 8:00 AM - CLOSE 22:00 PM </marquee>      
@@ -254,9 +271,6 @@ body {
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
 </div>
 <!-- end slideshow -->
-  
-
-
 <!--Big img introduce-->
 <div class="fade fadeOut">
 <!-- Panel left -->    
@@ -485,9 +499,6 @@ window.addEventListener("scroll", reveal);
   </div>
   <!-- Jumbotron -->
 </footer>
-
-
-
 </body>
 
 </html>

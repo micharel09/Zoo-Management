@@ -50,7 +50,7 @@
                 <th>Gender</th>
 
 
-                <th>Dependent</th>
+                <th>Photo</th>
               
             </tr>
         </thead>
@@ -68,7 +68,7 @@
                      <td><%=user.getPhone()%></td>
                      <td><%=user.getEmail()%></td>
                        <td><%=user.getGender()%></td>
-                         <td><%=user.getDependent()%></td>
+                         <td><%=user.getPhoto()%></td>
               <form action="MainController">
                           <td>
                         <input type="hidden" name="userID" value="<%=user.getEmployee_ID()%>"/>
@@ -77,7 +77,7 @@
                            <input type="hidden" name="Phone" value="<%=user.getPhone()%>"/> 
                            <input type="hidden" name="Email" value="<%=user.getEmail()%>"/>
                             <input type="hidden" name="Gender" value="<%=user.getGender()%>"/>
-                             <input type="hidden" name="Dêpndent" value="<%=user.getDependent()%>"/>
+                             <input type="hidden" name="Dêpndent" value="<%=user.getPhoto()%>"/>
                               
                            
                         <input type="hidden" name="search" value="<%=search%>"/>

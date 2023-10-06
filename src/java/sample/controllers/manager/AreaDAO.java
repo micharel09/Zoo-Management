@@ -41,8 +41,7 @@ public class AreaDAO {
                 AreaDTO a = new AreaDTO(rs.getString("Area_ID"),
                                         rs.getString("AreaLocation"),
                                         rs.getString("Genre"),
-                                        rs.getString("AreaStatus"),
-                                        rs.getString("Manager_ID"));
+                                        rs.getString("Photo"));
                 list.add(a);
             }
         } catch (Exception e) {
@@ -65,8 +64,7 @@ public class AreaDAO {
                         rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5)));
+                        rs.getString(4)));
             }
         } catch (Exception e) {
         }
@@ -85,8 +83,7 @@ public class AreaDAO {
                 AreaDTO a = new AreaDTO(rs.getString("Area_ID"),
                                         rs.getString("AreaLocation"),
                                         rs.getString("Genre"),
-                                        rs.getString("AreaStatus"),
-                                        rs.getString("Manager_ID"));
+                                        rs.getString("Photo"));
                 list.add(a);
             }
         } catch (Exception e) {

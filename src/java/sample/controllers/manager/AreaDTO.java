@@ -14,18 +14,16 @@ public class AreaDTO {
     private String area_id;
     private String arealocation;
     private String genre;
-    private String areastatus;
-    private String manager_id;
+    private String photo;
 
     public AreaDTO() {
     }
 
-    public AreaDTO(String area_id, String arealocation, String genre, String areastatus, String manager_id) {
+    public AreaDTO(String area_id, String arealocation, String genre, String photo) {
         this.area_id = area_id;
         this.arealocation = arealocation;
         this.genre = genre;
-        this.areastatus = areastatus;
-        this.manager_id = manager_id;
+        this.photo = photo;
     }
 
     public String getArea_id() {
@@ -52,21 +50,19 @@ public class AreaDTO {
         this.genre = genre;
     }
 
-    public String getAreastatus() {
-        return areastatus;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setAreastatus(String areastatus) {
-        this.areastatus = areastatus;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
-    public String getManager_id() {
-        return manager_id;
+    @Override
+    public String toString() {
+        return "AreaDTO{" + "area_id=" + area_id + ", arealocation=" + arealocation + ", genre=" + genre + ", photo=" + photo + '}';
     }
 
-    public void setManager_id(String manager_id) {
-        this.manager_id = manager_id;
-    }
     
    
     

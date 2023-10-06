@@ -17,20 +17,20 @@ public class UserDTO {
     private String Phone;
     private String Email;
     private String Gender;
-    private String Dependent;
+    private String Photo;
     private String RoleID;
 
     public UserDTO() {
     }
 
-    public UserDTO(String Employee_ID, String Password, String Fullname, String Phone, String Email, String Gender, String Dependent, String RoleID) {
+    public UserDTO(String Employee_ID, String Password, String Fullname, String Phone, String Email, String Gender, String Photo, String RoleID) {
         this.Employee_ID = Employee_ID;
         this.Password = Password;
         this.Fullname = Fullname;
         this.Phone = Phone;
         this.Email = Email;
         this.Gender = Gender;
-        this.Dependent = Dependent;
+        this.Photo = Photo;
         this.RoleID = RoleID;
     }
 
@@ -82,12 +82,12 @@ public class UserDTO {
         this.Gender = Gender;
     }
 
-    public String getDependent() {
-        return Dependent;
+    public String getPhoto() {
+        return Photo;
     }
 
-    public void setDependent(String Dependent) {
-        this.Dependent = Dependent;
+    public void setPhoto(String Photo) {
+        this.Photo = Photo;
     }
 
     public String getRoleID() {
@@ -97,6 +97,12 @@ public class UserDTO {
     public void setRoleID(String RoleID) {
         this.RoleID = RoleID;
     }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" + "Employee_ID=" + Employee_ID + ", Password=" + Password + ", Fullname=" + Fullname + ", Phone=" + Phone + ", Email=" + Email + ", Gender=" + Gender + ", Photo=" + Photo + ", RoleID=" + RoleID + '}';
+    }
+
     
     
    

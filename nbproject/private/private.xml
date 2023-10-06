@@ -4,9 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group/>
         <group name="Test">
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/homepage.jsp</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/FeedBackView.jsp</file>
             <file>file:/E:/Workspace/SWP391/Zoo-Management/web/CreateNews.jsp</file>
             <file>file:/E:/Workspace/SWP391/Zoo-Management/web/updatenews.jsp</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/About.jsp</file>
             <file>file:/E:/Workspace/SWP391/Zoo-Management/web/news.jsp</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/FeedbackForm.jsp</file>
         </group>
     </open-files>
 </project-private>

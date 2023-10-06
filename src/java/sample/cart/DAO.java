@@ -183,11 +183,11 @@ public class DAO {
             if (rs.next()) {
                 IdOrder = rs.getString("OrderDetail_ID");
             }
-            if (IdOrder != null && IdOrder.length() >= 5) {
+            if (IdOrder != null && IdOrder.length() >= 4) {
                 String prefix = IdOrder.substring(0, 2);
                 int number = Integer.parseInt(IdOrder.substring(2));
                 number++;
-                newIdOrder = prefix + String.format("%03d", number);
+                newIdOrder = prefix + String.format("%02d", number);
             }
         } catch (Exception e) {
         }
@@ -195,7 +195,7 @@ public class DAO {
     }
 
     String getDiscount(String promotion) {
-         String sql = "select Discount from Table_Discount_Total where ID=?";
+         String sql = "select Discount from Discount where ID=?";
      
       String tmp="0";
         try {

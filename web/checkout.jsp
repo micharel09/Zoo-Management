@@ -38,120 +38,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       </style>
       
     <title>Checkout</title>
+    <%@ include file="header.html" %> 
+    <%@ include file="breadcrumb.html" %>
   </head>
-  <body class="w-[1500px] block overflow-x-hidden mx-auto">
-    <!-- header -->
-    <nav class="border-gray-200 bg-green-600">
-      <div class="flex p-1">
-        <!-- logo -->
-        <a href="homepage.jsp" class="flex items-center justify-center w-1/2">
-          <div class="">
-            <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
-          </div>
-          <span
-            class="self-center text-4xl font-extralight whitespace-nowrap dark:text-white"
-            >Wild World Zoo</span
-          >
-        </a>
-        <!-- end logo -->
-        <!-- navbar -->
-        <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 w-full"
-          id="navbar-user"
-        >
-          <ul
-            class="flex flex-col font-extralight md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
-          >
-            <li>
-              <a
-                href="homepage.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                aria-current="page"
-                >HOME</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="navbar-text block py-4 pl-3 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ABOUT</a
-              >
-            </li>
-            <li>
-              <a
-                href="Animals.jsp"
-                class="navbar-text block py-4 pr-4 pl-2 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ANIMAL</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >NEWS</a
-              >
-            </li>
-            <li>
-              <a
-                href="Map.jsp"
-                class="navbar-text block py-4 pl-6 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >MAP</a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- end navbar -->
-      </div>
-    </nav>
-    <!-- end header -->
-    <!-- Breadcrumb -->
-    <nav
-      class="flex bg-gray-50 text-gray-700 py-3 px-5 dark:bg-gray-800 dark:border-gray-700"
-      aria-label="Breadcrumb"
-    >
-      <ol class="inline-flex items-center space-x-1 md:space-x-3">
-        <li class="inline-flex items-center">
-          <a
-            href="Homepage.html"
-            class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
-          >
-            <svg
-              class="w-4 h-4 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-              ></path>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li aria-current="page">
-          <div class="flex items-center">
-            <svg
-              class="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span
-              class="text-gray-400 ml-1 md:ml-2 text-sm font-medium dark:text-gray-500"
-              >Cart</span
-            >
-          </div>
-        </li>
-      </ol>
-    </nav>
-    <!-- end breadcrumb -->
-    <form class="w-[1500] mx-auto bg-green-100 form-bg rounded-b-3xlf">
+  <body>
+    <form action="checkout" method="post" class="w-[1500] mx-auto bg-green-100 form-bg rounded-b-3xlf">
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-gray-50 border-b-1 border-black">
@@ -263,7 +154,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           Complete your order by providing your payment details.
         </p>
     </div>
-        <form action="checkout" method="post">
+        
         <div class="">
           <label for="email" class="mt-4 mb-2 block text-sm font-medium"
             >Email</label
@@ -303,7 +194,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <input
               type="text"
               id="card-holder"
-              name="card-holder"
+              name="fullname"
               class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               placeholder="Your full name here"
               required
@@ -362,7 +253,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             </div>
             <input
             type="date"
-            name="date"
+            name="date1"
             id="date-input"
             class="w-full rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
             placeholder="MM/YY"
@@ -379,7 +270,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </script>
             <input
               type="text"
-              name="credit-cvc"
+              name="promotion"
               class="w-1/6 flex-shrink-0 rounded-md border border-gray-200 px-2 py-3 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
               placeholder="Promotion"
             />
@@ -399,7 +290,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <input type="submit" value="FINISH" class="relative z-10 font-extralight" />
           </button>                    
       </div>
-    </form>
+      </form>
+  
       <!-- end Main -->
       <!-- cart -->
     </div>

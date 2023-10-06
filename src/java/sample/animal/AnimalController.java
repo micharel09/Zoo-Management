@@ -1,6 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package sample.animal;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,30 +14,80 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AnimalController")
+/**
+ *
+ * @author ADMIN
+ */
+@WebServlet(name = "AnimalController", urlPatterns = {"/animalcontroller"})
 public class AnimalController extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Xử lý các thao tác liên quan đến danh sách động vật ở đây
-        try {
-            AnimalDAO animalDAO = new AnimalDAO();
-            List<AnimalDTO> animals = animalDAO.getListAnimal(); // Lấy danh sách động vật từ AnimalDAO
-            
-            // Đặt danh sách động vật vào thuộc tính của yêu cầu để truyền đến animal.jsp
-            request.setAttribute("animals", animals);
-            
-            // Chuyển hướng đến trang animal.jsp để hiển thị danh sách động vật
-            request.getRequestDispatcher("animal.jsp").forward(request, response);
-        } catch (Exception e) {
-            // Xử lý ngoại lệ nếu có
-            e.printStackTrace();
-            // Có thể chuyển hướng đến trang lỗi nếu cần
-            // response.sendRedirect("error.jsp");
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+             response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AnimalDelete</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AnimalDelete at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Xử lý yêu cầu POST nếu cần
-        doGet(request, response);
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String animalid = request.getParameter("animalID");
+                AnimalDAO d = new AnimalDAO();
+        List<AnimalDTO> list = d.getAllAimal();
+        request.setAttribute("animallist", list);
+        request.getRequestDispatcher("animal.jsp").forward(request, response);
     }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
 }

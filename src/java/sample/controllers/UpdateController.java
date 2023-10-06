@@ -50,13 +50,13 @@ public class UpdateController extends HttpServlet {
                 String phone = request.getParameter("Phone");
                 String email = request.getParameter("Email");
                 String gender = request.getParameter("Gender");
-                String dependent = request.getParameter("Dependent");
+                String photo = request.getParameter("Photo");
                 
                 String roleID = request.getParameter("roleID");
 
                 UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
                 UserDAO dao = new UserDAO();
-                UserDTO user = new UserDTO(userID, "", fullName, phone, email, gender, dependent, roleID);
+                UserDTO user = new UserDTO(userID, "", fullName, phone, email, gender, photo, roleID);
                 boolean checkUpdate = dao.update(user);
 
 //             HttpSession session = request.getSession();
@@ -74,7 +74,7 @@ public class UpdateController extends HttpServlet {
                             loginUser.setPhone(phone);
                             loginUser.setEmail(email);
                             loginUser.setGender(gender);
-                            loginUser.setDependent(dependent);
+                            loginUser.setPhoto(photo);
                             loginUser.setRoleID(roleID);
 
                            

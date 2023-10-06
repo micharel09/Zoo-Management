@@ -20,13 +20,13 @@ import sample.utils.DBUtils;
  * @author HoangNQ
  */
 public class UserDAO {
-    private static final String LOGIN = "SELECT Fullname,Phone,Email,Gender,Dependent,RoleID FROM Employee"
+    private static final String LOGIN = "SELECT Fullname,Phone,Email,Gender,Photo,RoleID FROM Employee"
             + " WHERE Employee_ID = ? AND Password= ? ";
-    private static final String UPDATE0 = "SELECT Fullname,Phone,Email,Gender,Dependent,RoleID FROM Employee"
+    private static final String UPDATE0 = "SELECT Fullname,Phone,Email,Gender,Photo,RoleID FROM Employee"
             + " WHERE Employee_ID = ?  ";
     
     // user = new  UserDTO(Employee_ID, String Password, String Fullname, String Phone, String Email, String Gender, String Dependent, String RoleID);
-    private static final String SEARCH = "SELECT Employee_ID, FullName, Phone,Email,Gender,Dependent, roleID FROM Employee"
+    private static final String SEARCH = "SELECT Employee_ID, FullName, Phone,Email,Gender,Photo, roleID FROM Employee"
             + " WHERE Employee_ID like ? ";
     
      private static final String GET_ORDER_ID = "SELECT OrderID FROM orders"
@@ -39,11 +39,11 @@ public class UserDAO {
     //private static final String DELETE = "DELETE FROM [SWP3].[dbo].[Employee] WHERE Employee_ID = ?";
 
      private static final String UPDATE = "UPDATE Employee SET "
-            + "FullName=?,Phone=?,Email=? ,Gender=? ,Dependent=? ,"
+            + "FullName=?,Phone=?,Email=? ,Gender=? ,Photo=? ,"
             + "roleID=? WHERE Employee_ID= ?";
     private static final String CHECK_DUPLICATE = "SELECT roleID FROM tblUsers WHERE userID = ?";
      // UserDTO user = new UserDTO( employeeID,  password,  fullName, Phone, Email,  Gender,  Dependent,  roleID);
-    private static final String INSERT = "INSERT INTO Employee (Employee_ID, Password,Fullname,Phone,Email,Gender,Dependent,RoleID ) VALUES (?,?,?,?,?,?,?,?) ";
+    private static final String INSERT = "INSERT INTO Employee (Employee_ID, Password,Fullname,Phone,Email,Gender,Photo,RoleID ) VALUES (?,?,?,?,?,?,?,?) ";
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderdeatil (productID,orderdeatilID,OrderID,Price,Quantity) VALUES (?,?,?,?,?) ";
     private static final String GET_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
     
@@ -98,10 +98,10 @@ public class UserDAO {
                     String Phone = rs.getString("Phone");
                     String Email = rs.getString("Email");
                     String Gender = rs.getString("Gender");
-                    String Dependent = rs.getString("Dependent");
+                    String Photo = rs.getString("Photo");
                     String RoleID = rs.getString("RoleID");
                   
-                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
+                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Photo,RoleID);
 
                 }
             }
@@ -167,7 +167,7 @@ public class UserDAO {
                 ptm.setString(2, user.getPhone());
                  ptm.setString(3, user.getEmail());
                   ptm.setString(4, user.getGender());
-                   ptm.setString(5, user.getDependent());
+                   ptm.setString(5, user.getPhoto());
                     ptm.setString(6, user.getRoleID());
                  ptm.setString(7, user.getEmployee_ID());
                     
@@ -201,7 +201,7 @@ public class UserDAO {
                 ptm.setString(4, user.getPhone());
                 ptm.setString(5, user.getEmail());
                 ptm.setString(6, user.getGender());
-                ptm.setString(7, user.getDependent());
+                ptm.setString(7, user.getPhoto());
                 ptm.setString(8, user.getRoleID());
                
                 
@@ -239,11 +239,11 @@ public class UserDAO {
                     String Phone = rs.getString("Phone");
                     String Email = rs.getString("Email");
                     String Gender = rs.getString("Gender");
-                    String Dependent = rs.getString("Dependent");
+                    String Photo = rs.getString("Photo");
                     String RoleID = rs.getString("RoleID");
                      String password = "*****";
                    // user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
-                    listEmployee.add(new UserDTO( Employee_ID, password ,  Fullname,  Phone,  Email,  Gender,  Dependent,  RoleID));
+                    listEmployee.add(new UserDTO( Employee_ID, password ,  Fullname,  Phone,  Email,  Gender,  Photo,  RoleID));
                     
                     
 //                     String userID = rs.getString("userID");
@@ -333,10 +333,10 @@ public class UserDAO {
                     String Phone = rs.getString("Phone");
                     String Email = rs.getString("Email");
                     String Gender = rs.getString("Gender");
-                    String Dependent = rs.getString("Dependent");
+                    String Photo = rs.getString("Photo");
                     String RoleID = rs.getString("RoleID");
                   
-                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
+                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Photo,RoleID);
 
                 }
             }

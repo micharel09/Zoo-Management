@@ -35,19 +35,8 @@
       <label for="Gender">Gender:</label>
 <select name="Gender" id="Gender">
     <option value="Male" <%= user.getGender().equals("Male") ? "selected" : "" %>>Male</option>
-    <option value="FeMale" <%= user.getGender().equals("FeMale") ? "selected" : "" %>>FeMale</option>
-</select><br>
-
-
-       <label for="Dependent">Dependent:</label>
-<select name="Dependent" id="Dependent">
-    <option value="E001" <%= user.getDependent().equals("E001") ? "selected" : "" %>>E001</option>
-    <option value="E002" <%= user.getDependent().equals("E002") ? "selected" : "" %>>E002</option>
-    <option value="E003" <%= user.getDependent().equals("E003") ? "selected" : "" %>>E003</option>
-    <option value="E004" <%= user.getDependent().equals("E004") ? "selected" : "" %>>E004</option>
-</select><br>
-
-        
+    <option value="FeMale" <%= user.getGender().equals("FeMale") ? "selected" : "" %>>Female</option>
+</select><br> 
        <label for="roleID">Role ID:</label>
 <select name="roleID" id="roleID">
     <option value="ADMIN" <%= user.getRoleID().equals("ADMIN") ? "selected" : "" %>>ADMIN</option>

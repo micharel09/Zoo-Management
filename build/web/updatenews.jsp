@@ -8,13 +8,6 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
       rel="stylesheet"
     />
-
-    <!-- AlpineJS -->
-    <script
-      defer
-      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-    ></script>
-
     <!-- Tailwind -->
     <script src="https://cdn-tailwindcss.vercel.app/"></script>
     <link
@@ -38,7 +31,7 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <title>Update Page</title>
+    <title>Update News</title>
   </head>
   <body class="bg-gray-500">
     <!-- MAIN CONTENT -->
@@ -86,6 +79,7 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
                   value=""
                   placeholder="enter tittle"
                   class="block w-full py-2.5 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5"
+                  required
                 />
               </div>
 
@@ -124,6 +118,7 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
                   name="thumbnail-url"
                   type="text"
                   value=""
+                  required
                   placeholder="enter url here"
                   class="block w-full py-2.5 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5"
                 />
@@ -144,6 +139,7 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
               <input
                 name="release"
                 type="date"
+                required
                 value="${release}"
                 max="<%= java.time.LocalDate.now() %>"
                 class="block mt-2 w-full rounded-lg border bg-white px-5 py-2.5"

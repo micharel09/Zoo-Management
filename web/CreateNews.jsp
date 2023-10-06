@@ -13,13 +13,6 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
         rel="stylesheet"
       />
-  
-      <!-- AlpineJS -->
-      <script
-        defer
-        src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
-      ></script>
-  
       <!-- Tailwind -->
       <script src="https://cdn-tailwindcss.vercel.app/"></script>
       <link
@@ -43,7 +36,7 @@
         src="https://kit.fontawesome.com/5b0b34b925.js"
         crossorigin="anonymous"
       ></script>
-      <title>Update Page</title>
+      <title>Create News</title>
     </head>
     <body class="bg-gray-500">
       <!-- MAIN CONTENT -->

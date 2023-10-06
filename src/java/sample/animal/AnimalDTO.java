@@ -14,20 +14,16 @@ public class AnimalDTO {
     private String animal_id;
     private String name;
     private String dayin;
-    private String dayout;
-    private String note;
     private String photo;
     private String animalcage_id;
 
     public AnimalDTO() {
     }
 
-    public AnimalDTO(String animal_id, String name, String dayin, String dayout, String note, String photo, String animalcage_id) {
+    public AnimalDTO(String animal_id, String name, String dayin, String photo, String animalcage_id) {
         this.animal_id = animal_id;
         this.name = name;
         this.dayin = dayin;
-        this.dayout = dayout;
-        this.note = note;
         this.photo = photo;
         this.animalcage_id = animalcage_id;
     }
@@ -56,20 +52,12 @@ public class AnimalDTO {
         this.dayin = dayin;
     }
 
-    public String getDayout() {
-        return dayout;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setDayout(String dayout) {
-        this.dayout = dayout;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getAnimalcage_id() {
@@ -80,22 +68,11 @@ public class AnimalDTO {
         this.animalcage_id = animalcage_id;
     }
 
-    public String getPhoto() {
-        return photo;
+    @Override
+    public String toString() {
+        return "AnimalDTO{" + "animal_id=" + animal_id + ", name=" + name + ", dayin=" + dayin + ", photo=" + photo + ", animalcage_id=" + animalcage_id + '}';
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
     
-    
-   
-
-
-   
-    
-    
-   
-  
 
 }
