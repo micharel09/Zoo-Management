@@ -6,15 +6,14 @@
             <file>file:/E:/Workspace/SWP391/Zoo-Management/web/About.jsp</file>
         </group>
         <group>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/src/java/sample/utils/DBUtils.java</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/header.html</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/food.jsp</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/news.jsp</file>
             <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/manager.jsp</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/login.jsp</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/homepage.jsp</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/src/java/sample/controllers/UpdateController.java</file>
             <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/FeedBackView.jsp</file>
-            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/login.html</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/checkout.jsp</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/area.jsp</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/My_cart.jsp</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/Cart.jsp</file>
+            <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/update.jsp</file>
         </group>
     </open-files>
 </project-private>

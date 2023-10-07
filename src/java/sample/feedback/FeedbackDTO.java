@@ -86,6 +86,11 @@ public class FeedbackDTO {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "FeedbackDTO{" + "feedback_id=" + feedback_id + ", title=" + title + ", purpose=" + purpose + ", date=" + date + ", processnote=" + processnote + ", employee_id=" + employee_id + ", status=" + status + '}';
+    }
     
     
 }

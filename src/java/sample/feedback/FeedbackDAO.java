@@ -59,4 +59,10 @@ public class FeedbackDAO {
     
     return listFeedBack;
 }
+    
+     public static void main(String[] args) throws SQLException {
+        FeedbackDAO a = new FeedbackDAO();
+        List<FeedbackDTO> list = a.getListFeedBack();
+        System.out.println(list);       
+    }
 }

@@ -41,7 +41,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       }
     </style>
   </head>
-  <body class="w-[1500px] block overflow-x-hidden mx-auto">
+  <body class="w-full block overflow-x-hidden mx-auto">
     <!-- header -->
     <nav class="border-gray-200 bg-green-600">
       <div class="flex p-1">
@@ -114,7 +114,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
           <a
-            href="Homepage.html"
+            href="homepage.jsp"
             class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
           >
             <svg
@@ -153,7 +153,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       </ol>
     </nav>
     <!-- end breadcrumb -->
-    <div class="w-[1500] mx-auto bg-green-100">
+    <div class="w-full mx-auto bg-green-100">
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-gray-50 rounded-b-lg">
@@ -259,49 +259,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!-- end Progress Steps -->
       <!-- tickets select-->
 
-      <!-- end ticket select -->
-      <!-- images preview -->
-      <div class="mx-auto container px-6 xl:px-0 py-12">
-        <div class="flex flex-col">
-          <div class="flex flex-col justify-center">
-            <div class="relative">
-              <img
-                class="hidden sm:block w-full rounded-t-full"
-                src="img/ppenal3.jpg"
-                alt="sofa"
-              />
-              <img
-                class="sm:hidden w-full"
-                src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png"
-                alt="sofa"
-              />
-            </div>
-          </div>
-          <!-- penal left -->
-          <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
-            <div
-              class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
-            >
-              <img
-                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
-                src="img/penal.png"
-                alt="sofa-2"
-              />
-            </div>
-            <!-- penal right -->
-            <div
-              class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
-            >
-              <img
-                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
-                src="img/97.jpg"
-                alt="sofa-2"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end preview -->
+
       <!-- cart -->
       <section class="bg-gray-100 text-gray-600 antialiased" x-data="app">
         <div class="flex flex-col">
