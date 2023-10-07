@@ -38,8 +38,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       </style>
       
     <title>Checkout</title>
-    <%@ include file="header.html" %> 
-    <%@ include file="breadcrumb.html" %>
+        <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
   <body>
     <form action="checkout" method="post" class="w-[1500] mx-auto bg-green-100 form-bg rounded-b-3xlf">

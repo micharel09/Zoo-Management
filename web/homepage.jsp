@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="sample.food.FoodDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -188,7 +192,7 @@ body {
     <nav class="bg-white border-gray-200 dark:bg-gray-900">        
       <div class=" shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4">
         <div class="mr-10 items-center justify-between hidden md:flex md:w-auto md:order-1" id="navbar-user">
-                <ul class=" flex flex-col font-medium p-4 md:p-0 mt-4 ml-44 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 
+                <ul class=" flex flex-col font-medium p-4 md:p-0 mt-4 ml-30 border border-gray-100 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 
                 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="#" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 
@@ -208,8 +212,8 @@ body {
                 </ul>
             </div>
             
-            <div class="ml-5 items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
-                <ul class=" ml-80 flex flex-col font-medium p-4 md:p-0 mt-4 mr-6 border border-gray-100 bg-gray-50 md:flex-row  md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ">
+            <div class="ml-52 items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
+                <ul class=" ml-96 flex flex-col font-medium p-4 md:p-0 mt-4 mr-6 border border-gray-100 bg-gray-50 md:flex-row  md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ">
                     <li>
                         <a href="animal.jsp" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Animals</a>
                     </li>
@@ -223,7 +227,7 @@ body {
             </div>
             <!-- buy ticket button -->
             <!-- component -->
-              <div class="relative items-center md:order-2">
+              <div class="animate-bounce relative items-center md:order-2">
                 <button
                 class="bg-gradient-to-b w-max mx-auto text-blue-500 font-semibold from-slate-50 to-blue-100 px-5 py-1 rounded-2xl shadow-blue-400 shadow-md border-b-4 hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
                 <a href="/shop">Buy Ticket !</a></button>
@@ -248,7 +252,6 @@ body {
         <div class="">
           <a href="/homepage.jsp"><img class="fsp-image" src="/img/FSP.png" alt=""></a>
         </div>
-        s
 
     <div class="flex justify-center m-5 ">
         <marquee>OPEN 8:00 AM - CLOSE 22:00 PM </marquee>      
@@ -278,7 +281,7 @@ body {
         <img class="object-cover w-full h-full transform duration-700 backdrop-opacity-100" src="img/closeup-rectangle.jpg" />
         <div class="absolute inset-0 flex items-center justify-center r-9 right-1/3">
             <h1 class=" text-7xl text-start font-bold text-white">WORLD WIDE ZOO <br> HO CHI MINH 
-                <br> <i class="fa-solid fa-cloud mt-10"> 31 °C</i></h1>
+                <br> <i class="fa-solid fa-cloud mt-10"> 31°C</i></h1>
             
             <!--Time-->
             <div style="position: absolute; z-index: 2;" class="container">         
@@ -352,9 +355,9 @@ body {
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Cáo tuyết lạc vào nhà dân ở TP.HCM được chuyển đến Thảo cầm viên Sài Gòn</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white"></h5>
         </a>
-        <p class="mb-16 font-normal text-black dark:text-gray-400">Một cá thể cáo tuyết đi lạc vào phòng trọ của người dân tại Q.12 (TP.HCM) đã được chuyển đến Thảo Cầm Viên để chăm sóc và khi ổn định sẽ được cho nhập đàn với 3 cá thể khác.</p>
+        <p class="mb-16 font-normal text-black dark:text-gray-400"></p>
         <a href="#" class="inline-flex items-center px-3 py-2 ml-40 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Read more
              <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -371,7 +374,7 @@ body {
         <a href="#">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white"> An organization committed to preserving forests worldwide.</h5>
         </a>
-        <p class="mb-16 font-normal text-black dark:text-gray-400">Forests soak up carbon and help to reduce the effects of climate change, so whenever you purchase FSC-certified products, you're helping the endangered species and environments that are affected by climate change 🌏</p>
+        <p class="mb-16 font-normal text-black dark:text-gray-400">Forests soak up carbon and help to reduce the effects of climate change, so whenever you purchase FSC-certified products, you're helping the endangered species and environments that are affected by climate change ð</p>
         <a href="#" class="inline-flex items-center px-3 py-2 ml-40 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Read more
              <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -417,7 +420,7 @@ body {
               <div class="mb-8">
                 <p class="text-sm text-gray-600 flex items-center">                 
                 <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize">Thật sự nghe nhạc của Vũ làm mình cảm nhận đc từng câu hát từng nốt nhạc đều đc trau chuốt một cách tỉ mỉ và đẹp đẽ nhất. Nhạc của Vũ làm tâm hồn của mình như đc chữa lành từ sâu bên trong qua từng câu hát. Respect Vũ ❤</p>
+                <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize"></p>
               </div>
               <div class="flex items-center">
                 <img class="w-10 h-10 rounded-full mr-4" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="Avatar of Jonathan Reinink">               
@@ -431,7 +434,7 @@ body {
                   <div class="mb-8">
                     <p class="text-sm text-gray-600 flex items-center">                 
                     <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                    <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize">Thật sự nghe nhạc của Vũ làm mình cảm nhận đc từng câu hát từng nốt nhạc đều đc trau chuốt một cách tỉ mỉ và đẹp đẽ nhất. Nhạc của Vũ làm tâm hồn của mình như đc chữa lành từ sâu bên trong qua từng câu hát. Respect Vũ ❤</p>
+                    <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize"></p>
                   </div>
                   <div class="flex items-center">
                     <img class="w-10 h-10 rounded-full mr-4" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="Avatar of Jonathan Reinink">               
@@ -487,7 +490,7 @@ window.addEventListener("scroll", reveal);
             <ul class="footer">
                 <li class="uppercase font-bold leading-10">Contact</li>
                 <li class="font-semibold">WorldWildZoo Ho Chi Minh</li>
-                <li class="font-semibold">Adress: <small>213/21 Nơ Trang Long dáhdjashdhasjdsja</small> </li>
+                <li class="font-semibold">Adress: <small>213/21 Nơ Trang Long </small> </li>
                 <li class="font-semibold">Hotline: <small>098765432</small></li>
                 <li class="font-semibold">Email: <small>wowizoo@hcm.vn</small></li>
             </ul>    

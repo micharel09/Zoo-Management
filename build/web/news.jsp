@@ -42,205 +42,97 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=FontName&display=swap" rel="stylesheet">
     <title>News</title>
-    <%@ include file="header.html" %>
+    <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
   <body>
-    <!-- main -->
-    <section class="bg-gray-50">
-      <div class="container px-6 py-10 mx-auto">
-        <h1 class="text-3xl font-semibold capitalize lg:text-4xl text-black">
-          News
-        </h1>
-
-        <div class="grid grid-cols-1 gap-8 mt-8 md:mt-16 md:grid-cols-2">
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://images.unsplash.com/photo-1581852017103-68ac65514cf7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80"
-              alt=""
-            />
-
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
+      <!-- Breadcrumb -->
+    <nav
+      class="flex bg-gray-50 text-gray-700 py-3 px-5 dark:bg-gray-800 dark:border-gray-700"
+      aria-label="Breadcrumb"
+    >
+      <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+          <a
+            href="/managercontroller"
+            class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
+          >
+            <svg
+              class="w-4 h-4 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                Discover the Fascinating World of Elephants
-              </a>
-
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 20 October 2019</span
-              >
-            </div>
-          </div>
-
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://images.unsplash.com/photo-1615963244664-5b845b2025ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80"
-              alt=""
-            />
-
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              ></path>
+            </svg>
+            Home
+          </a>
+        </li>
+        <li aria-current="page">
+          <div class="flex items-center">
+            <svg
+              class="w-6 h-6 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                The Secret Lives of Tigers: Unveiling Their Mysteries
-              </a>
-
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 20 October 2019</span
-              >
-            </div>
-          </div>
-
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://images.unsplash.com/photo-1649340873599-4d1461808554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-            />
-
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
+              <path
+                fill-rule="evenodd"
+                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span
+              class="text-gray-400 ml-1 md:ml-2 text-sm font-medium dark:text-gray-500"
+              >News</span
             >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                Morning Birds: A Glimpse into Their Unique Songs
-              </a>
-
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 25 November 2020</span
-              >
-            </div>
           </div>
+        </li>
+      </ol>
+    </nav>
+    <!-- end breadcrumb -->
+          <!--SIDE BAR HERE-->
+ <nav class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
+    <a href="/managercontroller" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
+        <!-- HeroIcon - User -->
+        <i class="fa-regular fa-folder-open"></i>
+        <small class="text-center text-xs font-medium"> Area </small>
+    </a>
 
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://images.unsplash.com/photo-1526336179256-1347bdb255ee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80"
-              alt=""
-            />
+    <a href="/FeedBackView.jsp"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
+        <!-- HeroIcon - Chart Bar -->
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
+        </svg>
+            <small class="text-center text-xs font-medium"> Feedback </small>
+    </a>
 
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
-            >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                The Marvelous World of Butterflies: Colors and Patterns
-              </a>
+    <a href="/news.jsp" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
+    <!-- HeroIcon - Cog-6-tooth -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+    </svg>     
+        <small class="text-center text-xs font-medium"> News</small>
+    </a>
 
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 30 September 2020</span
-              >
-            </div>
-          </div>
+    <hr class="dark:border-gray-700/60" />
 
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://plus.unsplash.com/premium_photo-1664298136378-ee0a66ee154b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-              alt=""
-            />
-
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
-            >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                A Dive into the Deep: Discovering the Ocean's Wonders
-              </a>
-
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 20 October 2019</span
-              >
-            </div>
-          </div>
-
-          <div class="lg:flex hover:shadow-2xl transition duration-500 bg-white rounded">
-            <img
-              class="object-cover w-full h-56 rounded-lg lg:w-64"
-              src="https://images.unsplash.com/photo-1524538813-1d2e4e975e1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80"
-              alt=""
-            />
-
-            <div
-              class="flex flex-col justify-between py-6 lg:mx-6 bg-white rounded-md px-4"
-            >
-              <a
-                href="#"
-                class="text-xl font-semibold hover:underline text-black"
-              >
-                The World of Amphibians: Exploring Their Habitats
-              </a>
-
-              <span class="text-sm text-gray-500 dark:text-gray-300"
-                >On: 20 October 2019</span
-              >
-            </div>
-          </div>
-        </div>
+    <a href="/" class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-400" >
+    <!-- HeroIcon - Home Modern -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
+      </svg>
+        <small className="text-xs font-medium">Profile</small>
+    </a>
+    </nav>
+ <div class="flex justify-center mt-5 ">
+        <h1 class="text-3xl">News Information</h1>
       </div>
-      <!-- component -->
-      <div class="flex justify-center pb-4">
-        <nav aria-label="Page navigation example">
-          <ul class="flex list-style-none">
-            <li class="page-item disabled">
-              <a
-                class="page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-500 pointer-events-none focus:shadow-none"
-                href="#"
-                tabindex="-1"
-                aria-disabled="true"
-                >Previous</a
-              >
-            </li>
-            <li class="page-item">
-              <a
-                class="page-link relative block py-1.5 px-3 rounded border-0 bg-blue-600 outline-none transition-all duration-300 rounded text-white hover:text-white hover:bg-blue-600 shadow-md focus:shadow-md"
-                href="#"
-                >1</a
-              >
-            </li>
-            <li class="page-item active">
-              <a
-                class="page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                href="#"
-                >2 <span class="visually-hidden"></span
-              ></a>
-            </li>
-            <li class="page-item">
-              <a
-                class="page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                href="#"
-                >3</a
-              >
-            </li>
-            <li class="page-item">
-              <a
-                class="page-link relative block py-1.5 px-3 rounded border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
-                href="#"
-                >Next</a
-              >
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </section>
-    <!-- end main -->
-
+      
     <!-- CRUD -->
-    <div class="flex flex-col mt-8">
+    <div class="flex flex-col mt-16 ml-36">
       <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div
           class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
@@ -358,6 +250,7 @@
           </div>
       </div>
       <!-- end button -->
+    </div>
     </div>
   </body>
 </html>
