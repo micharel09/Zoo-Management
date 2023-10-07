@@ -9,12 +9,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   
-    <head>
-
-    </head>
-   
-    
 
     <%
         UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
