@@ -28,8 +28,8 @@
       crossorigin="anonymous"
     ></script>
     <title>Feedback</title>
-        <%@ include file="header.html" %> 
-    <%@ include file="breadcrumb.html" %>
+    <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
   <body>
     <!-- main -->
