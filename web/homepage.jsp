@@ -227,7 +227,7 @@ body {
             </div>
             <!-- buy ticket button -->
             <!-- component -->
-              <div class="relative items-center md:order-2">
+              <div class="animate-bounce relative items-center md:order-2">
                 <button
                 class="bg-gradient-to-b w-max mx-auto text-blue-500 font-semibold from-slate-50 to-blue-100 px-5 py-1 rounded-2xl shadow-blue-400 shadow-md border-b-4 hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
                 <a href="/shop">Buy Ticket !</a></button>
