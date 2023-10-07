@@ -33,12 +33,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
-      a {
-        text-decoration: none;
-        color: chocolate;
-        font-size: 22px;
-        font-weight: bold;
-      }
     </style>
             <%@ include file="components/header.html"%> 
     <%@ include file="components/breadcrumb.html" %>
