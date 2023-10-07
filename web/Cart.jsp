@@ -1,4 +1,4 @@
-<%-- Document : Cart Created on : Sep 27, 2023, 10:16:31 AM Author : Quan --%>
+<%-- Document : Cart.jsp Created on : Oct 7, 2023, 4:30:39 PM Author : Quan --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core" %> <%@taglib prefix="fmt"
 uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -6,11 +6,25 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind -->
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
       rel="stylesheet"
     />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
     <script
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
@@ -24,10 +38,10 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%@ include file="header.html" %> <%@ include file="breadcrumb.html" %>
   </head>
   <body>
-    <div class="w-[1500] mx-auto bg-green-100">
+    <div class="w-[1500] mx-auto bg-gray-50">
       <!-- Progress Steps -->
       <div class="w-full">
-        <div class="flex justify-center py-4 bg-gray-50 rounded-b-lg">
+        <div class="flex justify-center py-4 bg-white rounded-b-lg">
           <!-- Bước 1 -->
           <div class="w-1/6">
             <div class="relative mb-2">
@@ -133,147 +147,110 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         <div class="relative m-3 flex flex-wrap mx-auto justify-center">
           <form name="f" action="" method="post">
             <hr />
-            <div class="flex">
+            <div class="flex space-x-4">
               <!-- tickets select 1-->
-              <c:forEach items="${requestScope.data}" var="p" begin="1">
-                <c:set var="id" value="${p.tid}" />
-                <div
-                  class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer bg-green-300"
-                >
-                  <div class="overflow-x-hidden rounded-2xl relative">
+              <article
+                class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+              >
+                <c:forEach items="${requestScope.data}" var="p" begin="1">
+                  <c:set var="id" value="${p.tid}" />
+                  <div
+                    class="relative flex items-end overflow-hidden rounded-xl"
+                  >
                     <img
-                      class="h-40 rounded-2xl w-full object-cover"
+                      class="h-80 rounded-2xl w-full object-cover"
                       src="img/childticket.jpg"
                     />
                   </div>
-                  <div class="mt-4 pl-2 mb-2 flex justify-between">
+                  <div class="mt-4 mb-2 flex justify-between items-center">
                     <div>
-                      <p class="text-lg font-semibold text-gray-900 mb-0">
+                      <p class="text-2xl font-semibold text-gray-900 mb-0 pl-2">
                         ${p.type}
                       </p>
-                      <p class="text-md text-gray-800 mt-0">
+                      <p class="text-md text-gray-800 mt-0 pl-2">
                         <fmt:formatNumber pattern="##.#" value="${(p.price)}" />
                       </p>
                     </div>
-                    <!-- button select-->
-                    <div class="pt-2">
-                      <div class="flex items-center gap-1">
-                        <input
-                          style=""
-                          type="number"
-                          name="num"
-                          data-id="${id}"
-                          value="1"
-                        />
-
-                        <input
-                          type="button"
-                          class="inline-block px-6 py-2 pt-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                          onclick="buy('${id}')"
-                          value="Buy item"
-                        />
-                      </div>
+                    <!-- button select -->
+                    <div class="flex items-center gap-4">
+                      <input
+                        class="text-center w-16"
+                        type="number"
+                        name="num"
+                        data-id="${id}"
+                        value="1"
+                      />
+                      <input
+                        type="button"
+                        class="inline-block px-6 py-2 pt-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                        onclick="buy('${id}')"
+                        value="Buy item"
+                      />
                     </div>
                   </div>
-                </div>
-              </c:forEach>
+                </c:forEach>
+              </article>
 
               <!-- tickets select 2-->
-              <c:forEach items="${requestScope.data}" var="p" end="0">
-                <c:set var="id" value="${p.tid}" />
-                <div
-                  class="relative max-w-sm min-w-[340px] bg-white shadow-md rounded-3xl p-2 mx-1 my-3 cursor-pointer bg-green-300"
-                >
-                  <div class="overflow-x-hidden rounded-2xl relative">
+              <article
+                class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+              >
+                <c:forEach items="${requestScope.data}" var="p" end="0">
+                  <c:set var="id" value="${p.tid}" />
+                  <div
+                    class="relative flex items-end overflow-hidden rounded-xl"
+                  >
                     <img
-                      class="h-40 rounded-2xl w-full object-cover w"
+                      class="h-80 rounded-2xl w-full object-cover"
                       src="img/adultticket.jpg"
                     />
                   </div>
-                  <div class="mt-4 pl-2 mb-2 flex justify-between">
+                  <div class="mt-4 mb-2 flex justify-between items-center">
                     <div>
-                      <p class="text-lg font-semibold text-gray-900 mb-0">
+                      <p class="text-2xl font-semibold text-gray-900 mb-0 pl-2">
                         ${p.type}
                       </p>
-                      <p class="text-md text-gray-800 mt-0">
+                      <p class="text-md text-gray-800 mt-0 pl-2">
                         <fmt:formatNumber pattern="##.#" value="${(p.price)}" />
                       </p>
                     </div>
-                    <!-- button select-->
-                    <div class="pt-2">
-                      <div class="flex items-center gap-1">
-                        <input
-                          style="text-align: center"
-                          type="number"
-                          name="num"
-                          data-id="${id}"
-                          value="1"
-                        />
-
-                        <input
-                          type="button"
-                          class="inline-block px-6 py-2 pt-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                          onclick="buy('${id}')"
-                          value="Buy item"
-                        />
-                      </div>
+                    <!-- button select -->
+                    <div class="flex items-center gap-4">
+                      <input
+                        class="text-center w-16"
+                        type="number"
+                        name="num"
+                        data-id="${id}"
+                        value="1"
+                      />
+                      <input
+                        type="button"
+                        class="inline-block px-6 py-2 pt-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                        onclick="buy('${id}')"
+                        value="Buy item"
+                      />
                     </div>
                   </div>
-                </div>
-              </c:forEach>
+                </c:forEach>
+              </article>
               <!-- end ticket 2 -->
             </div>
           </form>
         </div>
       </div>
-      <!-- end ticket select -->
+      <!-- end main -->
 
       <!-- View button -->
-      <a href="show">View(${requestScope.size}) items</a>
-      <!-- View button -->
-
-      <!-- images preview -->
-      <div class="mx-auto container px-6 xl:px-0 py-12">
-        <div class="flex flex-col">
-          <div class="flex flex-col justify-center">
-            <div class="relative">
-              <img
-                class="hidden sm:block w-full rounded-t-full"
-                src="img/ppenal3.jpg"
-                alt="sofa"
-              />
-              <img
-                class="sm:hidden w-full"
-                src="https://i.ibb.co/B6qwqPT/jason-wang-Nx-Awry-Abt-Iw-unsplash-1.png"
-                alt="sofa"
-              />
-            </div>
-          </div>
-          <!-- penal left -->
-          <div class="mt-10 grid lg:grid-cols-2 gap-x-8 gap-y-8 items-center">
-            <div
-              class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
-            >
-              <img
-                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
-                src="img/penal.png"
-                alt="sofa-2"
-              />
-            </div>
-            <!-- penal right -->
-            <div
-              class="group group-hover:bg-opacity-60 transition duration-500 relative bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 flex justify-center items-center"
-            >
-              <img
-                class="group-hover:opacity-60 transition duration-500 w-full h-80 object-cover"
-                src="img/97.jpg"
-                alt="sofa-2"
-              />
-            </div>
-          </div>
-        </div>
+      <div class="mx-auto flex m-4 justify-center pb-4">
+        <a href="show">
+          <button
+            class="bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+          >
+            View (${requestScope.size}) items
+          </button>
+        </a>
       </div>
-      <!-- end preview -->
+      <!-- View button -->
       <!-- cart -->
 
       <!-- total amount -->
