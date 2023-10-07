@@ -14,8 +14,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="createanimal" method="post">
-            
+        <form action="createanimal" method="post" enctype="multipart/form-data">
+
             <input type="hidden" name="animalid"/>
             <br>
             Name
@@ -24,13 +24,20 @@
             Day In
             <input type="date" name="dayin">
             <br>
-            <input type="hidden" name="photo"/>
+
+
+            <label>Photo</label> <br/>
+            
+            <input type="file" 
+                   class="form-control" name="photo" placeholder="Enter photo">
+            <br>
             Animal_Cage_ID
             <input type="text" name="animalcageid"/>
             <br>
-            
+
+
             <input type="submit" value="Submit"/>
-            
+
         </form>
     </body>
 </html>
