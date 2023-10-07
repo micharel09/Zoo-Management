@@ -28,6 +28,14 @@
         <servlet-name>AnimalReportController</servlet-name>
         <servlet-class>sample.animalreport.AnimalReportController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AnimalCageController</servlet-name>
+        <servlet-class>sample.animacage.AnimalCageController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AnimalCageDelete</servlet-name>
+        <servlet-class>sample.animacage.AnimalCageDelete</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -59,6 +67,14 @@
     <servlet-mapping>
         <servlet-name>AnimalReportController</servlet-name>
         <url-pattern>/AnimalReportController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnimalCageController</servlet-name>
+        <url-pattern>/AnimalCageController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AnimalCageDelete</servlet-name>
+        <url-pattern>/AnimalCageDelete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
