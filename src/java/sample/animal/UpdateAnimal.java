@@ -5,21 +5,38 @@
  */
 package sample.animal;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author ADMIN
  */
 @WebServlet(name = "UpdateAnimal", urlPatterns = {"/updateanimal"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50)
 public class UpdateAnimal extends HttpServlet {
-
+    private String extractFileName(Part part) {//This method will print the file name.
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -79,9 +96,15 @@ public class UpdateAnimal extends HttpServlet {
         String animalid = request.getParameter("animalid");
         String name = request.getParameter("name");
         String dayin = request.getParameter("dayin");
+        Part photo = request.getPart("photo");
+
+        String filename = extractFileName(photo);
+        String savePath = "C:\\Users\\ADMIN\\Downloads\\chuyen nganh 5\\SWP\\New folder\\Zoo-Management\\web\\animal_picture" + File.separator + filename;
+        File fileSaveDir = new File(savePath);
+        photo.write(savePath + File.separator);
         String animalcageid = request.getParameter("animalcageid");
-        AnimalDAO d = new AnimalDAO();
-        d.updateanimeal(animalid, name, dayin, animalcageid);
+        AnimalDAO d = new AnimalDAO();;
+        d.updateanimeal(animalid, name, dayin,filename, animalcageid);
         response.sendRedirect("animalcontroller");
         
     }

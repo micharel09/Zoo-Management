@@ -26,7 +26,7 @@
 </form>
 
         
-        <form action="create_animal.jsp">
+    <form action="createanimal" method="get">
             <input type="submit" value="Create">
 
         </form>
@@ -38,6 +38,7 @@
                     <th>Animal ID</th>
                     <th>Name</th>
                     <th>Day In</th>
+                    <th>Photo</th>
                     <th>Animal Cage ID</th>
                     <!-- Add more columns for other animal attributes -->
                 </tr>
@@ -46,6 +47,7 @@
                         <td>${animal.animal_id}</td>
                         <td>${animal.name}</td>
                         <td>${animal.dayin}</td>
+                        <td width="100"><img src="./animal_picture/${animal.photo}" width="80" height="70"/></td>
                         <td>${animal.animalcage_id}</td>
                         <td>
                             <a href="animaldelete?animalID=${animal.animal_id}">Delete</a>
@@ -64,6 +66,7 @@
                     <th>Animal ID</th>
                     <th>Name</th>
                     <th>Day In</th>
+                    <th>Photo</th>
                     <th>Animal Cage ID</th>
                     <!-- Add more columns for other animal attributes -->
                 </tr>
@@ -72,6 +75,7 @@
                         <td>${animal.animal_id}</td>
                         <td>${animal.name}</td>
                         <td>${animal.dayin}</td>
+                        <td width="100">${animal.photo}</td>
                         <td>${animal.animalcage_id}</td>
                         <td>
                             <a href="animaldelete?animalID=${animal.animal_id}">Delete</a>
