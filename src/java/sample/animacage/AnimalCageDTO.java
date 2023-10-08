@@ -14,6 +14,7 @@ public class AnimalCageDTO {
     private String employee_id;
 
     public AnimalCageDTO() {
+        
     }
 
     public AnimalCageDTO(String animalcage_id, String name, String area_id, String employee_id) {
@@ -54,6 +55,11 @@ public class AnimalCageDTO {
     public void setEmployee_id(String employee_id) {
         this.employee_id = employee_id;
     }
-  
+
     
+
+ 
+
+ 
+  
 }
