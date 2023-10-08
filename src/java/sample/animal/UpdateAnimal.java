@@ -105,6 +105,11 @@ public class UpdateAnimal extends HttpServlet {
         String name = request.getParameter("name");
         String dayin = request.getParameter("dayin");
         Part photo = request.getPart("photo");
+
+        String filename = extractFileName(photo);
+        String savePath = "D:\\FBT\\Kì 5\\swp391\\hi\\Zoo-Management\\web\\animal_picture" + File.separator + filename;
+        File fileSaveDir = new File(savePath);
+        photo.write(savePath + File.separator);
         String animalcageid = request.getParameter("animalcageid");
 
         // Check if the user selected a file

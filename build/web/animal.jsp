@@ -75,7 +75,7 @@
                         <td>${animal.animal_id}</td>
                         <td>${animal.name}</td>
                         <td>${animal.dayin}</td>
-                        <td width="100">${animal.photo}</td>
+                         <td width="100"><img src="./animal_picture/${animal.photo}" width="80" height="70"/></td>
                         <td>${animal.animalcage_id}</td>
                         <td>
                             <a href="animaldelete?animalID=${animal.animal_id}">Delete</a>

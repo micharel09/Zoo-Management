@@ -34,11 +34,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         display: none;
       }
     </style>
-            <%@ include file="components/header.html"%> 
+     <%@ include file="components/header.html"%> 
     <%@ include file="components/breadcrumb.html" %>
   </head>
+
+
   <body>
     <div class="w-[1500] mx-auto bg-green-100">
+
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-gray-50 rounded-b-lg">
@@ -141,7 +144,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
         </div>
       </div>
+
+      <!-- end Progress Steps -->
+      <!-- tickets select-->
+
       <!-- end ticket select -->
+
 
       <!-- cart -->
       <section class="bg-gray-100 text-gray-600 antialiased" x-data="app">

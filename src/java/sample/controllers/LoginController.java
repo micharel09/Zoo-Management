@@ -49,9 +49,6 @@ public class LoginController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
                 
-               
-          
-            
                 if (AD.equals(roleID)) {
                     url=ADMIN_PAGE;
                 }else if (MN.equals(roleID)) {
