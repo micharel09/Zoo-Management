@@ -96,7 +96,7 @@
         <small class="text-center text-xs font-medium"> Animal </small>
     </a>
 
-    <a href="/trainerfeedback.jsp"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
+    <a href="detail?fid=${f.id}"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
         <!-- HeroIcon - Chart Bar -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
@@ -223,10 +223,14 @@
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
             >
               <!-- table -->
-               <c:forEach items="${listF}" var="f">
+               
               <table class="min-w-full">
                 <thead>
                   <tr>
+                 
+                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
+                      Title
+                    </th>
                     <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
                       Purpose
                     </th>
@@ -236,18 +240,19 @@
                     <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
                       ProcessNote
                     </th>
+
                     <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                       Status
                     </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                      id
-                    </th>
                   </tr>
                 </thead>
-
+<c:forEach items="${listF}" var="f">
                 <tbody class="bg-white">
                   <tr>
-
+              
+                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
+                      ${f.title}
+                    </td>
                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
                       ${f.purpose}
                     </td>
@@ -257,18 +262,22 @@
                     <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
                       ${f.processnote}
                     </td>
-                    <td class="px-2 py-4 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200">
+                   
+                    <td class="px-2 py-4 text-sm font-bold text-center text-green-500 leading-5 whitespace-no-wrap border-b border-gray-200">
                       ${f.status}      
-                    </td>
-                  
+                    </td>                 
                   </tr>
                 </tbody>
+                 </c:forEach>
               </table>
-            </c:forEach>
+              <a href="createfeedback.jsp"> create</a>
+              
             </div>
           </div>
         </div>
+          
       </div>
+        
     </body>
   </body>
 </html>
