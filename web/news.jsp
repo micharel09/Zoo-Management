@@ -42,8 +42,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=FontName&display=swap" rel="stylesheet">
     <title>News</title>
-    <%@ include file="header.html" %> 
-    <%@ include file="breadcrumb.html" %>
+    <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
   <body>
       <!-- Breadcrumb -->
