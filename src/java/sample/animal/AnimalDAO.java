@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import sample.animacage.AnimalCageDTO;
 import sample.utils.DBUtils;
 
 /**
@@ -72,22 +73,36 @@ public class AnimalDAO {
         return list;
     }
 
-    public void updateanimeal(String animalid, String name, String dayin, String animalcageid) {
-        String sql = "UPDATE Animal SET Name=?, DayIn=?, AnimalCage_ID=? WHERE Animal_ID=?";
+    public void updateanimal(String animalid, String name, String dayin, String photo, String animalcageid) {
+        String sql;
+        if (photo != null && !photo.isEmpty()) {
+            sql = "UPDATE Animal SET Name=?, DayIn=?, Photo=?, AnimalCage_ID=? WHERE Animal_ID=?";
+        } else {
+            // If photo is not provided, don't update the Photo field
+            sql = "UPDATE Animal SET Name=?, DayIn=?, AnimalCage_ID=? WHERE Animal_ID=?";
+        }
+
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, name);
             ptm.setString(2, dayin);
-            ptm.setString(3, animalcageid);
-            ptm.setString(4, animalid);
+
+            if (photo != null && !photo.isEmpty()) {
+                ptm.setString(3, photo);
+                ptm.setString(4, animalcageid);
+                ptm.setString(5, animalid);
+            } else {
+                ptm.setString(3, animalcageid);
+                ptm.setString(4, animalid);
+            }
             ptm.executeUpdate();
 
         } catch (Exception e) {
         }
     }
 
-    public void createanimeal(String animalid, String name, String dayin,String photo, String animalcageid) {
+    public void createanimal(String animalid, String name, String dayin, String photo, String animalcageid) {
         String sql = " insert into Animal(Animal_ID,Name,DayIn,Photo,AnimalCage_ID)\n"
                 + " values(?,?,?,?,?)";
         try {
@@ -103,11 +118,10 @@ public class AnimalDAO {
         } catch (Exception e) {
         }
     }
-    
-    
-      public AnimalDTO getAnimalByID(String animalid) {
+
+    public AnimalDTO getAnimalByID(String animalid) {
         String sql = "select * from Animal where Animal_ID =?";
-        
+
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
@@ -122,16 +136,33 @@ public class AnimalDAO {
         return null;
     }
 
-         public String getNewIdAnimalID() {
+    public AnimalCageDTO getAnimalCageByID(String animalcageid) {
+        String sql = "select * from Animal where AnimalCage_ID =?";
+
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, animalcageid);
+            rs = ptm.executeQuery();
+            if (rs.next()) {
+                return new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
+
+    public String getNewIdAnimalID() {
         String sql = "select top 1 Animal_ID from Animal order by [Animal_ID] desc";
         String IdOrder = null;
         String newIdOrder = null;
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
-            
+
             rs = ptm.executeQuery();
-            
+
             if (rs.next()) {
                 IdOrder = rs.getString("Animal_ID");
             }
@@ -145,9 +176,29 @@ public class AnimalDAO {
         }
         return newIdOrder;
     }
-      
-      
+
+    public List<AnimalCageDTO> getAllAnimalCage() {
+        String sql = "select * from [AnimalCage]";
+        List<AnimalCageDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+
+            rs = ptm.executeQuery();
+            while (rs.next()) {
+                list.add(new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         AnimalDAO d = new AnimalDAO();
+        List<AnimalCageDTO> list = d.getAllAnimalCage();
+        for (AnimalCageDTO animalCageDTO : list) {
+            System.out.println(animalCageDTO);
+        }
     }
 }

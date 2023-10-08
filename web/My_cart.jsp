@@ -33,16 +33,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
-      a {
-        text-decoration: none;
-        color: chocolate;
-        font-size: 22px;
-        font-weight: bold;
-      }
     </style>
-            <%@ include file="components/header.html"%> 
-    <%@ include file="components/breadcrumb.html" %>
+    <%@ include file="components/header.html"%> <%@ include
+    file="components/breadcrumb.html" %>
   </head>
+
   <body>
     <div class="w-[1500] mx-auto bg-green-100">
       <!-- Progress Steps -->
@@ -147,6 +142,10 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
         </div>
       </div>
+
+      <!-- end Progress Steps -->
+      <!-- tickets select-->
+
       <!-- end ticket select -->
 
       <!-- cart -->

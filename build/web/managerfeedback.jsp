@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,7 +32,13 @@
   </head>
 
   <style>
+    .h-60{
+  height: 14rem;
+}
 
+.w-128{
+  width: 32rem;
+}
     button {
         z-index: 1;
     }
@@ -73,15 +80,15 @@
   </style>
   
   
-  <body class="w-full block overflow-x-hidden mx-auto ">
+  <body class="w-[1500px] block overflow-x-hidden mx-auto">
     <nav class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
-        <a href="/managercontroller" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
+        <a href="#profile" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
             <!-- HeroIcon - User -->
             <i class="fa-regular fa-folder-open"></i>
             <small class="text-center text-xs font-medium"> Area </small>
         </a>
     
-        <a href="/FeedbackView.jsp"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
+        <a href="#analytics"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
             <!-- HeroIcon - Chart Bar -->
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
@@ -92,7 +99,7 @@
         </a>
     
         <a
-            href="/news.jsp"
+            href="#settings"
             class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
         >
         <!-- HeroIcon - Cog-6-tooth -->
@@ -100,7 +107,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
           </svg>
           
-            <small class="text-center text-xs font-medium"> News</small>
+            <small class="text-center text-xs font-medium"> Zoo Trainer</small>
         </a>
     
         <hr class="dark:border-gray-700/60" />
@@ -120,7 +127,7 @@
     <nav class="border-gray-200 bg-green-600">
       <div class="flex p-1">
         <!-- logo -->
-        <a href="/managercontroller" class="flex items-center justify-center w-1/2">
+        <a href="homepage.jsp" class="flex items-center justify-center w-1/2">
           <div class="">
             <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
           </div>
@@ -131,7 +138,51 @@
         </a>
         <!-- end logo -->
         <!-- navbar -->
-        
+        <div
+          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 w-full"
+          id="navbar-user"
+        >
+          <ul
+            class="flex flex-col md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
+          >
+            <li>
+              <a
+                href="manager.jsp"
+                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                aria-current="page"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="About.jsp"
+                class="navbar-text block py-4 pl-3 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                >ABOUT</a
+              >
+            </li>
+            <li>
+              <a
+                href="animal.jsp"
+                class="navbar-text block py-4 pr-4 pl-2 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                >ANIMAL</a
+              >
+            </li>
+            <li>
+              <a
+                href="news.jsp"
+                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                >NEWS</a
+              >
+            </li>
+            <li>
+              <a
+                href="Map.jsp"
+                class="navbar-text block py-4 pl-6 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                >MAP</a
+              >
+            </li>
+          </ul>
+        </div>
         <!-- end navbar -->
       </div>
     </nav>
@@ -144,7 +195,7 @@
       <ol class="inline-flex items-center space-x-1 md:space-x-3">
         <li class="inline-flex items-center">
           <a
-            href="/managercontroller"
+            href="Homepage.html"
             class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
           >
             <svg
@@ -188,9 +239,9 @@
       </div>
       
     <!-- component -->
-    <body class="antialiased font-sans bg-gray-200">
+    <body class=" antialiased font-sans bg-gray-200">
       <div class="container mx-auto px-4 sm:px-8">
-        <div style="" class="py-8 ml-28">
+        <div class="py-8 ml-20">
           <div></div>
           <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">
@@ -233,76 +284,71 @@
             <div
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
             >
-              <!-- table -->
-              <table class="min-w-full">
-                <thead>
-                  <tr>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Feedback_ID
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Purpose
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Date
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      ProcessNote
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Employee_ID
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                    >
-                      Status
-                    </th>
-                  </tr>
-                </thead>
+             <!-- table -->
+            <c:forEach var="f" items="${listF}">
+<table class="min-w-full">
+  <thead>
+    <tr>
+      
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Tiltle
+      </th>
+      <th
+        class="break-all px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Purpose
+      </th>
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Date
+      </th>
+      <th
+        class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        ProcessNote
+      </th>
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Employee_ID
+      </th>
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+      >
+        Status
+      </th>
+    </tr>
+  </thead>
 
-                <tbody class="bg-white">
-                  <tr>
-                    <td
-                      class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
-                      .........
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
-                      ..........
-                    </td>
-                    <td
-                      class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
-                      .......
-                    </td>
-                    <td
-                      class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
-                      ........
-                    </td>
-                    <td
-                      class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
-                      .........
-                    </td>
-                    <td
-                      class="px-2 py-4 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
-                    ></td>
-                  </tr>
-                </tbody>
-              </table>
+  <tbody class="bg-white">
+    <tr>
+     
+      <td class="break-words text-xs px-6 py-4  border-b border-gray-200 border-r">
+          ${f.title}
+      </td>
+      <td class="  break-words text-xs px-6 py-4 border-b border-gray-200 border-r">
+                  Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,
+
+      </td>
+      <td class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
+        ${f.date}
+      </td>
+      <td class="px-6 py-4 text-xs leading-5 text-gray-500  border-b border-gray-200 border-r">
+          ${f.processnote}
+      </td>
+      <td class="px-6 py-4 font-bold text-center leading-5 text-black  border-b border-gray-200 border-r">
+        ${f.employee_id}
+      </td>
+      <td class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r">
+        ${f.status}
+      </td>
+    </tr>
+  </tbody>
+</table>
+            </c:forEach>
 
               <div
                 class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
