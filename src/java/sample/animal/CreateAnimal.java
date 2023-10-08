@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import sample.animacage.AnimalCageDTO;
 
 /**
  *
@@ -31,6 +32,7 @@ import javax.servlet.http.Part;
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)
 public class CreateAnimal extends HttpServlet {
+
     private String extractFileName(Part part) {//This method will print the file name.
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
@@ -41,6 +43,7 @@ public class CreateAnimal extends HttpServlet {
         }
         return "";
     }
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -82,6 +85,10 @@ public class CreateAnimal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        AnimalDAO d = new AnimalDAO();
+
+        List<AnimalCageDTO> list = d.getAllAnimalCage();
+        request.setAttribute("cage", list);
         request.getRequestDispatcher("create_animal.jsp").forward(request, response);
     }
 
@@ -99,11 +106,26 @@ public class CreateAnimal extends HttpServlet {
         String name = request.getParameter("name");
         String dayin = request.getParameter("dayin");
         Part photo = request.getPart("photo");
-
         String filename = extractFileName(photo);
-        String savePath = "C:\\Users\\ADMIN\\Downloads\\chuyen nganh 5\\SWP\\New folder\\Zoo-Management\\web\\animal_picture" + File.separator + filename;
-        File fileSaveDir = new File(savePath);
-        photo.write(savePath + File.separator);
+
+        if (photo != null && photo.getSize() > 0) {
+            String saveDirectory = "C:\\Users\\ADMIN\\Downloads\\chuyen nganh 5\\SWP\\New folder\\Zoo-Management\\web\\animal_picture";
+            String savePath = saveDirectory + File.separator + filename;
+
+            // Check if the directory exists, if not, create it
+            Path directoryPath = Paths.get(saveDirectory);
+            if (!Files.exists(directoryPath)) {
+                Files.createDirectories(directoryPath);
+            }
+
+            // Write the file to the specified location
+            try {
+                photo.write(savePath);
+            } catch (IOException e) {
+                e.printStackTrace(); // Handle the exception properly in your application
+            }
+
+        }
         String animalcageid = request.getParameter("animalcageid");
         AnimalDAO d = new AnimalDAO();
         String animalid = d.getNewIdAnimalID();
