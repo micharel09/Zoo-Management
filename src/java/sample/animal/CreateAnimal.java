@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import sample.animacage.AnimalCageDTO;
+import sample.animacage.AnimalCageDTO;
 
 /**
  *
@@ -33,6 +34,7 @@ import sample.animacage.AnimalCageDTO;
         maxRequestSize = 1024 * 1024 * 50)
 public class CreateAnimal extends HttpServlet {
 
+
     private String extractFileName(Part part) {//This method will print the file name.
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
@@ -43,6 +45,7 @@ public class CreateAnimal extends HttpServlet {
         }
         return "";
     }
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -85,6 +88,10 @@ public class CreateAnimal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        AnimalDAO d = new AnimalDAO();
+
+        List<AnimalCageDTO> list = d.getAllAnimalCage();
+        request.setAttribute("cage", list);
         AnimalDAO d = new AnimalDAO();
 
         List<AnimalCageDTO> list = d.getAllAnimalCage();

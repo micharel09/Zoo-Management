@@ -33,12 +33,45 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
+      /* Styling for the confirmation popup */
+      .popup-container {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .popup-box {
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+      .custom-bg {
+        /* Đường dẫn của hình ảnh nền */
+        background-image: url("img/checkoutbg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: green;
+      }
+      /* CSS để tắt cuộn chuột */
+      body {
+        overflow: hidden;
+      }
     </style>
-            <%@ include file="components/header.html"%> 
-    <%@ include file="components/breadcrumb.html" %>
+    <%@ include file="components/header.html"%> <%@ include
+    file="components/breadcrumb.html" %>
   </head>
+
   <body>
-    <div class="w-[1500] mx-auto bg-green-100">
+    <div class="w-[1500] h-screen mx-auto bg-green-100 custom-bg">
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-gray-50 rounded-b-lg">
@@ -141,29 +174,57 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
         </div>
       </div>
-      <!-- end ticket select -->
+      <!-- end Progress Steps -->
 
-      <!-- cart -->
-      <section class="bg-gray-100 text-gray-600 antialiased" x-data="app">
+      <!-- manage cart -->
+      <section class="w-1/2 text-gray-600 antialiased mx-auto" x-data="app">
         <div class="flex flex-col">
           <!-- Table -->
           <div
-            class="w-[1500] border border-gray-200 rounded-b- bg-white shadow-sm"
+            class="xl:w-[1800] border border-gray-200 rounded-md bg-white shadow-sm mt-10"
           >
             <header
-              class="border-b border-gray-100 px-5 py-4 flex justify-center"
+              class="border-b border-gray-100 px-5 py-4 flex items-center"
             >
-              <div class="font-semibold text-3xl text-gray-800">
-                Manage Carts
+              <!-- back button -->
+              <div>
+                <a
+                  href="shop"
+                  class="btn group flex items-center bg-transparent text-xl font-thin tracking-widest text-white back-button"
+                >
+                  <svg
+                    viewBox="0 0 46 16"
+                    height="15"
+                    width="35"
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="arrow-horizontal"
+                    class="-translate-x-2 fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+                  >
+                    <path
+                      transform="scale(-1, 1) translate(-30)"
+                      d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                      data-name="Path 10"
+                      id="Path_10"
+                    ></path>
+                  </svg>
+                  <span
+                    class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                    >Back</span
+                  >
+                </a>
+              </div>
+              <!-- end back -->
+              <div class="font-semibold text-3xl text-gray-800 mx-auto pr-20">
+                <h1>Manage Carts</h1>
               </div>
             </header>
+
             <div class="overflow-x-auto p-3">
               <table class="w-full table-auto">
                 <thead
                   class="bg-gray-50 text-xs font-semibold uppercase text-gray-400"
                 >
                   <tr>
-                    <th></th>
                     <th class="p-2">
                       <div class="text-left font-semibold">Product Name</div>
                     </th>
@@ -199,10 +260,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         </div>
                       </td>
                       <td class="p-2">
-                        <div class="text-left"></div>
-                      </td>
-
-                      <td class="p-2">
                         <div class="text-left">
                           <button>
                             <a href="process?num=-1&id=${i.product.tid}">-</a>
@@ -237,9 +294,26 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                               name="id"
                               value="${i.product.tid}"
                             />
-                            <input type="submit" value="delete" />
+                            <button
+                              class="flex p-2.5 bg-red-600 rounded-xl hover:rounded-3xl hover:bg-red-300 transition-all duration-300 text-white"
+                              onclick="return confirmDelete();"
+                            >
+                              <i
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                class="h-4 w-4 fas fa-trash-alt"
+                              ></i>
+                            </button>
                           </form>
                         </div>
+                        <script>
+                          function confirmDelete() {
+                            var result = confirm("Do you want to delete this?");
+                            return result;
+                          }
+                        </script>
                       </td>
                     </tr>
                   </c:forEach>
@@ -254,29 +328,21 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
               <div>Total</div>
               <div class="text-blue-600">$ ${o.totalMoney}</div>
             </div>
+            <!-- end total -->
 
             <!-- Confirm -->
             <div
-              class="flex justify-end pt-4 mb-4 mr-4 border-t border-gray-100"
-            >
-              <button
-                class="text-base leading-none py-5 px-14 rounded-lg bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
-              >
-                <a href="shop">Back</a>
-              </button>
-            </div>
-            <form></form>
-            <div
-              class="flex justify-end pt-4 mb-4 mr-4 border-t border-gray-100"
+              class="flex justify-center pt-4 mb-4 mr-4 border-t border-gray-100"
             >
               <form action="./checkout.jsp" method="post">
                 <input
                   type="submit"
-                  value="checkout"
-                  class="text-base leading-none py-5 px-14 rounded-lg bg-gray-800 border-gray-800 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 text-white dark:hover:bg-gray-700"
+                  value="Checkout"
+                  class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
                 />
               </form>
             </div>
+            <!-- end confim -->
             <div class="flex justify-end">
               <!-- send this data to backend (note: use class 'hidden' to hide this input) -->
               <input

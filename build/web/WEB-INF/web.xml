@@ -21,10 +21,6 @@
         <servlet-class>sample.news.NewsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FeedbackController</servlet-name>
-        <servlet-class>sample.feedback.FeedbackController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AnimalReportController</servlet-name>
         <servlet-class>sample.animalreport.AnimalReportController</servlet-class>
     </servlet>
@@ -51,10 +47,6 @@
     <servlet-mapping>
         <servlet-name>NewsController</servlet-name>
         <url-pattern>/NewsController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FeedbackController</servlet-name>
-        <url-pattern>/FeedbackController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AnimalReportController</servlet-name>

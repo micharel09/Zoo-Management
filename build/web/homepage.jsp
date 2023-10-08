@@ -346,7 +346,7 @@ body {
  <h1 style="background-color: #cfcdcc; color: #cfcdcc;">h</h1>
 
 <!-- delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 -->
-<div class="relative  "
+<div class="relative"
     style="background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-blue-sky-background.jpg'); height: 1500px">
 <div class="  flex justify-around delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 " >
     <div class=" hover:bg-blue-300  w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -465,13 +465,13 @@ body {
 
 window.addEventListener("scroll", reveal);
   </script>
-
+</div>
 
     
 <img class=" animate-bounce  w-10" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="">
 <!--Footer-->
-<div class="bg-[url('/img/bg-footer.png')]">    
-</div>
+<div class="bg-[url('/img/bg-footer.png')]"></div>
+
 <footer class="backgroundimg">
     <div class="relative overflow-hidden  p-12 text-center"
     style="background-image: url('/img/bg-footer.png'); height: 400px">
