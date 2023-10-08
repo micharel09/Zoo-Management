@@ -285,7 +285,7 @@
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
             >
              <!-- table -->
-            <c:forEach var="f" items="${listF}">
+
 <table class="min-w-full">
   <thead>
     <tr>
@@ -296,7 +296,7 @@
         Tiltle
       </th>
       <th
-        class="break-all px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+        class="break-all px-6 py-3 text-xs font-medium leading-4  text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
       >
         Purpose
       </th>
@@ -322,7 +322,7 @@
       </th>
     </tr>
   </thead>
-
+            <c:forEach var="f" items="${listF}">
   <tbody class="bg-white">
     <tr>
      
@@ -330,8 +330,7 @@
           ${f.title}
       </td>
       <td class="  break-words text-xs px-6 py-4 border-b border-gray-200 border-r">
-                  Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,Kính Vạn Hoa là bộ phim dành cho lứa tuổi học trò tinh nghịch,
-
+          ${f.purpose}
       </td>
       <td class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
         ${f.date}
@@ -347,8 +346,9 @@
       </td>
     </tr>
   </tbody>
+   </c:forEach>
 </table>
-            </c:forEach>
+           
 
               <div
                 class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between"
