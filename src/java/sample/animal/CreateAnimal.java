@@ -108,8 +108,8 @@ public class CreateAnimal extends HttpServlet {
         Part photo = request.getPart("photo");
         String filename = extractFileName(photo);
 
-        if (photo != null && photo.getSize() > 0) {
-            String saveDirectory = "D:\\FBT\\Kì 5\\swp391\\hi\\Zoo-Management\\web\\animal_picture";
+       if (photo != null && photo.getSize() > 0) {
+            String saveDirectory = "C:\\Users\\ADMIN\\Downloads\\chuyen nganh 5\\SWP\\File dang lam\\Zoo-Management\\web\\animal_picture";
             String savePath = saveDirectory + File.separator + filename;
 
             // Check if the directory exists, if not, create it

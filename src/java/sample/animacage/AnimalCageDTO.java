@@ -11,17 +11,17 @@ public class AnimalCageDTO {
     private String animalcage_id;
     private String name;
     private String area_id;
-    private String img;
+    private String employee_id;
 
     public AnimalCageDTO() {
         
     }
 
-    public AnimalCageDTO(String animalcage_id, String name, String cagestatus, String trainer_id, String area_id, String img) {
+    public AnimalCageDTO(String animalcage_id, String name, String area_id, String employee_id) {
         this.animalcage_id = animalcage_id;
         this.name = name;
         this.area_id = area_id;
-        this.img = img;
+        this.employee_id = employee_id;
     }
 
     public String getAnimalcage_id() {
@@ -48,18 +48,17 @@ public class AnimalCageDTO {
         this.area_id = area_id;
     }
 
-    public String getImg() {
-        return img;
+    public String getEmployee_id() {
+        return employee_id;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 
-    @Override
-    public String toString() {
-        return "AnimalCageDTO{" + "animalcage_id=" + animalcage_id + ", name=" + name + ", cagestatus=" + cagestatus + ", trainer_id=" + trainer_id + ", area_id=" + area_id + ", img=" + img + '}';
-    }
+    
+
+ 
 
  
   
