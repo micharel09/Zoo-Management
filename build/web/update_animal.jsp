@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,8 +13,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="updateanimal" method="post">
-            
+        <form action="updateanimal" method="post" enctype="multipart/form-data">
+
             <input type="hidden" name="animalid" value="${aa.animal_id}"/>
             <br>
             Name
@@ -22,13 +23,26 @@
             Day In
             <input type="date" name="dayin" value="${aa.dayin}">
             <br>
-            
-            Animal_Cage_ID
-            <input type="text" name="animalcageid" value="${aa.animalcage_id}"/>
+            Photo
+            <c:if test="${aa.photo != null}">
+                <img src="./animal_picture/${aa.photo}" width="80" height="70"/>
+            </c:if>
+            <input type="file" class="form-control" name="photo" id="photoInput" placeholder="Enter photo">
+
             <br>
-            
+            Animal_Cage_ID old
+            <span style="color: red;">${aa.animalcage_id}</span>
+            <br>
+            Animal_Cage_ID new
+            <select name="animalcageid">
+                <c:forEach items="${cage}" var="c">
+                    <option>${c.animalcage_id}</option>
+                </c:forEach>
+            </select>
+            <br>
+
             <input type="submit" value="Submit"/>
-            
+
         </form>
     </body>
 </html>

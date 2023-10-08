@@ -32,7 +32,11 @@
                    class="form-control" name="photo" placeholder="Enter photo">
             <br>
             Animal_Cage_ID
-            <input type="text" name="animalcageid"/>
+            <select name="animalcageid">
+            <c:forEach items="${cage}" var="c">
+                <option>${c.animalcage_id}</option>
+            </c:forEach>
+            </select>
             <br>
 
 
