@@ -34,12 +34,18 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
+      .form-bg {
+        background-image: url("img/checkoutbg.png"); /* Thay đổi đường dẫn hình ảnh của bạn */
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed; /* Để giữ ảnh nền tĩnh khi cuộn trang */
+      }
     </style>
-        <%@ include file="components/header.html"%> 
-    <%@ include file="components/breadcrumb.html" %>
+    <%@ include file="components/header.html"%> <%@ include
+    file="components/breadcrumb.html" %>
   </head>
   <body>
-    <div class="w-[1500] mx-auto bg-gray-50">
+    <div class="w-[1500] mx-auto bg-gray-50 h-screen .form-bg">
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-white rounded-b-lg">

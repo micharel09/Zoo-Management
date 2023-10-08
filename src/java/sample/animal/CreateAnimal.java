@@ -108,23 +108,34 @@ public class CreateAnimal extends HttpServlet {
         Part photo = request.getPart("photo");
         String filename = extractFileName(photo);
 
-       if (photo != null && photo.getSize() > 0) {
-            String saveDirectory = "C:\\Users\\ADMIN\\Downloads\\chuyen nganh 5\\SWP\\File dang lam\\Zoo-Management\\web\\animal_picture";
+        if (photo != null && photo.getSize() > 0) {
+            // Specify the relative path from your project root
+            String relativePath = File.separator + "animal_picture";
+
+// Get the project root directory
+            String projectRoot = getServletContext().getRealPath("/");
+
+// Remove the "/build" or "\build" part from the path
+            String correctedRoot = projectRoot.replace(File.separator + "build", "").replace(File.separator + "build", "");
+
+// Construct the absolute path relative to the corrected project root
+            String saveDirectory = correctedRoot + relativePath;
+
             String savePath = saveDirectory + File.separator + filename;
 
             // Check if the directory exists, if not, create it
             Path directoryPath = Paths.get(saveDirectory);
             if (!Files.exists(directoryPath)) {
-                Files.createDirectories(directoryPath);
+                try {
+                    Files.createDirectories(directoryPath);
+                } catch (IOException e) {
+                    e.printStackTrace(); // Handle the exception properly in your application
+                    return; // Stop processing if directory creation fails
+                }
             }
 
             // Write the file to the specified location
-            try {
-                photo.write(savePath);
-            } catch (IOException e) {
-                e.printStackTrace(); // Handle the exception properly in your application
-            }
-
+            photo.write(savePath);
         }
         String animalcageid = request.getParameter("animalcageid");
         AnimalDAO d = new AnimalDAO();
@@ -132,7 +143,6 @@ public class CreateAnimal extends HttpServlet {
 
         d.createanimal(animalid, name, dayin, filename, animalcageid);
         response.sendRedirect("animalcontroller");
-
     }
 
     /**
