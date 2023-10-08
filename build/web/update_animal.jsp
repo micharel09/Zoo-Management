@@ -1,34 +1,48 @@
-<%-- Document : update_anime Created on : Oct 6, 2023, 9:57:04 AM Author : ADMIN --%>
+<%-- 
+    Document   : update_anime
+    Created on : Oct 6, 2023, 9:57:04 AM
+    Author     : ADMIN
+--%>
 
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-        <%@page contentType="text/html" pageEncoding="UTF-8" %>
-            <!DOCTYPE html>
-            <html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <form action="updateanimal" method="post" enctype="multipart/form-data">
 
-            <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <title>JSP Page</title>
-            </head>
+            <input type="hidden" name="animalid" value="${aa.animal_id}"/>
+            <br>
+            Name
+            <input type="text" name="name" value="${aa.name}"/>
+            <br>
+            Day In
+            <input type="date" name="dayin" value="${aa.dayin}">
+            <br>
+            Photo
+            <c:if test="${aa.photo != null}">
+                <img src="./animal_picture/${aa.photo}" width="80" height="70"/>
+            </c:if>
+            <input type="file" class="form-control" name="photo" id="photoInput" placeholder="Enter photo">
 
-            <body>
-                <form action="updateanimal" method="post" enctype="multipart/form-data">
+            <br>
+            Animal_Cage_ID old
+            <span style="color: red;">${aa.animalcage_id}</span>
+            <br>
+            Animal_Cage_ID new
+            <select name="animalcageid">
+                <c:forEach items="${cage}" var="c">
+                    <option>${c.animalcage_id}</option>
+                </c:forEach>
+            </select>
+            <br>
 
-                    <input type="hidden" name="animalid" value="${aa.animal_id}" />
-                    <br>
-                    Name
-                    <input type="text" name="name" value="${aa.name}" />
-                    <br>
-                    Day In
-                    <input type="date" name="dayin" value="${aa.dayin}">
-                    <br>
+            <input type="submit" value="Submit"/>
 
-                    Animal_Cage_ID
-                    <input type="text" name="animalcageid" value="${aa.animalcage_id}" />
-                    <br>
-
-                    <input type="submit" value="Submit" />
-
-                </form>
-            </body>
-
-            </html>
+        </form>
+    </body>
+</html>
