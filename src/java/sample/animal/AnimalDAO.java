@@ -72,22 +72,23 @@ public class AnimalDAO {
         return list;
     }
 
-    public void updateanimeal(String animalid, String name, String dayin, String animalcageid) {
-        String sql = "UPDATE Animal SET Name=?, DayIn=?, AnimalCage_ID=? WHERE Animal_ID=?";
+    public void updateanimeal(String animalid, String name, String dayin,String photo, String animalcageid) {
+        String sql = "UPDATE Animal SET Name=?, DayIn=?,Photo=?, AnimalCage_ID=? WHERE Animal_ID=?";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, name);
             ptm.setString(2, dayin);
-            ptm.setString(3, animalcageid);
-            ptm.setString(4, animalid);
+            ptm.setString(3, photo);
+            ptm.setString(4, animalcageid);
+            ptm.setString(5, animalid);
             ptm.executeUpdate();
 
         } catch (Exception e) {
         }
     }
 
-    public void createanimeal(String animalid, String name, String dayin,String photo, String animalcageid) {
+    public void createanimal(String animalid, String name, String dayin,String photo, String animalcageid) {
         String sql = " insert into Animal(Animal_ID,Name,DayIn,Photo,AnimalCage_ID)\n"
                 + " values(?,?,?,?,?)";
         try {

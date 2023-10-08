@@ -19,7 +19,7 @@ import sample.utils.DBUtils;
  */
 public class FeedbackDAO {
       //PRINT
-    public List<FeedbackDTO> getListFeedBack() throws SQLException {
+    public List<FeedbackDTO> getListFeedBack()  {
     List<FeedbackDTO> listFeedBack = new ArrayList<>();
     Connection conn = null;
     PreparedStatement ptm = null;
@@ -45,16 +45,7 @@ public class FeedbackDAO {
         }
     } catch (Exception e) {
         e.printStackTrace();
-    } finally {
-        if (rs != null) {
-            rs.close();
-        }
-        if (ptm != null) {
-            ptm.close();
-        }
-        if (conn != null) {
-            conn.close();
-        }
+    
     }
     
     return listFeedBack;

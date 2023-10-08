@@ -33,127 +33,15 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
-      a {
-        text-decoration: none;
-        color: chocolate;
-        font-size: 22px;
-        font-weight: bold;
-      }
     </style>
+     <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
-  <body class="w-full block overflow-x-hidden mx-auto">
-    <!-- header -->
-    <nav class="border-gray-200 bg-green-600">
-      <div class="flex p-1">
-        <!-- logo -->
-        <a href="homepage.jsp" class="flex items-center justify-center w-1/2">
-          <div class="">
-            <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
-          </div>
-          <span
-            class="self-center text-4xl font-extralight whitespace-nowrap dark:text-white"
-            >Wild World Zoo</span
-          >
-        </a>
-        <!-- end logo -->
-        <!-- navbar -->
-        <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 w-full"
-          id="navbar-user"
-        >
-          <ul
-            class="flex flex-col font-extralight md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
-          >
-            <li>
-              <a
-                href="homepage.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                aria-current="page"
-                >HOME</a
-              >
-            </li>
-            <li>
-              <a
-                href="About.jsp"
-                class="navbar-text block py-4 pl-3 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ABOUT</a
-              >
-            </li>
-            <li>
-              <a
-                href="Animals.jsp"
-                class="navbar-text block py-4 pr-4 pl-2 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ANIMAL</a
-              >
-            </li>
-            <li>
-              <a
-                href="#"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >NEWS</a
-              >
-            </li>
-            <li>
-              <a
-                href="Map.jsp"
-                class="navbar-text block py-4 pl-6 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >MAP</a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- end navbar -->
-      </div>
-    </nav>
-    <!-- end header -->
-    <!-- Breadcrumb -->
-    <nav
-      class="flex bg-gray-50 text-gray-700 py-3 px-5 dark:bg-gray-800 dark:border-gray-700"
-      aria-label="Breadcrumb"
-    >
-      <ol class="inline-flex items-center space-x-1 md:space-x-3">
-        <li class="inline-flex items-center">
-          <a
-            href="homepage.jsp"
-            class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
-          >
-            <svg
-              class="w-4 h-4 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-              ></path>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li aria-current="page">
-          <div class="flex items-center">
-            <svg
-              class="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span
-              class="text-gray-400 ml-1 md:ml-2 text-sm font-medium dark:text-gray-500"
-              >Cart</span
-            >
-          </div>
-        </li>
-      </ol>
-    </nav>
-    <!-- end breadcrumb -->
-    <div class="w-full mx-auto bg-green-100">
+
+
+  <body>
+    <div class="w-[1500] mx-auto bg-green-100">
+
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-gray-50 rounded-b-lg">
@@ -182,10 +70,10 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                 "
               >
                 <div
-                  class="w-full bg-gray-200 rounded items-center align-middle align-center flex-1"
+                  class="w-full bg-green-500 rounded items-center align-middle align-center flex-1"
                 >
                   <div
-                    class="w-0 bg-gray-200 py-1 rounded"
+                    class="w-0 bg-green-500 py-1 rounded"
                     style="width: 100%"
                   ></div>
                 </div>
@@ -256,8 +144,11 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
         </div>
       </div>
+
       <!-- end Progress Steps -->
       <!-- tickets select-->
+
+      <!-- end ticket select -->
 
 
       <!-- cart -->
@@ -267,8 +158,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           <div
             class="w-[1500] border border-gray-200 rounded-b- bg-white shadow-sm"
           >
-            <header class="border-b border-gray-100 px-5 py-4">
-              <div class="font-semibold text-gray-800">Manage Carts</div>
+            <header
+              class="border-b border-gray-100 px-5 py-4 flex justify-center"
+            >
+              <div class="font-semibold text-3xl text-gray-800">
+                Manage Carts
+              </div>
             </header>
             <div class="overflow-x-auto p-3">
               <table class="w-full table-auto">
