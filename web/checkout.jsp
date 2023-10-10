@@ -1,7 +1,7 @@
 <%-- Document : Cart Created on : Sep 27, 2023, 10:16:31 AM Author : Quan --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@taglib prefix="fmt"uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,8 +39,8 @@
     </style>
 
     <title>Checkout</title>
-    <%@ include file="components/header.html"%> <%@ include
-    file="components/breadcrumb.html" %>
+    <%@ include file="components/header.html"%> 
+    <%@ include file="components/breadcrumb.html" %>
   </head>
   <body>
     <!-- Progress Steps -->
@@ -291,8 +291,7 @@
                   id="total-amount"
                   class="text-2xl font-semibold text-gray-900"
                 >
-                    <c:set var="o" value="${sessionScope.cart}">
-                        ${o.totalMoney}
+                  
                 </p>
               </div>
             </div>
