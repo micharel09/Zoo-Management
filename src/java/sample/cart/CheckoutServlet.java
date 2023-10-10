@@ -5,7 +5,6 @@
  */
 package sample.cart;
 
-import sample.cart.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,9 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import sample.cart.Cart;
-import sample.cart.Order;
-import sample.cart.Product;
+
 
 /**
  *
@@ -70,7 +67,7 @@ public class CheckoutServlet extends HttpServlet {
 
         Cart cart = new Cart(txt, list);
         request.setAttribute("cart", cart);
-        request.setAttribute("carttotalmoney", cart.getTotalMoney());
+        request.setAttribute("totalmoney", cart.getTotalMoney());
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 

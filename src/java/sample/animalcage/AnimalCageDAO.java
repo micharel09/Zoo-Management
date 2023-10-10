@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import sample.controllers.manager.AreaDTO;
+import sample.area.AreaDTO;
 import sample.user.UserDTO;
 import sample.utils.DBUtils;
 
@@ -66,7 +66,7 @@ public class AnimalCageDAO {
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, "%" + animalcageid + "%");
             rs = ptm.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 list.add(new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
             }
         } catch (Exception e) {
@@ -80,7 +80,7 @@ public class AnimalCageDAO {
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
-            
+
             ptm.setString(1, name);
             ptm.setString(2, area_id);
             ptm.setString(3, employee_id);
@@ -174,8 +174,8 @@ public class AnimalCageDAO {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             rs = ptm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 AreaDTO a = new AreaDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
                 list.add(a);
             }
@@ -185,12 +185,33 @@ public class AnimalCageDAO {
         return list;
     }
 
+    public List<AnimalCageDTO> getLocationAreaByAnimalCage(String location) {
+        List<AnimalCageDTO> list = new ArrayList<>();
+        String sql = " SELECT aa.AnimalCage_ID, aa.Name, a.AreaLocation, aa.Employee_ID \n"
+                + "        FROM Area a \n"
+                + "        \n"
+                + "        JOIN AnimalCage aa ON a.Area_ID = aa.Area_ID \n"
+                + "		where a.Area_ID = ?";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, location);
+            rs = ptm.executeQuery();
+            while(rs.next()){
+                list.add(new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+
     public static void main(String[] args) {
         AnimalCageDAO d = new AnimalCageDAO();
-        List<AreaDTO> list = d.getAllArea();
-        for (AreaDTO areaDTO : list) {
-            System.out.println(areaDTO);
-        }
+        List<AnimalCageDTO> list = d.getLocationAreaByAnimalCage("Area001");
+        
+            System.out.println(list);
+   
 
     }
 }

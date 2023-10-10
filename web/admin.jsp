@@ -56,7 +56,7 @@
        
             <tr >
 
-                <td><%=user.getEmployee_ID()%></td>
+                <td><%=user.getEmployee_id()%></td>
                  <td><%=user.getFullname()%></td>
                    <td><%=user.getRoleID()%></td>
                      <td><%=user.getPhone()%></td>
@@ -65,7 +65,7 @@
                          <td><%=user.getPhoto()%></td>
               <form action="MainController">
                           <td>
-                        <input type="hidden" name="userID" value="<%=user.getEmployee_ID()%>"/>
+                        <input type="hidden" name="userID" value="<%=user.getEmployee_id()%>"/>
                          <input type="hidden" name="FullName" value="<%=user.getFullname()%>"/>
                           <input type="hidden" name="RoleID" value="<%=user.getRoleID()%>"/>
                            <input type="hidden" name="Phone" value="<%=user.getPhone()%>"/> 
@@ -80,10 +80,10 @@
                      </form>
                     <!-- xoa o day ne-->
                     <td>
-                        <a href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_ID()%>">Delete</a>     
+                        <a href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_id()%>">Delete</a>     
                     </td>
                      <td>
-                        <a href="MainController?&action=Send_Notification&userID=<%= user.getEmployee_ID()%>">Send Notification</a>     
+                        <a href="MainController?&action=Send_Notification&userID=<%= user.getEmployee_id()%>">Send Notification</a>     
                     </td>
               
             </tr>

@@ -31,10 +31,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
     ></script>
     <style>
       .form-bg {
-        background-image: url("img/checkoutbg.png"); /* Thay đổi đường dẫn hình ảnh của bạn */
+        background-image: url("img/checkoutbg.png");
+        /* Thay đổi đường dẫn hình ảnh của bạn */
         background-size: cover;
         background-position: center center;
-        background-attachment: fixed; /* Để giữ ảnh nền tĩnh khi cuộn trang */
+        background-attachment: fixed;
+        /* Để giữ ảnh nền tĩnh khi cuộn trang */
       }
     </style>
 

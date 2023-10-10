@@ -18,17 +18,17 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ADMIN
  */
-@WebServlet(name = "AnimalCageSearch", urlPatterns = {"/animalcagesearch"})
+@WebServlet(name = "AnimalCageSearch", urlPatterns = { "/animalcagesearch" })
 public class AnimalCageSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,43 +47,47 @@ public class AnimalCageSearch extends HttpServlet {
 
         request.setAttribute("animalcage", list);
         request.getRequestDispatcher("animalcage.jsp").forward(request, response);
+
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-String animalcageid = request.getParameter("animalcageID");
-AnimalCageDAO a = new AnimalCageDAO();
-List<AnimalCageDTO> list;
+        response.setContentType("text/html;charset=UTF-8");
+        String animalcageid = request.getParameter("animalcageID");
+        AnimalCageDAO a = new AnimalCageDAO();
+        List<AnimalCageDTO> list;
 
-if (animalcageid != null && !animalcageid.isEmpty()) {
-    // Nếu có giá trị cho animalcageid, thực hiện tìm kiếm
-    list = a.searchanimalcage(animalcageid);
-} else {
-    // Nếu không có giá trị cho animalcageid, lấy toàn bộ danh sách
-    list = a.getAllAnimalCage();
-}
+        if (animalcageid != null && !animalcageid.isEmpty()) {
+            // Nếu có giá trị cho animalcageid, thực hiện tìm kiếm
+            list = a.searchanimalcage(animalcageid);
+        } else {
+            // Nếu không có giá trị cho animalcageid, lấy toàn bộ danh sách
+            list = a.getAllAnimalCage();
+        }
 
-request.setAttribute("animalcage", list);
-request.getRequestDispatcher("animalcage.jsp").forward(request, response);
+        request.setAttribute("animalcage", list);
+        request.getRequestDispatcher("animalcage.jsp").forward(request, response);
+
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

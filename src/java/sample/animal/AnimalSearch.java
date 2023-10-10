@@ -35,7 +35,12 @@ public class AnimalSearch extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         AnimalDAO d = new AnimalDAO();
         String aniamlid = request.getParameter("animalID");
-        List<AnimalDTO> list = d.searchanimal(aniamlid);
+        List<AnimalDTO> list;
+        if(aniamlid != null && !aniamlid.isEmpty()){
+            list = d.searchanimal(aniamlid);
+        }else{
+            list = d.getAllAimal();
+        }
         request.setAttribute("animals", list);
         request.getRequestDispatcher("animal.jsp").forward(request, response);
     }
@@ -53,7 +58,12 @@ public class AnimalSearch extends HttpServlet {
             throws ServletException, IOException {
         AnimalDAO d = new AnimalDAO();
         String aniamlid = request.getParameter("animalID");
-        List<AnimalDTO> list = d.searchanimal(aniamlid);
+        List<AnimalDTO> list;
+        if(aniamlid != null && !aniamlid.isEmpty()){
+            list = d.searchanimal(aniamlid);
+        }else{
+            list = d.getAllAimal();
+        }
         request.setAttribute("animals", list);
         request.getRequestDispatcher("animal.jsp").forward(request, response);
     }

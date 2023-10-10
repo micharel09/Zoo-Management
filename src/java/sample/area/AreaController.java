@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample.animalcage;
-
+package sample.area;
+import sample.animalcage.AnimalCageDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,15 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sample.area.AreaDTO;
-import sample.user.UserDTO;
+import sample.animalcage.AnimalCageDTO;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "CreateAnimalCage", urlPatterns = {"/createanimalcage"})
-public class CreateAnimalCage extends HttpServlet {
+@WebServlet(name = "AreaController", urlPatterns = {"/areacontroller"})
+public class AreaController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class CreateAnimalCage extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CreateAnimalCage</title>");            
+            out.println("<title>Servlet AreaController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CreateAnimalCage at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AreaController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,13 +60,15 @@ public class CreateAnimalCage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AnimalCageDAO a = new AnimalCageDAO();
         
-        List<UserDTO> list = a.getUserTrainer();
-        request.setAttribute("listuser", list);
-        List<AreaDTO> listarea = a.getAllArea();
-        request.setAttribute("listarea", listarea);
-        request.getRequestDispatcher("createanimalcage.jsp").forward(request, response);
+        String areaid = request.getParameter("areaid");
+        AnimalCageDAO a = new AnimalCageDAO();
+        AreaDAO ad = new AreaDAO();
+        List<AnimalCageDTO> list = a.getLocationAreaByAnimalCage(areaid);
+        request.setAttribute("a", list);
+        List<AreaDTO> area = ad.getAreaById(areaid);
+        request.setAttribute("ad", area);
+        request.getRequestDispatcher("area.jsp").forward(request, response);
     }
 
     /**
@@ -81,13 +82,7 @@ public class CreateAnimalCage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        AnimalCageDAO a = new AnimalCageDAO();
-        String animalcageid = a.getNewIdAnimalCageID();
-        String name = request.getParameter("name");
-        String areaid = request.getParameter("area_id");
-        String employeeid = request.getParameter("employee_id");
-        a.createanimealcage(animalcageid, name, areaid, employeeid);
-        response.sendRedirect("animalcagecontroller");
+        processRequest(request, response);
     }
 
     /**

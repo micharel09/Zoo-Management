@@ -4,7 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample.controllers.manager;
+package sample.area;
 
 /**
  *
@@ -73,7 +73,7 @@ public class AreaDAO {
             public List<AreaDTO> getAreaById(String area){
                    List<AreaDTO> list = new ArrayList<>();
         String sql = "select * from Area\n" +
-"where AreaLocation = ?";
+"where Area_ID = ?";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
