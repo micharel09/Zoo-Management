@@ -13,20 +13,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Location Area</h1>
         <table border="1">
             <thead>
                 <tr>
+
+                    <th>Animal Cage ID</th>
+                    <th>Employee_ID</th>
                     <th>location</th>
-                    <th>genre</th>
+                    <th>Name</th>
                 </tr>
             </thead>
             <tbody>
                 <c:forEach items="${a}" var="o">
-                  <tr>
-                    <td>${o.manager_id}</td>
-                    <td>${o.genre}</td>
-                </tr>
+                    <tr>
+                        <td><a href="animalcagesearch?animalcageID=${o.animalcage_id}">${o.animalcage_id}</a></td>
+                        <td>${o.employee_id}</td>
+                        
+                            <td>${o.area_id}</td>
+
+                            <td><a href="animalsearch?animalID=${o.animalcage_id}">${o.name}</a></td>
+                    </tr>
                 </c:forEach>
 
             </tbody>

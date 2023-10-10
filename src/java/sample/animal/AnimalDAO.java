@@ -47,7 +47,7 @@ public class AnimalDAO {
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, animalid);
             ptm.executeUpdate();
-            
+
         } catch (Exception e) {
         }
 
@@ -55,14 +55,16 @@ public class AnimalDAO {
     }
 
     public List<AnimalDTO> searchanimal(String animalid) {
-        String sql = "select * from Animal where Animal_ID like ?";
+        String sql = "  select * from Animal where Animal_ID like ?  or AnimalCage_ID like ?";
         List<AnimalDTO> list = new ArrayList<>();
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, "%" + animalid + "%");
+            ptm.setString(2, "%" + animalid + "%");
+
             rs = ptm.executeQuery();
-            if (rs.next()) {
+            while (rs.next()) {
                 list.add(new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (Exception e) {

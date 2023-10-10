@@ -56,6 +56,11 @@ public class AnimalCageDTO {
         this.employee_id = employee_id;
     }
 
+    @Override
+    public String toString() {
+        return "AnimalCageDTO{" + "animalcage_id=" + animalcage_id + ", name=" + name + ", area_id=" + area_id + ", employee_id=" + employee_id + '}';
+    }
+
     
 
  
