@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import sample.animacage.AnimalCageDTO;
-import sample.animacage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
 
 /**
  *
@@ -92,10 +92,8 @@ public class CreateAnimal extends HttpServlet {
 
         List<AnimalCageDTO> list = d.getAllAnimalCage();
         request.setAttribute("cage", list);
-        AnimalDAO d = new AnimalDAO();
-
-        List<AnimalCageDTO> list = d.getAllAnimalCage();
-        request.setAttribute("cage", list);
+      
+       
         request.getRequestDispatcher("create_animal.jsp").forward(request, response);
     }
 
@@ -140,14 +138,17 @@ public class CreateAnimal extends HttpServlet {
                     return; // Stop processing if directory creation fails
                 }
             }
+            
 
             // Write the file to the specified location
             photo.write(savePath);
+         
         }
+        
         String animalcageid = request.getParameter("animalcageid");
         AnimalDAO d = new AnimalDAO();
         String animalid = d.getNewIdAnimalID();
-
+        response.getWriter().write("Image saved successfully!");
         d.createanimal(animalid, name, dayin, filename, animalcageid);
         response.sendRedirect("animalcontroller");
     }

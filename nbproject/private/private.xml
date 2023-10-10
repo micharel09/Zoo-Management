@@ -2,6 +2,35 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/user/UserDTO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/update_animal.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/user/UserDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/DeleteAnimalCage.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/UpdateAnimal.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/DeleteController.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/AnimalCageDTO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/admin.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/manager/AnimalCageDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/animal.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/AnimalDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/manager/AreaDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/AnimalCageController.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/CreateAnimalCage.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/AnimalSearch.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/UpdateAnimalCage.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/manager/ManagerController.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/create_animal.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/AnimalDTO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/animalcage.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/updateanimalcage.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/CreateAnimal.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/UpdateController.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/AnimalCageDAO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/web/createanimalcage.jsp</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animalcage/AnimalCageSearch.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/controllers/manager/AreaDTO.java</file>
+            <file>file:/C:/Users/ADMIN/Downloads/chuyen%20nganh%205/SWP/file%20new/File%20dang%20lam/Zoo-Management/src/java/sample/animal/AnimalDelete.java</file>
+        </group>
     </open-files>
 </project-private>

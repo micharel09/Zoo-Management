@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,6 +27,7 @@ public class DAO {
     private static final String List_Ticket = "select * from ticket";
     private static final String Ticket_ID = "select * from ticket where Ticket_ID = ?";
 
+    
     Connection conn = null;
     PreparedStatement ptm = null;
     ResultSet rs = null;
@@ -34,6 +36,7 @@ public class DAO {
         List<Product> list = new ArrayList<>();
         String sql = List_Ticket;
         try {
+            
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ResultSet rs = ptm.executeQuery();

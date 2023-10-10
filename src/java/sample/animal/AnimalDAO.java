@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import sample.animacage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
 import sample.utils.DBUtils;
 
 /**
@@ -40,16 +40,14 @@ public class AnimalDAO {
         return list;
     }
 
-    public AnimalDTO deleteanime(String animalid) {
+    public AnimalDTO deleteanimal(String animalid) {
         String sql = "delete from Animal where Animal_ID =?";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, animalid);
-            rs = ptm.executeQuery();
-            if (rs.next()) {
-                return new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
-            }
+            ptm.executeUpdate();
+            
         } catch (Exception e) {
         }
 

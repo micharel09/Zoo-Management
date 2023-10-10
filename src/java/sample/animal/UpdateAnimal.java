@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import sample.animacage.AnimalCageDTO;
-import sample.animacage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
 
 /**
  *
@@ -86,13 +86,6 @@ public class UpdateAnimal extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String animalid = request.getParameter("animalID");
-        AnimalDAO d = new AnimalDAO();
-        AnimalDTO a = d.getAnimalByID(animalid);
-        request.setAttribute("aa", a);
-        List<AnimalCageDTO> list = d.getAllAnimalCage();
-        request.setAttribute("cage", list);
-        request.getRequestDispatcher("update_animal.jsp").forward(request, response);
         String animalid = request.getParameter("animalID");
         AnimalDAO d = new AnimalDAO();
         AnimalDTO a = d.getAnimalByID(animalid);

@@ -334,7 +334,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <div
               class="flex justify-center pt-4 mb-4 mr-4 border-t border-gray-100"
             >
-              <form action="./checkout.jsp" method="post">
+              <form action="./checkout" method="post">
                 <input
                   type="submit"
                   value="Checkout"

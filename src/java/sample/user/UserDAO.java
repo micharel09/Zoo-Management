@@ -169,7 +169,7 @@ public class UserDAO {
                   ptm.setString(4, user.getGender());
                    ptm.setString(5, user.getPhoto());
                     ptm.setString(6, user.getRoleID());
-                 ptm.setString(7, user.getEmployee_ID());
+                 ptm.setString(7, user.getEmployee_id());
                     
                 checkUpdate = ptm.executeUpdate() > 0? true: false;
             }
@@ -195,7 +195,7 @@ public class UserDAO {
             if (conn != null) {
                 // UserDTO user = new UserDTO( employeeID,  password,  fullName, Phone, Email,  Gender,  Dependent,  roleID);
                 ptm = conn.prepareStatement(INSERT);
-                ptm.setString(1, user.getEmployee_ID());
+                ptm.setString(1, user.getEmployee_id());
                 ptm.setString(2, user.getPassword());
                 ptm.setString(3, user.getFullname());
                 ptm.setString(4, user.getPhone());
