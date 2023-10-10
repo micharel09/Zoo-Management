@@ -13,6 +13,7 @@
     <body>
         <h1>Animal Cage List</h1>
         <p style="color: red">${errorMessage}</p>
+        
         <form action="animalcagesearch" method="get">
             <label for="animalcageID">Search Animal Cage by ID:</label>
             <input type="text" id="animalcageID" name="animalcageID">
