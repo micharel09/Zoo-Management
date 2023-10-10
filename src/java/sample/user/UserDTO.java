@@ -11,97 +11,99 @@ package sample.user;
  */
 public class UserDTO {
 
-    private String Employee_ID;
-    private String Password;
-    private String Fullname;
-    private String Phone;
-    private String Email;
-    private String Gender;
-    private String Photo;
-    private String RoleID;
+    private String employee_id;
+    private String password;
+    private String fullname;
+    private String phone;
+    private String email;
+    private String gender;
+    private String photo;
+    private String roleID;
 
     public UserDTO() {
     }
 
-    public UserDTO(String Employee_ID, String Password, String Fullname, String Phone, String Email, String Gender, String Photo, String RoleID) {
-        this.Employee_ID = Employee_ID;
-        this.Password = Password;
-        this.Fullname = Fullname;
-        this.Phone = Phone;
-        this.Email = Email;
-        this.Gender = Gender;
-        this.Photo = Photo;
-        this.RoleID = RoleID;
+    public UserDTO(String employee_id, String password, String fullname, String phone, String email, String gender, String photo, String roleID) {
+        this.employee_id = employee_id;
+        this.password = password;
+        this.fullname = fullname;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
+        this.photo = photo;
+        this.roleID = roleID;
     }
 
-    public String getEmployee_ID() {
-        return Employee_ID;
+    public String getEmployee_id() {
+        return employee_id;
     }
 
-    public void setEmployee_ID(String Employee_ID) {
-        this.Employee_ID = Employee_ID;
+    public void setEmployee_id(String employee_id) {
+        this.employee_id = employee_id;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFullname() {
-        return Fullname;
+        return fullname;
     }
 
-    public void setFullname(String Fullname) {
-        this.Fullname = Fullname;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
-    public void setPhone(String Phone) {
-        this.Phone = Phone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
-    public void setEmail(String Email) {
-        this.Email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
-    public void setGender(String Gender) {
-        this.Gender = Gender;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getPhoto() {
-        return Photo;
+        return photo;
     }
 
-    public void setPhoto(String Photo) {
-        this.Photo = Photo;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getRoleID() {
-        return RoleID;
+        return roleID;
     }
 
-    public void setRoleID(String RoleID) {
-        this.RoleID = RoleID;
+    public void setRoleID(String roleID) {
+        this.roleID = roleID;
     }
 
     @Override
     public String toString() {
-        return "UserDTO{" + "Employee_ID=" + Employee_ID + ", Password=" + Password + ", Fullname=" + Fullname + ", Phone=" + Phone + ", Email=" + Email + ", Gender=" + Gender + ", Photo=" + Photo + ", RoleID=" + RoleID + '}';
+        return "UserDTO{" + "employee_id=" + employee_id + ", password=" + password + ", fullname=" + fullname + ", phone=" + phone + ", email=" + email + ", gender=" + gender + ", photo=" + photo + ", roleID=" + roleID + '}';
     }
+
+
 
     
     

@@ -60,7 +60,7 @@ public class AnimalDelete extends HttpServlet {
             throws ServletException, IOException {
         String animalid = request.getParameter("animalID");
         AnimalDAO a = new AnimalDAO();
-        a.deleteanime(animalid);
+        a.deleteanimal(animalid);
         response.sendRedirect("animalcontroller");
     }
 

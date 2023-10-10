@@ -10,7 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -19,7 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import sample.animacage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
 
 /**
  *
@@ -31,6 +34,7 @@ import sample.animacage.AnimalCageDTO;
         maxRequestSize = 1024 * 1024 * 50)
 public class UpdateAnimal extends HttpServlet {
 
+
     private String extractFileName(Part part) {//This method will print the file name.
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
@@ -41,6 +45,7 @@ public class UpdateAnimal extends HttpServlet {
         }
         return "";
     }
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -59,6 +64,7 @@ public class UpdateAnimal extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<title>Servlet UpdateAnimal</title>");
             out.println("<title>Servlet UpdateAnimal</title>");
             out.println("</head>");
             out.println("<body>");
@@ -101,6 +107,7 @@ public class UpdateAnimal extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
         String animalid = request.getParameter("animalid");
         String name = request.getParameter("name");
         String dayin = request.getParameter("dayin");
@@ -117,7 +124,7 @@ public class UpdateAnimal extends HttpServlet {
 // Get the project root directory
             String projectRoot = getServletContext().getRealPath("/");
 
-// Remove the "/build" or "\build" part from the path
+// Remove the "/build" or "\\build" part from the path
             String correctedRoot = projectRoot.replace(File.separator + "build", "").replace(File.separator + "build", "");
 
 // Construct the absolute path relative to the corrected project root
@@ -145,6 +152,7 @@ public class UpdateAnimal extends HttpServlet {
         d.updateanimal(animalid, name, dayin, filename, animalcageid);
 
         response.sendRedirect("animalcontroller");
+
 
     }
 

@@ -21,7 +21,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import sample.animacage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
+import sample.animalcage.AnimalCageDTO;
 
 /**
  *
@@ -33,6 +34,7 @@ import sample.animacage.AnimalCageDTO;
         maxRequestSize = 1024 * 1024 * 50)
 public class CreateAnimal extends HttpServlet {
 
+
     private String extractFileName(Part part) {//This method will print the file name.
         String contentDisp = part.getHeader("content-disposition");
         String[] items = contentDisp.split(";");
@@ -43,6 +45,7 @@ public class CreateAnimal extends HttpServlet {
         }
         return "";
     }
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -89,6 +92,8 @@ public class CreateAnimal extends HttpServlet {
 
         List<AnimalCageDTO> list = d.getAllAnimalCage();
         request.setAttribute("cage", list);
+      
+       
         request.getRequestDispatcher("create_animal.jsp").forward(request, response);
     }
 
@@ -115,7 +120,7 @@ public class CreateAnimal extends HttpServlet {
 // Get the project root directory
             String projectRoot = getServletContext().getRealPath("/");
 
-// Remove the "/build" or "\build" part from the path
+// Remove the "/build" or "\\build" part from the path
             String correctedRoot = projectRoot.replace(File.separator + "build", "").replace(File.separator + "build", "");
 
 // Construct the absolute path relative to the corrected project root
@@ -133,14 +138,17 @@ public class CreateAnimal extends HttpServlet {
                     return; // Stop processing if directory creation fails
                 }
             }
+            
 
             // Write the file to the specified location
             photo.write(savePath);
+         
         }
+        
         String animalcageid = request.getParameter("animalcageid");
         AnimalDAO d = new AnimalDAO();
         String animalid = d.getNewIdAnimalID();
-
+        response.getWriter().write("Image saved successfully!");
         d.createanimal(animalid, name, dayin, filename, animalcageid);
         response.sendRedirect("animalcontroller");
     }

@@ -66,7 +66,7 @@ public class UpdateController extends HttpServlet {
                     request.setAttribute("ERROR", "Update Acount Successfull");
                     if (loginUser != null) {
 
-                        if (loginUser.getEmployee_ID().equals(userID)) {
+                        if (loginUser.getEmployee_id().equals(userID)) {
                             request.setAttribute("ERROR", "Update Your Acount Successfull");
 
                            

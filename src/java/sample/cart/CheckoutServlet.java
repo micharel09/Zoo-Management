@@ -24,7 +24,7 @@ import sample.cart.Product;
  *
  * @author ADMIN
  */
-@WebServlet(name = "CheckoutServlet", urlPatterns = { "/checkout" })
+@WebServlet(name = "CheckoutServlet", urlPatterns = {"/checkout"})
 
 public class CheckoutServlet extends HttpServlet {
 
@@ -32,12 +32,58 @@ public class CheckoutServlet extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        DAO d = new DAO();
+
+        List<Product> list = d.getAll();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
+                }
+            }
+        }
+
+        Cart cart = new Cart(txt, list);
+        request.setAttribute("cart", cart);
+        request.setAttribute("carttotalmoney", cart.getTotalMoney());
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DAO d = new DAO();
         List<Product> list = d.getAll();
@@ -87,7 +133,7 @@ public class CheckoutServlet extends HttpServlet {
 
         double totalMoney = cart.getTotalMoney(); // Store the totalMoney value
         double discountedTotal = totalMoney - (totalMoney * discount / 100);
-
+        
         String orderid = d.getNewIdOrder();
         Order o = new Order(orderid, email, fullname, phone, date, discountedTotal);
         d.addOrder(o, cart);
@@ -106,37 +152,6 @@ public class CheckoutServlet extends HttpServlet {
         response.addCookie(c);
 
         request.getRequestDispatcher("checkout.jsp").forward(request, response);
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request  servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
     }
 
     /**
