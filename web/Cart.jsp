@@ -237,6 +237,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         value="Buy item"
                       />
                     </div>
+                    <!-- end button -->
                   </div>
                 </c:forEach>
               </article>
@@ -248,7 +249,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!-- end main -->
 
       <!-- View button -->
-      <div class="mx-auto flex m-4 justify-center pb-4">
+      <div class="mx-auto flex m-4 justify-center pb-4 mt-10">
         <a href="show">
           <button
             class="bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"

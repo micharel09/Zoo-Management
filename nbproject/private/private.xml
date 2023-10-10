@@ -13,6 +13,15 @@
             <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/FeedBackView.jsp</file>
             <file>file:/D:/FBT/Kì%205/swp391/hi/Zoo-Management/web/login.html</file>
         </group>
-        <group name="Test"/>
+        <group name="Test">
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/cart/CheckoutServlet.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/animal/AnimalDTO.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/animal/UpdateAnimal.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/utils/DBUtils.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/feedback/FeedbackController.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/My_cart.jsp</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/src/java/sample/animal/CreateAnimal.java</file>
+            <file>file:/E:/Workspace/SWP391/Zoo-Management/web/checkout.jsp</file>
+        </group>
     </open-files>
 </project-private>

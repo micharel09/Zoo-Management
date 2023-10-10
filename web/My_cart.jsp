@@ -177,14 +177,14 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!-- end Progress Steps -->
 
       <!-- manage cart -->
-      <section class="w-1/2 text-gray-600 antialiased mx-auto" x-data="app">
+      <section class="w-2/3 text-gray-600 antialiased mx-auto" x-data="app">
         <div class="flex flex-col">
           <!-- Table -->
           <div
-            class="xl:w-[1800] border border-gray-200 rounded-md bg-white shadow-sm mt-10"
+            class="border border-gray-200 rounded-md bg-white shadow-sm mt-14"
           >
             <header
-              class="border-b border-gray-100 px-5 py-4 flex items-center"
+              class="border-b border-gray-100 px-10 py-8 flex items-center"
             >
               <!-- back button -->
               <div>
@@ -214,7 +214,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                 </a>
               </div>
               <!-- end back -->
-              <div class="font-semibold text-3xl text-gray-800 mx-auto pr-20">
+              <div class="font-semibold text-4xl text-gray-800 mx-auto pr-20">
                 <h1>Manage Carts</h1>
               </div>
             </header>
@@ -222,7 +222,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             <div class="overflow-x-auto p-3">
               <table class="w-full table-auto">
                 <thead
-                  class="bg-gray-50 text-xs font-semibold uppercase text-gray-400"
+                  class="bg-gray-50 text-xl font-semibold uppercase text-gray-400"
                 >
                   <tr>
                     <th class="p-2">
@@ -233,7 +233,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                       <div class="text-left font-semibold">Quantity</div>
                     </th>
                     <th class="p-2">
-                      <div class="text-left font-semibold">Đơn giá</div>
+                      <div class="text-left font-semibold">Sub Total</div>
                     </th>
                     <th class="p-2">
                       <div class="text-left font-semibold">Total</div>
@@ -244,9 +244,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                   </tr>
                 </thead>
 
-                <tbody class="divide-y divide-gray-100 text-sm">
-                  <!-- record 1 -->
-
+                <tbody class="divide-y divide-gray-100 text-3xl">
                   <c:set var="o" value="${requestScope.cart}" />
                   <c:set var="tt" value="0" />
                   <c:forEach items="${o.items}" var="i">
@@ -287,7 +285,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         </div>
                       </td>
                       <td class="p-2">
-                        <div class="flex justify-center">
+                        <div class="flex justify-center items-center">
                           <form action="process" method="post">
                             <input
                               type="hidden"
@@ -295,7 +293,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                               value="${i.product.tid}"
                             />
                             <button
-                              class="flex p-2.5 bg-red-600 rounded-xl hover:rounded-3xl hover:bg-red-300 transition-all duration-300 text-white"
+                              class="flex p-3 bg-red-600 rounded-xl hover:rounded-3xl hover:bg-red-300 transition-all duration-300 text-white"
                               onclick="return confirmDelete();"
                             >
                               <i
@@ -303,11 +301,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
                                 stroke-width="2"
-                                class="h-4 w-4 fas fa-trash-alt"
+                                class="fas fa-trash-alt"
                               ></i>
                             </button>
                           </form>
                         </div>
+
                         <script>
                           function confirmDelete() {
                             var result = confirm("Do you want to delete this?");
