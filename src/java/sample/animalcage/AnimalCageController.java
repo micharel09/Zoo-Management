@@ -61,7 +61,7 @@ public class AnimalCageController extends HttpServlet {
             throws ServletException, IOException {
         String animalcageid = request.getParameter("animalcageID");
                 AnimalCageDAO d = new AnimalCageDAO();
-        List<AnimalCageDTO> list = d.getAllAimalCage();
+        List<AnimalCageDTO> list = d.getAllAnimalCage();
         request.setAttribute("animalcagelist", list);
         request.getRequestDispatcher("animalcage.jsp").forward(request, response);
     }

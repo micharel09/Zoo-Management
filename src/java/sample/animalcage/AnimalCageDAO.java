@@ -24,7 +24,7 @@ public class AnimalCageDAO {
     PreparedStatement ptm = null;
     ResultSet rs = null;
 
-    public List<AnimalCageDTO> getAllAimalCage() {
+    public List<AnimalCageDTO> getAllAnimalCage() {
         List<AnimalCageDTO> list = new ArrayList<>();
         String sql = "select * from AnimalCage";
         try {

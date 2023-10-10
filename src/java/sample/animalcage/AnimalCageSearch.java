@@ -35,7 +35,16 @@ public class AnimalCageSearch extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String animalcageid = request.getParameter("animalcageID");
         AnimalCageDAO a = new AnimalCageDAO();
-        List<AnimalCageDTO> list = a.searchanimalcage(animalcageid);
+        List<AnimalCageDTO> list;
+
+        if (animalcageid != null && !animalcageid.isEmpty()) {
+            // Nếu có giá trị cho animalcageid, thực hiện tìm kiếm
+            list = a.searchanimalcage(animalcageid);
+        } else {
+            // Nếu không có giá trị cho animalcageid, lấy toàn bộ danh sách
+            list = a.getAllAnimalCage();
+        }
+
         request.setAttribute("animalcage", list);
         request.getRequestDispatcher("animalcage.jsp").forward(request, response);
     }
@@ -52,11 +61,20 @@ public class AnimalCageSearch extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-               String animalcageid = request.getParameter("animalcageID");
-        AnimalCageDAO a = new AnimalCageDAO();
-        List<AnimalCageDTO> list = a.searchanimalcage(animalcageid);
-        request.setAttribute("animalcage", list);
-        request.getRequestDispatcher("animalcage.jsp").forward(request, response);
+String animalcageid = request.getParameter("animalcageID");
+AnimalCageDAO a = new AnimalCageDAO();
+List<AnimalCageDTO> list;
+
+if (animalcageid != null && !animalcageid.isEmpty()) {
+    // Nếu có giá trị cho animalcageid, thực hiện tìm kiếm
+    list = a.searchanimalcage(animalcageid);
+} else {
+    // Nếu không có giá trị cho animalcageid, lấy toàn bộ danh sách
+    list = a.getAllAnimalCage();
+}
+
+request.setAttribute("animalcage", list);
+request.getRequestDispatcher("animalcage.jsp").forward(request, response);
     }
 
     /**

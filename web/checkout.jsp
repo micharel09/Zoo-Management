@@ -1,7 +1,7 @@
 <%-- Document : Cart Created on : Sep 27, 2023, 10:16:31 AM Author : Quan --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core" %> <%@taglib prefix="fmt"
+uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -39,8 +39,8 @@
     </style>
 
     <title>Checkout</title>
-    <%@ include file="components/header.html"%> 
-    <%@ include file="components/breadcrumb.html" %>
+    <%@ include file="components/header.html"%> <%@ include
+    file="components/breadcrumb.html" %>
   </head>
   <body>
     <!-- Progress Steps -->
@@ -265,13 +265,8 @@
                 placeholder="MM/YY"
               />
               <script>
-                // Lấy ngày hiện tại
                 var currentDate = new Date();
-
-                // Format ngày hiện tại thành chuỗi "YYYY-MM-DD" để sử dụng trong thuộc tính min
                 var formattedDate = currentDate.toISOString().split("T")[0];
-
-                // Gán giá trị thuộc tính min cho trường nhập ngày
                 document
                   .getElementById("date-input")
                   .setAttribute("min", formattedDate);
@@ -290,9 +285,7 @@
                 <p
                   id="total-amount"
                   class="text-2xl font-semibold text-gray-900"
-                >
-                  
-                </p>
+                ></p>
               </div>
             </div>
           </div>
