@@ -61,7 +61,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         background-repeat: no-repeat;
         background-color: green;
       }
-      /* CSS để tắt cuộn chuột */
       body {
         overflow: hidden;
       }
