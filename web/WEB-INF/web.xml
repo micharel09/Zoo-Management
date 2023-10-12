@@ -5,22 +5,6 @@
         <servlet-class>sample.controllers.MainController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>FoodController</servlet-name>
-        <servlet-class>sample.food.FoodController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FoodControllers</servlet-name>
-        <servlet-class>sample.food.FoodController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>FoodScheduleController</servlet-name>
-        <servlet-class>sample.foodschedule.FoodScheduleController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>NewsController</servlet-name>
-        <servlet-class>sample.news.NewsController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AnimalReportController</servlet-name>
         <servlet-class>sample.animalreport.AnimalReportController</servlet-class>
     </servlet>
@@ -32,22 +16,6 @@
         <error-code>404</error-code>
         <location>/error404.jsp</location>
     </error-page>
-    <servlet-mapping>
-        <servlet-name>FoodController</servlet-name>
-        <url-pattern>/FoodController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FoodControllers</servlet-name>
-        <url-pattern>/FoodControllers</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>FoodScheduleController</servlet-name>
-        <url-pattern>/FoodScheduleController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>NewsController</servlet-name>
-        <url-pattern>/NewsController</url-pattern>
-    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AnimalReportController</servlet-name>
         <url-pattern>/AnimalReportController</url-pattern>

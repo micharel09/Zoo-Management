@@ -184,7 +184,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             class="border border-gray-200 rounded-md bg-white shadow-sm mt-14"
           >
             <header
-              class="border-b border-gray-100 px-10 py-8 flex items-center"
+              class="border-b border-gray-100 px-10 py-4 flex items-center"
             >
               <!-- back button -->
               <div>

@@ -31,7 +31,7 @@
 
         </form>
         <c:choose>
-        <c:when test="${fn:length(foodlist) > 2}">
+        <c:when test="${fn:length(food) > 2}">
              <div class="mx-auto container max-w-4xl">
         <h1 class="text-4xl font-semibold text-gray-900">Food List</h1>
         <div class="bg-white p-6 mt-6 rounded-lg">
@@ -49,21 +49,14 @@
                             <td>${food.food_id}</td>
                             <td>${food.foodname}</td>
                             <td class="action-column">
-                                <a href="FoodDelete?foodID=${food.food_id}" class="delete">Delete</a>
-                                <a href="UpdateFood?foodID=${food.foodname}" class="update">Update</a>
+                                <a href="fooddelete?foodID=${food.food_id}" class="delete">Delete</a>
+                                <a href="updatefood?foodID=${food.foodname}" class="update">Update</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
-        <form action="FoodController" method="get" class="mt-6">
-            <label for="Food_id" class="text-xl">Search Food by ID:</label>
-            <div class="flex">
-                <input type="text" id="food_ID" name="Food_ID" class="w-64 p-2 border rounded-l-md" />
-                <input type="submit" value="Search" class="px-4 py-2 bg-green-500 text-white rounded-r-md hover:bg-green-600" />
-            </div>
-        </form>
     </div>
         </c:when>
         <c:otherwise>
@@ -79,26 +72,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="food" items="${food}">
+                    <c:forEach var="food" items="${foods}">
                         <tr>
                             <td>${food.food_id}</td>
                             <td>${food.foodname}</td>
                             <td class="action-column">
-                                <a href="FoodDelete?foodID=${food.food_id}" class="delete">Delete</a>
-                                <a href="UpdateFood?foodID=${food.foodname}" class="update">Update</a>
+                                <a href="fooddelete?foodID=${food.food_id}" class="delete">Delete</a>
+                                <a href="updatefood?foodID=${food.food_id}" class="update">Update</a>
                             </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
         </div>
-        <form action="FoodController" method="get" class="mt-6">
-            <label for="Food_id" class="text-xl">Search Food by ID:</label>
-            <div class="flex">
-                <input type="text" id="food_ID" name="Food_ID" class="w-64 p-2 border rounded-l-md" />
-                <input type="submit" value="Search" class="px-4 py-2 bg-green-500 text-white rounded-r-md hover:bg-green-600" />
-            </div>
-        </form>
+
     </div>
         </c:otherwise>
     </c:choose>

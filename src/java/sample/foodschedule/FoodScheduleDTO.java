@@ -56,6 +56,13 @@ public class FoodScheduleDTO {
     public void setFood_id(String food_id) {
         this.food_id = food_id;
     }
+
+    @Override
+    public String toString() {
+        return "FoodScheduleDTO{" + "schedule_id=" + schedule_id + ", time=" + time + ", animalcage_id=" + animalcage_id + ", food_id=" + food_id + '}';
+    }
+
+    
     
     
 }

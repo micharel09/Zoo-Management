@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sample.user.UserDTO;
 
 /**
  *
@@ -34,10 +35,16 @@ public class TrainerFeedbackController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+//        String id = request.getParameter("fid");
+//        FeedbackDAO dao = new FeedbackDAO();
+//        FeedbackDTO f  = dao.getFeedbackByID(id);
+//        request.setAttribute("detail", f);
+//        request.getRequestDispatcher("trainer.jsp").forward(request, response);
         HttpSession session = request.getSession();
-        session.getAttribute("LOGIN_USER");
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        String emp_ID= loginUser.getEmployee_id();
         FeedbackDAO a = new FeedbackDAO();
-        List<FeedbackDTO> list = a.getListFeedBack();
+        List<FeedbackDTO> list = a.getListFeedBack(emp_ID);
         request.setAttribute("listF", list);
         request.getRequestDispatcher("trainerfeedback.jsp").forward(request, response);
         }

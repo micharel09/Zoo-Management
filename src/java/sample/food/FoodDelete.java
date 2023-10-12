@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author dinhg
  */
-@WebServlet(name = "FoodDelete", urlPatterns = {"/FoodDelete"})
-
+@WebServlet(name = "fooddelete", urlPatterns = {"/fooddelete"})
 public class FoodDelete extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -53,7 +52,7 @@ public class FoodDelete extends HttpServlet {
         String foodid = request.getParameter("foodID");
         FoodDAO a = new FoodDAO();
         a.deletefood(foodid);
-        response.sendRedirect("/FoodControllers");
+        response.sendRedirect("/foodcontroller");
     }
 
     /**

@@ -120,13 +120,13 @@ public class FoodDAO {
         
         
         //searchFood()
-        public List<FoodDTO> searchfood(String foodid) {
+        public List<FoodDTO> searchfood(String foodID) {
         String sql = "select * from Food where Food_ID like ?";
         List<FoodDTO> list = new ArrayList<>();
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
-            ptm.setString(1, "%" + foodid + "%");
+            ptm.setString(1, "%" + foodID + "%");
             rs = ptm.executeQuery();
             if (rs.next()) {
                 list.add(new FoodDTO(rs.getString(1), rs.getString(2)));
@@ -152,9 +152,9 @@ public class FoodDAO {
             if (rs.next()) {
                 IdOrder = rs.getString("Food_ID");
             }
-            if (IdOrder != null && IdOrder.length() >= 6) {
-                String prefix = IdOrder.substring(0, 3);
-                int number = Integer.parseInt(IdOrder.substring(3));
+            if (IdOrder != null && IdOrder.length() >= 4) {
+                String prefix = IdOrder.substring(0, 1);
+                int number = Integer.parseInt(IdOrder.substring(1));
                 number++;
                 newIdOrder = prefix + String.format("%03d", number);
             }
@@ -163,7 +163,7 @@ public class FoodDAO {
         return newIdOrder;
     }
     
-            public void creatfood(String food_id, String foodname) {
+            public void createfood(String food_id, String foodname) {
         String sql = " insert into Food(Food_ID,FoodName)\n"
                 + " values(?,?)";
         try {
@@ -171,6 +171,24 @@ public class FoodDAO {
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, food_id);
             ptm.setString(2, foodname);
+            ptm.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+            public void updatefood(String foodid, String foodname) {
+        String sql;
+       
+        sql = "UPDATE Food SET FoodName=? WHERE Food_ID=?";
+
+
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+           
+            ptm.setString(1, foodname);
+            ptm.setString(2, foodid);
+
             ptm.executeUpdate();
 
         } catch (Exception e) {

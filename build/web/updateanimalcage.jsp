@@ -34,99 +34,137 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     ></script>
     <title>Update Animal Cages</title>
   </head>
-  <body class="bg-gray-500">
+  <body class="bg-green-400">
     <!-- MAIN CONTENT -->
-    <div class="flex justify-center items-center h-screen">
-      <section class="p-6 mx-auto bg-white rounded-md shadow-md w-1/4">
-        <div class="border-b-2 border-black flex justify-center">
-          <h3 class="font-bold text-4xl">EDIT</h3>
-        </div>
-        <form action="updateanimalcage" method="POST">
-          <div class="grid grid-cols-1 gap-6 mt-4 xl:grid-cols-2">
-            <!-- AreaID -->
-            <div>
-              <div class="boder-b-2 p-2 pl-0">
-                <label for="area_id" class="block text-xl text-gray-500"
+    <div class="flex justify-center items-center w-full h-full">
+      <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <!-- back button -->
+          <div class="ml-0">
+            <!-- Căn chỉnh vị trí sang trái -->
+            <a
+              href="animalcagecontroller"
+              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+            >
+              <svg
+                viewBox="0 0 46 16"
+                height="15"
+                width="35"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+              >
+                <path
+                  transform="scale(-1, 1) translate(-30)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+              <span
+                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                >Back</span
+              >
+            </a>
+          </div>
+          <!-- end back -->
+
+          <div class="text-gray-800 mx-auto pr-20 pb-4">
+            <h1 class="font-semibold text-5xl">Add Animal Cage</h1>
+          </div>
+        </header>
+        <div class="mx-auto w-full max-w-8xl">
+          <form action="updateanimalcage" method="POST">
+            <input
+              name="animalcage_id"
+              type="hidden"
+              value="${aa.animalcage_id}"
+            />
+            <!-- Name -->
+            <div class="mb-5">
+              <label for="name" class="mb-3 block text-2xl font-medium">
+                Name
+              </label>
+              <input
+                name="name"
+                type="text"
+                value="${aa.name}"
+                placeholder="Enter name"
+                class="block w-full text-xl rounded-lg font-extralight appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
+              />
+            </div>
+            <p class="mt-3 text-xs text-red-400"></p>
+            <!-- end name -->
+            <!-- ID DIV -->
+            <div class="-mx-3 flex flex-wrap">
+              <!-- AreaID -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="area_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
                   >Area_ID</label
                 >
                 <span class="text-xl" style="color: red"
                   >Old ${aa.area_id}</span
                 >
-                <br />
+                <select
+                  name="area_id"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                >
+                  <c:forEach var="o" items="${area}">
+                    <option>${o.area_id}</option>
+                  </c:forEach>
+                </select>
               </div>
-              New
-              <select name="area_id">
-                <c:forEach var="o" items="${area}">
-                  <option>${o.area_id}</option>
-                </c:forEach>
-              </select>
-
               <p class="mt-3 text-xs text-red-400"></p>
-            </div>
-            <!-- Emloyee_ID -->
-            <div>
-              <div class="boder-b-2 p-2 pl-0">
-                <label for="employee_id" class="block text-xl text-gray-500"
+
+              <!-- Emloyee_ID -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="employee_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
                   >Employee_ID</label
                 >
                 <span class="text-xl" style="color: red"
                   >Old ${aa.employee_id}</span
                 >
-                <br />
-              </div>
-              New
-              <select name="employee_id">
-                <c:forEach var="o" items="${user}">
-                  <option>${o.employee_id}</option>
-                </c:forEach>
-              </select>
-              <p class="mt-3 text-xs text-red-400"></p>
-            </div>
-          </div>
-          <!-- end employe id -->
-          <!-- Title -->
-          <input
-            name="animalcage_id"
-            type="hidden"
-            value="${aa.animalcage_id}"
-          />
-          <label for="name" class="block text-xl text-gray-500">Name</label>
-
-          <div class="flex items-center mt-2">
-            <input
-              name="name"
-              type="text"
-              value="${aa.name}"
-              placeholder="Enter name"
-              class="block w-full rounded-lg pr-5 rtl:pr-11 rtl:pl-5"
-              required
-            />
-          </div>
-
-          <p class="mt-3 text-xs text-red-400"></p>
-
-          <!-- Button: Cancel and Save -->
-          <div class="flex justify-center mt-6">
-            <div class="pr-2">
-              <button
-                class="px-6 py-2.5 leading-5 flex items-center justify-center relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-              >
-                <a
-                  href="animalcagecontroller"
-                  class="relative z-10 font-extralight"
-                  >Cancel</a
+                <select
+                  name="employee_id"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 >
-              </button>
+                  <c:forEach var="o" items="${user}">
+                    <option>${o.employee_id}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <p class="mt-3 text-xs text-red-400"></p>
+              <!-- end employe id -->
             </div>
+            <!-- end ID  -->
 
-            <button
-              class="px-8 py-2.5 leading-5 flex items-center justify-center relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-            >
-              <a href="" class="relative z-10 font-extralight"> Save </a>
-            </button>
-          </div>
-          <!-- end button -->
-        </form>
+            <!-- Button: Cancel and Save -->
+            <div class="flex justify-center mt-6">
+              <div class="pr-2">
+                <a href="animalcagecontroller">
+                  <button
+                    class="px-12 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                  >
+                    <p class="relative z-10 font-extralight text-xl">Cancel</p>
+                  </button>
+                </a>
+              </div>
+              <a href="">
+                <button
+                  class="px-14 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                >
+                  <p class="relative z-10 font-extralight text-xl">Save</p>
+                </button>
+              </a>
+            </div>
+            <!-- end button -->
+          </form>
+        </div>
       </section>
     </div>
   </body>

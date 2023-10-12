@@ -1,87 +1,113 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Create Page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-      
-</head>
-<body>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Tailwind -->
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5b0b34b925.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="bg-gray-500">
+    <!-- MAIN CONTENT -->
 
-    <h1>Create User</h1>
-    <form action="MainController" method="POST">
-<!--        <label for="userID">Employee ID:</label>
+    <div class="flex justify-center items-center h-screen">
+      <h1>Create User</h1>
+      <form action="MainController" method="POST">
+        <!--        <label for="userID">Employee ID:</label>
         <input type="text" name="userID" id="userID" required><br>-->
 
         <label for="fullName">Full Name:</label>
-        <input type="text" name="fullName" id="fullName" required=""><br>
-        
-        
+        <input type="text" name="fullName" id="fullName" required="" /><br />
+
         <label for="Phone">Phone :</label>
-       <input type="tel" name="Phone" id="Phone" required pattern="[0-9]{10}" title="Số điện thoại phải có 10 chữ số">
+        <input
+          type="tel"
+          name="Phone"
+          id="Phone"
+          required
+          pattern="[0-9]{10}"
+          title="Số điện thoại phải có 10 chữ số"
+        />
 
+        <label for="Email">Email :</label>
+        <input type="email" name="Email" id="Email" required="" /><br />
 
-
-         <label for="Email">Email :</label>
-        <input type="email" name="Email" id="Email" required=""><br>
-        
-        
         <label for="Gender">Gender :</label>
         <select name="Gender" id="Gender">
-            <option value="Male">Male</option>
-            <option value="FeMale">Female</option>
+          <option value="Male">Male</option>
+          <option value="FeMale">Female</option></select
+        ><br />
 
-        </select><br>
-
-        
         <label for="roleID">Role ID : </label>
         <select name="roleID" id="roleID">
-            <option value="ADMIN">ADMIN</option>
-            <option value="MANAGER">MANAGER</option>
-            <option value="TRAINER">TRAINER</option>
-             
-        </select><br>
-<!--
+          <option value="ADMIN">ADMIN</option>
+          <option value="MANAGER">MANAGER</option>
+          <option value="TRAINER">TRAINER</option></select
+        ><br />
+        <!--
         <label for="password">Password:</label>
         <input type="password" name="password" id="password" required><br>
 
         <label for="confirm">Confirm:</label>       <input type="password" name="confirm" id="confirm" required><br>-->
-        
+
         <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <input type="checkbox" id="showPassword"> Show Password<br>
+        <input type="password" name="password" id="password" required />
+        <input type="checkbox" id="showPassword" /> Show Password<br />
 
         <label for="confirm">Confirm:</label>
-        <input type="password" name="confirm" id="confirm" required><br>
+        <input type="password" name="confirm" id="confirm" required /><br />
 
         <script>
-        // Lấy các phần tử DOM cần sử dụng
-        const passwordInput = document.getElementById('password');
-        const confirmInput = document.getElementById('confirm');
-        const showPasswordCheckbox = document.getElementById('showPassword');
+          // Lấy các phần tử DOM cần sử dụng
+          const passwordInput = document.getElementById("password");
+          const confirmInput = document.getElementById("confirm");
+          const showPasswordCheckbox = document.getElementById("showPassword");
 
-        // Xử lý sự kiện khi checkbox "Show Password" thay đổi
-        showPasswordCheckbox.addEventListener('change', function () {
+          // Xử lý sự kiện khi checkbox "Show Password" thay đổi
+          showPasswordCheckbox.addEventListener("change", function () {
             if (this.checked) {
-                // Nếu checkbox được chọn, hiện mật khẩu
-                passwordInput.type = 'text';
-                confirmInput.type = 'text';
+              // Nếu checkbox được chọn, hiện mật khẩu
+              passwordInput.type = "text";
+              confirmInput.type = "text";
             } else {
-                // Nếu checkbox không được chọn, ẩn mật khẩu
-                passwordInput.type = 'password';
-                confirmInput.type = 'password';
+              // Nếu checkbox không được chọn, ẩn mật khẩu
+              passwordInput.type = "password";
+              confirmInput.type = "password";
             }
-        });
+          });
         </script>
 
+        <input type="submit" name="action" value="Create" />
+        <input type="reset" value="Reset" />
+        <br />
 
-        <input type="submit" name="action" value="Create">
-        <input type="reset" value="Reset">
-        <br>
-        
-        <a href="MainController?action=BackAdminPage">Back</a>     
-    </form>
-
-</body>
+        <a href="MainController?action=BackAdminPage">Back</a>
+      </form>
+    </div>
+  </body>
 </html>

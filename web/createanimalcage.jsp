@@ -34,85 +34,126 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     ></script>
     <title>Create Page</title>
   </head>
-  <body class="bg-gray-500">
+  <body class="bg-green-400">
     <!-- MAIN CONTENT -->
-    <div class="flex justify-center items-center h-screen">
-      <section class="p-10 mx-auto bg-white rounded-md shadow-md w-1/2">
-        <div class="border-b-2 border-black flex justify-center">
-          <h3 class="font-bold text-4xl">Create AnimalCage</h3>
-        </div>
-        <form action="" method="POST">
-          <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-            <!-- Area_ID -->
-            <div class="flex items-center justify-center mt-4">
-              <label for="area_id" class="block text-xl text-gray-500"
-                >Area_ID</label
-              >
-              <select name="area_id" class="ml-4 teext-xl">
-                <c:forEach var="a" items="${listarea}">
-                  <option>${a.area_id}</option>
-                </c:forEach>
-              </select>
-            </div>
-            <!-- end area -->
-            <!-- Employee ID -->
-            <div class="flex items-center justify-center mt-4">
-              <label for="employee_id" class="block text-xl text-gray-500"
-                >Employee_ID</label
-              >
-              <select name="employee_id" class="ml-4 teext-xl">
-                <c:forEach var="o" items="${listuser}">
-                  <option>${o.employee_id}</option>
-                </c:forEach>
-              </select>
-            </div>
-            <!-- end employee  -->
-          </div>
-
-          <!-- Name-->
-          <div>
-            <label for="name" class="block text-2xl text-gray-500">Name</label>
-
-            <div class="flex items-center mt-2">
-              <i
-                class="fas fa-font absolute w-6 h-6 m-3 flex items-center justify-center"
-              ></i>
-
-              <input
-                name="name"
-                type="text"
-                value=""
-                placeholder="Enter name"
-                class="text-xl block w-full py-2.5 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5"
-                required
-              />
-            </div>
-
-            <p class="mt-3 text-xs text-red-400"></p>
-          </div>
-
-          <!-- Button: Cancel and Save -->
-          <div class="flex justify-center mt-6">
-            <div class="pr-2">
-              <button
-                class="px-6 py-2.5 leading-5 flex items-center justify-center relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-              >
-                <a
-                  href="animalcagecontroller"
-                  class="relative z-10 font-extralight"
-                  >Cancel</a
-                >
-              </button>
-            </div>
-
-            <button
-              class="px-8 py-2.5 leading-5 flex items-center justify-center relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+    <div class="flex justify-center items-center w-full h-full">
+      <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <!-- back button -->
+          <div class="ml-0">
+            <a
+              href="animalcagcontroller"
+              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
             >
-              <a href="" class="relative z-10 font-extralight"> Save </a>
-            </button>
+              <svg
+                viewBox="0 0 46 16"
+                height="15"
+                width="35"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+              >
+                <path
+                  transform="scale(-1, 1) translate(-30)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+              <span
+                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                >Back</span
+              >
+            </a>
           </div>
-          <!-- end button -->
-        </form>
+          <!-- end back -->
+
+          <div class="text-gray-800 mx-auto pr-20 pb-4">
+            <h1 class="font-semibold text-5xl">Add Animal Cage</h1>
+          </div>
+        </header>
+
+        <div class="mx-auto w-full max-w-8xl">
+          <form action="" method="POST">
+            <!-- Name-->
+            <div class="mb-5">
+              <label for="name" class="mb-3 block text-2xl font-medium">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter Cage name"
+                min="0"
+                class="w-full font-extralight appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+
+              <p class="mt-3 text-xs text-red-400"></p>
+            </div>
+            <!-- end name -->
+            <!-- ID DIV -->
+            <div class="-mx-3 flex flex-wrap">
+              <!-- Area_ID -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="area_id"
+                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  >Area_ID</label
+                >
+                <select
+                  name="area_id"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                >
+                  <c:forEach var="a" items="${listarea}">
+                    <option>${a.area_id}</option>
+                  </c:forEach>
+                </select>
+              </div>
+              <!-- end area -->
+              <!-- Employee ID -->
+              <div class="w-full px-3 sm:w-1/2">
+                <div class="mb-5">
+                  <label
+                    for="employee_id"
+                    class="mb-3 block text-2xl font-medium text-[#07074D]"
+                    >Employee_ID</label
+                  >
+                  <select
+                    name="employee_id"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  >
+                    <c:forEach var="o" items="${listuser}">
+                      <option>${o.employee_id}</option>
+                    </c:forEach>
+                  </select>
+                </div>
+              </div>
+              <!-- end employee  -->
+            </div>
+            <!-- end ID -->
+
+            <!-- Button: Cancel and Save -->
+            <div class="flex justify-center mt-6">
+              <div class="pr-2">
+                <a href="animalcagecontroller">
+                  <button
+                    class="px-12 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                  >
+                    <p class="relative z-10 font-extralight text-xl">Cancel</p>
+                  </button>
+                </a>
+              </div>
+              <a href="">
+                <button
+                  class="px-14 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                >
+                  <p class="relative z-10 font-extralight text-xl">Save</p>
+                </button>
+              </a>
+            </div>
+            <!-- end button -->
+          </form>
+        </div>
       </section>
     </div>
   </body>

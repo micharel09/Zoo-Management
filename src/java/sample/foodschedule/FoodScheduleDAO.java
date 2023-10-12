@@ -5,57 +5,156 @@
  */
 package sample.foodschedule;
 
-import sample.food.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import sample.utils.DBUtils;
 
 /**
  *
- * @author dinhg
+ * @author ADMIN
  */
 public class FoodScheduleDAO {
-    //PRINT
-    public List<FoodScheduleDTO> getListFoodSchedule() throws SQLException {
-    List<FoodScheduleDTO> listFoodSchedule = new ArrayList<>();
+
     Connection conn = null;
     PreparedStatement ptm = null;
     ResultSet rs = null;
-    
-    try {
-        conn = DBUtils.getConnection();
-        if (conn != null) {
-            ptm = conn.prepareStatement("SELECT Schedule_ID, Time, AnimalCage_ID, Food_ID FROM FoodSchedule");
+
+    public List<FoodScheduleDTO> getAllFoodSchedule() {
+        List<FoodScheduleDTO> list = new ArrayList<>();
+        String sql = "select * from FoodSchedule";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
             rs = ptm.executeQuery();
-            
             while (rs.next()) {
-                String schedule_id= rs.getString("Schedule_ID");
-                String time = rs.getString("Time");
-                String animalcage_id = rs.getString("AnimalCage_ID");
-                String food_id = rs.getString("Food_ID");
-                
-                listFoodSchedule.add(new FoodScheduleDTO(schedule_id, time, animalcage_id, food_id));
+                FoodScheduleDTO a = new FoodScheduleDTO(rs.getString("Schedule_ID"), rs.getString("Time"),rs.getString("AnimalCage_ID"), rs.getString("Food_ID"));
+                list.add(a);
             }
+        } catch (Exception e) {
         }
-    } catch (Exception e) {
-        e.printStackTrace();
-    } finally {
-        if (rs != null) {
-            rs.close();
+
+        return list;
+    }
+
+    public FoodScheduleDTO deleteschedule(String scheduleid) {
+        String sql = "delete from FoodSchedule where Schedule_ID =?";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, scheduleid);
+            rs = ptm.executeQuery();
+            if (rs.next()) {
+                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
         }
-        if (ptm != null) {
-            ptm.close();
+
+        return null;
+    }
+
+    public List<FoodScheduleDTO> searchschedule(String scheduleid) {
+        String sql = "select * from FoodSchedule where Schedule_ID like ?";
+        List<FoodScheduleDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, "%" + scheduleid + "%");
+            rs = ptm.executeQuery();
+            if (rs.next()) {
+                list.add(new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            }
+        } catch (Exception e) {
         }
-        if (conn != null) {
-            conn.close();
+
+        return list;
+    }
+
+    public void updateschedule(String scheduleid, String time, String animalcageid ,String foodid) {
+        String sql = "UPDATE FoodSchedule SET Time=?, AnimalCage_ID=?, Food_ID=? WHERE Schedule_ID= ?";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, time);
+            ptm.setString(2, animalcageid);
+            ptm.setString(3, foodid);
+            ptm.setString(4, scheduleid);
+            ptm.executeUpdate();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public void createschedule(FoodScheduleDTO f) {
+        String sql = " insert into FoodSchedule(Schedule_ID,Time,AnimalCage_ID, Food_ID)\n"
+                + " values(?,?,?,?)";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, f.getSchedule_id());
+            ptm.setString(2, f.getTime());
+            ptm.setString(3, f.getAnimalcage_id());
+            ptm.setString(4, f.getFood_id());
+            ptm.executeUpdate();
+
+        } catch (Exception e) {
         }
     }
     
-    return listFoodSchedule;
-}
+    
+      public FoodScheduleDTO getScheduleByID(String scheduleid) {
+        String sql = "select * from FoodSchedule where Schedule_ID =?";
+        
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, scheduleid);
+            rs = ptm.executeQuery();
+            if (rs.next()) {
+                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+            }
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
+
+         //getNewIdFoodID()
+        public String getNewIdScheduleID() {
+        String sql = "select top 1 Schedule_ID from FoodSchedule order by [Schedule_ID] desc";
+        String IdOrder = null;
+        String newIdOrder = null;
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+
+            rs = ptm.executeQuery();
+
+            if (rs.next()) {
+                IdOrder = rs.getString("Schedule_ID");
+            }
+            if (IdOrder != null && IdOrder.length() >= 5) {
+                String prefix = IdOrder.substring(0, 2);
+                int number = Integer.parseInt(IdOrder.substring(2));
+                number++;
+                newIdOrder = prefix + String.format("%03d", number);
+            }
+        } catch (Exception e) {
+        }
+        return newIdOrder;
+    }
+      
+
+public static void main(String[] args) throws SQLException {
+        FoodScheduleDAO a = new FoodScheduleDAO();
+        List<FoodScheduleDTO> list = a.getAllFoodSchedule();
+        for (FoodScheduleDTO o : list){
+        System.out.println(o); 
+        }
+    }
+
+
 }

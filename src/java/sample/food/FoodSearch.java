@@ -9,17 +9,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author dinhg
+ * @author ADMIN
  */
+@WebServlet(name = "FoodSearch", urlPatterns = {"/foodsearch"})
 public class FoodSearch extends HttpServlet {
 
-      /**
+    /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -31,11 +33,21 @@ public class FoodSearch extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        FoodDAO d = new FoodDAO();
-        String foodid = request.getParameter("foodID");
-        List<FoodDTO> list = d.searchfood(foodid);
-        request.setAttribute("foods", list);
-        request.getRequestDispatcher("food.jsp").forward(request, response);
+FoodDAO d = new FoodDAO();
+String foodid = request.getParameter("foodID");
+
+if (foodid != null && !foodid.isEmpty()) {
+    // Nếu có foodid được cung cấp, thực hiện tìm kiếm food dựa trên foodid.
+    List<FoodDTO> list = d.searchfood(foodid);
+    request.setAttribute("foods", list);
+} else {
+    // Nếu không có foodid hoặc foodid trống rỗng, lấy tất cả danh sách food.
+    List<FoodDTO> list = d.getAllFood();
+    request.setAttribute("foods", list);
+}
+
+request.getRequestDispatcher("food.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -49,11 +61,21 @@ public class FoodSearch extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        FoodDAO d = new FoodDAO();
-        String foodid = request.getParameter("foodID");
-        List<FoodDTO> list = d.searchfood(foodid);
-        request.setAttribute("foods", list);
-        request.getRequestDispatcher("food.jsp").forward(request, response);
+FoodDAO d = new FoodDAO();
+String foodid = request.getParameter("foodID");
+
+if (foodid != null && !foodid.isEmpty()) {
+    // Nếu có foodid được cung cấp, thực hiện tìm kiếm food dựa trên foodid.
+    List<FoodDTO> list = d.searchfood(foodid);
+    request.setAttribute("foods", list);
+} else {
+    // Nếu không có foodid hoặc foodid trống rỗng, lấy tất cả danh sách food.
+    List<FoodDTO> list = d.getAllFood();
+    request.setAttribute("foods", list);
+}
+
+request.getRequestDispatcher("food.jsp").forward(request, response);
+
     }
 
     /**

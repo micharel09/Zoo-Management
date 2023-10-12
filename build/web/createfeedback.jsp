@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="sample.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -23,14 +24,17 @@
             <input type="text" name="purpose"/>
             
             <br>
-            <input type="date" name="date">
+            <input type="hidden" name="date">
             <br>
-            processnote
-            <input type="text" name="processnote"/>
+          
+            <input type="hidden" name="processnote"/>
             
             <br>
-            employeeid
-            <input type="text" name="employeeid"/>
+            <% UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER"); %>
+            employeeid : <%=loginUser.getEmployee_id()%> 
+            
+            
+            <input type="hidden" name="employeeid" value="<%=loginUser.getEmployee_id()%>"/>
             
           
 
