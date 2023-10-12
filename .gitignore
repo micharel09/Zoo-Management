@@ -25,3 +25,5 @@ dist/prj301_T4S3_JSP_tmp.war
 hs_err_pid*
 replay_pid*
 /nbproject/private/
+build.xml
+dist/prj301_T4S3_JSP_tmp.war
