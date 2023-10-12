@@ -190,7 +190,7 @@
                             <span class="text-5xl text-grey-darkest">${o.genre}</span>
                         </div>
                         <button class="relative overflow-hidden rounded shadow-inner px-2 py-3 font-sans uppercase ring-sky-500 transition-all after:bg-green-400 active:shadow-md active:ring-2">
-                            <p class="transition-all group-active:scale-90"><a href="/cagecontroller?area=${o.arealocation}&areaid=${o.area_id}">View <i class="ml-36 fas fa-chevron-right"></i> </a> </p>
+                            <p class="transition-all group-active:scale-90"><a href="/areacontroller?area=${o.arealocation}&areaid=${o.area_id}">View <i class="ml-36 fas fa-chevron-right"></i> </a> </p>
                         </button>
                         <button class="relative overflow-hidden rounded shadow-inner px-2 py-3 font-sans uppercase ring-sky-500 transition-all after:bg-yellow-400 active:shadow-md active:ring-2">
                             <p class="transition-all group-active:scale-90">Manage <i class="ml-28 fas fa-chevron-right"></i></p>

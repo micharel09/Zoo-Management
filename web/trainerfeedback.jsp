@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -27,102 +27,185 @@
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <title>View</title>
-  </head>
-
-  <style>
-
-    button {
-        z-index: 1;
-    }
-
-    button::after {
-        content: '';
-        z-index: -1;
-        position: absolute;
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        transform: translateX(-100%);
-        transition: transform 600ms cubic-bezier(0, .70, .60, 1);
-  }
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
 
-  button:hover::after {
-    transform: translateX(0);
-  }
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
+    <title>View</title>
+  </head>
 
-  .fade-in {
-	opacity: 1;
-	animation-name: fadeInOpacity;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
-	animation-duration: 2s;
-}
+  <style>
+    button {
+      z-index: 1;
+    }
 
-@keyframes fadeInOpacity {
-	0% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
-	}
-}
+    button::after {
+      content: "";
+      z-index: -1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transform: translateX(-100%);
+      transition: transform 600ms cubic-bezier(0, 0.7, 0.6, 1);
+    }
+
+    button:hover::after {
+      transform: translateX(0);
+    }
+
+    .fade-in {
+      opacity: 1;
+      animation-name: fadeInOpacity;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-in;
+      animation-duration: 2s;
+    }
+
+    @keyframes fadeInOpacity {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
-    
+
   <!-- header -->
-    <nav class="border-gray-200 bg-green-600">
-      <div class="flex p-1">
-        <!-- logo -->
-        <a href="/trainer.jsp" class="flex items-center justify-center w-1/2">
-          <div class="">
-            <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
-          </div>
-          <span class="self-center text-4xl font-extralight whitespace-nowrap dark:text-white">Wild World Zoo</span>
-        </a>
-      </div>
-    </nav>
-    <!-- end header -->
-  
-  
+  <nav class="border-gray-200 bg-green-600">
+    <div class="flex p-1">
+      <!-- logo -->
+      <a href="/trainer.jsp" class="flex items-center justify-center w-1/2">
+        <div class="">
+          <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
+        </div>
+        <span
+          class="self-center text-4xl font-extralight whitespace-nowrap dark:text-white"
+          >Wild World Zoo</span
+        >
+      </a>
+    </div>
+  </nav>
+  <!-- end header -->
+
   <!--SIDE BAR HERE-->
-    <body class="w-full block overflow-x-hidden mx-auto ">
- <nav class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
-    <a href="/trainer.jsp" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
+  <body class="w-full block overflow-x-hidden mx-auto">
+    <nav
+      class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border"
+    >
+      <a
+        href="/trainer.jsp"
+        class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
+      >
         <!-- HeroIcon - User -->
         <i class="fa-regular fa-folder-open"></i>
         <small class="text-center text-xs font-medium"> Animal </small>
-    </a>
+      </a>
 
-    <a href="detail?fid=${f.id}"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
+      <a
+        href="detail?fid=${f.id}"
+        class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50"
+      >
         <!-- HeroIcon - Chart Bar -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-</svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"
+          />
+        </svg>
 
-            <small class="text-center text-xs font-medium"> Feedback </small>
-    </a>
+        <small class="text-center text-xs font-medium"> Feedback </small>
+      </a>
 
-    <a href="/news.jsp" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
-    <!-- HeroIcon - Cog-6-tooth -->
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
-</svg>
-  
+      <a
+        href="/news.jsp"
+        class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
+      >
+        <!-- HeroIcon - Cog-6-tooth -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z"
+          />
+        </svg>
+
         <small class="text-center text-xs font-medium"> Schedule </small>
-    </a>
+      </a>
 
-    <hr class="dark:border-gray-700/60" />
+      <hr class="dark:border-gray-700/60" />
 
-    <a href="/" class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-400" >
-    <!-- HeroIcon - Home Modern -->
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-      </svg>
+      <a
+        href="/"
+        class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-400"
+      >
+        <!-- HeroIcon - Home Modern -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z"
+          />
+        </svg>
         <small className="text-xs font-medium">Profile</small>
-    </a>
+      </a>
     </nav>
 
     <!-- Breadcrumb -->
@@ -172,10 +255,10 @@
       </ol>
     </nav>
     <!-- end breadcrumb -->
-    <div class="flex justify-center mt-5 ">
-        <h1 class="text-3xl">FeedBack Information</h1>
-      </div>
-      
+    <div class="flex justify-center mt-5">
+      <h1 class="text-3xl">FeedBack Information</h1>
+    </div>
+
     <!-- component -->
     <body class="antialiased font-sans bg-gray-200">
       <div class="container mx-auto px-4 sm:px-8">
@@ -184,19 +267,22 @@
           <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">
               <div class="relative">
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                </div>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                ></div>
               </div>
               <div class="relative">
-                <select class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                <select
+                  class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                >
                   <option>All</option>
                   <option>Processing</option>
                   <option>Approved</option>
                   <option>Rejected</option>
                 </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-               
-                </div>
+                <div
+                  class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+                ></div>
               </div>
             </div>
             <div class="block relative">
@@ -223,61 +309,76 @@
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
             >
               <!-- table -->
-               
+
               <table class="min-w-full">
                 <thead>
                   <tr>
-                 
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                    >
                       Title
                     </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                    >
                       Purpose
                     </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                    >
                       Date
                     </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                    >
                       ProcessNote
                     </th>
 
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
+                    <th
+                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                    >
                       Status
                     </th>
                   </tr>
                 </thead>
-<c:forEach items="${listF}" var="f">
-                <tbody class="bg-white">
-                  <tr>
-              
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.title}
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.purpose}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.date}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.processnote}
-                    </td>
-                   
-                    <td class="px-2 py-4 text-sm font-bold text-center text-green-500 leading-5 whitespace-no-wrap border-b border-gray-200">
-                      ${f.status}      
-                    </td>                 
-                  </tr>
-                </tbody>
-                 </c:forEach>
+                <c:forEach items="${listF}" var="f">
+                  <tbody class="bg-white">
+                    <tr>
+                      <td
+                        class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
+                      >
+                        ${f.title}
+                      </td>
+                      <td
+                        class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
+                      >
+                        ${f.purpose}
+                      </td>
+                      <td
+                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                      >
+                        ${f.date}
+                      </td>
+                      <td
+                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                      >
+                        ${f.processnote}
+                      </td>
+
+                      <td
+                        class="px-2 py-4 text-sm font-bold text-center text-green-500 leading-5 whitespace-no-wrap border-b border-gray-200"
+                      >
+                        ${f.status}
+                      </td>
+                    </tr>
+                  </tbody>
+                </c:forEach>
               </table>
               <a href="createfeedback.jsp"> create</a>
-              
             </div>
           </div>
         </div>
-          
       </div>
-        
     </body>
   </body>
 </html>
