@@ -34,6 +34,41 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
+
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
     <title>JSP Page</title>
   </head>
   <body class="bg-green-300">
