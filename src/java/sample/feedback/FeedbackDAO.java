@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import sample.animal.AnimalDTO;
@@ -20,7 +21,7 @@ import sample.utils.DBUtils;
  */
 public class FeedbackDAO {
       //PRINT
-      Connection conn = null;
+    Connection conn = null;
     PreparedStatement ptm = null;
     ResultSet rs = null;
     
@@ -77,27 +78,11 @@ public class FeedbackDAO {
         return list;
     }
 
-    public void updatefeedback(String feedback_id, String title, String purpose, String date, String processnote, String employee_id, String status) {
-        String sql = "UPDATE Animal SET Title=?, Purpose=?,Date=?, Processnote=?, Employee_ID = ?, Status = ?, WHERE Feedback_ID=?";
-        try {
-            conn = DBUtils.getConnection();
-            ptm = conn.prepareStatement(sql);
-            ptm.setString(1, title);
-            ptm.setString(2, purpose);
-            ptm.setString(3, date);
-            ptm.setString(4, processnote);
-            ptm.setString(5, employee_id);
-            ptm.setString(6, processnote);
-            ptm.setString(7, status);
-            ptm.setString(7, status);
-            ptm.setString(8, feedback_id);
-            ptm.executeUpdate();
 
-        } catch (Exception e) {
-        }
-    }
 
     public void createfeedback(String title, String purpose, String date, String processnote, String employee_id) {
+        LocalDate curDate = LocalDate.now();
+        date = curDate.toString();
         String sql = " insert into FeedBack(Title,Purpose, Date,ProcessNote,Employee_ID)\n"
                 + " values(?,?,?,?,?)";
         try {
@@ -116,7 +101,7 @@ public class FeedbackDAO {
     }
     
     public FeedbackDTO getFeedbackByID(String id) {
-        String sql = "select * from Feedback where Employee_ID like ?";
+        String sql = "select * from Feedback where FeedBack_ID = ?";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
@@ -134,6 +119,25 @@ public class FeedbackDAO {
         } catch (Exception e) {
         }
         return null;
+    }
+    
+    public void updateFeedback ( String feedback_id, String processnote, String status ){
+        String sql = "update FeedBack \n" +
+                     "set ProcessNote = ? , Status = ?\n" +
+                     "WHERE FeedBack_ID = ?";
+         try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1,processnote);
+            ptm.setString(2,status);
+            ptm.setString(3,feedback_id); 
+            ptm.executeUpdate();
+           
+        } catch (Exception e) {
+        }
+  
+    
+        
     }
     
  
@@ -165,7 +169,37 @@ public class FeedbackDAO {
     
      public static void main(String[] args) throws SQLException {
         FeedbackDAO a = new FeedbackDAO();
-        List<FeedbackDTO> list = a.getListFeedBack();
-        System.out.println(list);       
+        FeedbackDTO f = a.getFeedbackByID("2");
+        System.out.println(f);       
     }
+
+    List<FeedbackDTO> getListFeedBack(String emp_ID) {
+      
+      List<FeedbackDTO> listFeedBack = new ArrayList<>();
+  
+    try {
+        conn = DBUtils.getConnection();
+        if (conn != null) {
+            ptm = conn.prepareStatement("SELECT FeedBack_ID, Title, Purpose, Date, ProcessNote, Employee_ID, Status FROM FeedBack where Employee_ID=?  ORDER BY FeedBack_ID DESC");
+           ptm.setString(1, emp_ID);
+            rs = ptm.executeQuery();
+            
+            while (rs.next()) {
+                String news_id = rs.getString("FeedBack_ID");
+                String title = rs.getString("Title");
+                String purpose = rs.getString("Purpose");
+                String date = rs.getString("Date");
+                String processnote = rs.getString("ProcessNote");
+                String employee_id = rs.getString("Employee_ID");
+                String status = rs.getString("Status");
+                
+                listFeedBack.add(new FeedbackDTO(news_id, title, purpose, date, processnote, employee_id, status));
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+   
+    }
+    return listFeedBack;
+}
 }

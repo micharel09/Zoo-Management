@@ -33,7 +33,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
     <title>Animal Cage List</title>
   </head>
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-gray-200">
+  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-300">
     <main class="antialiased font-sans bg-white">
       <div class="container mx-auto px-4 sm:px-8">
         <div class="flex justify-center">
@@ -63,11 +63,11 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                   placeholder="Search"
                   class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />
-
                 <input
                   class="text-2xl pl-2 cursor-pointer hover:text-blue-500 transition-colors duration-300"
                   type="submit"
                   value="Search"
+                  placeholder="Search Animal by ID"
                 />
               </div>
             </form>
@@ -109,7 +109,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             >
               <!-- table -->
               <c:choose>
-                <c:when test="${fn:length(animalcagelist) > 2}">
+                <c:when test="${fn:length(animalcagelist) > 0}">
                   <table
                     class="min-w-full border-collapse border border-blue-500"
                   >
@@ -174,12 +174,11 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                             class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
                           >
                             <div class="flex justify-center items-center">
-                              <!-- edit -->
-                              <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                              <!-- edit --><a
+                                href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
                               >
-                                <a
-                                  href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                <button
+                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -194,18 +193,17 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                       stroke-linejoin="round"
                                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                     />
-                                  </svg>
-                                </a>
-                              </button>
+                                  </svg></button
+                              ></a>
                               <!-- delete -->
                               <div class="pl-2">
-                                <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                <a
+                                  href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                  class=""
+                                  onclick="return confirmDelete();"
                                 >
-                                  <a
-                                    href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
-                                    class=""
-                                    onclick="return confirmDelete();"
+                                  <button
+                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
                                   >
                                     <i
                                       fill="none"
@@ -213,9 +211,8 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                       stroke="currentColor"
                                       stroke-width="2"
                                       class="h-4 w-4 fas fa-trash-alt"
-                                    ></i>
-                                  </a>
-                                </button>
+                                    ></i></button
+                                ></a>
                               </div>
                             </div>
                           </td>
@@ -298,11 +295,11 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                           >
                             <div class="flex justify-center items-center">
                               <!-- edit -->
-                              <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                              <a
+                                href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
                               >
-                                <a
-                                  href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                <button
+                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -318,17 +315,17 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                       d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                     />
                                   </svg>
-                                </a>
-                              </button>
+                                </button>
+                              </a>
                               <!-- delete -->
                               <div class="pl-2">
-                                <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                <a
+                                  href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                  class=""
+                                  onclick="return confirmDelete();"
                                 >
-                                  <a
-                                    href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
-                                    class=""
-                                    onclick="return confirmDelete();"
+                                  <button
+                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
                                   >
                                     <i
                                       fill="none"
@@ -336,9 +333,8 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                       stroke="currentColor"
                                       stroke-width="2"
                                       class="h-4 w-4 fas fa-trash-alt"
-                                    ></i>
-                                  </a>
-                                </button>
+                                    ></i></button
+                                ></a>
                               </div>
                             </div>
                           </td>

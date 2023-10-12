@@ -66,6 +66,11 @@ public class NewsDTO {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    @Override
+    public String toString() {
+        return "NewsDTO{" + "news_id=" + news_id + ", title=" + title + ", content=" + content + ", day=" + day + ", photo=" + photo + '}';
+    }
     
     
 }

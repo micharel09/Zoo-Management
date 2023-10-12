@@ -8,8 +8,14 @@ package sample.food;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -82,14 +88,13 @@ public class CreateFood extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String foodid = request.getParameter("food_id");
         String foodname = request.getParameter("foodname");
 
 
-       FoodDAO d = new FoodDAO();
+        FoodDAO d = new FoodDAO();
         String food_id = d.getNewIdFoodID();
 
-        d.creatfood(food_id, foodname);
+        d.createfood(food_id, foodname);
         response.sendRedirect("foodcontroller");
 
     }
