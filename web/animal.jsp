@@ -32,9 +32,44 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
+
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
     <title>Animal List</title>
   </head>
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-300">
+  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
     <main class="antialiased font-sans bg-white">
       <div class="container mx-auto px-4 sm:px-8">
         <div class="flex justify-center">
@@ -59,8 +94,8 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                 </span>
                 <input
                   type="text"
-                  id="animalcageID"
-                  name="animalcageID"
+                  id="animalID"
+                  name="animalID"
                   placeholder="Search Animal by ID"
                   class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />
@@ -101,281 +136,273 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
             <!-- end Create -->
           </div>
           <!-- main -->
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <div
-              class="inline-block min-w-full shadow border-2 rounded-lg overflow-hidden"
-            >
-              <!-- table -->
-              <c:choose>
-                <c:when test="${fn:length(animallist) > 2}">
-                  <table
-                    class="min-w-full border-collapse border border-blue-500"
-                  >
-                    <thead class="bg-neutral-100">
-                      <tr class="bg-blue-500 text-white">
-                        <th
-                          class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          Animal_ID
-                        </th>
-
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          AnimalCage_ID
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Name
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          Date In
-                        </th>
-                        <th
-                          class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Photo
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Action
-                        </th>
-                      </tr>
-                    </thead>
-                    <c:forEach var="animal" items="${animallist}">
-                      <tbody
-                        class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300"
+          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
+            <!-- table -->
+            <c:choose>
+              <c:when test="${fn:length(animallist) > 2}">
+                <table
+                  class="min-w-full border-collapse border border-blue-500"
+                >
+                  <thead class="bg-neutral-100">
+                    <tr class="bg-blue-500 text-white">
+                      <th
+                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
                       >
-                        <tr>
-                          <td
-                            class="pl-10 py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                          >
-                            ${animal.animal_id}
-                          </td>
+                        Animal_ID
+                      </th>
 
-                          <td
-                            class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                          >
-                            ${animal.animalcage_id}
-                          </td>
-                          <td
-                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                          >
-                            ${animal.name}
-                          </td>
-
-                          <td
-                            class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                          >
-                            ${animal.dayin}
-                          </td>
-
-                          <td
-                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                            width="100"
-                          >
-                            <img
-                              src="./animal_picture/${animal.photo}"
-                              width="80"
-                              height="70"
-                            />
-                          </td>
-                          <td
-                            class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
-                          >
-                            <div class="flex justify-center items-center">
-                              <!-- edit -->
-                              <a
-                                href="updateanimal?animalID=${animal.animal_id}"
-                              >
-                                <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
-                                >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                    />
-                                  </svg>
-                                </button>
-                              </a>
-                              <!-- delete -->
-                              <div class="pl-2">
-                                <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
-                                >
-                                  <a
-                                    href="animaldelete?animalID=${animal.animal_id}"
-                                    class=""
-                                    onclick="return confirmDelete();"
-                                  >
-                                    <i
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                      stroke-width="2"
-                                      class="h-4 w-4 fas fa-trash-alt"
-                                    ></i>
-                                  </a>
-                                </button>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </c:forEach>
-                  </table>
-                </c:when>
-                <c:otherwise>
-                  <table
-                    class="min-w-full border-collapse border border-blue-500"
-                  >
-                    <thead class="bg-neutral-100">
-                      <tr class="bg-blue-500 text-white">
-                        <th
-                          class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          Animal_ID
-                        </th>
-
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          AnimalCage_ID
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Name
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                          style="width: 100px"
-                        >
-                          Date In
-                        </th>
-                        <th
-                          class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Photo
-                        </th>
-                        <th
-                          class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
-                        >
-                          Action
-                        </th>
-                      </tr>
-                    </thead>
-                    <c:forEach var="animal" items="${animals}">
-                      <tbody
-                        class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300"
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
                       >
-                        <tr>
-                          <td
-                            class="pl-10 py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                          >
-                            ${animal.animal_id}
-                          </td>
+                        AnimalCage_ID
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Name
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 200px"
+                      >
+                        Date In
+                      </th>
+                      <th
+                        class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Photo
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <c:forEach var="animal" items="${animallist}">
+                    <tbody
+                      class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
+                    >
+                      <tr>
+                        <td
+                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          #${animal.animal_id}
+                        </td>
 
-                          <td
-                            class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                          >
-                            ${animal.animalcage_id}
-                          </td>
-                          <td
-                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                          >
-                            ${animal.name}
-                          </td>
+                        <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        >
+                          ${animal.animalcage_id}
+                        </td>
+                        <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          ${animal.name}
+                        </td>
 
-                          <td
-                            class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                          >
-                            ${animal.dayin}
-                          </td>
+                        <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        >
+                          ${animal.dayin}
+                        </td>
 
-                          <td
-                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
-                            width="100"
-                          >
-                            <img
-                              src="./animal_picture/${animal.photo}"
-                              width="80"
-                              height="70"
-                            />
-                          </td>
-                          <td
-                            class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
-                          >
-                            <div class="flex justify-center items-center">
-                              <!-- edit -->
-                              <a
-                                href="updateanimal?animalID=${animal.animal_id}"
+                        <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                          width="100"
+                        >
+                          <img
+                            src="./animal_picture/${animal.photo}"
+                            width="80"
+                            height="70"
+                          />
+                        </td>
+                        <td
+                          class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                        >
+                          <div class="flex justify-center items-center">
+                            <!-- edit -->
+                            <a href="updateanimal?animalID=${animal.animal_id}">
+                              <button
+                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                               >
-                                <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  stroke-width="2"
                                 >
-                                  <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                  >
-                                    <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                    />
-                                  </svg>
-                                </button>
-                              </a>
-                              <!-- delete -->
-                              <div class="pl-2">
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                  />
+                                </svg>
+                              </button>
+                            </a>
+                            <!-- delete -->
+                            <div class="pl-2">
+                              <button
+                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                              >
                                 <a
                                   href="animaldelete?animalID=${animal.animal_id}"
                                   class=""
                                   onclick="return confirmDelete();"
                                 >
-                                  <button
-                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
-                                  >
-                                    <i
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                      stroke-width="2"
-                                      class="h-4 w-4 fas fa-trash-alt"
-                                    ></i></button
-                                ></a>
-                              </div>
+                                  <i
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    class="h-4 w-4 fas fa-trash-alt"
+                                  ></i>
+                                </a>
+                              </button>
                             </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </c:forEach>
-                  </table>
-                </c:otherwise>
-              </c:choose>
-            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </c:forEach>
+                </table>
+              </c:when>
+              <c:otherwise>
+                <table
+                  class="min-w-full border-collapse border border-blue-500"
+                >
+                  <thead class="bg-neutral-100">
+                    <tr class="bg-blue-500 text-white">
+                      <th
+                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
+                      >
+                        Animal_ID
+                      </th>
+
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
+                      >
+                        AnimalCage_ID
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Name
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
+                      >
+                        Date In
+                      </th>
+                      <th
+                        class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Photo
+                      </th>
+                      <th
+                        class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Action
+                      </th>
+                    </tr>
+                  </thead>
+                  <c:forEach var="animal" items="${animals}">
+                    <tbody
+                      class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
+                    >
+                      <tr>
+                        <td
+                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          #${animal.animal_id}
+                        </td>
+
+                        <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        >
+                          ${animal.animalcage_id}
+                        </td>
+                        <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          ${animal.name}
+                        </td>
+
+                        <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        >
+                          ${animal.dayin}
+                        </td>
+
+                        <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                          width="100"
+                        >
+                          <img
+                            src="./animal_picture/${animal.photo}"
+                            width="80"
+                            height="70"
+                          />
+                        </td>
+                        <td
+                          class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                        >
+                          <div class="flex justify-center items-center">
+                            <!-- edit -->
+                            <a href="updateanimal?animalID=${animal.animal_id}">
+                              <button
+                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                              >
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  class="h-5 w-5"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                  stroke-width="2"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                  />
+                                </svg>
+                              </button>
+                            </a>
+                            <!-- delete -->
+                            <div class="pl-2">
+                              <a
+                                href="animaldelete?animalID=${animal.animal_id}"
+                                class=""
+                                onclick="return confirmDelete();"
+                              >
+                                <button
+                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                >
+                                  <i
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    class="h-4 w-4 fas fa-trash-alt"
+                                  ></i></button
+                              ></a>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </c:forEach>
+                </table>
+              </c:otherwise>
+            </c:choose>
           </div>
         </div>
       </div>
