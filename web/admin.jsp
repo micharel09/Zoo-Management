@@ -9,6 +9,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    
+    <a href="TicketController?action=Set_Ticket"><h1>Ticket Manager</h1></a>
 
     <%
         UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");

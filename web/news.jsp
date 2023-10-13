@@ -1,6 +1,6 @@
 <%-- Document : news.jsp Created on : Oct 4, 2023, 1:20:17 PM Author : Quan --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@page
+contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -138,66 +138,76 @@
     <!-- CRUD -->
     <div class="flex flex-col mt-16 ml-36">
       <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-        <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+        <div
+          class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
+        >
           <div class="flex items-center justify-between pb-4 p-5">
-            
-        <form action="searchnews" class="flex items-center">
+            <form action="searchnews" class="flex items-center">
               <label for="search" class="mr-2">Search News_ID:</label>
-              <input type="text" name="newsid" id="newsid"/>
-              <input type="submit" name="action" value="Search"/>
-        </form>
+              <input type="text" name="newsid" id="newsid" />
+              <input type="submit" name="action" value="Search" />
+            </form>
             <!-- add button -->
 
-
-        <form action="createnews" method="get">
-            <input type="submit" value="Create">
-
-        </form>
-          
+            <form action="createnews" method="get">
+              <input type="submit" value="Create" />
+            </form>
           </div>
-         
-    
+          <c:forEach items="${listN}" var="n">
+            <div
+              class="px-2 md:px-6 my-3 w-96 text-slate-700 dark:text-white flex flex-col items-center"
+            >
+              <div
+                class="max-w-xl text-left flex flex-col w-full items-center justify-center md:p-4 md:border border-slate-300 dark:border-slate-600 rounded-xl"
+              >
+                <div
+                  class="w-full rounded-xl flex-col xl:flex-row bg-white dark:bg-slate-900 shadow-md"
+                >
+                  <!-- img -->
 
-   <c:forEach items="${listN}" var="n">
-  <div class="px-2 md:px-6 my-3 w-96 text-slate-700 dark:text-white flex flex-col items-center">
-    <div class="max-w-xl text-left flex flex-col w-full items-center justify-center md:p-4 md:border border-slate-300 dark:border-slate-600 rounded-xl">
-      <div class="w-full rounded-xl flex-col xl:flex-row bg-white dark:bg-slate-900 shadow-md">
-        <div class="rounded-t-xl w-full h-64 shadow-sm bg-cover">
-          <img src="./news_picture/${n.photo}" alt="">
-        </div>
-
-        <div class="mt-10 w-full p-3 flex flex-col justify-between h-auto overflow-auto lg:h-auto">
-          <h1 class="truncate text-left text-xl md:text-lg font-bold leading-normal">
-            ${n.title}
-          </h1>
-          <p class="text-sm overflow-hidden truncate"> ${n.content}</p>
-          <h1>Day: ${n.day} </h1>
-
-          <div class="flex mt-4">
-            <div class="flex ml-10">
-              <div>
-                <a href="updatenews?nid=${n.news_id}">
-                  <button class="mr-5 py-2 px-4 bg-transparent text-green-400 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">Update</button>
-                </a>
-              </div>
-
-              <div>
-                <a href="deletenews?newsid=${n.news_id}">
-                  <button class="py-2 px-4 bg-transparent text-red-600 font-semibold border border-red-600 rounded hover:bg-red-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0">Delete</button>
-                </a>
+                  <div
+                    class="rounded-t-xl w-full h-64 shadow-sm bg-cover"
+                  >                  <img src="./news_picture/${n.photo}" alt="">
+                </div>
+                  <!-- end img -->
+                  <div
+                    class="mt-10 w-full p-3 flex flex-col justify-between h-auto overflow-auto lg:h-auto"
+                  >
+                    <h1
+                      class="truncate text-left text-xl md:text-lg font-bold leading-normal"
+                    >
+                      ${n.title}
+                    </h1>
+                    <p class="text-sm overflow-hidden truncate">${n.content}</p>
+                    <h1>Day: ${n.day}</h1>
+                    <div class="flex mt-4">
+                      <div class="flex ml-10">
+                        <div>
+                          <a href="updatenews?nid=${n.news_id}">
+                            <button
+                              class="mr-5 py-2 px-4 bg-transparent text-green-400 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                            >
+                              Update
+                            </button>
+                          </a>
+                        </div>
+                        <div>
+                          <a href="deletenews?newsid=${n.news_id}">
+                            <button
+                              class="py-2 px-4 bg-transparent text-red-600 font-semibold border border-red-600 rounded hover:bg-red-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                            >
+                              Delete
+                            </button>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </c:forEach>
         </div>
-      </div>
-    </div>
-  </div>
-</c:forEach>
-
-
-
-    
-    <!-- end button -->
       </div>
     </div>
   </body>
