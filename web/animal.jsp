@@ -2,8 +2,8 @@
 <%@page import="java.util.List"%> <%@page import="sample.animal.AnimalDTO"%> <%@
 page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -95,7 +95,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                 <input
                   type="text"
                   id="animalcageID"
-                  name="animalcageID"
+                  name="animalID"
                   placeholder="Search Animal by ID"
                   class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />

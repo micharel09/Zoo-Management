@@ -27,6 +27,9 @@
             <input type="text" name="foodid" value="${schedule.food_id}"/>
             <br>
 
+            Date
+            <input type="date" name="date" value="${schedule.date}"/>
+            <br>
             <input type="submit" value="Submit"/>
 
         </form>

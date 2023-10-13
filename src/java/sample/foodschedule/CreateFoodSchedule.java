@@ -21,7 +21,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
+import sample.animalcage.AnimalCageDAO;
+import sample.animalcage.AnimalCageDTO;
+import sample.food.FoodDAO;
+import sample.food.FoodDTO;
 
 /**
  *
@@ -72,9 +75,14 @@ public class CreateFoodSchedule extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         FoodScheduleDAO d = new FoodScheduleDAO();
-
+        FoodDAO f = new FoodDAO();
+        AnimalCageDAO a = new AnimalCageDAO();
         List<FoodScheduleDTO> list = d.getAllFoodSchedule();
         request.setAttribute("foodschedule", list);
+        List<FoodDTO> listfood = f.getAllFood();
+        List<AnimalCageDTO> listanimalcage = a.getAllAnimalCage();
+        request.setAttribute("food", listfood);
+        request.setAttribute("animalcage", listanimalcage);
         request.getRequestDispatcher("create_foodschedule.jsp").forward(request, response);
     }
 
@@ -89,14 +97,15 @@ public class CreateFoodSchedule extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String time= request.getParameter("time");
+
+        String time = request.getParameter("time");
         String animalcageid = request.getParameter("animalcageid");
         String foodid = request.getParameter("foodid");
+        String date = request.getParameter("date");
 
         FoodScheduleDAO d = new FoodScheduleDAO();
         String scheduleid = d.getNewIdScheduleID();
-        FoodScheduleDTO f = new FoodScheduleDTO(scheduleid, time, animalcageid, foodid);
+        FoodScheduleDTO f = new FoodScheduleDTO(scheduleid, time, animalcageid, foodid, date);
         d.createschedule(f);
         response.sendRedirect("foodschedulecontroller");
 

@@ -31,7 +31,7 @@ public class FoodScheduleDAO {
             ptm = conn.prepareStatement(sql);
             rs = ptm.executeQuery();
             while (rs.next()) {
-                FoodScheduleDTO a = new FoodScheduleDTO(rs.getString("Schedule_ID"), rs.getString("Time"),rs.getString("AnimalCage_ID"), rs.getString("Food_ID"));
+                FoodScheduleDTO a = new FoodScheduleDTO(rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4),rs.getString(5));
                 list.add(a);
             }
         } catch (Exception e) {
@@ -48,7 +48,7 @@ public class FoodScheduleDAO {
             ptm.setString(1, scheduleid);
             rs = ptm.executeQuery();
             if (rs.next()) {
-                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5));
             }
         } catch (Exception e) {
         }
@@ -65,7 +65,7 @@ public class FoodScheduleDAO {
             ptm.setString(1, "%" + scheduleid + "%");
             rs = ptm.executeQuery();
             if (rs.next()) {
-                list.add(new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                list.add(new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)));
             }
         } catch (Exception e) {
         }
@@ -73,15 +73,16 @@ public class FoodScheduleDAO {
         return list;
     }
 
-    public void updateschedule(String scheduleid, String time, String animalcageid ,String foodid) {
-        String sql = "UPDATE FoodSchedule SET Time=?, AnimalCage_ID=?, Food_ID=? WHERE Schedule_ID= ?";
+    public void updateschedule(String scheduleid, String time, String animalcageid , String foodid, String date) {
+        String sql = "UPDATE FoodSchedule SET Time=?, AnimalCage_ID=?, Food_ID=?, Date=? WHERE Schedule_ID= ?";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ptm.setString(1, time);
             ptm.setString(2, animalcageid);
             ptm.setString(3, foodid);
-            ptm.setString(4, scheduleid);
+            ptm.setString(4, date);
+            ptm.setString(5, scheduleid);
             ptm.executeUpdate();
 
         } catch (Exception e) {
@@ -89,8 +90,8 @@ public class FoodScheduleDAO {
     }
 
     public void createschedule(FoodScheduleDTO f) {
-        String sql = " insert into FoodSchedule(Schedule_ID,Time,AnimalCage_ID, Food_ID)\n"
-                + " values(?,?,?,?)";
+        String sql = " insert into FoodSchedule(Schedule_ID,Time,AnimalCage_ID, Food_ID,Date)\n"
+                + " values(?,?,?,?,?)";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
@@ -98,6 +99,7 @@ public class FoodScheduleDAO {
             ptm.setString(2, f.getTime());
             ptm.setString(3, f.getAnimalcage_id());
             ptm.setString(4, f.getFood_id());
+            ptm.setString(5, f.getDate());
             ptm.executeUpdate();
 
         } catch (Exception e) {
@@ -114,7 +116,7 @@ public class FoodScheduleDAO {
             ptm.setString(1, scheduleid);
             rs = ptm.executeQuery();
             if (rs.next()) {
-                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return new FoodScheduleDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5));
             }
         } catch (Exception e) {
         }

@@ -12,78 +12,82 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Schedule List</title>
-</head>
-<body>
-    <h1>Schedule List</h1>
-  
-    <form action="schedulesearch" method="get">
-    <label for="scheduleID">Search Schedule by ID:</label>
-    <input type="text" id="scheduleID" name="scheduleID">
-    <input type="submit" value="Search">
-</form>
+    <head>
+        <meta charset="UTF-8">
+        <title>Schedule List</title>
+    </head>
+    <body>
+        <h1>Schedule List</h1>
 
-        
-    <form action="createfoodschedule" method="get">
+        <form action="schedulesearch" method="get">
+            <label for="scheduleID">Search Schedule by ID:</label>
+            <input type="text" id="scheduleID" name="scheduleID">
+            <input type="submit" value="Search">
+        </form>
+
+
+        <form action="createfoodschedule" method="get">
             <input type="submit" value="Create">
 
         </form>
         <c:choose>
-        <c:when test="${fn:length(schedulelist)>0}">
-            
-            <table border="1">
-                <tr>
-                    <th>Schedule ID</th>
-                    <th>Time</th>
-                    <th>Animal Cage ID</th>
-                    <th>Food ID</th>
-                    <!-- Add more columns for other animal attributes -->
-                </tr>
-                <c:forEach var="schedule" items="${schedulelist}">
+            <c:when test="${fn:length(schedulelist)>0}">
+
+                <table border="1">
                     <tr>
-                        <td>${schedule.schedule_id}</td>
-                        <td>${schedule.time}</td>
-                        <td>${schedule.animalcage_id}</td>
-                        <td>${schedule.food_id}</td>
-                                                <td>
-                         <a href="scheduledelete?scheduleID=${schedule.schedule_id}">Delete</a>
-                        </td>
-                        <td>
-                            <a href="updateschedule?scheduleID=${schedule.schedule_id}">Update</a>
-                        </td>
+                        <th>Schedule ID</th>
+                        <th>Time</th>
+                        <th>Animal Cage ID</th>
+                        <th>Food ID</th>
+                        <th>Date</th>
                         <!-- Add more columns for other animal attributes -->
                     </tr>
-                </c:forEach>
-            </table>
-        </c:when>
-        <c:otherwise>
-            <table border="1">
-                <tr>
-                    <th>Schedule ID</th>
-                    <th>Time</th>
-                    <th>Animal Cage ID</th>
-                    <th>Food ID</th>
-                    <!-- Add more columns for other animal attributes -->
-                </tr>
-                <c:forEach var="schedule" items="${schedules}">
+                    <c:forEach var="schedule" items="${schedulelist}">
+                        <tr>
+                            <td>${schedule.schedule_id}</td>
+                            <td>${schedule.time}</td>
+                            <td>${schedule.animalcage_id}</td>
+                            <td>${schedule.food_id}</td>
+                            <td>${schedule.date}</td>
+                            <td>
+                                <a href="scheduledelete?scheduleID=${schedule.schedule_id}">Delete</a>
+                            </td>
+                            <td>
+                                <a href="updateschedule?scheduleID=${schedule.schedule_id}">Update</a>
+                            </td>
+                            <!-- Add more columns for other animal attributes -->
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:when>
+            <c:otherwise>
+                <table border="1">
                     <tr>
-                        <td>${schedule.schedule_id}</td>
-                        <td>${schedule.time}</td>
-                        <td>${schedule.animalcage_id}</td>
-                        <td>${schedule.food_id}</td>
-                                                <td>
-                         <a href="scheduledelete?scheduleID=${schedule.schedule_id}">Delete</a>
-                        </td>
-                        <td>
-                            <a href="updateschedule?scheduleID=${schedule.schedule_id}">Update</a>
-                        </td>
+                        <th>Schedule ID</th>
+                        <th>Time</th>
+                        <th>Animal Cage ID</th>
+                        <th>Food ID</th>
+                        <th>Date</th>
                         <!-- Add more columns for other animal attributes -->
                     </tr>
-                </c:forEach>
-            </table>
-        </c:otherwise>
-    </c:choose>
+                    <c:forEach var="schedule" items="${schedules}">
+                        <tr>
+                            <td>${schedule.schedule_id}</td>
+                            <td>${schedule.time}</td>
+                            <td>${schedule.animalcage_id}</td>
+                            <td>${schedule.food_id}</td>
+                            <td>${schedule.date}</td>
+                            <td>
+                                <a href="scheduledelete?scheduleID=${schedule.schedule_id}">Delete</a>
+                            </td>
+                            <td>
+                                <a href="updateschedule?scheduleID=${schedule.schedule_id}">Update</a>
+                            </td>
+                            <!-- Add more columns for other animal attributes -->
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:otherwise>
+        </c:choose>
     </body>
 </html>

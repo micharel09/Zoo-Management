@@ -45,10 +45,11 @@ public class UpdateSchedule extends HttpServlet {
         String time= request.getParameter("time");
         String animalcageid = request.getParameter("animalcageid");
         String foodid = request.getParameter("foodid");
+        String date = request.getParameter("date");
 
         FoodScheduleDAO d = new FoodScheduleDAO();
 
-        d.updateschedule(scheduleid, time, animalcageid, foodid);
+        d.updateschedule(scheduleid, time, animalcageid, foodid,date);
 
         response.sendRedirect("foodschedulecontroller");
 

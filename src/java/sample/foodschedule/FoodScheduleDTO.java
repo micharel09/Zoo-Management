@@ -14,15 +14,17 @@ public class FoodScheduleDTO {
     private String time;
     private String animalcage_id;
     private String food_id;
+    private String date;
 
     public FoodScheduleDTO() {
     }
 
-    public FoodScheduleDTO(String schedule_id, String time, String animalcage_id, String food_id) {
+    public FoodScheduleDTO(String schedule_id, String time, String animalcage_id, String food_id, String date) {
         this.schedule_id = schedule_id;
         this.time = time;
         this.animalcage_id = animalcage_id;
         this.food_id = food_id;
+        this.date = date;
     }
 
     public String getSchedule_id() {
@@ -57,9 +59,17 @@ public class FoodScheduleDTO {
         this.food_id = food_id;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
-        return "FoodScheduleDTO{" + "schedule_id=" + schedule_id + ", time=" + time + ", animalcage_id=" + animalcage_id + ", food_id=" + food_id + '}';
+        return "FoodScheduleDTO{" + "schedule_id=" + schedule_id + ", time=" + time + ", animalcage_id=" + animalcage_id + ", food_id=" + food_id + ", date=" + date + '}';
     }
 
     

@@ -7,6 +7,7 @@ package sample.cart;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 /**
  *
@@ -96,7 +96,8 @@ public class CheckoutServlet extends HttpServlet {
 
         Cart cart = new Cart(txt, list);
         request.setAttribute("cart", cart);
-        String date = request.getParameter("date");
+        LocalDate curDate = LocalDate.now();
+        String date = curDate.toString();
         String date1 = request.getParameter("date1");
         String email = request.getParameter("email");
         String fullname = request.getParameter("fullname");
@@ -130,7 +131,7 @@ public class CheckoutServlet extends HttpServlet {
 
         double totalMoney = cart.getTotalMoney(); // Store the totalMoney value
         double discountedTotal = totalMoney - (totalMoney * discount / 100);
-        
+
         String orderid = d.getNewIdOrder();
         Order o = new Order(orderid, email, fullname, phone, date, discountedTotal);
         d.addOrder(o, cart);
