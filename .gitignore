@@ -1,32 +1,9 @@
 dist/prj301_T4S3_JSP_tmp.war
 
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+### NetBean###
 /nbproject/private/
-build.xml
 dist/prj301_T4S3_JSP_tmp.war
 /build/
 /dist/
-.gitignore
+### VS Code ###
+.vscode/
