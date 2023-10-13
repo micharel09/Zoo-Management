@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import sample.animal.AnimalDTO;
@@ -21,6 +22,7 @@ import sample.utils.DBUtils;
  */
 public class FeedbackDAO {
       //PRINT
+    Connection conn = null;
     Connection conn = null;
     PreparedStatement ptm = null;
     ResultSet rs = null;
@@ -80,6 +82,7 @@ public class FeedbackDAO {
 
 
 
+
     public void createfeedback(String title, String purpose, String date, String processnote, String employee_id) {
         LocalDate curDate = LocalDate.now();
         date = curDate.toString();
@@ -103,6 +106,7 @@ public class FeedbackDAO {
     }
     
     public FeedbackDTO getFeedbackByID(String id) {
+        String sql = "select * from Feedback where FeedBack_ID = ?";
         String sql = "select * from Feedback where FeedBack_ID = ?";
         try {
             conn = DBUtils.getConnection();

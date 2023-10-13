@@ -35,7 +35,8 @@
       <script
         src="https://kit.fontawesome.com/5b0b34b925.js"
         crossorigin="anonymous"
-      ></script>
+      ></script> 
+      
       <title>Create News</title>
     </head>
     <body class="bg-gray-500">

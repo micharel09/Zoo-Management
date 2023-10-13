@@ -1,6 +1,11 @@
 <%-- Document : news.jsp Created on : Oct 4, 2023, 1:20:17 PM Author : Quan --%>
+<<<<<<< HEAD
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+=======
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@page
+contentType="text/html" pageEncoding="UTF-8"%>
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,6 +50,41 @@
       href="https://fonts.googleapis.com/css2?family=FontName&display=swap"
       rel="stylesheet"
     />
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
+
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
     <title>News</title>
     <%@ include file="components/header.html"%> <%@ include
     file="components/breadcrumb.html" %>
@@ -140,6 +180,7 @@
       <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
         <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
           <div class="flex items-center justify-between pb-4 p-5">
+<<<<<<< HEAD
             
         <form action="searchnews" class="flex items-center">
               <label for="search" class="mr-2">Search News_ID:</label>
@@ -158,6 +199,22 @@
          
     <!-- table -->
     <table class="min-w-full">
+=======
+            <form action="searchnews" class="flex items-center">
+              <label for="search" class="mr-2">Search News_ID:</label>
+              <input type="text" name="newsid" id="newsid" />
+              <input type="submit" name="action" value="Search" />
+            </form>
+            <!-- add button -->
+
+            <form action="createnews" method="get">
+              <input type="submit" value="Create" />
+            </form>
+          </div>
+
+          <!-- table -->
+          <table class="min-w-full">
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
             <thead>
               <tr>
                 <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
@@ -180,6 +237,7 @@
                 </th>
               </tr>
             </thead>
+<<<<<<< HEAD
     
    <c:forEach items="${listN}" var="n">
             <tbody class="bg-white">
@@ -249,6 +307,103 @@
         </div>
         
     <!-- Button: Confirm-->
+=======
+
+            <c:forEach items="${listN}" var="n">
+              <tbody class="bg-white">
+                <tr>
+                  <td
+                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    ${n.news_id}
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    ${n.title}
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    ${n.content}
+                  </td>
+                  <td
+                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    ${n.day}
+                  </td>
+                  <td
+                    class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    <img
+                      src="./news_picture/${n.photo}"
+                      width="80"
+                      height="70"
+                    />
+                  </td>
+
+                  <td
+                    class="px-2 py-4 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                  >
+                    <div class="flex items-center">
+                      <!-- UPDATE -->
+                      <button
+                        lass="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                      >
+                        <a href="updatenews?nid=${n.news_id}">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                            />
+                          </svg>
+                        </a>
+                      </button>
+
+                      <!-- delete -->
+                      <div class="pl-4">
+                        <button
+                          class="flex p-2.5 bg-red-600 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                        >
+                          <a
+                            href="deletenews?newsid=${n.news_id}"
+                            class=""
+                            onclick="return confirmDelete();"
+                          >
+                            <i
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              class="h-4 w-4 fas fa-trash-alt"
+                            ></i>
+                          </a>
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                  <script>
+                    function confirmDelete() {
+                      var result = confirm("Do you want to delete this?");
+                      return result;
+                    }
+                  </script>
+                </tr>
+              </tbody>
+            </c:forEach>
+          </table>
+        </div>
+
+        <!-- Button: Confirm-->
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
         <div class="flex justify-end mt-6">
             <div class="pr-2">
                 <button class="px-6 py-3 leading-5 text-white transition-colors duration-900 transform bg-gray-700 rounded-md hover:bg-gray-500 focus:outline-none focus:bg-gray-600">
@@ -260,9 +415,14 @@
                 </button>
           </div>
         </div>
+<<<<<<< HEAD
         
     
     <!-- end button -->
+=======
+
+        <!-- end button -->
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
       </div>
     </div>
   </body>
