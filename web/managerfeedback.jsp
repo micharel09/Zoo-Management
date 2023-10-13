@@ -80,47 +80,8 @@
 	}
 }
   </style>
-<<<<<<< HEAD
   
   
-=======
-  <!-- loading -->
-  <iframe
-    id="loading-iframe"
-    src="components/loading.html"
-    frameborder="0"
-    style="
-      border: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: 999;
-      background: transparent; /* Make the iframe background transparent */
-      pointer-events: none; /* Allow interaction with elements behind the iframe */
-      transition: opacity 1s;
-    "
-  ></iframe>
-
-  <script>
-    window.addEventListener("load", function () {
-      // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-      var iframe = document.getElementById("loading-iframe");
-      if (iframe) {
-        iframe.style.zIndex = 0;
-        iframe.classList.add("hidden-iframe");
-      }
-    });
-  </script>
-  <style>
-    .hidden-iframe {
-      opacity: 0;
-    }
-  </style>
-  <!-- end loading -->
-
->>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
   <body class="w-[1500px] block overflow-x-hidden mx-auto">
     <nav class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
         <a href="managercontroller" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
@@ -327,7 +288,6 @@
             >
              <!-- table -->
 
-<<<<<<< HEAD
 <table class="min-w-full">
   <thead>
     <tr>
@@ -400,83 +360,6 @@
     </tr>
   </tbody>
    </c:forEach>
-=======
-              <table class="min-w-full">
-                <thead>
-                  <tr>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Tiltle
-                    </th>
-                    <th
-                      class="break-all px-6 py-3 text-xs font-medium leading-4 text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Purpose
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Date
-                    </th>
-                    <th
-                      class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      ProcessNote
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                    >
-                      Employee_ID
-                    </th>
-                    <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                    >
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <c:forEach var="f" items="${listF}">
-                  <tbody class="bg-white">
-                    <tr>
-                      <td
-                        class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
-                      >
-                        ${f.title}
-                      </td>
-                      <td
-                        class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
-                      >
-                        ${f.purpose}
-                      </td>
-                      <td
-                        class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                      >
-                        ${f.date}
-                      </td>
-                      <td
-                        class="px-6 py-4 text-xs leading-5 text-gray-500 border-b border-gray-200 border-r"
-                      >
-                        ${f.processnote}
-                      </td>
-                      <td
-                        class="px-6 py-4 font-bold text-center leading-5 text-black border-b border-gray-200 border-r"
-                      >
-                        ${f.employee_id}
-                      </td>
-                      <td
-                        class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r"
-                      >
-                        ${f.status}
-                      </td>
-                      <td>
-                        <a href="update?fid=${f.feedback_id}"> update</a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </c:forEach>
-              </table>
->>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
 
 </table>
           

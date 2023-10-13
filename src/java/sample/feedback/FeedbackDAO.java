@@ -23,7 +23,7 @@ import sample.utils.DBUtils;
 public class FeedbackDAO {
       //PRINT
     Connection conn = null;
-    Connection conn = null;
+    
     PreparedStatement ptm = null;
     ResultSet rs = null;
     
@@ -107,7 +107,7 @@ public class FeedbackDAO {
     
     public FeedbackDTO getFeedbackByID(String id) {
         String sql = "select * from Feedback where FeedBack_ID = ?";
-        String sql = "select * from Feedback where FeedBack_ID = ?";
+        
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);

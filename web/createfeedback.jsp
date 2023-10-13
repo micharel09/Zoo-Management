@@ -25,20 +25,12 @@
             
             <br>
             <input type="hidden" name="date">
-<<<<<<< HEAD
             
             <br>
           
             <input type="hidden" name="processnote"/>
             
             <br>
-=======
-            <br>
-          
-            <input type="hidden" name="processnote"/>
-            
-            <br>
->>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
             <% UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER"); %>
             employeeid : <%=loginUser.getEmployee_id()%> 
             
