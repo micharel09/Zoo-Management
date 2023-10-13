@@ -66,7 +66,7 @@ contentType="text/html" pageEncoding="UTF-8"%>
     <!-- end loading -->
     <title>Update Animal</title>
   </head>
-  <body class="bg-green-300">
+  <body class="bg-green-500">
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 mx-auto bg-white rounded-md shadow-md mt-20 w-1/2">
         <header class="border-b border-gray-100 px-10 flex items-center">

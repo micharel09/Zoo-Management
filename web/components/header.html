@@ -3,10 +3,47 @@
   <head>
     <!-- Gọi tệp head.html -->
     <link rel="import" href="components/header.html" />
+    <!-- Tailwind -->
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5b0b34b925.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .header {
+        background-image: url("../img/header.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      /* Đổi màu chữ thành trắng */
+      .navbar-text {
+        color: white;
+      }
+
+      /* Add any additional styles as needed */
+    </style>
   </head>
   <body class="w-[1500] block overflow-x-hidden mx-auto">
     <!-- header -->
-    <nav class="border-gray-200 bg-green-600">
+    <nav class="header leading-6 h-24">
       <div class="flex p-1">
         <!-- logo -->
         <a href="homepage.jsp" class="flex items-center justify-center w-1/2">
@@ -30,7 +67,7 @@
             <li>
               <a
                 href="homepage.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                class="navbar-text block py-4 pl-4 text-3xl text-gray-900 rounded before:ease relative h-18 w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
                 aria-current="page"
                 >HOME</a
               >
@@ -38,29 +75,30 @@
             <li>
               <a
                 href="About.jsp"
-                class="navbar-text block py-4 pl-3 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                class="navbar-text block py-4 pl-2 text-3xl text-gray-900 rounded before:ease relative h-18 w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
                 >ABOUT</a
               >
             </li>
             <li>
               <a
                 href="animal.jsp"
-                class="navbar-text block py-4 pr-4 pl-2 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                class="navbar-text block py-4 pr-2 pl-2 text-3xl text-gray-900 rounded before:ease relative h-18 w-30 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-10 before:translate-x-12 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
                 >ANIMAL</a
               >
             </li>
             <li>
               <a
                 href="news.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                class="navbar-text block py-4 pl-4 text-3xl text-gray-900 rounded before:ease relative h-18 w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
                 >NEWS</a
               >
             </li>
             <li>
               <a
                 href="Map.jsp"
-                class="navbar-text block py-4 pl-6 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
+                class="navbar-text block py-4 pl-6 text-3xl text-gray-900 rounded before:ease relative h-18 w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
                 >MAP</a
+              >
             </li>
           </ul>
         </div>

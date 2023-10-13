@@ -69,7 +69,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end loading -->
     <title>Create Page</title>
   </head>
-  <body class="bg-green-400">
+  <body class="bg-green-500">
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
