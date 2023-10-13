@@ -64,6 +64,22 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       }
     </style>
     <!-- end loading -->
+    <!-- bg -->
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+
+      .custom-bg {
+        /* Đường dẫn của hình ảnh nền */
+        background-image: url("img/checkoutbg.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: green;
+      }
+    </style>
+
+    <!-- end bg -->
     <title>Choose ticket</title>
     <style>
       [x-cloak] {
@@ -75,12 +91,15 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         background-position: center center;
         background-attachment: fixed; /* Để giữ ảnh nền tĩnh khi cuộn trang */
       }
+      body {
+        overflow: hidden;
+      }
     </style>
     <%@ include file="components/header.html"%> <%@ include
     file="components/breadcrumb.html" %>
   </head>
   <body>
-    <div class="w-[1500] mx-auto bg-gray-50 h-screen .form-bg">
+    <div class="w-[1500] mx-auto bg-gray-50 h-screen custom-bg">
       <!-- Progress Steps -->
       <div class="w-full">
         <div class="flex justify-center py-4 bg-white rounded-b-lg">
@@ -186,10 +205,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!-- end Progress Steps -->
       <!-- main -->
       <div class="flex flex-row justify-center space-x-8">
-        <div class="relative m-3 flex flex-wrap mx-auto justify-center">
+        <div class="relative flex flex-wrap mx-auto justify-center">
           <form name="f" action="" method="post">
-            <hr />
-            <div class="flex space-x-4">
+            <div class="flex space-x-4 mt-16">
               <!-- tickets select 1-->
               <article
                 class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
