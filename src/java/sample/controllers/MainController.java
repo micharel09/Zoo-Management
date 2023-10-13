@@ -46,6 +46,10 @@ public class MainController extends HttpServlet {
     private static final String SENDNOTIFICATION_CONTROLLER = "Send_Notification_Controller";
     
       private static final String BACK_ADMINPAGE = "BackAdminPage";
+      
+      
+    
+      
    
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +62,7 @@ public class MainController extends HttpServlet {
                 url = LOGIN_PAGE;
             }  else if (SENDNOTIFICATION.equals(action)) {
                 url = SENDNOTIFICATION_CONTROLLER;
-            } else if (LOGIN.equals(action)) {
+            }else if (LOGIN.equals(action)) {
                 url = LOGIN_CONTROLLER;
             }  else if (SEARCH.equals(action)) {
                 url = SEARCH_CONTROLLER;
