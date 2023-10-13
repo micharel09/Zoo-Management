@@ -180,8 +180,8 @@
     <body class="antialiased font-sans bg-gray-200">
       <div class="container mx-auto px-4 sm:px-8">
         <div style="" class="py-8 ml-28">
-          <div></div>
-          <div class="my-2 flex sm:flex-row flex-col">
+         
+        <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">
               <div class="relative">
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -199,80 +199,110 @@
                 </div>
               </div>
             </div>
+            
             <div class="block relative">
-              <span
-                class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-4 w-4 fill-current text-gray-500"
-                >
-                  <path
-                    d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-                  ></path>
+              <span class="h-full absolute inset-y-0 left-0 flex items-center pl-2">
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current text-gray-500">
+                    <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"></path>
                 </svg>
               </span>
-              <input
-                placeholder="Search"
-                class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-              />
-            </div>
+              <input placeholder="Search" class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"/>             
+            </div>             
           </div>
+            <div class="p-2 md:w-40 ">
+        <div class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100">
+           
+            <div>
+              <p class="  ">
+               <a  href="createfeedback.jsp" class="text-xl font-bold ml-2"> Create</a>
+              </p>
+              
+            </div>
+        </div>
+    </div>
+           
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
             >
               <!-- table -->
                
-              <table class="min-w-full">
-                <thead>
-                  <tr>
-                 
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
-                      Title
-                    </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
-                      Purpose
-                    </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
-                      Date
-                    </th>
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r">
-                      ProcessNote
-                    </th>
+             <table class="min-w-full">                
+  <thead>
+    <tr>
+      
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Tiltle
+      </th>
+      <th
+        class="break-all px-6 py-3 text-xs font-medium leading-4  text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Purpose
+      </th>
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        Date
+      </th>
+      <th
+        class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+      >
+        ProcessNote
+      </th>
 
-                    <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-<c:forEach items="${listF}" var="f">
-                <tbody class="bg-white">
-                  <tr>
+      <th
+        class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+      >
+        Status
+      </th>
+    </tr>
+  </thead>
+ <c:forEach var="f" items="${ListA}">
+  <tbody class="bg-white">
+    <tr>
+     
+      <td class="break-words text-xs px-6 py-4  border-b border-gray-200 border-r">
+          ${f.title}
+      </td>
+      <td class="  break-words text-xs px-6 py-4 border-b border-gray-200 border-r">
+          ${f.purpose}
+      </td>
+      <td class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
+        ${f.date}
+      </td>
+      <td class="break-all text-xs px-6 py-4  border-b border-gray-200 border-r">
+          ${f.processnote}
+      </td>
+      <td class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r">
+        ${f.status}
+      </td>
+     
+    
+    </tr>
+  </tbody>
+   </c:forEach>
+</table>
               
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.title}
-                    </td>
-                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.purpose}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.date}
-                    </td>
-                    <td class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
-                      ${f.processnote}
-                    </td>
-                   
-                    <td class="px-2 py-4 text-sm font-bold text-center text-green-500 leading-5 whitespace-no-wrap border-b border-gray-200">
-                      ${f.status}      
-                    </td>                 
-                  </tr>
-                </tbody>
-                 </c:forEach>
-              </table>
-              <a href="createfeedback.jsp"> create</a>
-              
-            </div>
+                 <!-- component -->
+
+        <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
+            <nav>
+                <ul class="flex">
+                     <c:forEach begin= "1" end = "${endP}" var="i">
+                    <li>
+                        <a class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300" 
+                           href="ListTrainerFeedback?index=${i}" aria-label="Previous">
+                            ${i}
+                        </a>
+                    </li>
+                   </c:forEach>
+                </ul>
+            </nav>
+        
+      </div>
+            
           </div>
         </div>
           

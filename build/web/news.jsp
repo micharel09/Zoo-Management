@@ -64,7 +64,7 @@
       </a>
 
       <a
-        href="/FeedBackView.jsp"
+        href="/ListFeedback"
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
       >
         <!-- HeroIcon - Chart Bar -->
@@ -86,7 +86,7 @@
       </a>
 
       <a
-        href="/news.jsp"
+        href="/NewsControl"
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50"
       >
         <!-- HeroIcon - Cog-6-tooth -->
