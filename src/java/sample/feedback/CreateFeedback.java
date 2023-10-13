@@ -78,6 +78,7 @@ public class CreateFeedback extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String title = request.getParameter("title");
         String purpose = request.getParameter("purpose");
         String date = request.getParameter("date");
@@ -87,7 +88,7 @@ public class CreateFeedback extends HttpServlet {
 
         FeedbackDAO dao = new FeedbackDAO();
         dao.createfeedback( title, purpose, date, processnote, employeeid);
-        response.sendRedirect("TrainerFeedbackController");
+        response.sendRedirect("ListTrainerFeedback");
 
     }
 

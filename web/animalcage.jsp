@@ -67,7 +67,11 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     <!-- end loading -->
     <title>Animal Cage List</title>
   </head>
+<<<<<<< HEAD
+  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-300">
+=======
   <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
     <main class="antialiased font-sans bg-white">
       <div class="container mx-auto px-4 sm:px-8">
         <div class="flex justify-center">
@@ -138,6 +142,51 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
           <!-- main -->
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+<<<<<<< HEAD
+            <div
+              class="inline-block min-w-full shadow border-2 rounded-lg overflow-hidden"
+            >
+              <!-- table -->
+              <c:choose>
+                <c:when test="${fn:length(animalcagelist) > 0}">
+                  <table
+                    class="min-w-full border-collapse border border-blue-500"
+                  >
+                    <thead class="bg-neutral-100">
+                      <tr class="bg-blue-500 text-white">
+                        <th
+                          class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                          style="width: 100px"
+                        >
+                          AnimalCage_ID
+                        </th>
+                        <th
+                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        >
+                          Area_ID
+                        </th>
+                        <th
+                          class="px-10 pl-8 py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                          style="width: 100px"
+                        >
+                          Employee_ID
+                        </th>
+                        <th
+                          class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
+                        >
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <c:forEach var="animalcage" items="${animalcagelist}">
+                      <tbody
+                        class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300"
+=======
             <!-- table -->
             <c:choose>
               <c:when test="${fn:length(animalcagelist) > 0}">
@@ -149,6 +198,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                       <th
                         class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 100px"
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
                       >
                         AnimalCage_ID
                       </th>
@@ -186,6 +236,32 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                           ${animalcage.animalcage_id}
                         </td>
 
+<<<<<<< HEAD
+                          <td
+                            class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                          >
+                            ${animalcage.area_id}
+                          </td>
+                          <td
+                            class="px-8 py-10 text-2xl leading-5 text-gray-500 border-b border-gray-200 border-r"
+                          >
+                            ${animalcage.employee_id}
+                          </td>
+                          <td
+                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
+                          >
+                            ${animalcage.name}
+                          </td>
+                          <td
+                            class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                          >
+                            <div class="flex justify-center items-center">
+                              <!-- edit --><a
+                                href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
+                              >
+                                <button
+                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+=======
                         <td
                           class="px-6 py-4 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                         >
@@ -218,6 +294,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
                                   stroke-width="2"
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
                                 >
                                   <path
                                     stroke-linecap="round"
@@ -241,9 +318,39 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                     stroke-width="2"
+<<<<<<< HEAD
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                    />
+                                  </svg></button
+                              ></a>
+                              <!-- delete -->
+                              <div class="pl-2">
+                                <a
+                                  href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                  class=""
+                                  onclick="return confirmDelete();"
+                                >
+                                  <button
+                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  >
+                                    <i
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      class="h-4 w-4 fas fa-trash-alt"
+                                    ></i></button
+                                ></a>
+                              </div>
+=======
                                     class="h-4 w-4 fas fa-trash-alt"
                                   ></i></button
                               ></a>
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
                             </div>
                           </div>
                         </td>
@@ -314,6 +421,23 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                           ${animalcage.employee_id}
                         </td>
 
+<<<<<<< HEAD
+                          <td
+                            class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
+                          >
+                            ${animalcage.name}
+                          </td>
+                          <td
+                            class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                          >
+                            <div class="flex justify-center items-center">
+                              <!-- edit -->
+                              <a
+                                href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
+                              >
+                                <button
+                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+=======
                         <td
                           class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
                         >
@@ -337,6 +461,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                   viewBox="0 0 24 24"
                                   stroke="currentColor"
                                   stroke-width="2"
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
                                 >
                                   <path
                                     stroke-linecap="round"
@@ -361,9 +486,40 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
                                     stroke-width="2"
+<<<<<<< HEAD
+                                  >
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                    />
+                                  </svg>
+                                </button>
+                              </a>
+                              <!-- delete -->
+                              <div class="pl-2">
+                                <a
+                                  href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
+                                  class=""
+                                  onclick="return confirmDelete();"
+                                >
+                                  <button
+                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  >
+                                    <i
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                      class="h-4 w-4 fas fa-trash-alt"
+                                    ></i></button
+                                ></a>
+                              </div>
+=======
                                     class="h-4 w-4 fas fa-trash-alt"
                                   ></i></button
                               ></a>
+>>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
                             </div>
                           </div>
                         </td>
