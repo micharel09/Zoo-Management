@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,6 +8,7 @@ package sample.cart;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +27,6 @@ public class DAO {
     private static final String List_Ticket = "select * from ticket";
     private static final String Ticket_ID = "select * from ticket where Ticket_ID = ?";
 
-    
     Connection conn = null;
     PreparedStatement ptm = null;
     ResultSet rs = null;
@@ -36,7 +35,6 @@ public class DAO {
         List<Product> list = new ArrayList<>();
         String sql = List_Ticket;
         try {
-            
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             ResultSet rs = ptm.executeQuery();
@@ -217,4 +215,70 @@ public class DAO {
         }
         return tmp;
     }
+
+//    String getPrice(String tid) {
+//        String sql = "select Price from Ticket where Ticket_ID=?";
+//     //select Price from Ticket where Ticket_ID='T01'
+//      String tmp="";
+//        try {
+//            conn = DBUtils.getConnection();
+//            ptm = conn.prepareStatement(sql);
+//            ptm.setString(1,tid);
+//            rs = ptm.executeQuery();
+//            if(rs.next()){
+//                tmp= rs.getString("Price");
+//               
+//            }else{
+//                tmp="0";
+//            }
+//            
+//        } catch (Exception e) {
+//        }
+//        return tmp;
+//    }
+
+   
+    
+    public String getPrice(String search) throws SQLException {
+        String tmp = "";
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("select Price from Ticket where Ticket_ID=?");
+                ptm.setString(1,  search );
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    tmp = rs.getString("Price");
+
+                } else {
+                    tmp = "0";
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return tmp;
+    }
+
+    void addTicketDetail(OrderDetail od, Cart cart, Order o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

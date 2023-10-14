@@ -149,6 +149,17 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                       <th
                         class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 100px"
+            <!-- table -->
+            <c:choose>
+              <c:when test="${fn:length(animalcagelist) > 0}">
+                <table
+                  class="min-w-full border-collapse border border-blue-500"
+                >
+                  <thead class="bg-neutral-100">
+                    <tr class="bg-blue-500 text-white">
+                      <th
+                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 100px"
                       >
                         AnimalCage_ID
                       </th>

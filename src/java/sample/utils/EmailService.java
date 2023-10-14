@@ -28,13 +28,13 @@ public class EmailService {
         properties.put("mail.smtp.ssl.protocols", "TLSv1.2");
         Session session = Session.getInstance(properties, new Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("zoohcm@gmail.com","miqgbauxealftajx");
+                return new PasswordAuthentication("worldwidezoolc@gmail.com","wadwxhmaautmwhad");
                 // đăng nhập gmail
             }
         });
         try {
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("zoohcm@gmail.com"));
+            message.setFrom(new InternetAddress("worldwidezoolc@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(MimeUtility.encodeText(subject, "UTF-8", "B"));
             message.setContent(content, "text/html; charset=utf-8");
