@@ -91,9 +91,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         background-position: center center;
         background-attachment: fixed; /* Để giữ ảnh nền tĩnh khi cuộn trang */
       }
-      body {
-        overflow: hidden;
-      }
+   
     </style>
     <%@ include file="components/header.html"%> <%@ include
     file="components/breadcrumb.html" %>
