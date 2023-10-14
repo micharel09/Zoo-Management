@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%> <%@ page language="java"
-contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
-prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -138,17 +138,6 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
           <!-- main -->
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-            <!-- table -->
-            <c:choose>
-              <c:when test="${fn:length(animalcagelist) > 0}">
-                <table
-                  class="min-w-full border-collapse border border-blue-500"
-                >
-                  <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
-                      <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
             <!-- table -->
             <c:choose>
               <c:when test="${fn:length(animalcagelist) > 0}">
