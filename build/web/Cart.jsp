@@ -85,15 +85,6 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       [x-cloak] {
         display: none;
       }
-      .form-bg {
-        background-image: url("img/checkoutbg.png"); /* Thay đổi đường dẫn hình ảnh của bạn */
-        background-size: cover;
-        background-position: center center;
-        background-attachment: fixed; /* Để giữ ảnh nền tĩnh khi cuộn trang */
-      }
-      body {
-        overflow: hidden;
-      }
     </style>
     <%@ include file="components/header.html"%> <%@ include
     file="components/breadcrumb.html" %>
@@ -204,233 +195,241 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       </div>
       <!-- end Progress Steps -->
       <!-- main -->
-      <div class="flex flex-row justify-center space-x-8">
-        <div class="relative flex flex-wrap mx-auto justify-center">
-          <form name="f" action="" method="post">
-            <div class="flex space-x-4 mt-16">
-              <!-- tickets select 1-->
-              <article
-                class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
-              >
-                <c:forEach items="${requestScope.data}" var="p" begin="1">
-                  <c:set var="id" value="${p.tid}" />
-                  <div
-                    class="relative flex items-end overflow-hidden rounded-xl"
-                  >
-                    <img
-                      class="h-80 rounded-2xl w-full object-cover"
-                      src="img/childticket.jpg"
-                    />
-                  </div>
-                  <div class="mt-4 mb-2 flex justify-between items-center">
-                    <div>
-                      <p class="text-2xl font-semibold text-gray-900 mb-0 pl-2">
-                        ${p.type}
-                      </p>
-                      <p class="text-md text-gray-800 mt-0 pl-2">
-                        <fmt:formatNumber pattern="##.#" value="${(p.price)}" />
-                      </p>
-                    </div>
-                    <!-- button select -->
-
-                    <div class="flex items-center gap-4">
-                      <!-- quantity -->
-                      <div class="mx-auto ml-6">
-                        <button
-                          class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-l-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
-                          onclick="changeQuantityTicket1('${id}', -1)"
-                          type="button"
-                        >
-                          -
-                        </button>
-                        <input
-                          class="text-center w-10"
-                          type="text"
-                          name="num"
-                          data-id="${id}"
-                          value="0"
-                          onchange="validateNumberTicket1(this)"
-                        />
-                        <button
-                          class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-r-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
-                          onclick="changeQuantityTicket1('${id}', 1)"
-                          type="button"
-                        >
-                          +
-                        </button>
-                      </div>
-
-                      <!-- Thay đổi tên các hàm và thuộc tính cho Ticket 1 -->
-                      <script>
-                        var quantitiesTicket1 = {};
-
-                        function validateNumberTicket1(input) {
-                          var value = input.value;
-                          var intValue = parseInt(value);
-                          if (isNaN(intValue) || intValue < 0) {
-                            input.value = 0;
-                          }
-                        }
-
-                        function changeQuantityTicket1(id, delta) {
-                          if (!quantitiesTicket1[id]) {
-                            quantitiesTicket1[id] = 0;
-                          }
-
-                          var quantityInput = document.querySelector(
-                            `[data-id="${id}"]`
-                          );
-                          var currentValue = parseInt(quantityInput.value);
-
-                          quantitiesTicket1[id] = currentValue + delta;
-
-                          if (quantitiesTicket1[id] >= 0) {
-                            quantityInput.value = quantitiesTicket1[id];
-                          }
-                        }
-
-                        function buyTicket1(id) {
-                          var inputNum = document.querySelector(
-                            'input[data-id="' + id + '"]'
-                          );
-                          var m = quantitiesTicket1[id];
-                          document.f.action = "buy?id=" + id + "&num=" + m;
-                          document.f.submit();
-                        }
-                      </script>
-
-                      <!-- end quantity -->
-                      <!-- buy ticket -->
-                      <input
-                        type="button"
-                        class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                        onclick="buy('${id}')"
-                        value="Buy Ticket"
-                      />
-                      <!-- end buy -->
-                    </div>
-                  </div>
-                </c:forEach>
-              </article>
-
-              <!-- tickets select 2-->
-              <article
-                class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
-              >
-                <c:forEach items="${requestScope.data}" var="p" end="0">
-                  <c:set var="id" value="${p.tid}" />
-                  <div
-                    class="relative flex items-end overflow-hidden rounded-xl"
-                  >
-                    <img
-                      class="h-80 rounded-2xl w-full object-cover"
-                      src="img/adultticket.jpg"
-                    />
-                  </div>
-                  <div class="mt-4 mb-2 flex justify-between items-center">
-                    <div>
-                      <p class="text-2xl font-semibold text-gray-900 mb-0 pl-2">
-                        ${p.type}
-                      </p>
-                      <p class="text-md text-gray-800 mt-0 pl-2">
-                        <fmt:formatNumber pattern="##.#" value="${(p.price)}" />
-                      </p>
-                    </div>
-                    <!-- button select -->
-                    <div class="flex items-center gap-2">
-                      <div class="mx-auto ml-1 mr-0">
-                        <button
-                          class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-l-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
-                          onclick="changeQuantityTicket2('${id}', -1)"
-                          type="button"
-                        >
-                          -
-                        </button>
-                        <input
-                          class="text-center w-10"
-                          type="text"
-                          name="num"
-                          data-id="${id}"
-                          value="0"
-                          onchange="validateNumberTicket2(this)"
-                        />
-                        <button
-                          class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-r-3xl hover.bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
-                          onclick="changeQuantityTicket2('${id}', 1)"
-                          type="button"
-                        >
-                          +
-                        </button>
-                      </div>
-                      <script>
-                        var quantitiesTicket2 = {};
-
-                        function validateNumberTicket2(input) {
-                          var value = input.value;
-                          var intValue = parseInt(value);
-                          if (isNaN(intValue) || intValue < 0) {
-                            input.value = 0;
-                          }
-                        }
-
-                        function changeQuantityTicket2(id, delta) {
-                          if (!quantitiesTicket2[id]) {
-                            quantitiesTicket2[id] = 0;
-                          }
-
-                          var quantityInput = document.querySelector(
-                            `[data-id="${id}"]`
-                          );
-                          var currentValue = parseInt(quantityInput.value);
-
-                          quantitiesTicket2[id] = currentValue + delta;
-
-                          if (quantitiesTicket2[id] >= 0) {
-                            quantityInput.value = quantitiesTicket2[id];
-                          }
-                        }
-
-                        function buyTicket2(id) {
-                          var inputNum = document.querySelector(
-                            'input[data-id="' + id + '"]'
-                          );
-                          var m = quantitiesTicket2[id];
-                          document.f.action = "buy?id=" + id + "&num=" + m;
-                          document.f.submit();
-                        }
-                      </script>
-                      <input
-                        type="button"
-                        class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                        onclick="buy('${id}')"
-                        value="Buy Ticket"
-                      />
-                    </div>
-                    <!-- end button -->
-                  </div>
-                </c:forEach>
-              </article>
-              <!-- end ticket 2 -->
-            </div>
-          </form>
+      <div>
+        <!-- View -->
+        <div class="flex justify-end m-4">
+          <a href="show">
+            <button
+              class="bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+            >
+              View (${requestScope.size}) items
+            </button>
+          </a>
         </div>
-      </div>
-      <!-- end main -->
+        <!-- end View -->
+        <div class="flex flex-row justify-center space-x-8">
+          <div class="relative flex flex-wrap mx-auto justify-center">
+            <form name="f" action="" method="post">
+              <div class="flex space-x-4 mt-4">
+                <!-- tickets select 1-->
+                <article
+                  class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                >
+                  <c:forEach items="${requestScope.data}" var="p" begin="1">
+                    <c:set var="id" value="${p.tid}" />
+                    <div
+                      class="relative flex items-end overflow-hidden rounded-xl"
+                    >
+                      <img
+                        class="h-80 rounded-2xl w-full object-cover"
+                        src="img/childticket.jpg"
+                      />
+                    </div>
+                    <div class="mt-4 mb-2 flex justify-between items-center">
+                      <div>
+                        <p
+                          class="text-2xl font-semibold text-gray-900 mb-0 pl-2"
+                        >
+                          ${p.type}
+                        </p>
+                        <p class="text-md text-gray-800 mt-0 pl-2">
+                          <fmt:formatNumber
+                            pattern="##.#"
+                            value="${(p.price)}"
+                          />
+                        </p>
+                      </div>
+                      <!-- button select -->
 
-      <!-- View button -->
-      <div class="mx-auto flex m-4 justify-center pb-4 mt-10">
-        <a href="show">
-          <button
-            class="bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-          >
-            View (${requestScope.size}) items
-          </button>
-        </a>
-      </div>
-      <!-- View button -->
-      <!-- cart -->
+                      <div class="flex items-center gap-4">
+                        <!-- quantity -->
+                        <div class="mx-auto ml-6">
+                          <button
+                            class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-l-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
+                            onclick="changeQuantityTicket1('${id}', -1)"
+                            type="button"
+                          >
+                            -
+                          </button>
+                          <input
+                            class="text-center w-10"
+                            type="text"
+                            name="num"
+                            data-id="${id}"
+                            value="0"
+                            onchange="validateNumberTicket1(this)"
+                          />
+                          <button
+                            class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-r-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
+                            onclick="changeQuantityTicket1('${id}', 1)"
+                            type="button"
+                          >
+                            +
+                          </button>
+                        </div>
 
-      <!-- total amount -->
+                        <!-- Thay đổi tên các hàm và thuộc tính cho Ticket 1 -->
+                        <script>
+                          var quantitiesTicket1 = {};
+
+                          function validateNumberTicket1(input) {
+                            var value = input.value;
+                            var intValue = parseInt(value);
+                            if (isNaN(intValue) || intValue < 0) {
+                              input.value = 0;
+                            }
+                          }
+
+                          function changeQuantityTicket1(id, delta) {
+                            if (!quantitiesTicket1[id]) {
+                              quantitiesTicket1[id] = 0;
+                            }
+
+                            var quantityInput = document.querySelector(
+                              `[data-id="${id}"]`
+                            );
+                            var currentValue = parseInt(quantityInput.value);
+
+                            quantitiesTicket1[id] = currentValue + delta;
+
+                            if (quantitiesTicket1[id] >= 0) {
+                              quantityInput.value = quantitiesTicket1[id];
+                            }
+                          }
+
+                          function buyTicket1(id) {
+                            var inputNum = document.querySelector(
+                              'input[data-id="' + id + '"]'
+                            );
+                            var m = quantitiesTicket1[id];
+                            document.f.action = "buy?id=" + id + "&num=" + m;
+                            document.f.submit();
+                          }
+                        </script>
+
+                        <!-- end quantity -->
+                        <!-- buy ticket -->
+                        <input
+                          type="button"
+                          class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                          onclick="buy('${id}')"
+                          value="Buy Ticket"
+                        />
+                        <!-- end buy -->
+                      </div>
+                    </div>
+                  </c:forEach>
+                </article>
+
+                <!-- tickets select 2-->
+                <article
+                  class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                >
+                  <c:forEach items="${requestScope.data}" var="p" end="0">
+                    <c:set var="id" value="${p.tid}" />
+                    <div
+                      class="relative flex items-end overflow-hidden rounded-xl"
+                    >
+                      <img
+                        class="h-80 rounded-2xl w-full object-cover"
+                        src="img/adultticket.jpg"
+                      />
+                    </div>
+                    <div class="mt-4 mb-2 flex justify-between items-center">
+                      <div>
+                        <p
+                          class="text-2xl font-semibold text-gray-900 mb-0 pl-2"
+                        >
+                          ${p.type}
+                        </p>
+                        <p class="text-md text-gray-800 mt-0 pl-2">
+                          <fmt:formatNumber
+                            pattern="##.#"
+                            value="${(p.price)}"
+                          />
+                        </p>
+                      </div>
+                      <!-- button select -->
+                      <div class="flex items-center gap-2">
+                        <div class="mx-auto ml-1 mr-0">
+                          <button
+                            class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-l-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
+                            onclick="changeQuantityTicket2('${id}', -1)"
+                            type="button"
+                          >
+                            -
+                          </button>
+                          <input
+                            class="text-center w-10"
+                            type="text"
+                            name="num"
+                            data-id="${id}"
+                            value="0"
+                            onchange="validateNumberTicket2(this)"
+                          />
+                          <button
+                            class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-r-3xl hover.bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
+                            onclick="changeQuantityTicket2('${id}', 1)"
+                            type="button"
+                          >
+                            +
+                          </button>
+                        </div>
+                        <script>
+                          var quantitiesTicket2 = {};
+
+                          function validateNumberTicket2(input) {
+                            var value = input.value;
+                            var intValue = parseInt(value);
+                            if (isNaN(intValue) || intValue < 0) {
+                              input.value = 0;
+                            }
+                          }
+
+                          function changeQuantityTicket2(id, delta) {
+                            if (!quantitiesTicket2[id]) {
+                              quantitiesTicket2[id] = 0;
+                            }
+
+                            var quantityInput = document.querySelector(
+                              `[data-id="${id}"]`
+                            );
+                            var currentValue = parseInt(quantityInput.value);
+
+                            quantitiesTicket2[id] = currentValue + delta;
+
+                            if (quantitiesTicket2[id] >= 0) {
+                              quantityInput.value = quantitiesTicket2[id];
+                            }
+                          }
+
+                          function buyTicket2(id) {
+                            var inputNum = document.querySelector(
+                              'input[data-id="' + id + '"]'
+                            );
+                            var m = quantitiesTicket2[id];
+                            document.f.action = "buy?id=" + id + "&num=" + m;
+                            document.f.submit();
+                          }
+                        </script>
+                        <input
+                          type="button"
+                          class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
+                          onclick="buy('${id}')"
+                          value="Buy Ticket"
+                        />
+                      </div>
+                      <!-- end button -->
+                    </div>
+                  </c:forEach>
+                </article>
+                <!-- end ticket 2 -->
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- end main -->
+      </div>
     </div>
   </body>
 </html>

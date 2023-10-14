@@ -69,11 +69,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end loading -->
     <title>Create Page</title>
   </head>
-<<<<<<< HEAD
   <body class="bg-green-400">
-=======
-  <body class="bg-green-500">
->>>>>>> f561f539f21eda98d384ea3c955c05407fa5d35a
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
@@ -81,7 +77,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           <!-- back button -->
           <div class="ml-0">
             <a
-              href="animalcagcontroller"
+              href="animalcagecontroller"
               class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
             >
               <svg

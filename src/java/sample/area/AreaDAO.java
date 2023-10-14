@@ -94,7 +94,7 @@ public class AreaDAO {
 
  public static void main(String[] args) {
           AreaDAO dao = new AreaDAO();  
-          List<AreaDTO> s = dao.getAreaById("B");
+          List<AreaDTO> s = dao.getAreaById("Area001");
          System.out.println(s);
           }
          
