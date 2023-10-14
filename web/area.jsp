@@ -1,6 +1,6 @@
 <%-- Document : area Created on : Sep 27, 2023, 10:10:35 PM Author : ADMIN --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -110,7 +110,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                       class="text-blue-500 py-3 text-2xl px-6 py-3 border-b border-gray-200 border-r"
                     >
                       <a href="animalcagesearch?animalcageID=${o.animalcage_id}"
-                        >#${o.animalcage_id}</a
+                        >${o.animalcage_id}</a
                       >
                     </td>
                     <td

@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%> <%@ page language="java"
-contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> <%@ taglib
-prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -169,6 +169,11 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                         Name
                       </th>
                       <th
+                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        Photo
+                      </th>
+                      <th
                         class="px-6 py-3 border-b text-2xl text-center border-gray-300 text-left leading-4 tracking-wider"
                       >
                         Action
@@ -200,6 +205,12 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                           class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
                         >
                           ${animalcage.name}
+                        </td>
+                        <td
+                          class="py-4 text-2xl px-6 py-4 border-b border-gray-200 border-r"
+                        >
+                            <img src="./animalcage_picture/${animalcage.photo}" width="150" height="140" />
+
                         </td>
                         <td
                           class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"

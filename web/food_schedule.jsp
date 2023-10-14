@@ -30,6 +30,14 @@
             <input type="submit" value="Create">
 
         </form>
+
+        <form action="importexcelcontroller" method="post" enctype="multipart/form-data">
+            File to upload excel: <input type="file" name="excelFile" />
+            <br>
+            <input type="submit" value="Import"/>
+        </form>
+
+      
         <c:choose>
             <c:when test="${fn:length(schedulelist)>0}">
 

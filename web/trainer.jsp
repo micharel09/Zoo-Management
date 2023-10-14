@@ -178,6 +178,37 @@
     </a>
     </nav>
 
+    <div class="fade-in flex justify-center">
+    <div class="max-w-screen-md">
+        <c:forEach items="${a}" var="o">
+            <div class="mt-10 fade-in">
+                <div id="app" class="fade-in bg-white h-60 rounded shadow-md flex card text-grey-darkest">
+                   <img class="w-1/2 h-full rounded-l-sm" src="/img/a.png" alt="Room Image">
+                    <div class="w-full flex flex-col">
+                        <div class="p-4 pb-0 flex-1">
+                            <h3 class="font-normal mb-7 text-grey-darkest">Location ${o.arealocation}</h3>
+                            <span class="text-5xl text-grey-darkest">${o.genre}</span>
+                        </div>
+                        <button class="relative overflow-hidden rounded shadow-inner px-2 py-3 font-sans uppercase ring-sky-500 transition-all after:bg-green-400 active:shadow-md active:ring-2">
+                            <p class="transition-all group-active:scale-90"><a href="/areacontroller?area=${o.arealocation}&areaid=${o.area_id}">View <i class="ml-36 fas fa-chevron-right"></i> </a> </p>
+                        </button>
+                        <button class="relative overflow-hidden rounded shadow-inner px-2 py-3 font-sans uppercase ring-sky-500 transition-all after:bg-yellow-400 active:shadow-md active:ring-2">
+                            <p class="transition-all group-active:scale-90">Manage <i class="ml-28 fas fa-chevron-right"></i></p>
+                        </button>
+                    </div>    
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".fade-in").addClass("active");
+});
+</script>
+
     
  
 

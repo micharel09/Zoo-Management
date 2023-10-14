@@ -5,6 +5,21 @@
     <head>
         <meta charset="UTF-8" />
         <title>Create Food Schedule</title>
+            <script>
+        function convertTimeFormat(input) {
+            var timeParts = input.split(':');
+            var hours = parseInt(timeParts[0]);
+            var minutes = timeParts[1];
+            var formattedTime = hours + ":" + minutes;
+            return formattedTime;
+        }
+
+        function update24HourTime() {
+            var timeInput = document.getElementById('timeInput');
+            var formattedTime = convertTimeFormat(timeInput.value);
+            timeInput.value = formattedTime;
+        }
+    </script>
     </head>
     <body>
         <h1>Create Food Schedule</h1>
@@ -13,7 +28,7 @@
             <input type="hidden" id="scheduleid" name="scheduleid" required />
             <br />
             <label for="time">Time:</label>
-            <input type="time" id="time" name="time" required />
+            <input type="time" id="timeInput" name="time" required />
 
             <br />
             Animal Cage ID

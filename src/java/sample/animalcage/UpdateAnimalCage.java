@@ -5,14 +5,20 @@
  */
 package sample.animalcage;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import sample.area.AreaDTO;
 import sample.user.UserDTO;
 
@@ -20,9 +26,22 @@ import sample.user.UserDTO;
  *
  * @author ADMIN
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50)
 @WebServlet(name = "UpdateAnimalCage", urlPatterns = {"/updateanimalcage"})
 public class UpdateAnimalCage extends HttpServlet {
-
+    
+    private String extractFileName(Part part) {//This method will print the file name.
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -88,7 +107,42 @@ public class UpdateAnimalCage extends HttpServlet {
         String areaid = request.getParameter("area_id");
         String employeeid = request.getParameter("employee_id");
         AnimalCageDAO a = new AnimalCageDAO();
-        a.updateanimalcage(animalcageid, name, areaid, employeeid);
+        Part photo = request.getPart("photo");
+
+        // Check if the user selected a file
+        String filename = extractFileName(photo);
+
+        if (photo != null && photo.getSize() > 0) {
+              // Specify the relative path from your project root
+            String relativePath = File.separator + "animalcage_picture";
+
+// Get the project root directory
+            String projectRoot = getServletContext().getRealPath("/");
+
+// Remove the "/build" or "\\build" part from the path
+            String correctedRoot = projectRoot.replace(File.separator + "build", "").replace(File.separator + "build", "");
+
+// Construct the absolute path relative to the corrected project root
+            String saveDirectory = correctedRoot + relativePath;
+
+            String savePath = saveDirectory + File.separator + filename;
+
+            // Check if the directory exists, if not, create it
+            Path directoryPath = Paths.get(saveDirectory);
+            if (!Files.exists(directoryPath)) {
+                try {
+                    Files.createDirectories(directoryPath);
+                } catch (IOException e) {
+                    e.printStackTrace(); // Handle the exception properly in your application
+                    return; // Stop processing if directory creation fails
+                }
+            }
+
+            // Write the file to the specified location
+            photo.write(savePath);
+
+        }
+        a.updateanimalcage(animalcageid, name, areaid, employeeid,filename);
         response.sendRedirect("animalcagecontroller");
         
     }

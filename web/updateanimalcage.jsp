@@ -109,7 +109,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           </div>
         </header>
         <div class="mx-auto w-full max-w-8xl">
-          <form action="updateanimalcage" method="POST">
+          <form action="updateanimalcage" method="POST" enctype="multipart/form-data">
             <input
               name="animalcage_id"
               type="hidden"
@@ -177,7 +177,81 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <!-- end employe id -->
             </div>
             <!-- end ID  -->
+            <!-- photo -->
+             <div
+              class="container mx-auto h-full flex flex-col justify-center items-center"
+            >
+              <div id="images-container">
+                <c:if test="${aa.photo != null}">
+                  <img
+                    src="./animalcage_picture/${aa.photo}"
+                    width="80"
+                    height="70"
+                    id="current-photo"
+                    class="flex justify-center mx-auto h-1/3 w-1/3 mb-2"
+                  />
+                </c:if>
+              </div>
 
+              <div class="flex w-full justify-center">
+                <div
+                  id="single-upload-button"
+                  class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                >
+                  Upload Photo
+                </div>
+              </div>
+              <input
+                type="file"
+                class="hidden"
+                name="photo"
+                id="photoInput"
+                placeholder="Enter photo"
+              />
+            </div>
+            <!-- end photo -->
+
+            <!-- script photo -->
+            <script>
+              const uploadButton = document.getElementById(
+                "single-upload-button"
+              );
+              const photoInput = document.getElementById("photoInput");
+              const currentPhoto = document.getElementById("current-photo");
+
+              uploadButton.addEventListener("click", function () {
+                photoInput.click(); // Kích hoạt sự kiện click của input file
+              });
+
+              photoInput.addEventListener("change", function (event) {
+                // Xử lý khi người dùng chọn một tập tin ảnh
+                if (photoInput.files.length > 0) {
+                  const file = photoInput.files[0];
+                  const reader = new FileReader();
+
+                  reader.onload = function () {
+                    // Xóa hình ảnh hiện tại
+                    if (currentPhoto) {
+                      currentPhoto.parentElement.removeChild(currentPhoto);
+                    }
+
+                    // Tạo hình ảnh mới và thêm vào container
+                    const newImage = new Image();
+                    newImage.src = reader.result;
+                    newImage.width = 800;
+                    newImage.height = 500;
+                    newImage.id = "current-photo";
+                    newImage.classList.add("rounded", "mb-2");
+                    document
+                      .getElementById("images-container")
+                      .appendChild(newImage);
+                  };
+
+                  reader.readAsDataURL(file);
+                }
+              });
+            </script>
+            <!-- end photo -->
             <!-- Button: Cancel and Save -->
             <div class="flex justify-center mt-6">
               <div class="pr-2">

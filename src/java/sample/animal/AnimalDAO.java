@@ -145,7 +145,7 @@ public class AnimalDAO {
             ptm.setString(1, animalcageid);
             rs = ptm.executeQuery();
             if (rs.next()) {
-                return new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                return new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5));
             }
         } catch (Exception e) {
         }
@@ -186,7 +186,7 @@ public class AnimalDAO {
 
             rs = ptm.executeQuery();
             while (rs.next()) {
-                list.add(new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+                list.add(new AnimalCageDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getString(5)));
             }
         } catch (Exception e) {
         }

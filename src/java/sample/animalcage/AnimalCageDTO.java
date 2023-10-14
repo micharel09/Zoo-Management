@@ -12,16 +12,18 @@ public class AnimalCageDTO {
     private String name;
     private String area_id;
     private String employee_id;
+    private String photo;
 
     public AnimalCageDTO() {
         
     }
 
-    public AnimalCageDTO(String animalcage_id, String name, String area_id, String employee_id) {
+    public AnimalCageDTO(String animalcage_id, String name, String area_id, String employee_id, String photo) {
         this.animalcage_id = animalcage_id;
         this.name = name;
         this.area_id = area_id;
         this.employee_id = employee_id;
+        this.photo = photo;
     }
 
     public String getAnimalcage_id() {
@@ -56,12 +58,20 @@ public class AnimalCageDTO {
         this.employee_id = employee_id;
     }
 
-    @Override
-    public String toString() {
-        return "AnimalCageDTO{" + "animalcage_id=" + animalcage_id + ", name=" + name + ", area_id=" + area_id + ", employee_id=" + employee_id + '}';
+    public String getPhoto() {
+        return photo;
     }
 
-    
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalCageDTO{" + "animalcage_id=" + animalcage_id + ", name=" + name + ", area_id=" + area_id + ", employee_id=" + employee_id;
+    }
+
+   
 
  
 

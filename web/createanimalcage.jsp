@@ -109,7 +109,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         </header>
 
         <div class="mx-auto w-full max-w-8xl">
-          <form action="" method="POST">
+          <form action="" method="POST" enctype="multipart/form-data">
             <!-- Name-->
             <div class="mb-5">
               <label for="name" class="mb-3 block text-2xl font-medium">
@@ -166,7 +166,114 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <!-- end employee  -->
             </div>
             <!-- end ID -->
+            <!-- photo -->
+                        <div class="w-full bg-white">
+              <div
+                class="container mx-auto h-full flex flex-col justify-center items-center"
+              >
+                <div id="images-container"></div>
+                <div class="flex w-full justify-center">
+                  <div
+                    id="multi-upload-button"
+                    class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                  >
+                    Upload Photo
+                  </div>
+                  <div
+                    class="border-gray-300 rounded-r-md flex items-center justify-between"
+                  >
+                    <span id="multi-upload-text" class="p-2 text-xl"></span>
+                    <button
+                      id="multi-upload-delete"
+                      class="hidden"
+                      onclick="removeMultiUpload()"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="fill-current text-red-700 w-3 h-3"
+                        viewBox="0 0 320 512"
+                      >
+                        <path
+                          d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <input
+                  type="file"
+                  id="multi-upload-input"
+                  class="hidden"
+                  name="photo"
+                  multiple
+                />
+              </div>
+            </div>
+            <script>
+              multiUploadButton = document.getElementById(
+                "multi-upload-button"
+              );
+              multiUploadInput = document.getElementById("multi-upload-input");
+              imagesContainer = document.getElementById("images-container");
+              multiUploadDisplayText =
+                document.getElementById("multi-upload-text");
+              multiUploadDeleteButton = document.getElementById(
+                "multi-upload-delete"
+              );
 
+              multiUploadButton.onclick = function () {
+                multiUploadInput.click(); // this will trigger the click event
+              };
+
+              multiUploadInput.addEventListener("change", function (event) {
+                if (multiUploadInput.files) {
+                  let files = multiUploadInput.files;
+
+                  // show the text for the upload button text filed
+                  multiUploadDisplayText.innerHTML =
+                    files.length + " files selected";
+
+                  // removes styles from the images wrapper container in case the user readd new images
+                  imagesContainer.innerHTML = "";
+
+                  // the delete button to delete all files
+                  multiUploadDeleteButton.classList.remove("hidden");
+
+                  Object.keys(files).forEach(function (key) {
+                    let file = files[key];
+
+                    // the FileReader object is needed to display the image
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                      // for each file we create a div to contain the image
+                      let imageDiv = document.createElement("div");
+                      imageDiv.classList.add(
+                        "mb-4",
+                        "ml-20",
+                        "w-96",
+                        "h-64",
+                        "p-3",
+                        "rounded-lg",
+                        "bg-cover",
+                        "bg-center"
+                      );
+                      imageDiv.style.backgroundImage =
+                        "url(" + reader.result + ")";
+                      imagesContainer.appendChild(imageDiv);
+                    };
+                  });
+                }
+              });
+
+              function removeMultiUpload() {
+                imagesContainer.innerHTML = "";
+                multiUploadInput.value = "";
+                multiUploadDisplayText.innerHTML = "";
+                multiUploadDeleteButton.classList.add("hidden");
+              }
+            </script>
+            <!-- end photo -->
             <!-- Button: Cancel and Save -->
             <div class="flex justify-center mt-6">
               <div class="pr-2">

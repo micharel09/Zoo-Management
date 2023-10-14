@@ -153,7 +153,7 @@
                                   </td>
 
                                   <td class="text-2xl px-6 border-b border-gray-200 border-r" width="100">
-                                    <img src="./animal_picture/${animal.photo}" width="80" height="70" />
+                                    <img src="./animal_picture/${animal.photo}" width="150" height="140" />
                                   </td>
                                   <td
                                     class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200">
