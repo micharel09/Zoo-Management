@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import sample.animal.AnimalDTO;
@@ -22,6 +23,7 @@ import sample.utils.DBUtils;
 public class FeedbackDAO {
       //PRINT
     Connection conn = null;
+    
     PreparedStatement ptm = null;
     ResultSet rs = null;
     
@@ -80,19 +82,22 @@ public class FeedbackDAO {
 
 
 
+
     public void createfeedback(String title, String purpose, String date, String processnote, String employee_id) {
         LocalDate curDate = LocalDate.now();
         date = curDate.toString();
-        String sql = " insert into FeedBack(Title,Purpose, Date,ProcessNote,Employee_ID)\n"
+        String sql = " insert into FeedBack(Title,Purpose,Date,ProcessNote,Employee_ID)\n"
                 + " values(?,?,?,?,?)";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
-            ptm.setString(1, title);
+            ptm.setString(1,title);
             ptm.setString(2, purpose);
-            ptm.setString(3, date);
-            ptm.setString(4, processnote);
-            ptm.setString(5, employee_id);
+            ptm.setString(3,date);
+            ptm.setString(4,processnote);
+            ptm.setString(5,employee_id);
+
+
  
             ptm.executeUpdate();
 
@@ -102,6 +107,7 @@ public class FeedbackDAO {
     
     public FeedbackDTO getFeedbackByID(String id) {
         String sql = "select * from Feedback where FeedBack_ID = ?";
+        
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
@@ -135,14 +141,10 @@ public class FeedbackDAO {
            
         } catch (Exception e) {
         }
-  
-    
-        
+       
     }
-    
- 
-
-         public String getNewIdFeedbackID() {
+   
+    public String getNewIdFeedbackID() {
         String sql = "select top 1 FeedBack_ID from FeedBack order by [FeedBack_ID] desc";
         String IdOrder = null;
         String newIdOrder = null;
@@ -167,11 +169,7 @@ public class FeedbackDAO {
     }
       
     
-     public static void main(String[] args) throws SQLException {
-        FeedbackDAO a = new FeedbackDAO();
-        FeedbackDTO f = a.getFeedbackByID("2");
-        System.out.println(f);       
-    }
+ 
 
     List<FeedbackDTO> getListFeedBack(String emp_ID) {
       
@@ -202,4 +200,81 @@ public class FeedbackDAO {
     }
     return listFeedBack;
 }
+    
+    public int getNumberPage (){
+        String sql = " select count (*)  from FeedBack";
+        try{
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql); 
+            rs = ptm.executeQuery();
+            while (rs.next()){
+                return  rs.getInt(1);                           
+            }
+        } catch (Exception e) {          
+        }
+        return 0;
+    }
+    
+    public List<FeedbackDTO> getPaging(int index){
+        List<FeedbackDTO> list = new ArrayList<>();
+        String sql = " select *from FeedBack\n" +
+                     "  order by FeedBack_ID\n DESC" +
+                     "  OFFSET ? ROWS\n" +
+                     "  FETCH FIRST 5 ROWS ONLY;";
+        try{
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql); 
+            ptm.setInt(1, (index-1)*5);
+            rs = ptm.executeQuery();
+            while (rs.next()){
+                list.add(new FeedbackDTO(rs.getString(1),
+                                         rs.getString(2),
+                                         rs.getString(3),
+                                         rs.getString(4),
+                                         rs.getString(5),
+                                         rs.getString(6),
+                                         rs.getString(7)));
+            }
+        }  catch (Exception e){
+            
+        }      
+         return list;
+    }
+    
+     public List<FeedbackDTO> getPagingTrainer(int index,String id){
+        List<FeedbackDTO> list = new ArrayList<>();
+        String sql = " select *from FeedBack WHERE Employee_ID = ?\n" +
+                     "  order by FeedBack_ID\n DESC" +
+                     "  OFFSET ? ROWS\n" +
+                     "  FETCH FIRST 5 ROWS ONLY;";
+        try{
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql); 
+            ptm.setString(1,id);
+             ptm.setInt(2, (index-1)*5);
+            rs = ptm.executeQuery();
+            while (rs.next()){
+                list.add(new FeedbackDTO(rs.getString(1),
+                                         rs.getString(2),
+                                         rs.getString(3),
+                                         rs.getString(4),
+                                         rs.getString(5),
+                                         rs.getString(6),
+                                         rs.getString(7)));
+            }
+        }  catch (Exception e){
+            
+        }      
+         return list;
+    }
+    
+ 
+    public static void main(String[] args) throws SQLException {
+        FeedbackDAO a = new FeedbackDAO();
+        List<FeedbackDTO> list = a.getPaging(4);
+        for(FeedbackDTO o : list){
+            System.out.println(o);
+        }
+    }
 }
+

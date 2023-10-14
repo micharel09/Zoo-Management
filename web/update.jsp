@@ -17,8 +17,8 @@
         <%  
            UserDTO user =(UserDTO) session.getAttribute("EMPLOYEE_UPDATE");
         %>
-       <h1>EDIT ACCOUNT <%=user.getEmployee_ID()%></h1>
-      <input type="hidden" name="userID" id="userID" value="<%=user.getEmployee_ID()%>"required=""><br>
+       <h1>EDIT ACCOUNT <%=user.getEmployee_id()%></h1>
+      <input type="hidden" name="userID" id="userID" value="<%=user.getEmployee_id()%>"required=""><br>
         <label for="fullName">Full Name:</label>
         <input type="text" name="FullName" id="fullName" value="<%=user.getFullname()%>"required=""><br>
         

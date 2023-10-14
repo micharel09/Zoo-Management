@@ -72,7 +72,7 @@ public class UpdateFeedback extends HttpServlet {
         String status = request.getParameter("status");
         FeedbackDAO dao = new FeedbackDAO();
         dao.updateFeedback(id, processnote, status);
-        response.sendRedirect("FeedbackController");
+        response.sendRedirect("ListFeedback");
     }
 
     /**

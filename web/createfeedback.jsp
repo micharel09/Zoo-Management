@@ -21,10 +21,11 @@
             <input type="text" name="title"/>
             <br>
             purpose
-            <input type="text" name="purpose"/>
+            <textarea name="purpose"> </textarea>
             
             <br>
             <input type="hidden" name="date">
+            
             <br>
           
             <input type="hidden" name="processnote"/>

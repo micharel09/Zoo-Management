@@ -27,84 +27,15 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <!-- loading -->
-    <iframe
-      id="loading-iframe"
-      src="components/loading.html"
-      frameborder="0"
-      style="
-        border: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background: transparent; /* Make the iframe background transparent */
-        pointer-events: none; /* Allow interaction with elements behind the iframe */
-        transition: opacity 1s;
-      "
-    ></iframe>
-
-    <script>
-      window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
-    </script>
     <style>
-      .hidden-iframe {
-        opacity: 0;
+      .nav {
+        background-image: url("../img/header.gif");
+        background-repeat: no-repeat;
+        background-size: cover;
       }
     </style>
-    <!-- end loading -->
-    <title>View</title>
+    <title>FeedBack</title>
   </head>
-
-  <style>
-    button {
-      z-index: 1;
-    }
-
-    button::after {
-      content: "";
-      z-index: -1;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transform: translateX(-100%);
-      transition: transform 600ms cubic-bezier(0, 0.7, 0.6, 1);
-    }
-
-    button:hover::after {
-      transform: translateX(0);
-    }
-
-    .fade-in {
-      opacity: 1;
-      animation-name: fadeInOpacity;
-      animation-iteration-count: 1;
-      animation-timing-function: ease-in;
-      animation-duration: 2s;
-    }
-
-    @keyframes fadeInOpacity {
-      0% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
-  </style>
 
   <!-- header -->
   <nav class="border-gray-200 bg-green-600">
@@ -260,10 +191,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     </div>
 
     <!-- component -->
-    <body class="antialiased font-sans bg-gray-200">
+    <main class="antialiased font-sans bg-gray-200">
       <div class="container mx-auto px-4 sm:px-8">
-        <div style="" class="py-8 ml-28">
-          <div></div>
+        <div class="py-8 ml-28">
           <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">
               <div class="relative">
@@ -285,6 +215,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 ></div>
               </div>
             </div>
+
             <div class="block relative">
               <span
                 class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
@@ -304,6 +235,19 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               />
             </div>
           </div>
+          <div class="p-2 md:w-40">
+            <div
+              class="flex items-center p-4 bg-green-200 rounded-lg shadow-xs cursor-pointer hover:bg-green-500 hover:text-gray-100"
+            >
+              <div>
+                <p class="  ">
+                  <a href="createfeedback.jsp" class="text-xl font-bold ml-2">
+                    Create</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div
               class="inline-block min-w-full shadow rounded-lg overflow-hidden"
@@ -316,10 +260,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                     <th
                       class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
                     >
-                      Title
+                      Tiltle
                     </th>
                     <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                      class="break-all px-6 py-3 text-xs font-medium leading-4 text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
                     >
                       Purpose
                     </th>
@@ -329,7 +273,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                       Date
                     </th>
                     <th
-                      class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                      class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
                     >
                       ProcessNote
                     </th>
@@ -341,32 +285,31 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                     </th>
                   </tr>
                 </thead>
-                <c:forEach items="${listF}" var="f">
+                <c:forEach var="f" items="${ListA}">
                   <tbody class="bg-white">
                     <tr>
                       <td
-                        class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
+                        class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
                       >
                         ${f.title}
                       </td>
                       <td
-                        class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 border-r"
+                        class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
                       >
                         ${f.purpose}
                       </td>
                       <td
-                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                       >
                         ${f.date}
                       </td>
                       <td
-                        class="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                        class="break-all text-xs px-6 py-4 border-b border-gray-200 border-r"
                       >
                         ${f.processnote}
                       </td>
-
                       <td
-                        class="px-2 py-4 text-sm font-bold text-center text-green-500 leading-5 whitespace-no-wrap border-b border-gray-200"
+                        class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r"
                       >
                         ${f.status}
                       </td>
@@ -374,11 +317,31 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   </tbody>
                 </c:forEach>
               </table>
-              <a href="createfeedback.jsp"> create</a>
+              <!-- component -->
+
+              <div
+                class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible"
+              >
+                <nav>
+                  <ul class="flex">
+                    <c:forEach begin="1" end="${endP}" var="i">
+                      <li>
+                        <a
+                          class="mx-1 flex h-9 w-9 items-center justify-center rounded-full border border-blue-gray-100 bg-transparent p-0 text-sm text-blue-gray-500 transition duration-150 ease-in-out hover:bg-light-300"
+                          href="ListTrainerFeedback?index=${i}"
+                          aria-label="Previous"
+                        >
+                          ${i}
+                        </a>
+                      </li>
+                    </c:forEach>
+                  </ul>
+                </nav>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </body>
+    </main>
   </body>
 </html>

@@ -68,8 +68,52 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         opacity: 0;
       }
     </style>
+    <!-- modal  -->
+    <style>
+      .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+
+      .animated.faster {
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+      }
+
+      .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+      }
+
+      .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
     <!-- end loading -->
-    <title>JSP Page</title>
+    <title>Create Animal</title>
   </head>
   <body class="bg-green-500">
     <div class="flex justify-center items-center w-full h-full">
@@ -78,7 +122,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <header class="border-b border-gray-100 px-10 flex items-center">
           <!-- back button -->
           <div class="ml-0">
-            <!-- Căn chỉnh vị trí sang trái -->
             <a
               href="animalcontroller"
               class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"

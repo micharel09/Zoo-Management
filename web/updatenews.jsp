@@ -1,5 +1,6 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- Document : updateanimalcage Created on : Oct 6, 2023, 1:41:44 PM Author :
+Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,117 +32,185 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <title>Update News</title>
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
+
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
+    <title>Update Animal Cages</title>
   </head>
-  <body class="bg-gray-500">
+  <body class="bg-green-400">
     <!-- MAIN CONTENT -->
-    <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md mt-12">
-      <h3 class="font-bold text-3xl">Edit</h3>
-
-      <form action="updatenews" method="POST" enctype="multipart/form-data">
-        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-          <!-- ID Input -->
-          <input
-            name="newsid"
-            type="hidden"
-            value="${updatenews.news_id}"
-            placeholder="Enter ID"
-            class=""
-          />
-
-          <!-- Title -->
-          <div>
-            <label for="movie-url" class="block text-sm text-gray-500"
-              >Title</label
+    <div class="flex justify-center items-center w-full h-full">
+      <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <!-- back button -->
+          <div class="ml-0">
+            <a
+              href="animalcagecontroller"
+              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
             >
-
-            <div class="flex items-center mt-2">
-              <i
-                class="fas fa-font absolute w-6 h-6 m-3 flex items-center justify-center"
-              ></i>
-
-              <input
-                name="title"
-                type="text"
-                value="${updatenews.title}"
-                placeholder="enter tittle"
-                class="block w-full py-2.5 rounded-lg pl-11 pr-5 rtl:pr-11 rtl:pl-5"
-              />
+              <svg
+                viewBox="0 0 46 16"
+                height="15"
+                width="35"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+              >
+                <path
+                  transform="scale(-1, 1) translate(-30)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+              <span
+                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                >Back</span
+              >
+            </a>
+          </div>
+          <!-- end back -->
+          <div class="text-gray-800 mx-auto pr-20 pb-4">
+            <h1 class="font-semibold text-5xl">Edit</h1>
+          </div>
+        </header>
+        <div class="mx-auto w-full max-w-8xl">
+          <form action="updatenews" method="POST" enctype="multipart/form-data">
+            <!-- Submit -->
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="px-10 py-3 leading-5 ml-auto relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-400 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+              >
+                <p class="relative z-10 font-extralight text-2xl">Save</p>
+              </button>
             </div>
-            <p class="mt-3 text-xs text-red-400"></p>
-          </div>
-
-          <!-- Content Input -->
-
-          <div>
-            <label for="content" class="block text-sm text-gray-500"
-              >Content</label
-            >
-            <textarea
-              name="content"
-              placeholder="${updatenews.content}"
-              class="block mt-2 w-full rounded-lg border bg-white px-4 h-36 py-2.5"
-            ></textarea>
-          </div>
-
-          <!-- Thumbnail URL Input -->
-
-          <div>
-            Photo
-            <c:if test="${updatenews.photo != null}">
-              <img
-                src="./news_picture/${updatenews.photo}"
-                width="80"
-                height="70"
-              />
-            </c:if>
+            <!-- end submit -->
+            <!-- Input ID -->
             <input
-              type="file"
-              class="form-control"
-              name="photo"
-              id="photoInput"
-              placeholder="Enter photo"
+              name="newsid"
+              type="hidden"
+              value="${updatenews.news_id}"
+              placeholder="Enter ID"
+              class=""
             />
-          </div>
-
-          <!-- RELEASE DATE Input -->
-
-          <div>
-            <label for="release" class="block text-sm text-gray-500"
-              >Release Date</label
-            >
-            <input
-              name="day"
-              type="date"
-              value="day"
-              max="<%= java.time.LocalDate.now() %>"
-              class="block mt-2 w-full rounded-lg border bg-white px-5 py-2.5"
-            />
-            <p class="mt-3 text-xs text-red-400"></p>
-          </div>
+            <!-- end Input -->
+            <!-- ID DIV -->
+            <div class="-mx-3 flex flex-wrap">
+              <!-- Title -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="employee_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
+                  >Title</label
+                >
+                <input
+                  name="title"
+                  type="text"
+                  value="${updatenews.title}"
+                  placeholder="enter tittle"
+                  class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+              <p class="mt-3 text-xs text-red-400"></p>
+              <!-- end Title -->
+              <!-- Date Input -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="area_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
+                  >Realease Date</label
+                >
+                <input
+                  name="day"
+                  type="date"
+                  value="day"
+                  max="<%= java.time.LocalDate.now() %>"
+                  class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                />
+              </div>
+              <p class="mt-3 text-xs text-red-400"></p>
+              <!-- end date -->
+            </div>
+            <!-- end Div  -->
+            <!-- ID DIV -->
+            <div class="-mx-3 flex flex-wrap">
+              <!-- Content Input -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="area_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
+                  >Content</label
+                >
+                <textarea
+                  name="content"
+                  placeholder="${updatenews.content}"
+                  class="block mt-2 w-full rounded-lg border bg-white px-4 h-36 py-2.5"
+                ></textarea>
+              </div>
+              <p class="mt-3 text-xs text-red-400"></p>
+              <!-- end Content -->
+              <!-- Thumbail URL Input -->
+              <div class="w-full px-3 sm:w-1/2">
+                <label
+                  for="employee_id"
+                  class="mb-1 block text-2xl font-medium text-[#07074D]"
+                  >Photo</label
+                >
+                <c:if test="${updatenews.photo != null}">
+                  <img
+                    src="./news_picture/${updatenews.photo}"
+                    width="80"
+                    height="70"
+                  />
+                </c:if>
+                <input
+                  type="file"
+                  class="form-control"
+                  name="photo"
+                  id="photoInput"
+                  placeholder="Enter photo"
+                />
+              </div>
+              <p class="mt-3 text-xs text-red-400"></p>
+              <!-- end Thumbail URL Input  -->
+            </div>
+            <!-- end Div  -->
+          </form>
         </div>
-
-        <!-- Button: Cancel and Save -->
-        <div class="flex justify-end mt-6">
-          <div class="pr-2">
-            <button
-              class="px-6 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600"
-            >
-              <a href="news.jsp" onclick="return cancelRedirect();">Cancel</a>
-            </button>
-          </div>
-
-          <script>
-            function cancelRedirect() {
-              window.location.href = "news.jsp";
-              return false;
-            }
-          </script>
-
-          <input type="submit" value="Submit" />
-        </div>
-        <!-- end button -->
-      </form>
-    </section>
+      </section>
+    </div>
   </body>
 </html>

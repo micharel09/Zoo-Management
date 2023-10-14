@@ -69,7 +69,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end loading -->
     <title>Update Animal Cages</title>
   </head>
-  <body class="bg-green-500">
+  <body class="bg-green-400">
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
@@ -105,7 +105,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           <!-- end back -->
 
           <div class="text-gray-800 mx-auto pr-20 pb-4">
-            <h1 class="font-semibold text-5xl">Add Animal Cage</h1>
+            <h1 class="font-semibold text-5xl">Edit Animal Cage</h1>
           </div>
         </header>
         <div class="mx-auto w-full max-w-8xl">
