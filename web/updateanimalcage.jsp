@@ -1,5 +1,6 @@
-<%-- Document : updateanimalcage Created on : Oct 6, 2023, 1:41:44 PM Author :
-Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- prettier-ignore -->
+<%-- Document : updateanimalcage Created on : Oct 6, 2023, 1:41:44 PM Author :Quan --%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -69,47 +70,59 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end loading -->
     <title>Update Animal Cages</title>
   </head>
-  <body class="bg-green-400">
-    <!-- MAIN CONTENT -->
+  <body class="bg-green-500">
     <div class="flex justify-center items-center w-full h-full">
-      <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
-        <header class="border-b border-gray-100 px-10 flex items-center">
-          <!-- back button -->
-          <div class="ml-0">
-            <!-- Căn chỉnh vị trí sang trái -->
-            <a
-              href="animalcagecontroller"
-              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+      <!-- MAIN CONTENT -->
+      <section class="p-10 pt-4 bg-white rounded-md shadow-md mt-20 w-1/2">
+        <!-- back button -->
+        <div class="ml-0">
+          <a
+            href="animalcagecontroller"
+            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
             >
-              <svg
-                viewBox="0 0 46 16"
-                height="15"
-                width="35"
-                xmlns="http://www.w3.org/2000/svg"
-                id="arrow-horizontal"
-                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
-              >
-                <path
-                  transform="scale(-1, 1) translate(-30)"
-                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                  data-name="Path 10"
-                  id="Path_10"
-                ></path>
-              </svg>
-              <span
-                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                >Back</span
-              >
-            </a>
-          </div>
-          <!-- end back -->
-
-          <div class="text-gray-800 mx-auto pr-20 pb-4">
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <div class="text-gray-800 mx-auto pb-4">
             <h1 class="font-semibold text-5xl">Edit Animal Cage</h1>
           </div>
         </header>
         <div class="mx-auto w-full max-w-8xl">
-          <form action="updateanimalcage" method="POST" enctype="multipart/form-data">
+          <form
+            action="updateanimalcage"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <!-- Submit -->
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="px-8 py-3 leading-5 ml-auto relative overflow-hidden bg-gray-300 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+              >
+                <p class="relative z-10 font-extralight text-2xl">Save</p>
+              </button>
+            </div>
+            <!-- end submit -->
             <input
               name="animalcage_id"
               type="hidden"
@@ -178,7 +191,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
             <!-- end ID  -->
             <!-- photo -->
-             <div
+            <div
               class="container mx-auto h-full flex flex-col justify-center items-center"
             >
               <div id="images-container">
@@ -212,66 +225,8 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <!-- end photo -->
 
             <!-- script photo -->
-            <script>
-              const uploadButton = document.getElementById(
-                "single-upload-button"
-              );
-              const photoInput = document.getElementById("photoInput");
-              const currentPhoto = document.getElementById("current-photo");
-
-              uploadButton.addEventListener("click", function () {
-                photoInput.click(); // Kích hoạt sự kiện click của input file
-              });
-
-              photoInput.addEventListener("change", function (event) {
-                // Xử lý khi người dùng chọn một tập tin ảnh
-                if (photoInput.files.length > 0) {
-                  const file = photoInput.files[0];
-                  const reader = new FileReader();
-
-                  reader.onload = function () {
-                    // Xóa hình ảnh hiện tại
-                    if (currentPhoto) {
-                      currentPhoto.parentElement.removeChild(currentPhoto);
-                    }
-
-                    // Tạo hình ảnh mới và thêm vào container
-                    const newImage = new Image();
-                    newImage.src = reader.result;
-                    newImage.width = 800;
-                    newImage.height = 500;
-                    newImage.id = "current-photo";
-                    newImage.classList.add("rounded", "mb-2");
-                    document
-                      .getElementById("images-container")
-                      .appendChild(newImage);
-                  };
-
-                  reader.readAsDataURL(file);
-                }
-              });
-            </script>
+            <script src="js/updatephoto.js"></script>
             <!-- end photo -->
-            <!-- Button: Cancel and Save -->
-            <div class="flex justify-center mt-6">
-              <div class="pr-2">
-                <a href="animalcagecontroller">
-                  <button
-                    class="px-12 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-                  >
-                    <p class="relative z-10 font-extralight text-xl">Cancel</p>
-                  </button>
-                </a>
-              </div>
-              <a href="">
-                <button
-                  class="px-14 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-                >
-                  <p class="relative z-10 font-extralight text-xl">Save</p>
-                </button>
-              </a>
-            </div>
-            <!-- end button -->
           </form>
         </div>
       </section>

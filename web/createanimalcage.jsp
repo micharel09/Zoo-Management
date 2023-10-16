@@ -1,5 +1,6 @@
-<%-- Document : createanimalcage Created on : Oct 6, 2023, 1:56:03 PM Author :
-Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- prettier-ignore -->
+<%-- Document : createanimalcage Created on : Oct 6, 2023, 1:56:03 PM Author :Quan --%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -72,44 +73,57 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
   <body class="bg-green-400">
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
-      <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
-        <header class="border-b border-gray-100 px-10 flex items-center">
-          <!-- back button -->
-          <div class="ml-0">
-            <a
-              href="animalcagecontroller"
-              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+      <section class="p-10 pt-4 bg-white rounded-md shadow-md mt-20 w-1/2">
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            href="animalcagecontroller"
+            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
             >
-              <svg
-                viewBox="0 0 46 16"
-                height="15"
-                width="35"
-                xmlns="http://www.w3.org/2000/svg"
-                id="arrow-horizontal"
-                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
-              >
-                <path
-                  transform="scale(-1, 1) translate(-30)"
-                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                  data-name="Path 10"
-                  id="Path_10"
-                ></path>
-              </svg>
-              <span
-                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                >Back</span
-              >
-            </a>
-          </div>
-          <!-- end back -->
-
-          <div class="text-gray-800 mx-auto pr-20 pb-4">
-            <h1 class="font-semibold text-5xl">Add Animal Cage</h1>
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <div class="text-gray-800 mx-auto pb-4">
+            <h1 class="font-semibold text-5xl">Add Food Schedule</h1>
           </div>
         </header>
 
         <div class="mx-auto w-full max-w-8xl">
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form
+            action="createanimalcage"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <!-- Submit -->
+            <div class="flex justify-end">
+              <button
+                type="submit"
+                class="px-8 py-3 leading-5 ml-auto relative overflow-hidden bg-gray-300 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+              >
+                <p class="relative z-10 font-extralight text-2xl">Save</p>
+              </button>
+            </div>
+            <!-- end submit -->
             <!-- Name-->
             <div class="mb-5">
               <label for="name" class="mb-3 block text-2xl font-medium">
@@ -126,6 +140,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <p class="mt-3 text-xs text-red-400"></p>
             </div>
             <!-- end name -->
+
             <!-- ID DIV -->
             <div class="-mx-3 flex flex-wrap">
               <!-- Area_ID -->
@@ -166,8 +181,9 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <!-- end employee  -->
             </div>
             <!-- end ID -->
+
             <!-- photo -->
-                        <div class="w-full bg-white">
+            <div class="w-full bg-white">
               <div
                 class="container mx-auto h-full flex flex-col justify-center items-center"
               >
@@ -209,91 +225,8 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 />
               </div>
             </div>
-            <script>
-              multiUploadButton = document.getElementById(
-                "multi-upload-button"
-              );
-              multiUploadInput = document.getElementById("multi-upload-input");
-              imagesContainer = document.getElementById("images-container");
-              multiUploadDisplayText =
-                document.getElementById("multi-upload-text");
-              multiUploadDeleteButton = document.getElementById(
-                "multi-upload-delete"
-              );
-
-              multiUploadButton.onclick = function () {
-                multiUploadInput.click(); // this will trigger the click event
-              };
-
-              multiUploadInput.addEventListener("change", function (event) {
-                if (multiUploadInput.files) {
-                  let files = multiUploadInput.files;
-
-                  // show the text for the upload button text filed
-                  multiUploadDisplayText.innerHTML =
-                    files.length + " files selected";
-
-                  // removes styles from the images wrapper container in case the user readd new images
-                  imagesContainer.innerHTML = "";
-
-                  // the delete button to delete all files
-                  multiUploadDeleteButton.classList.remove("hidden");
-
-                  Object.keys(files).forEach(function (key) {
-                    let file = files[key];
-
-                    // the FileReader object is needed to display the image
-                    let reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = function () {
-                      // for each file we create a div to contain the image
-                      let imageDiv = document.createElement("div");
-                      imageDiv.classList.add(
-                        "mb-4",
-                        "ml-20",
-                        "w-96",
-                        "h-64",
-                        "p-3",
-                        "rounded-lg",
-                        "bg-cover",
-                        "bg-center"
-                      );
-                      imageDiv.style.backgroundImage =
-                        "url(" + reader.result + ")";
-                      imagesContainer.appendChild(imageDiv);
-                    };
-                  });
-                }
-              });
-
-              function removeMultiUpload() {
-                imagesContainer.innerHTML = "";
-                multiUploadInput.value = "";
-                multiUploadDisplayText.innerHTML = "";
-                multiUploadDeleteButton.classList.add("hidden");
-              }
-            </script>
+            <script src="js/createphoto.js"></script>
             <!-- end photo -->
-            <!-- Button: Cancel and Save -->
-            <div class="flex justify-center mt-6">
-              <div class="pr-2">
-                <a href="animalcagecontroller">
-                  <button
-                    class="px-12 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-red-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-red-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-                  >
-                    <p class="relative z-10 font-extralight text-xl">Cancel</p>
-                  </button>
-                </a>
-              </div>
-              <a href="">
-                <button
-                  class="px-14 py-3 leading-5 flex items-center justify-center relative overflow-hidden bg-gray-400 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-500 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-600 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
-                >
-                  <p class="relative z-10 font-extralight text-xl">Save</p>
-                </button>
-              </a>
-            </div>
-            <!-- end button -->
           </form>
         </div>
       </section>
