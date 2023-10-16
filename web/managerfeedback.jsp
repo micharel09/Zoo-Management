@@ -346,11 +346,13 @@
       <td class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r">
         ${f.status}
          
-      <button class="btn group flex  bg-transparent  text-xl  tracking-widest text-white">
-            <span class="relative pr-4 pb-1 text-white after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"><a href="update?fid=${f.feedback_id}" class="text-red-500 "> CHECK</a></span>
-            <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal" class="-translate-x-2 fill-slate-700 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-x-105 group-hover:fill-white">     
-            </svg>
-      </button>
+      <button class="btn group flex bg-transparent text-xl tracking-widest text-white">
+    <span class="relative pr-4 pb-1 text-white after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100">
+      <a href="update?fid=${f.feedback_id}" class="text-red-500" style="display: ${f.status == 'APPROVED' || f.status == 'REJECTED' ? 'none' : 'inline-block'};">CHECK</a>
+    </span>
+    <svg viewBox="0 0 46 16" height="10" width="30" xmlns="http://www.w3.org/2000/svg" id="arrow-horizontal" class="-translate-x-2 fill-slate-700 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-x-105 group-hover:fill-white">
+    </svg>
+  </button>
   
       </td>
       
