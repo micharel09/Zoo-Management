@@ -1,5 +1,4 @@
-![image](https://github.com/micharel09/Zoo-Management/assets/97839306/b71d1384-732c-4f3a-9aff-d5ca139ca70f)# Wild World Zoo - A Zoo-Management Web Application
-
+# World Wide Zoo - A Zoo Management Web Application
 <div align="center">
     <img src="" alt="Logo" width="60" height="60" />
     <p>The Wild World Zoo web application is a user-friendly platform designed to streamline and optimize the management of animal records, exhibits, staff, and visi</p>
