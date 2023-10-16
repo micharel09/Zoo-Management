@@ -32,82 +32,165 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-gray-500">
+  <body>
     <!-- MAIN CONTENT -->
 
-    <div class="flex justify-center items-center h-screen">
-      <h1>Create User</h1>
-      <form action="MainController" method="POST">
-        <!--        <label for="userID">Employee ID:</label>
+    <div class="bg-green-500 min-h-screen flex items-center">
+      <div class="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
+        <div class="max-w-2xl mx-auto">
+          <form action="MainController" method="POST">
+            <!--        <label for="userID">Employee ID:</label>
         <input type="text" name="userID" id="userID" required><br>-->
 
-        <label for="fullName">Full Name:</label>
-        <input type="text" name="fullName" id="fullName" required="" /><br />
+            <div class="relative z-0 mb-6 w-full group">
+              <input
+                class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" "
+                required
+                type="text"
+                name="fullName"
+                id="fullName"
+              />
+              <label
+                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                for="fullName"
+                >Full Name:</label
+              >
+            </div>
+            <!-- div 1 -->
+            <div class="grid xl:grid-cols-2 xl:gap-6">
+              <div class="relative z-0 mb-6 w-full group">
+                <input
+                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  type="tel"
+                  name="Phone"
+                  id="Phone"
+                  placeholder=" "
+                  required
+                  pattern="[0-9]{10}"
+                  title="Số điện thoại phải có 10 chữ số"
+                />
 
-        <label for="Phone">Phone :</label>
-        <input
-          type="tel"
-          name="Phone"
-          id="Phone"
-          required
-          pattern="[0-9]{10}"
-          title="Số điện thoại phải có 10 chữ số"
-        />
+                <label
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  for="Phone"
+                  >Phone :</label
+                >
+              </div>
+              <div class="relative z-0 mb-6 w-full group">
+                <input
+                  type="email"
+                  name="Email"
+                  id="Email"
+                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  required
+                />
+                <label
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  for="Email"
+                  >Email :</label
+                >
+              </div>
+            </div>
+            <!-- div 1 end -->
+            <!-- div 2-->
+            <div class="grid xl:grid-cols-2 xl:gap-6">
+              <div class="relative z-0 mb-6 w-full group">
+                <label for="Gender">Gender :</label>
+                <select name="Gender" id="Gender">
+                  <option value="Male">Male</option>
+                  <option value="FeMale">Female</option>
+                </select>
+              </div>
+              <div class="relative z-0 mb-6 w-full group">
+                <label for="roleID">Role ID : </label>
+                <select name="roleID" id="roleID">
+                  <option value="ADMIN">ADMIN</option>
+                  <option value="MANAGER">MANAGER</option>
+                  <option value="TRAINER">TRAINER</option>
+                </select>
+              </div>
+            </div>
+            <!-- end div 2 -->
+            <!-- div 3 -->
+            <div class="grid xl:grid-cols-2 xl:gap-6">
+              <div class="relative z-0 mb-6 w-full group">
+                <input
+                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                />
+                <label
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  for="password"
+                  >Password:</label
+                >
+              </div>
+              <div class="relative z-0 mb-6 w-full group">
+                <input
+                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" "
+                  type="password"
+                  name="confirm"
+                  id="confirm"
+                  required
+                />
+                <label
+                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  for="confirm"
+                  >Confirm:</label
+                >
+              </div>
+            </div>
+            <!-- end div 3  -->
+            <script>
+              // Lấy các phần tử DOM cần sử dụng
+              const passwordInput = document.getElementById("password");
+              const confirmInput = document.getElementById("confirm");
+              const showPasswordCheckbox =
+                document.getElementById("showPassword");
 
-        <label for="Email">Email :</label>
-        <input type="email" name="Email" id="Email" required="" /><br />
+              // Xử lý sự kiện khi checkbox "Show Password" thay đổi
+              showPasswordCheckbox.addEventListener("change", function () {
+                if (this.checked) {
+                  // Nếu checkbox được chọn, hiện mật khẩu
+                  passwordInput.type = "text";
+                  confirmInput.type = "text";
+                } else {
+                  // Nếu checkbox không được chọn, ẩn mật khẩu
+                  passwordInput.type = "password";
+                  confirmInput.type = "password";
+                }
+              });
+            </script>
+            <div class="flex justify-center">
+              <button
+                class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-light="true"
+                type="submit"
+                name="action"
+                value="Create"
+              >
+                Create
+              </button>
 
-        <label for="Gender">Gender :</label>
-        <select name="Gender" id="Gender">
-          <option value="Male">Male</option>
-          <option value="FeMale">Female</option></select
-        ><br />
-
-        <label for="roleID">Role ID : </label>
-        <select name="roleID" id="roleID">
-          <option value="ADMIN">ADMIN</option>
-          <option value="MANAGER">MANAGER</option>
-          <option value="TRAINER">TRAINER</option></select
-        ><br />
-        <!--
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required><br>
-
-        <label for="confirm">Confirm:</label>       <input type="password" name="confirm" id="confirm" required><br>-->
-
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required />
-        <input type="checkbox" id="showPassword" /> Show Password<br />
-
-        <label for="confirm">Confirm:</label>
-        <input type="password" name="confirm" id="confirm" required /><br />
-
-        <script>
-          // Lấy các phần tử DOM cần sử dụng
-          const passwordInput = document.getElementById("password");
-          const confirmInput = document.getElementById("confirm");
-          const showPasswordCheckbox = document.getElementById("showPassword");
-
-          // Xử lý sự kiện khi checkbox "Show Password" thay đổi
-          showPasswordCheckbox.addEventListener("change", function () {
-            if (this.checked) {
-              // Nếu checkbox được chọn, hiện mật khẩu
-              passwordInput.type = "text";
-              confirmInput.type = "text";
-            } else {
-              // Nếu checkbox không được chọn, ẩn mật khẩu
-              passwordInput.type = "password";
-              confirmInput.type = "password";
-            }
-          });
-        </script>
-
-        <input type="submit" name="action" value="Create" />
-        <input type="reset" value="Reset" />
-        <br />
-
-        <a href="MainController?action=BackAdminPage">Back</a>
-      </form>
+              <button
+                type="reset"
+                value="Reset"
+                class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-light="true"
+              >
+                Reset
+              </button>
+            </div>
+            <a href="MainController?action=BackAdminPage">Back</a>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>

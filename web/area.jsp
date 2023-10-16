@@ -1,3 +1,4 @@
+<!-- prettier-ignore -->
 <%-- Document : area Created on : Sep 27, 2023, 10:10:35 PM Author : ADMIN --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -49,7 +50,6 @@
 
     <script>
       window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
         var iframe = document.getElementById("loading-iframe");
         if (iframe) {
           iframe.style.zIndex = 0;
@@ -73,7 +73,7 @@
         </div>
         <div class="py-8 ml-20">
           <!-- main -->
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-3 overflow-x-auto">
+          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-3 overflow-x-hidden">
             <table class="min-w-full border-collapse border border-blue-500">
               <thead class="bg-neutral-100">
                 <tr class="bg-blue-500 text-white">

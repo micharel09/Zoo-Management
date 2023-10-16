@@ -1,6 +1,7 @@
-<%-- Document : update_anime Created on : Oct 6, 2023, 9:57:04 AM Author : ADMIN
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%> <%@ taglib
-prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!-- prettier-ignore -->
+<%-- Document : update_anime Created on : Oct 6, 2023, 9:57:04 AM Author : ADMIN --%> 
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -55,7 +56,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <script>
       window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
         var iframe = document.getElementById("loading-iframe");
         if (iframe) {
           iframe.style.zIndex = 0;
@@ -68,7 +68,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         opacity: 0;
       }
     </style>
-    <!-- modal  -->
     <style>
       .animated {
         -webkit-animation-duration: 1s;
@@ -119,37 +118,36 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 mx-auto bg-white rounded-md shadow-md mt-20 w-1/2">
         <!-- MAIN CONTENT -->
-        <header class="border-b border-gray-100 px-10 flex items-center">
-          <!-- back button -->
-          <div class="ml-0">
-            <a
-              href="animalcontroller"
-              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            href="animalcontroller"
+            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
             >
-              <svg
-                viewBox="0 0 46 16"
-                height="15"
-                width="35"
-                xmlns="http://www.w3.org/2000/svg"
-                id="arrow-horizontal"
-                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
-              >
-                <path
-                  transform="scale(-1, 1) translate(-30)"
-                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                  data-name="Path 10"
-                  id="Path_10"
-                ></path>
-              </svg>
-              <span
-                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                >Back</span
-              >
-            </a>
-          </div>
-          <!-- end back -->
-
-          <div class="text-gray-800 mx-auto pr-20 pb-4">
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <div class="text-gray-800 mx-auto pb-4">
             <h1 class="font-semibold text-5xl">Add Animal</h1>
           </div>
         </header>
@@ -188,7 +186,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               />
             </div>
             <!-- end name -->
-
+            <!-- div 2 -->
             <div class="-mx-3 flex flex-wrap">
               <!-- date -->
               <div class="w-full px-3 sm:w-1/2">
@@ -229,6 +227,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               </div>
               <!-- end select -->
             </div>
+            <!-- end div 2 -->
 
             <!-- photo -->
             <div class="w-full bg-white">
@@ -273,70 +272,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 />
               </div>
             </div>
-            <script>
-              multiUploadButton = document.getElementById(
-                "multi-upload-button"
-              );
-              multiUploadInput = document.getElementById("multi-upload-input");
-              imagesContainer = document.getElementById("images-container");
-              multiUploadDisplayText =
-                document.getElementById("multi-upload-text");
-              multiUploadDeleteButton = document.getElementById(
-                "multi-upload-delete"
-              );
-
-              multiUploadButton.onclick = function () {
-                multiUploadInput.click(); // this will trigger the click event
-              };
-
-              multiUploadInput.addEventListener("change", function (event) {
-                if (multiUploadInput.files) {
-                  let files = multiUploadInput.files;
-
-                  // show the text for the upload button text filed
-                  multiUploadDisplayText.innerHTML =
-                    files.length + " files selected";
-
-                  // removes styles from the images wrapper container in case the user readd new images
-                  imagesContainer.innerHTML = "";
-
-                  // the delete button to delete all files
-                  multiUploadDeleteButton.classList.remove("hidden");
-
-                  Object.keys(files).forEach(function (key) {
-                    let file = files[key];
-
-                    // the FileReader object is needed to display the image
-                    let reader = new FileReader();
-                    reader.readAsDataURL(file);
-                    reader.onload = function () {
-                      // for each file we create a div to contain the image
-                      let imageDiv = document.createElement("div");
-                      imageDiv.classList.add(
-                        "mb-4",
-                        "ml-20",
-                        "w-96",
-                        "h-64",
-                        "p-3",
-                        "rounded-lg",
-                        "bg-cover",
-                        "bg-center"
-                      );
-                      imageDiv.style.backgroundImage =
-                        "url(" + reader.result + ")";
-                      imagesContainer.appendChild(imageDiv);
-                    };
-                  });
-                }
-              });
-
-              function removeMultiUpload() {
-                imagesContainer.innerHTML = "";
-                multiUploadInput.value = "";
-                multiUploadDisplayText.innerHTML = "";
-                multiUploadDeleteButton.classList.add("hidden");
-              }
-            </script>
+            <script src="js/createphoto.js"></script>
             <!-- end photo -->
           </form>
         </div>

@@ -1,9 +1,9 @@
 <%-- Document : animal Created on : Oct 4, 2023, 9:45:11 AM Author : dinhg --%>
-<%@page import="java.util.List"%> <%@page import="sample.animal.AnimalDTO"%> <%@
-page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%@ taglib
-uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<!-- prettier-ignore -->
+<%@page import="java.util.List" %> <%@page import="sample.animal.AnimalDTO" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -69,15 +69,16 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     <!-- end loading -->
     <title>Animal List</title>
   </head>
-  <body class="block overflow-x-hidden mx-auto bg-green-500">
+
+  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
     <main class="antialiased font-sans bg-white">
       <div class="container mx-auto px-4 sm:px-8">
         <div class="flex justify-center">
           <h1 class="text-6xl mt-10 font-bold">Animals List</h1>
         </div>
         <div class="py-8 ml-20">
-          <!-- Search -->
           <div class="my-2 flex sm:flex-row">
+            <!-- Search -->
             <form action="animalsearch" method="get">
               <div class="block relative">
                 <span
@@ -132,11 +133,12 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                 <span class="ml-1 text-2xl">Add</span>
               </button>
             </form>
-
             <!-- end Create -->
           </div>
           <!-- main -->
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-auto">
+          <div
+            class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-hidden overflow-y-hidden"
+          >
             <!-- table -->
             <c:choose>
               <c:when test="${fn:length(animallist) > 2}">
@@ -215,8 +217,8 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                         >
                           <img
                             src="./animal_picture/${animal.photo}"
-                            width="80"
-                            height="70"
+                            width="150"
+                            height="140"
                           />
                         </td>
                         <td
@@ -253,6 +255,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                   href="animaldelete?animalID=${animal.animal_id}"
                                   class=""
                                   onclick="return confirmDelete();"
+                                  onclick="saveScrollPosition(); return confirmDelete();"
                                 >
                                   <i
                                     fill="none"
@@ -264,6 +267,10 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                 </a>
                               </button>
                             </div>
+
+                            <script src="js/possitionload.js"></script>
+
+                            <!-- end delete -->
                           </div>
                         </td>
                       </tr>
@@ -382,6 +389,7 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                 href="animaldelete?animalID=${animal.animal_id}"
                                 class=""
                                 onclick="return confirmDelete();"
+                                onclick="saveScrollPosition(); return confirmDelete();"
                               >
                                 <button
                                   class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
@@ -395,6 +403,10 @@ uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
                                   ></i></button
                               ></a>
                             </div>
+
+                            <script src="js/possitionload.js"></script>
+
+                            <!-- end delete -->
                           </div>
                         </td>
                       </tr>

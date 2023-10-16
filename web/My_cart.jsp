@@ -1,7 +1,8 @@
 <%-- Document : Cart Created on : Sep 27, 2023, 10:16:31 AM Author : Quan --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core" %> <%@taglib prefix="fmt"
-uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!-- prettier-ignore -->
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
   <head>
