@@ -52,7 +52,11 @@ import="java.util.List"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
           <main class="flex-1 overflow-x-hidden bg-gray-200">
             <div class="container px-6 py-8 mx-auto">
               <form action="TicketController">
-                <h3 class="text-xl mb-2">Choose Time For Detail:</h3>
+                <h3
+                  class="text-5xl mb-4 pb-2 font-medium text-gray-700 border-b border-gray-300"
+                >
+                  Ticket Dashboard
+                </h3>
                 <!-- From To -->
                 <div class="-mx-3 flex flex-wrap">
                   <!-- div1 -->

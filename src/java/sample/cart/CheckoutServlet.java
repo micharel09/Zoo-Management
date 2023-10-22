@@ -237,3 +237,4 @@ public class CheckoutServlet extends HttpServlet {
     }// </editor-fold>
 
 }
+ 

@@ -70,7 +70,7 @@
     <!-- end loading -->
     <title>Create Page</title>
   </head>
-  <body class="bg-green-400">
+  <body class="bg-green-500">
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 pt-4 bg-white rounded-md shadow-md mt-20 w-1/2">
@@ -104,10 +104,9 @@
         <!-- end back -->
         <header class="border-b border-gray-100 px-10 flex items-center">
           <div class="text-gray-800 mx-auto pb-4">
-            <h1 class="font-semibold text-5xl">Add Food Schedule</h1>
+            <h1 class="text-5xl font-medium text-gray-700">Add Animal Cage</h1>
           </div>
         </header>
-
         <div class="mx-auto w-full max-w-8xl">
           <form
             action="createanimalcage"
@@ -118,27 +117,30 @@
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-8 py-3 leading-5 ml-auto relative overflow-hidden bg-gray-300 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
-                <p class="relative z-10 font-extralight text-2xl">Save</p>
+                <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
             </div>
             <!-- end submit -->
             <!-- Name-->
-            <div class="mb-5">
-              <label for="name" class="mb-3 block text-2xl font-medium">
-                Name
-              </label>
+            <div class="relative z-0 mb-6 w-full group">
               <input
                 type="text"
+                placeholder=" "
+                required
                 name="name"
                 placeholder="Enter Cage name"
                 min="0"
-                class="w-full font-extralight appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-green-300 appearance-none dark:border-gray-600 dark:focus:border-green-400 focus:outline-none focus:ring-0 focus:border-green-600 peer"
               />
-
-              <p class="mt-3 text-xs text-red-400"></p>
+              <label
+                class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-greeborder-green-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                for="fullName"
+                >Name:</label
+              >
             </div>
+            <p class="mt-3 text-xs text-red-400"></p>
             <!-- end name -->
 
             <!-- ID DIV -->
@@ -147,12 +149,12 @@
               <div class="w-full px-3 sm:w-1/2">
                 <label
                   for="area_id"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                   >Area_ID</label
                 >
                 <select
                   name="area_id"
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 >
                   <c:forEach var="a" items="${listarea}">
                     <option>${a.area_id}</option>
@@ -165,12 +167,12 @@
                 <div class="mb-5">
                   <label
                     for="employee_id"
-                    class="mb-3 block text-2xl font-medium text-[#07074D]"
+                    class="mb-3 block text-xl font-medium text-[#07074D]"
                     >Employee_ID</label
                   >
                   <select
                     name="employee_id"
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   >
                     <c:forEach var="o" items="${listuser}">
                       <option>${o.employee_id}</option>
@@ -189,11 +191,12 @@
               >
                 <div id="images-container"></div>
                 <div class="flex w-full justify-center">
-                  <div
-                    id="multi-upload-button"
-                    class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-                  >
-                    Upload Photo
+                  <div id="multi-upload-button">
+                    <button
+                      class="bg-neutral-200 rounded-md px-12 py-4 text-xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                    >
+                      Upload Photo
+                    </button>
                   </div>
                   <div
                     class="border-gray-300 rounded-r-md flex items-center justify-between"

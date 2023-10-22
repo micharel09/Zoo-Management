@@ -31,43 +31,40 @@ contentType="text/html" pageEncoding="UTF-8"%>
     ></script>
     <title>Update Animal</title>
   </head>
-  <body class="bg-green-300">
+  <body class="bg-green-500">
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 mx-auto bg-white rounded-md shadow-md mt-20 w-1/2">
-        <header class="border-b border-gray-100 px-10 flex items-center">
-          <!-- main -->
-          <!-- back button -->
-          <div class="ml-0">
-            <!-- Căn chỉnh vị trí sang trái -->
-            <a
-              href="animalcontroller"
-              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            href="animalcontroller"
+            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
             >
-              <svg
-                viewBox="0 0 46 16"
-                height="15"
-                width="35"
-                xmlns="http://www.w3.org/2000/svg"
-                id="arrow-horizontal"
-                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
-              >
-                <path
-                  transform="scale(-1, 1) translate(-30)"
-                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                  data-name="Path 10"
-                  id="Path_10"
-                ></path>
-              </svg>
-              <span
-                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                >Back</span
-              >
-            </a>
-          </div>
-          <!-- end back -->
-
-          <div class="text-gray-800 mx-auto pr-20 pb-4">
-            <h1 class="font-semibold text-5xl">Update Animal</h1>
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-greeborder-green-400 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <div class="text-gray-800 mx-auto pb-4">
+            <h1 class="text-5xl font-medium text-gray-700">Update Animal</h1>
           </div>
         </header>
 
@@ -82,27 +79,27 @@ contentType="text/html" pageEncoding="UTF-8"%>
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-10 py-3 leading-5 ml-auto relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-400 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
-                <p class="relative z-10 font-extralight text-2xl">Save</p>
+                <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
             </div>
             <!-- end submit -->
             <!-- name -->
-            <div class="mb-5">
-              <label
-                for="guest"
-                class="mb-3 block text-2xl font-medium text-[#07074D]"
-              >
-                Name
-              </label>
-
+            <div class="relative z-0 mb-6 w-full group">
               <input
-                class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-green-300 appearance-none dark:border-gray-600 dark:focus:border-green-400 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 type="text"
                 name="name"
+                placeholder=" "
+                required
                 value="${aa.name}"
               />
+              <label
+                class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-greeborder-green-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                for="fullName"
+                >Name:</label
+              >
             </div>
             <!-- end name -->
             <div class="-mx-3 flex flex-wrap">
@@ -116,7 +113,7 @@ contentType="text/html" pageEncoding="UTF-8"%>
                     Date
                   </label>
                   <input
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     type="date"
                     name="dayin"
                     value="${aa.dayin}"
@@ -134,7 +131,7 @@ contentType="text/html" pageEncoding="UTF-8"%>
                     Cage_ID
                   </label>
                   <select
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     name="animalcageid"
                   >
                     <c:forEach items="${cage}" var="c">
@@ -155,6 +152,7 @@ contentType="text/html" pageEncoding="UTF-8"%>
               </div>
             </div>
             <!-- end old id -->
+
             <!-- photo -->
             <div
               class="container mx-auto h-full flex flex-col justify-center items-center"
@@ -172,12 +170,23 @@ contentType="text/html" pageEncoding="UTF-8"%>
               </div>
 
               <div class="flex w-full justify-center">
-                <div
-                  id="single-upload-button"
-                  class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-                >
-                  Upload Photo
+                <div id="single-upload-button">
+                  <button
+                    type="button"
+                    class="bg-neutral-200 rounded-md px-12 py-4 text-xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                  >
+                    Upload Photo
+                  </button>
                 </div>
+                <!-- script -->
+                <script>
+                  document
+                    .querySelector("#single-upload-button")
+                    .addEventListener("click", function (event) {
+                      event.preventDefault();
+                      // ....
+                    });
+                </script>
               </div>
               <input
                 type="file"

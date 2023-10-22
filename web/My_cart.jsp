@@ -279,7 +279,7 @@
                   </tr>
                 </thead>
 
-                <tbody class="divide-y divide-gray-100 text-3xl">
+                <tbody class="divide-y divide-gray-100 text-xl">
                   <c:set var="o" value="${requestScope.cart}" />
                   <c:set var="tt" value="0" />
                   <c:forEach items="${o.items}" var="i">
@@ -369,11 +369,11 @@
               class="flex justify-center pt-4 mb-4 mr-4 border-t border-gray-100"
             >
               <form action="./checkout.jsp" method="post">
-                <input
-                  type="submit"
-                  value="Checkout"
-                  class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-                />
+                <button
+                  class="bg-transparent rounded-md px-12 py-4 text-2xl border-black text-black border-2 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[200ms,400ms] transition-[color,box-shadow]"
+                >
+                  <input type="submit" value="Checkout" />
+                </button>
               </form>
             </div>
             <!-- end confim -->

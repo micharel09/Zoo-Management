@@ -47,7 +47,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         transition: opacity 1s;
       "
     ></iframe>
-
+    <link rel="stylesheet" href="css/cart.css" />
     <script>
       window.addEventListener("load", function () {
         // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
@@ -58,18 +58,8 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         }
       });
     </script>
-    <style>
-      .hidden-iframe {
-        opacity: 0;
-      }
-    </style>
-    <!-- end loading -->
-    <!-- bg -->
-    <style>
-      .hidden-iframe {
-        opacity: 0;
-      }
 
+    <style>
       .custom-bg {
         /* Đường dẫn của hình ảnh nền */
         background-image: url("img/checkoutbg.png");
@@ -78,14 +68,9 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         background-color: green;
       }
     </style>
-
-    <!-- end bg -->
+    <!-- end loading -->
     <title>Choose ticket</title>
-    <style>
-      [x-cloak] {
-        display: none;
-      }
-    </style>
+
     <%@ include file="components/header.html" %> <%@ include
     file="components/breadcrumb.html" %>
   </head>
@@ -197,29 +182,17 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
       <!-- end Progress Steps -->
       <!-- main -->
       <div>
-        <!-- View -->
-        <div class="flex justify-end m-4">
-          <a href="show">
-            <button
-              class="bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-            >
-              View (${requestScope.size}) items
-            </button>
-          </a>
-        </div>
-        <!-- end View -->
-
         <div class="flex flex-row justify-center space-x-8">
           <div class="relative flex flex-wrap mx-auto justify-center">
             <form name="f" action="" method="post">
-              <div class="flex space-x-4 mt-4">
+              <div class="flex space-x-4">
                 <c:forEach items="${requestScope.data}" var="p">
                   <c:set var="id" value="${p.tid}" />
                   <c:set var="ticketType" value="${p.type}" />
                   <!-- Thêm một thuộc tính ticketType -->
 
                   <article
-                    class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                    class="rounded-xl bg-white p-3 mt-10 ml-40 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
                   >
                     <div class="ticket-wrapper">
                       <div
@@ -248,6 +221,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                         <div class="flex items-center gap-4">
                           <!-- quantity -->
                           <div class="mx-auto ml-6">
+                            <!-- - -->
                             <button
                               class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-l-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
                               onclick="changeQuantity('${id}', -1)"
@@ -263,6 +237,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                               value="0"
                               onchange="validateNumber(this)"
                             />
+                            <!-- + -->
                             <button
                               class="py-2 px-3 bg-transparent text-green-600 font-semibold border border-green-600 rounded-r-3xl hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform"
                               onclick="changeQuantity('${id}', 1)"
@@ -271,88 +246,15 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                               +
                             </button>
                           </div>
-
-                          <!-- Thay đổi tên các hàm và thuộc tính cho Ticket -->
-                          <script>
-                            var quantities = {};
-                            var ticketType = "${ticketType}";
-
-                            function validateNumber(input) {
-                              var value = input.value;
-                              var intValue = parseInt(value);
-                              if (isNaN(intValue) || intValue < 0) {
-                                input.value = 0;
-                              }
-                            }
-
-                            function changeQuantity(id, delta) {
-                              if (!quantities[id]) {
-                                quantities[id] = 0;
-                              }
-
-                              var quantityInput = document.querySelector(
-                                '[data-id="' + id + '"]'
-                              );
-                              var currentValue = parseInt(quantityInput.value);
-
-                              quantities[id] = currentValue + delta;
-
-                              if (quantities[id] >= 0) {
-                                quantityInput.value = quantities[id];
-                              }
-                            }
-
-                            function buyTicket(id) {
-                              var xhr = new XMLHttpRequest();
-                              xhr.open("POST", "buy", true);
-                              xhr.setRequestHeader(
-                                "Content-type",
-                                "application/x-www-form-urlencoded"
-                              );
-
-                              var inputNum = document.querySelector(
-                                'input[data-id="' + id + '"]'
-                              );
-                              var m = quantities[id];
-
-                              xhr.onload = function () {
-                                // Xử lý kết quả nếu cần thiết
-                                console.log(xhr.responseText);
-                              };
-
-                              xhr.send("id=" + id + "&num=" + m);
-
-                              console.log(
-                                `Buying ${m} tickets of ID ${id} (${ticketType} ticket)`
-                              );
-                            }
-                            function buyAll() {
-                              // Lưu quantities vào cookie
-                              document.cookie =
-                                "quantities=" + JSON.stringify(quantities);
-
-                              // Xử lý mua tất cả vé ở đây
-                              var allIds = Object.keys(quantities);
-                              for (var i = 0; i < allIds.length; i++) {
-                                var id = allIds[i];
-                                if (
-                                  quantities.hasOwnProperty(id) &&
-                                  quantities[id] > 0
-                                ) {
-                                  debugger;
-                                  buyTicket(id);
-                                }
-                              }
-                            }
-                          </script>
-
+                          <script src="js/cart.js"></script>
                           <!-- end quantity -->
                           <!-- buy ticket -->
                           <input
+                            id="addToCartButton"
                             type="button"
                             class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                            onclick="buyTicket('${id}')"
-                            value="Buy Ticket"
+                            onclick="buyTicket('${id}'), showToast"
+                            value="Add To Cart"
                           />
                           <!-- end buy -->
                         </div>
@@ -361,30 +263,21 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
                   </article>
                 </c:forEach>
               </div>
-              <!-- buy all -->
-              <div class="mt-4 mx-auto justify-center flex">
-                <button
-                  id="view-button"
-                  class="py-2 px-4 bg-transparent text-green-600 font-semibold border border-green-600 rounded hover:bg-green-600 hover:text-white hover:border-transparent transition ease-in duration-200 transform hover:-translate-y-1 active:translate-y-0"
-                >
-                  Buy All Tickets
-                </button>
-                <script>
-                  document.addEventListener("DOMContentLoaded", function () {
-                    var viewButton = document.getElementById("view-button");
-
-                    viewButton.addEventListener("click", function (event) {
-                      event.preventDefault();
-                      setTimeout(function () {
-                        window.location.reload();
-                      }, 10000);
-                    });
-                  });
-                </script>
-              </div>
-              <!-- end buy all -->
             </form>
           </div>
+          <!-- View -->
+          <div class="flex m-6 pr-10">
+            <a id="viewCartButton" 
+               style="display: none" 
+               href="show">
+              <button
+                class="bg-neutral-200 border-2 border-black rounded-md px-6 py-2 text-xl text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+              >
+                View Cart
+              </button>
+            </a>
+          </div>
+          <!-- end View -->
         </div>
 
         <!-- end main -->

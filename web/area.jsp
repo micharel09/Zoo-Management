@@ -29,54 +29,27 @@
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <!-- loading -->
-    <iframe
-      id="loading-iframe"
-      src="components/loading.html"
-      frameborder="0"
-      style="
-        border: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background: transparent; /* Make the iframe background transparent */
-        pointer-events: none; /* Allow interaction with elements behind the iframe */
-        transition: opacity 1s;
-      "
-    ></iframe>
-
-    <script>
-      window.addEventListener("load", function () {
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
-    </script>
-    <style>
-      .hidden-iframe {
-        opacity: 0;
-      }
-    </style>
-    <!-- end loading -->
     <title>Area</title>
+    <!-- prettier-ignore -->
+    <%@ include file="components/headermanager.jsp" %>
+    <!-- end header -->
   </head>
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
+  <body class="h-screen block overflow-x-hidden mx-auto bg-green-500">
+    <!-- sidebar -->
+    <!-- prettier-ignore -->
+    <%@ include file="components/sidebarmanager.jsp" %>
+    <!-- end sidebar -->
     <main class="antialiased font-sans bg-white">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center">
-          <h1 class="text-6xl mt-10 font-bold">Location Area</h1>
+        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
+          <h3 class="text-5xl font-medium text-gray-700">Location Area</h3>
         </div>
         <div class="py-8 ml-20">
           <!-- main -->
           <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-3 overflow-x-hidden">
-            <table class="min-w-full border-collapse border border-blue-500">
-              <thead class="bg-neutral-100">
-                <tr class="bg-blue-500 text-white">
+            <table class="min-w-full border-collapse border border-green-500">
+              <thead class="bg-green-500">
+                <tr class="text-white">
                   <th
                     class="w-1/4 px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                   >
@@ -107,7 +80,7 @@
                 >
                   <tr>
                     <td
-                      class="text-blue-500 py-3 text-2xl px-6 py-3 border-b border-gray-200 border-r"
+                      class="text-green-500 py-3 text-2xl px-6 py-3 border-b border-gray-200 border-r"
                     >
                       <a href="animalcagesearch?animalcageID=${o.animalcage_id}"
                         >${o.animalcage_id}</a
@@ -129,7 +102,7 @@
                       class="py-3 text-2xl px-6 py-3 border-b border-gray-200 border-r"
                     >
                       <a
-                        class="cursor-pointer duration-300 hover:text-blue-600"
+                        class="cursor-pointer duration-300 hover:text-green-600"
                         href="animalsearch?animalID=${o.animalcage_id}"
                         >${o.name}</a
                       >

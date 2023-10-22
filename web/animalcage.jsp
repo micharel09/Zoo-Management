@@ -94,14 +94,14 @@
     <title>Animal Cage List</title>
   </head>
 
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
-    <main class="antialiased font-sans bg-white">
+  <body class="block overflow-x-hidden mx-auto">
+    <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center">
-          <h1 class="text-6xl mt-10 font-bold">Animal Cage List</h1>
+        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
+          <h3 class="text-5xl font-medium text-gray-700">Animal Cages List</h3>
         </div>
         <div class="py-8 ml-20">
-          <div class="my-2 flex sm:flex-row">
+          <div class="my-2 flex justify-between sm:flex-row">
             <!-- Search -->
             <form action="animalcagesearch" method="get">
               <div class="block relative">
@@ -125,7 +125,7 @@
                   class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />
                 <input
-                  class="text-2xl pl-2 cursor-pointer hover:text-blue-500 transition-colors duration-300"
+                  class="text-2xl pl-2 cursor-pointer hover:text-green-500 transition-colors duration-300"
                   type="submit"
                   value="Search"
                   placeholder="Search Animal by ID"
@@ -164,18 +164,19 @@
           <!-- end message -->
 
           <!-- main -->
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-hidden p-10">
+          <div
+            class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-hidden overflow-y-hidden"
+          >
             <!-- table -->
             <c:choose>
               <c:when test="${fn:length(animalcagelist) > 0}">
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
+                        class="mx-2 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
                         AnimalCage_ID
                       </th>
@@ -185,8 +186,7 @@
                         Area_ID
                       </th>
                       <th
-                        class="px-10 pl-8 py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
+                        class="mx-auto pl-8 py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
                         Employee_ID
                       </th>
@@ -246,11 +246,12 @@
                           class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
                         >
                           <div class="flex justify-center items-center">
-                            <!-- edit --><a
+                            <!-- edit -->
+                            <a
                               href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
                             >
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -276,7 +277,7 @@
                                 onclick="saveScrollPosition(); return confirmDelete();"
                               >
                                 <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"
@@ -299,12 +300,12 @@
               </c:when>
               <c:otherwise>
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-50">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
-                        class="px-10 py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 100px"
                       >
                         AnimalCage_ID
@@ -315,7 +316,7 @@
                         Area_ID
                       </th>
                       <th
-                        class="px-10 py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-6 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 100px"
                       >
                         Employee_ID
@@ -381,7 +382,7 @@
                               href="updateanimalcage?animalcageID=${animalcage.animalcage_id}"
                             >
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -396,18 +397,18 @@
                                     stroke-linejoin="round"
                                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                   />
-                                </svg>
-                              </button>
-                            </a>
+                                </svg></button
+                            ></a>
                             <!-- delete -->
                             <div class="pl-2">
                               <a
                                 href="deleteanimalcage?animalcageID=${animalcage.animalcage_id}"
                                 class=""
+                                onclick="return confirmDelete();"
                                 onclick="saveScrollPosition(); return confirmDelete();"
                               >
                                 <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"

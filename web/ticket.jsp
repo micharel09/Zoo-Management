@@ -42,12 +42,12 @@
           <main class="flex-1 overflow-x-hidden bg-gray-200">
             <div class="container px-6 py-8 mx-auto">
               <!--  -->
-              <div class="flex justify-between">
-                <h3 class="text-3xl font-medium text-gray-700">Ticket List</h3>
+              <div class="flex justify-between pb-2 border-b border-gray-300">
+                <h3 class="text-5xl font-medium text-gray-700 ">Ticket List</h3>
                 <!-- View Order -->
                 <a
                   href="TicketController?action=View_order"
-                  class="btn group flex items-center text-xl font-thin tracking-widest text-white back-button"
+                  class="btn group flex items-center text-4xl font-thin tracking-widest text-white back-button"
                 >
                   <span
                     class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:right-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
@@ -55,8 +55,8 @@
                   >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    height="15"
-                    width="50"
+                    height="20"
+                    width="70"
                     viewBox="0 0 20 16"
                     class="translate-x-2 fill-slate-700 transition-all duration-600 ease-out group-hover:translate-x-4 group-hover:fill-green-500"
                   >
@@ -71,7 +71,7 @@
               </div>
               <!--  -->
               <!-- main -->
-              <div class="flex flex-col mt-8">
+              <div class="flex flex-col mt-4">
                 <div
                   class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-hidden overflow-y-hidden"
                 >
@@ -83,7 +83,7 @@
                   >
                     <table class="min-w-full">
                       <thead class="bg-neutral-100">
-                        <tr class="bg-blue-500 text-white">
+                        <tr class=" text-white">
                           <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                           >
@@ -152,18 +152,26 @@
                           </td>
 
                           <td><%= ticket.getPrice_Main()%></td>
+
                           <td>
                             <input
                               type="hidden"
                               name="ID_Ticket"
                               value="<%= ticket.getTicket_ID()%> "
                             />
+
+                            <div class="pl-2">
+                              <button
+                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-gray-400 transition-all duration-300 text-white"
+                              >
                             <input
                               type="submit"
                               name="action"
                               name="Update_Discount"
                               value="Update_Discount"
                             />
+                          </button>
+                        </div>
                           </td>
                         </form>
                         <% } }%>

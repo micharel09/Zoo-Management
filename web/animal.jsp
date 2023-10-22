@@ -1,7 +1,5 @@
 <%-- Document : animal Created on : Oct 4, 2023, 9:45:11 AM Author : dinhg --%>
 <!-- prettier-ignore -->
-<%@page import="java.util.List" %> <%@page import="sample.animal.AnimalDTO" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -33,7 +31,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- loading -->
-    <iframe
+    <!-- <iframe
       id="loading-iframe"
       src="components/loading.html"
       frameborder="0"
@@ -65,48 +63,61 @@
       .hidden-iframe {
         opacity: 0;
       }
-    </style>
+    </style> -->
     <!-- end loading -->
-    <title>Animal List</title>
-  </head>
 
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
-    <main class="antialiased font-sans bg-white">
+    <title>Animal List</title>
+    <!-- prettier-ignore -->
+    <!-- header -->
+    <%@ include file="components/headermanager.jsp" %>
+    <!-- end header -->
+  </head>
+  <body class="block overflow-x-hidden mx-auto">
+    <!-- prettier-ignore -->
+    <!-- sidebar-->
+    <%@ include file="components/sidebarmanager.jsp" %>
+    <!-- end sidebar -->
+    <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center">
-          <h1 class="text-6xl mt-10 font-bold">Animals List</h1>
+        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
+          <h3 class="text-5xl font-medium text-gray-700">Animals List</h3>
         </div>
         <div class="py-8 ml-20">
-          <div class="my-2 flex sm:flex-row">
+          <div class="my-2 flex justify-between sm:flex-row">
             <!-- Search -->
             <form action="animalsearch" method="get">
               <div class="block relative">
-                <span
-                  class="h-full absolute inset-y-0 left-0 flex items-center pl-4 cursor-pointer"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="h-6 w-6 fill-current text-gray-500"
-                  >
-                    <path
-                      d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-                    ></path>
-                  </svg>
-                </span>
                 <input
                   type="text"
                   id="animalID"
                   name="animalID"
                   placeholder="Search Animal by ID"
-                  class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                  class="text-xl rounded-xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />
 
-                <input
-                  class="text-2xl pl-2 cursor-pointer hover:text-blue-500 transition-colors duration-300"
+                <!-- button search -->
+                <button
                   type="submit"
-                  value="Search"
-                  placeholder="Search Animal by ID"
-                />
+                  class="inline-flex items-center py-3 px-3 ml-2 text-sm font-medium text-white bg-green-500 rounded-lg border border-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300"
+                >
+                  <svg
+                    class="mr-2 -ml-1 w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                  Search
+                </button>
+
+                <!-- end button -->
               </div>
             </form>
             <!-- end Search -->
@@ -137,26 +148,24 @@
           </div>
           <!-- main -->
           <div
-            class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-hidden overflow-y-hidden"
+            class="-mx-4 sm:-mx-8 px-20 sm:px-4 overflow-x-hidden overflow-y-hidden"
           >
             <!-- table -->
             <c:choose>
               <c:when test="${fn:length(animallist) > 2}">
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
+                        class="mx-auto py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
                         Animal_ID
                       </th>
 
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
                       >
                         AnimalCage_ID
                       </th>
@@ -172,7 +181,7 @@
                         Date In
                       </th>
                       <th
-                        class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-3 border-b border-r text-2xl border-gray-300 leading-4 tracking-wider"
                       >
                         Photo
                       </th>
@@ -183,13 +192,17 @@
                       </th>
                     </tr>
                   </thead>
-                  <c:forEach var="animal" items="${animallist}">
+                  <c:forEach
+                    var="animal"
+                    items="${animallist}"
+                    varStatus="loop"
+                  >
                     <tbody
                       class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
                     >
-                      <tr>
+                      <tr id="lastRow">
                         <td
-                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                          class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           #${animal.animal_id}
                         </td>
@@ -228,7 +241,7 @@
                             <!-- edit -->
                             <a href="updateanimal?animalID=${animal.animal_id}">
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -248,14 +261,14 @@
                             </a>
                             <!-- delete -->
                             <div class="pl-2">
-                              <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                              <a
+                                href="animaldelete?animalID=${animal.animal_id}"
+                                class=""
+                                onclick="return confirmDelete();"
+                                onclick="saveScrollPosition(); return confirmDelete();"
                               >
-                                <a
-                                  href="animaldelete?animalID=${animal.animal_id}"
-                                  class=""
-                                  onclick="return confirmDelete();"
-                                  onclick="saveScrollPosition(); return confirmDelete();"
+                                <button
+                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"
@@ -264,8 +277,8 @@
                                     stroke-width="2"
                                     class="h-4 w-4 fas fa-trash-alt"
                                   ></i>
-                                </a>
-                              </button>
+                                </button>
+                              </a>
                             </div>
 
                             <script src="js/possitionload.js"></script>
@@ -277,23 +290,42 @@
                     </tbody>
                   </c:forEach>
                 </table>
+                <c:set
+                  var="lastRowIndex"
+                  value="${fn:length(animallist) - 1}"
+                />
+                <script>
+                  window.addEventListener("load", function () {
+                    // Assuming you want to highlight the last row of the first table
+                    var table = document.querySelector("table"); // Change this selector if needed
+
+                    if (table) {
+                      var lastRowIndex = table.rows.length - 1;
+                      if (lastRowIndex >= 0) {
+                        table.rows[lastRowIndex].classList.add(
+                          "bg-green-400",
+                          "text-white",
+                          "border-gray-100"
+                        );
+                      }
+                    }
+                  });
+                </script>
               </c:when>
               <c:otherwise>
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
+                        class="mx-auto py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
                         Animal_ID
                       </th>
 
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
                       >
                         AnimalCage_ID
                       </th>
@@ -304,12 +336,11 @@
                       </th>
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 100px"
                       >
                         Date In
                       </th>
                       <th
-                        class="px-20 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
                         Photo
                       </th>
@@ -320,13 +351,13 @@
                       </th>
                     </tr>
                   </thead>
-                  <c:forEach var="animal" items="${animals}">
+                  <c:forEach var="animal" items="${animals}" varStatus="loop">
                     <tbody
                       class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
                     >
-                      <tr>
+                      <tr id="lastRow">
                         <td
-                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                          class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           #${animal.animal_id}
                         </td>
@@ -365,7 +396,7 @@
                             <!-- edit -->
                             <a href="updateanimal?animalID=${animal.animal_id}">
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -392,7 +423,7 @@
                                 onclick="saveScrollPosition(); return confirmDelete();"
                               >
                                 <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"
@@ -413,11 +444,42 @@
                     </tbody>
                   </c:forEach>
                 </table>
+                <c:set var="lastRowIndex" value="${fn:length(animals) - 1}" />
+                <script>
+                  window.addEventListener("load", function () {
+                    // Assuming you want to highlight the last row of the first table
+                    var table = document.querySelector("table"); // Change this selector if needed
+
+                    if (table) {
+                      var lastRowIndex = table.rows.length - 1;
+                      if (lastRowIndex >= 0) {
+                        table.rows[lastRowIndex].classList.add(
+                          "bg-green-400",
+                          "text-white",
+                          "border-gray-100"
+                        );
+                      }
+                    }
+                  });
+                </script>
               </c:otherwise>
             </c:choose>
           </div>
         </div>
       </div>
     </main>
+    <script>
+      window.addEventListener("load", function () {
+        // Assuming you want to highlight the last row of the first table
+        var table = document.querySelector("table"); // Change this selector if needed
+
+        if (table) {
+          var lastRowIndex = table.rows.length - 1;
+          if (lastRowIndex >= 0) {
+            table.rows[lastRowIndex].scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    </script>
   </body>
 </html>

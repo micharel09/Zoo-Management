@@ -69,41 +69,41 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end loading -->
     <title>Update Animal Cages</title>
   </head>
-  <body class="bg-green-400">
+  <body class="bg-green-500">
     <!-- MAIN CONTENT -->
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 bg-white rounded-md shadow-md mt-20 w-1/2">
-        <header class="border-b border-gray-100 px-10 flex items-center">
-          <!-- back button -->
-          <div class="ml-0">
-            <a
-              href="animalcagecontroller"
-              class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+        <!-- back button -->
+        <div class="ml-0">
+          <a
+            href="NewsControl"
+            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
             >
-              <svg
-                viewBox="0 0 46 16"
-                height="15"
-                width="35"
-                xmlns="http://www.w3.org/2000/svg"
-                id="arrow-horizontal"
-                class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
-              >
-                <path
-                  transform="scale(-1, 1) translate(-30)"
-                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                  data-name="Path 10"
-                  id="Path_10"
-                ></path>
-              </svg>
-              <span
-                class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                >Back</span
-              >
-            </a>
-          </div>
-          <!-- end back -->
-          <div class="text-gray-800 mx-auto pr-20 pb-4">
-            <h1 class="font-semibold text-5xl">Edit</h1>
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+        <header class="border-b border-gray-100 px-10 flex items-center">
+          <div class="text-gray-800 mx-auto pb-4">
+            <h1 class="text-5xl font-medium text-gray-700">Edit News</h1>
           </div>
         </header>
         <div class="mx-auto w-full max-w-8xl">
@@ -112,9 +112,9 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-10 py-3 leading-5 ml-auto relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-400 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
-                <p class="relative z-10 font-extralight text-2xl">Save</p>
+                <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
             </div>
             <!-- end submit -->

@@ -1,9 +1,7 @@
+<%-- Document : food_schedule Created on : Oct 20, 2023, 3:55:41 PM Author :
+Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!-- prettier-ignore -->
-<%-- Document : animal Created on : Oct 4, 2023, 9:45:11 AM Author : dinhg --%>
-  <%@page import="java.util.List" %>
-    <%@page import="sample.foodschedule.FoodScheduleDTO" %>
-      <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
@@ -35,12 +33,17 @@
     ></script>
     <title>Schedule List</title>
   </head>
-
-  <body class="w-[1500px] block overflow-x-hidden mx-auto bg-green-500">
-    <main class="antialiased font-sans bg-white">
+  <!-- prettier-ignore -->
+  <!-- <%@ include file="components/headertrainer.jsp" %> -->
+  <!-- end header -->
+  <body class="block overflow-x-hidden mx-auto">
+    <!-- prettier-ignore -->
+    <%@ include file="components/sidebartrainer.html" %>
+    <!-- end side bar -->
+    <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center">
-          <h1 class="text-6xl mt-10 font-bold">Food Schedule</h1>
+        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
+          <h3 class="text-5xl font-medium text-gray-700">Food Schedule</h3>
         </div>
         <div class="py-8 ml-20">
           <div class="my-2 flex justify-between sm:flex-row">
@@ -67,7 +70,7 @@
                   class="text-2xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                 />
                 <input
-                  class="text-2xl pl-2 cursor-pointer hover:text-blue-500 transition-colors duration-300"
+                  class="text-2xl pl-2 cursor-pointer hover:text-green-500 transition-colors duration-300"
                   type="submit"
                   value="Search"
                 />
@@ -133,29 +136,31 @@
             <c:choose>
               <c:when test="${fn:length(schedulelist)>0}">
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-3 border-b-2 border-r text-2xl border-gray-300 text-center leading-4 tracking-wider"
+                        style="width: 300px"
                       >
                         Schedule ID
                       </th>
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="px-10 py-3 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 200px"
                       >
                         Time
                       </th>
                       <th
-                        class="px-14 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="mx-auto py-3 border-b-2 border-r text-2xl border-gray-300 text-center leading-4 tracking-wider"
+                        style="width: 500px"
                       >
                         Animal Cage ID
                       </th>
                       <th
-                        class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
-                        style="width: 200px"
+                        class="px-10 py-3 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        style="width: 300px"
                       >
                         Food ID
                       </th>
@@ -178,7 +183,7 @@
                     >
                       <tr>
                         <td
-                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                          class="text-green-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           ${schedule.schedule_id}
                         </td>
@@ -211,7 +216,7 @@
                               href="updateschedule?scheduleID=${schedule.schedule_id}"
                             >
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -237,7 +242,7 @@
                                 onclick="saveScrollPosition(); "
                               >
                                 <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  class="flex p-2.5 bg-red-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"
@@ -262,10 +267,10 @@
               </c:when>
               <c:otherwise>
                 <table
-                  class="min-w-full border-collapse border border-blue-500"
+                  class="min-w-full border-collapse border border-green-500"
                 >
                   <thead class="bg-neutral-100">
-                    <tr class="bg-blue-500 text-white">
+                    <tr class="bg-green-500 text-white">
                       <th
                         class="px-10 py-6 border-b-2 border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
@@ -307,7 +312,7 @@
                     >
                       <tr>
                         <td
-                          class="text-blue-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                          class="text-green-500 pl-10 text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           ${schedule.schedule_id}
                         </td>
@@ -340,7 +345,7 @@
                               href="updateschedule?scheduleID=${schedule.schedule_id}"
                             >
                               <button
-                                class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                class="flex p-2.5 bg-green-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
@@ -366,7 +371,7 @@
                                 onclick="saveScrollPosition(); "
                               >
                                 <button
-                                  class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                                  class="flex p-2.5 bg-red-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
                                 >
                                   <i
                                     fill="none"

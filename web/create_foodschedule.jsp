@@ -45,6 +45,41 @@
       }
       <title>Create Food Schedule</title>;
     </script>
+    <!-- loading -->
+    <iframe
+      id="loading-iframe"
+      src="components/loading.html"
+      frameborder="0"
+      style="
+        border: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        background: transparent; /* Make the iframe background transparent */
+        pointer-events: none; /* Allow interaction with elements behind the iframe */
+        transition: opacity 1s;
+      "
+    ></iframe>
+
+    <script>
+      window.addEventListener("load", function () {
+        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+        var iframe = document.getElementById("loading-iframe");
+        if (iframe) {
+          iframe.style.zIndex = 0;
+          iframe.classList.add("hidden-iframe");
+        }
+      });
+    </script>
+    <style>
+      .hidden-iframe {
+        opacity: 0;
+      }
+    </style>
+    <!-- end loading -->
   </head>
   <body class="bg-green-500">
     <div class="flex justify-center items-center w-full h-full">
@@ -54,7 +89,7 @@
         <div class="flex ml-0">
           <a
             href="foodschedulecontroller"
-            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+            class="group flex items-center bg-transparent text-xl font-thin tracking-widest text-white back-button"
           >
             <svg
               viewBox="0 0 46 16"
@@ -92,13 +127,12 @@
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-8 py-3 leading-5 ml-auto relative overflow-hidden bg-gray-300 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
-                <p class="relative z-10 font-extralight text-2xl">Save</p>
+                <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
             </div>
             <!-- end submit -->
-            <label for="scheduleid">Schedule ID:</label>
             <input type="hidden" id="scheduleid" name="scheduleid" required />
 
             <!-- Div 1 -->
@@ -108,7 +142,7 @@
               <div class="w-full px-3 sm:w-1/2">
                 <label
                   for="time"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                   >Time:</label
                 >
                 <input
@@ -116,7 +150,7 @@
                   id="timeInput"
                   name="time"
                   required
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
               <!-- end time -->
@@ -125,12 +159,12 @@
                 <div class="mb-5">
                   <label
                     for="employee_id"
-                    class="mb-3 block text-2xl font-medium text-[#07074D]"
+                    class="mb-3 block text-xl font-medium text-[#07074D]"
                     >AnimalCage_ID</label
                   >
                   <select
                     name="animalcageid"
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   >
                     <c:forEach var="cage" items="${animalcage}">
                       <option>${cage.animalcage_id}</option>
@@ -147,11 +181,11 @@
               <div class="w-full px-3 sm:w-1/2">
                 <label
                   for="area_id"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                   >Food ID</label
                 >
                 <select
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   name="foodid"
                 >
                   <c:forEach var="f" items="${food}">
@@ -164,14 +198,14 @@
               <div class="w-full px-3 sm:w-1/2">
                 <label
                   for="area_id"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                   >Date</label
                 >
                 <input
                   type="date"
                   id="date"
                   name="date"
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   required
                 />
               </div>

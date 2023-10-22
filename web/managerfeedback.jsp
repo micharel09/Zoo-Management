@@ -81,167 +81,21 @@
 }
   </style>
   
-  
-  <body class="w-[1500px] block overflow-x-hidden mx-auto">
-    <nav class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
-        <a href="managercontroller" class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800">
-            <!-- HeroIcon - User -->
-            <i class="fa-regular fa-folder-open"></i>
-            <small class="text-center text-xs font-medium"> Area </small>
-        </a>
-    
-        <a href="#analytics"class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-indigo-50 text-indigo-600 dark:bg-sky-900 dark:text-sky-50">
-            <!-- HeroIcon - Chart Bar -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
-              </svg>
-              
-    
-            <small class="text-center text-xs font-medium"> Feedback </small>
-        </a>
-    
-        <a
-            href="/NewsControl"
-            class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
-        >
-        <!-- HeroIcon - Cog-6-tooth -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-          </svg>
-          
-            <small class="text-center text-xs font-medium"> News</small>
-        </a>
-    
-        <hr class="dark:border-gray-700/60" />
-    
-        <a
-            href="/"
-            class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-400"
-        >
-        <!-- HeroIcon - Home Modern -->
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5zm6-10.125a1.875 1.875 0 11-3.75 0 1.875 1.875 0 013.75 0zm1.294 6.336a6.721 6.721 0 01-3.17.789 6.721 6.721 0 01-3.168-.789 3.376 3.376 0 016.338 0z" />
-          </svg>
-            <small className="text-xs font-medium">Profile</small>
-        </a>
-        </nav>
     <!-- header -->
-    <nav class="border-gray-200 bg-green-600">
-      <div class="flex p-1">
-        <!-- logo -->
-        <a href="homepage.jsp" class="flex items-center justify-center w-1/2">
-          <div class="">
-            <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
-          </div>
-          <span
-            class="self-center text-4xl font-extralight whitespace-nowrap dark:text-white"
-            >Wild World Zoo</span
-          >
-        </a>
-        <!-- end logo -->
-        <!-- navbar -->
-        <div
-          class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 w-full"
-          id="navbar-user"
-        >
-          <ul
-            class="flex flex-col md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
-          >
-            <li>
-              <a
-                href="manager.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                aria-current="page"
-                >HOME</a
-              >
-            </li>
-            <li>
-              <a
-                href="About.jsp"
-                class="navbar-text block py-4 pl-3 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ABOUT</a
-              >
-            </li>
-            <li>
-              <a
-                href="animal.jsp"
-                class="navbar-text block py-4 pr-4 pl-2 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ANIMAL</a
-              >
-            </li>
-            <li>
-              <a
-                href="news.jsp"
-                class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >NEWS</a
-              >
-            </li>
-            <li>
-              <a
-                href="Map.jsp"
-                class="navbar-text block py-4 pl-6 text-2xl text-gray-900 rounded before:ease relative h-18 w-24 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >MAP</a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- end navbar -->
-      </div>
-    </nav>
-    <!-- end header -->
-    <!-- Breadcrumb -->
-    <nav
-      class="flex bg-gray-50 text-gray-700 py-3 px-5 dark:bg-gray-800 dark:border-gray-700"
-      aria-label="Breadcrumb"
-    >
-      <ol class="inline-flex items-center space-x-1 md:space-x-3">
-        <li class="inline-flex items-center">
-          <a
-            href="Homepage.html"
-            class="text-sm text-gray-700 hover:text-gray-900 inline-flex items-center dark:text-gray-400 dark:hover:text-white"
-          >
-            <svg
-              class="w-4 h-4 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
-              ></path>
-            </svg>
-            Home
-          </a>
-        </li>
-        <li aria-current="page">
-          <div class="flex items-center">
-            <svg
-              class="w-6 h-6 text-gray-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <span
-              class="text-gray-400 ml-1 md:ml-2 text-sm font-medium dark:text-gray-500"
-              >FeedBack View</span
-            >
-          </div>
-        </li>
-      </ol>
-    </nav>
-    <!-- end breadcrumb -->
-    <div class="flex justify-center mt-5 ">
-        <h1 class="text-3xl">FeedBack Information</h1>
-      </div>
+  <!-- prettier-ignore -->
+  <%@ include file="components/headermanager.jsp" %>
+  <!-- end header -->
+  <body class="block overflow-x-hidden mx-auto ">
+    <!-- sidebar -->
+  <!-- prettier-ignore -->
+  <%@ include file="components/sidebarmanager.jsp" %>
+  <!-- end sidebar -->
+  <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
+    <h3 class="text-5xl font-medium text-gray-700">Feedback Information</h3>
+  </div>
       
     <!-- component -->
-    <body class=" antialiased font-sans bg-gray-200">
+    <main class="antialiased font-sans bg-white rounded-2xl w-[1500]">
       <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8 ml-20">
           <div></div>
@@ -389,6 +243,6 @@
           </div>
         </div>
       </div>
-    </body>
+    </main>
   </body>
 </html>

@@ -123,7 +123,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="ml-0">
           <a
             href="NewsControl"
-            class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+            class="group flex items-center bg-transparent text-xl font-thin tracking-widest text-white back-button"
           >
             <svg
               viewBox="0 0 46 16"
@@ -160,9 +160,9 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-8 py-3 leading-5 ml-auto relative overflow-hidden bg-gray-300 text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
-                <p class="relative z-10 font-extralight text-2xl">Save</p>
+                <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
             </div>
             <!-- end submit -->
@@ -172,7 +172,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <div class="w-full px-3 sm:w-1/2">
                 <label
                   for="movie-url"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                 >
                   Title
                 </label>
@@ -181,7 +181,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                   type="text"
                   placeholder="enter tittle"
                   min="0"
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
               </div>
               <!-- end title -->
@@ -190,7 +190,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div class="mb-5">
                   <label
                     for="release"
-                    class="mb-3 block text-2xl font-medium text-[#07074D]"
+                    class="mb-3 block text-xl font-medium text-[#07074D]"
                   >
                     Release Date
                   </label>
@@ -199,7 +199,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     type="date"
                     required
                     max="<%= java.time.LocalDate.now() %>"
-                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
               </div>
@@ -211,7 +211,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               <div class="mb-5">
                 <label
                   for="content"
-                  class="mb-3 block text-2xl font-medium text-[#07074D]"
+                  class="mb-3 block text-xl font-medium text-[#07074D]"
                 >
                   Cage_ID
                 </label>
@@ -234,7 +234,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div class="flex w-full justify-center">
                   <div
                     id="multi-upload-button"
-                    class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-2xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                    class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-blue-500 duration-[400ms,700ms] transition-[color,box-shadow]"
                   >
                     Upload Photo
                   </div>
