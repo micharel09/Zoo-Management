@@ -25,12 +25,16 @@ public class TicketDAO {
     private static final String SEARCH = "SELECT Ticket_ID,Type , Price,Discount,Price_Main From Ticket"
             + " WHERE Ticket_ID like ? ";
     private static final String UPDATE = "UPDATE Ticket SET  Discount=? WHERE Ticket_ID= ?";
-    private static final String SEARCH_ORDERS = "SELECT Order_ID,Email , FullName,PhoneNumber,Date,TotalPrice From Orders"
-            + " WHERE [Date] >= ? AND [Date] <= ? ";
+    private static final String SEARCH_ORDERS = "SELECT Order_ID,Email , FullName,PhoneNumber,Date,TotalPrice From Orders  "
+            + " WHERE [Date] >= ? AND [Date] <= ? order by  Order_ID desc  ";
+    private static final String SEARCH_ORDERS_DASHBOARD = "SELECT Order_ID,Email , FullName,PhoneNumber,Date,TotalPrice From Orders  ";
+            
      private static final String SEARCH_ORDER_DETAIL = "SELECT OrderDetail_ID, EntryDay ,  Ticket_ID,  Order_ID,  Promotion,Quantity"
-           + " From OrderDetail"
-            + " WHERE [EntryDay] >= ? AND [EntryDay] <= ? ";       
-     
+           + " From OrderDetail "
+            + " WHERE [EntryDay] >= ? AND [EntryDay] <= ? order by  OrderDetail_ID desc ";       
+      private static final String SEARCH_ORDER_DETAIL_DASHBOARD = "SELECT OrderDetail_ID, EntryDay ,  Ticket_ID,  Order_ID,  Promotion,Quantity"
+           + " From OrderDetail ";
+              
         public boolean updateDiscount(String ID_Ticket, String Discount) throws SQLException {
              boolean checkUpdate = false;
         Connection conn = null;
@@ -196,6 +200,94 @@ public class TicketDAO {
 
         return listOrderDetail; 
        }
+
+    public List<OrderDetailDTO> getListOrderDetail_Dashboard() throws SQLException {
+        List<OrderDetailDTO> listOrderDetail = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+       
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(SEARCH_ORDER_DETAIL_DASHBOARD);
+               
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+            
+                    String OrderDetail_ID = rs.getString("OrderDetail_ID");
+                    String EntryDay = rs.getString("EntryDay");
+                     String Ticket_ID = rs.getString("Ticket_ID");
+                      String Order_ID = rs.getString("Order_ID");
+                       String Promotion = rs.getString("Promotion");                       
+                    int Quantity = Integer.parseInt(rs.getString("Quantity"));
+                  
+                                                                      
+                    listOrderDetail.add(new OrderDetailDTO( OrderDetail_ID, EntryDay ,  Ticket_ID,  Order_ID,  Promotion,Quantity));                                      
+                }
+               
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return listOrderDetail; 
+    }
+
+    public List<OrdersDTO> getListOrders() throws SQLException {
+         List<OrdersDTO> listOrders = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        Double TotalPrice_tmp=0.0;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(SEARCH_ORDERS_DASHBOARD);
+               
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                   
+                    String Order_ID = rs.getString("Order_ID");
+                    String Email = rs.getString("Email");
+                     String FullName = rs.getString("FullName");
+                      String PhoneNumber = rs.getString("PhoneNumber");
+                       String Date = rs.getString("Date");                       
+                    Double TotalPrice = Double.parseDouble(rs.getString("TotalPrice"));
+                   TotalPrice_tmp=TotalPrice_tmp+TotalPrice;
+                                                                      
+                    listOrders.add(new OrdersDTO( Order_ID, Email ,  FullName,  PhoneNumber,  Date,TotalPrice));                                      
+                }
+               
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return listOrders; 
+    }
 
   
 }

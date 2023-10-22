@@ -53,16 +53,16 @@ body {
         <form class="flex flex-col" method="POST" action="MainController">
             <div class="mb-6 pt-3 rounded bg-gray-200">
                 <label for="userID" class="block text-gray-700 text-sm font-bold mb-2 ml-3" >Username</label>
-                <input type="text" name="Employee_ID" id="userID" required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 ">
+                <input type="text" name="Employee_ID" id="userID" required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-500 transition duration-500 px-3 ">
             </div>
             <div class="mb-6 pt-3 rounded bg-gray-200">
                 <label for="password" class="block text-gray-700 text-sm font-bold mb-2 ml-3" >Password</label>
-                <input type="password"name="password"  id="password" required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-purple-600 transition duration-500 px-3 ">
+                <input type="password"name="password"  id="password" required class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-gray-300 focus:border-green-600 transition duration-500 px-3 ">
             </div>
            
            
 
-            <input  type="submit" name="action" value="Login"class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"/>
+            <input  type="submit" name="action" value="Login"class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200"/>
             <label for="">Version 1.2.0</label>
         </form>
         

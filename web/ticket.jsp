@@ -38,40 +38,21 @@
         <div class="flex flex-col flex-1 overflow-hidden">
                <!-- header -->
              <!-- prettier-ignore -->
-             <%@ include file="components/headeradmin.html" %>
+             <%@ include file="components/headeradmin.jsp" %>
           <main class="flex-1 overflow-x-hidden bg-gray-200">
             <div class="container px-6 py-8 mx-auto">
               <!--  -->
               <div class="flex justify-between">
-                <h3 class="text-3xl font-medium text-gray-700">Ticket List</h3>
-                <!-- View Order -->
-                <a
-                  href="TicketController?action=View_order"
-                  class="btn group flex items-center text-xl font-thin tracking-widest text-white back-button"
-                >
-                  <span
-                    class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:right-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
-                    >View Order</span
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="15"
-                    width="50"
-                    viewBox="0 0 20 16"
-                    class="translate-x-2 fill-slate-700 transition-all duration-600 ease-out group-hover:translate-x-4 group-hover:fill-green-500"
-                  >
-                    <path
-                      d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
-                      data-name="Path 10"
-                      id="Path_10"
-                    ></path>
-                  </svg>
-                </a>
-                <!-- end view order -->
+                <h3 class="text-3xl font-medium text-gray-700">Promotion</h3>
+                <% String error = (String) request.getAttribute("ERROR"); if
+                    (error == null) { error = ""; } %>
+
+                    <h2 class="mr-9 uppercase text-red-500"><%= error%></h2>
               </div>
               <!--  -->
               <!-- main -->
               <div class="flex flex-col mt-8">
+                  
                 <div
                   class="-mx-4 sm:-mx-8 px-4 sm:px-8 overflow-x-hidden overflow-y-hidden"
                 >
@@ -97,7 +78,7 @@
                           <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                           >
-                            Price
+                           Cost
                           </th>
 
                           <th
@@ -108,7 +89,7 @@
                           <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                           >
-                            Price Main
+                            Sale
                           </th>
                           <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
@@ -135,11 +116,12 @@
                         <td
                           class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                         >
-                          <%= ticket.getPrice()%>
+                          
+                          <%= ticket.getPrice_Main()%>
                         </td>
                         <form action="TicketController">
                           <td>
-                            <label for="integerInput">DISCOUNT:</label>
+                            <label for="integerInput"></label>
                             <input
                               type="number"
                               name="Discount"
@@ -151,7 +133,7 @@
                             /><br />
                           </td>
 
-                          <td><%= ticket.getPrice_Main()%></td>
+                          <td class=""><%= ticket.getPrice()%></td>
                           <td>
                             <input
                               type="hidden"
@@ -169,10 +151,7 @@
                         <% } }%>
                       </tbody>
                     </table>
-                    <% String error = (String) request.getAttribute("ERROR"); if
-                    (error == null) { error = ""; } %>
-
-                    <h2><%= error%></h2>
+                   
                   </div>
                 </div>
               </div>

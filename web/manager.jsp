@@ -117,10 +117,10 @@
           id="navbar-user"
         >
           <ul
-            class="flex flex-col md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
+            class=" md:p-0 mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
           >
                <li>
-              <a href="#"class="navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-full overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700" aria-current="page"
+              <a href="#"class=" ml-64 navbar-text block py-4 pl-4 text-2xl text-gray-900 rounded before:ease relative h-18 w-full overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700" aria-current="page"
                 >ZOO MANAGER  </a
               >
             </li>
@@ -183,7 +183,7 @@
         <c:forEach items="${a}" var="o">
             <div class="mt-10 fade-in">
                 <div id="app" class="fade-in bg-white h-60 rounded shadow-md flex card text-grey-darkest">
-                   <img class="w-1/2 h-full rounded-l-sm" src="/img/a.png" alt="Room Image">
+                   <img class="w-1/2 h-full rounded-l-sm" src="${o.photo}" alt="Room Image">
                     <div class="w-full flex flex-col">
                         <div class="p-4 pb-0 flex-1">
                             <h3 class="font-normal mb-7 text-grey-darkest">Location ${o.arealocation}</h3>

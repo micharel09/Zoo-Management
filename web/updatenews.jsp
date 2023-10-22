@@ -77,7 +77,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
           <!-- back button -->
           <div class="ml-0">
             <a
-              href="animalcagecontroller"
+              href="NewsControl"
               class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
             >
               <svg
@@ -156,7 +156,7 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <input
                   name="day"
                   type="date"
-                  value="day"
+                  value="${updatenews.day}"
                   max="<%= java.time.LocalDate.now() %>"
                   class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                 />
@@ -176,9 +176,9 @@ Quan --%> <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 >
                 <textarea
                   name="content"
-                  placeholder="${updatenews.content}"
+                  placeholder=""
                   class="block mt-2 w-full rounded-lg border bg-white px-4 h-36 py-2.5"
-                ></textarea>
+                >${updatenews.content}</textarea>
               </div>
               <p class="mt-3 text-xs text-red-400"></p>
               <!-- end Content -->

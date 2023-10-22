@@ -1,6 +1,4 @@
-<%@page import="java.util.List"%>
-<%@page import="sample.food.FoodDTO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -246,7 +244,7 @@ body {
                 </ul>
             </div>
             
-            <div class="ml-52 items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
+            <div class="mr096 items-center justify-between hidden w-full md:flex md:w-auto md:order-1 " id="navbar-user">   
                 <ul class=" ml-96 flex flex-col font-medium p-4 md:p-0 mt-4 mr-6 border border-gray-100 bg-gray-50 md:flex-row  md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ">
                     <li>
                         <a href="animal.jsp" class="relative  w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold  bg-blue-700 rounded md:bg-transparent md:p-0 text-green"aria-current="page">Animals</a>
@@ -263,7 +261,7 @@ body {
             <!-- component -->
               <div class="animate-bounce relative items-center md:order-2">
                 <button
-                class="bg-gradient-to-b w-max mx-auto text-blue-500 font-semibold from-slate-50 to-blue-100 px-5 py-1 rounded-2xl shadow-blue-400 shadow-md border-b-4 hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
+                class=" bg-gradient-to-b w-max mx-auto text-blue-500 font-semibold from-slate-50 to-blue-100 px-5 py-1 rounded-2xl shadow-blue-400 shadow-md border-b-4 hover border-b border-blue-200 hover:shadow-sm transition-all duration-500">
                 <a href="/shop">Buy Ticket !</a></button>
               </div>
         </div>        
@@ -273,13 +271,13 @@ body {
     <div class="background-img1">
         <div class="slideshow-container">
             <div class="slide">
-                <img class="" src="./img/74941160_427663467907328_8664262200807915520_n.jpg" alt="Slide 1">
+                <img class="" src="./img/378879811_711506671014637_7733997561653958626_n.jpg" alt="Slide 1">
             </div>
             <div class="slide">
                 <img src="./img/tigerfoot.JPG" alt="Slide 2">
             </div>
             <div class="slide">
-                <img src="./img/3045dfeefd5628087147.jpg" alt="Slide 3">
+                <img src="./img/grassy-field-with-trees-giraffes-walking-around-with-light-blue-sky-background.jpg" alt="Slide 3">
             </div>
         </div>
         <!--LOGO HERE-->
@@ -343,10 +341,12 @@ body {
         <img class="object-cover w-full h-full transform duration-700 backdrop-opacity-100" src="img/khub.jpeg" />
         <div class="absolute w-full h-full shadow-2xl opacity-20 transform duration-500 inset-y-full group-hover:-inset-y-0"></div>
             <div class="absolute bg-gradient-to-t from-black w-full h-full transform duration-500 inset-y-2/3 group-hover:-inset-y-0">
-                <div class="absolute w-full bottom-20 flex place-content-center">
+                <a href="about.jsp" class="absolute w-full bottom-20 flex place-content-center">
                     <p class="capitalize font-sanf font-bold text-4xl text-center shadow-2xl text-white">Plan your visit</p>
-                </div>
-                <button class="absolute bottom-4 left-1/3 bg-white text-black font-bold rounded-lg h-10 w-40">Get info</button>
+                </a>
+                <a href="about.jsp"
+                <button class="absolute bottom-4 left-1/3 bg-white item-center text-black font-bold rounded-lg h-10 w-40">Get info</button>
+                </a>    
             </div>
     </div>
     <script>
@@ -382,16 +382,19 @@ body {
 <!-- delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 -->
 <div class="relative"
     style="background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-blue-sky-background.jpg'); height: 1500px">
-<div class="  flex justify-around delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 " >
+<div class="flex justify-around delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 " >
+    
+   <c:forEach begin ='0' end='2' items="${listH}" var="n">
     <div class=" hover:bg-blue-300  w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class=" w-72 mx-auto rounded-lg mt-3" src="/img/6b1a84a0-4fb3.jpg" alt="" />
+        
+        <a href="#">
+            <img class=" w-72 mx-auto rounded-lg mt-3" src="./news_picture/${n.photo}" alt="" />
     </a>
     <div class="p-5">
         <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white"></h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">${n.title}</h5>
         </a>
-        <p class="mb-16 font-normal text-black dark:text-gray-400"></p>
+        <p class=" break-all line-clamp-4 mb-16 font-normal text-black dark:text-gray-400">${n.content}</p>
         <a href="#" class="inline-flex items-center px-3 py-2 ml-40 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             Read more
              <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
@@ -399,41 +402,9 @@ body {
             </svg>
         </a>
     </div>
-</div>
- <div class=" hover:bg-blue-300  w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class=" w-72 mx-auto rounded-lg mt-3" src="/img/378879811_711506671014637_7733997561653958626_n.jpg" alt="" />
-    </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white"> An organization committed to preserving forests worldwide.</h5>
-        </a>
-        <p class="mb-16 font-normal text-black dark:text-gray-400">Forests soak up carbon and help to reduce the effects of climate change, so whenever you purchase FSC-certified products, you're helping the endangered species and environments that are affected by climate change ð</p>
-        <a href="#" class="inline-flex items-center px-3 py-2 ml-40 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
-             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
+
     </div>
-</div>
-     <div class=" hover:bg-blue-300  w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class=" w-72 mx-auto rounded-lg mt-3" src="/img/379703512_713887574109880_2038587734935268007_n.jpg" alt="" />
-    </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-700 dark:text-white">Getting up close and personal with Sasa</h5>
-        </a>
-        <p class="mb-16 font-normal text-black dark:text-gray-400">Learning more about Sun Bears and how we work to protect them in the wild, why not book in a Close Encounter? Our newly launched online shop allows you to purchase educational toys and souvenirs from anywhere in New Zealand.  </p>
-        <a href="#" class="inline-flex items-center px-3 py-2 ml-40 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Read more
-             <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
-    </div>
-</div>
+</c:forEach>
 
 </div>
 
@@ -445,37 +416,25 @@ body {
             <a href=""><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3348.5820387864956!2d174.78170560776508!3d-41.319870449708326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38aff75cff6f49%3A0xc1639a1ffd228038!2sWellington%20Zoo!5e1!3m2!1svi!2s!4v1695206696761!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></a>
     </div>  
 
+
     <div class="container reveal fade-right">      
         <h2 class="text-gray-800 text-7xl text-left font-bold mb-16">NEWS</h2>
         <!--news here 1-->
-        <div class="max-w-sm w-full lg:max-w-full lg:flex mb-12">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/117081841_1166368890386793_6794595804250703572_n.jpg')" title="Woman holding a mug"></div>
+            <c:forEach begin ='2' end='3' items="${listH}" var="n">
+   <div class="max-w-sm w-full lg:max-w-full lg:flex mb-12">
+        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./news_picture/${n.photo}')" title="Woman holding a mug"></div>
           <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
-                <p class="text-sm text-gray-600 flex items-center">                 
-                <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize"></p>
+                                
+                <div class="text-gray-900 font-bold text-xl mb-2">${n.title}</div>
+                <p class="text-gray-700 text-base line-clamp-2 w-32 text-left text-lightBlack capitalize">${n.content}</p>
               </div>
               <div class="flex items-center">
-                <img class="w-10 h-10 rounded-full mr-4" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="Avatar of Jonathan Reinink">               
+                <img class="w-10 h-10 rounded-full mr-4" src="./news_picture/${n.photo}" alt="Avatar of Jonathan Reinink">               
               </div>
             </div>
           </div>
-          <!--news here 2-->
-          <div class="max-w-sm w-full lg:max-w-full lg:flex mb-12">
-            <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('/img/117081841_1166368890386793_6794595804250703572_n.jpg')" title="Woman holding a mug"></div>
-              <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-                  <div class="mb-8">
-                    <p class="text-sm text-gray-600 flex items-center">                 
-                    <div class="text-gray-900 font-bold text-xl mb-2">Can coffee make you a better developer?</div>
-                    <p class="text-gray-700 text-base truncate w-32 text-left text-lightBlack capitalize"></p>
-                  </div>
-                  <div class="flex items-center">
-                    <img class="w-10 h-10 rounded-full mr-4" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="Avatar of Jonathan Reinink">               
-                  </div>
-                </div>
-              </div>
-             
+   </c:forEach>          
     </div>
  </div>
 
@@ -504,11 +463,11 @@ window.addEventListener("scroll", reveal);
     
 <img class=" animate-bounce  w-10" src="/img/117081841_1166368890386793_6794595804250703572_n.jpg" alt="">
 <!--Footer-->
-<div class="bg-[url('/img/bg-footer.png')]"></div>
+
 
 <footer class="backgroundimg">
     <div class="relative overflow-hidden  p-12 text-center"
-    style="background-image: url('/img/bg-footer.png'); height: 400px">
+    style="background-image: url('/img/SWP Footer.gif');  height: 400px">
     <div class="absolute  h-full w-full overflow-hidden bg-fixed">
       <div class="flex h-full  justify-evenly">              
             <img class="w-max mb-40 " src="/img/377487712_708998067736035_5705167264383840128_n.png" alt="">

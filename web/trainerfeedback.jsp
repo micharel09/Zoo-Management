@@ -192,7 +192,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!-- component -->
     <main class="antialiased font-sans bg-gray-200">
-      <div class="container mx-auto px-4 sm:px-8">
+      <div class="container bg-white mx-auto px-4 sm:px-8">
         <div class="py-8 ml-28">
           <div class="my-2 flex sm:flex-row flex-col">
             <div class="flex flex-row mb-1 sm:mb-0">

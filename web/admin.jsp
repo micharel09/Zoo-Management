@@ -41,10 +41,10 @@
         text-transform: uppercase;
         background-image: linear-gradient(
           -225deg,
-          #231557 0%,
-          #44107a 29%,
-          #ff1361 67%,
-          #fff800 100%
+          #7bff00 0%,
+          #119200 29%,
+          #005218 67%,
+          #0000008c 100%
         );
         background-size: auto auto;
         background-clip: border-box;
@@ -75,7 +75,6 @@
         <div class="flex flex-col flex-1 overflow-hidden">
           <!-- header -->
           <!-- prettier-ignore -->
-          <%@ include file="components/headeradmin.html" %>
           <main class="flex-1 overflow-x-hidden bg-gray-200">
             <% UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             if (loginUser == null || !"ADMIN".equals(loginUser.getRoleID())) {
@@ -83,40 +82,33 @@
             request.getParameter("search"); if (search == null) { search = ""; }
             %>
             <div class="flex justify-center mt-4">
-              <h1 class="animate-charcter font-extralight text-3xl">
+              <h1 class="animate-charcter font-extralight text-5xl">
                 Welcome Admin <%=loginUser.getFullname()%>
               </h1>
             </div>
             <div class="container px-6 py-8 mx-auto">
-              <div class="flex justify-between">
-                <h3 class="text-3xl font-medium text-gray-700">Dashboard</h3>
+              <div class="flex justify-between pb-2 border-b border-gray-300">
+                <h3 class="text-5xl font-medium text-gray-700">Employee</h3>
+                <a href="MainController?action=CreatePage" class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                    <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                    <span class="relative">Add Employee</span>
+                </a>
+               
                 <div>
                   <form action="MainController">
                     <div class="block relative">
-                      <span
-                        class="h-full absolute inset-y-0 left-0 flex items-center pl-4 cursor-pointer"
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          class="h-6 w-6 fill-current text-gray-500"
-                        >
-                          <path
-                            d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-                          ></path>
-                        </svg>
-                      </span>
                       <input
-                        class="text-xl pl-12 rounded-3xl border border-gray-400 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                        class="hidden text-xl cursor-pointer hover:text-green-500 transition-colors duration-300"
+                        type="submit"
+                        name="action"
+                        value="Search"
+                      />
+                      <input
+                        class="text-xl rounded-3xl border border-gray-200 bg-white placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
                         type="text"
                         name="search"
                         placeholder="Search ID..."
                         value="<%= search%>"
-                      />
-                      <input
-                        class="text-xl cursor-pointer hover:text-blue-500 transition-colors duration-300"
-                        type="submit"
-                        name="action"
-                        value="Search"
                       />
                     </div>
                   </form>
@@ -135,11 +127,18 @@
                     List<UserDTO> listUser1 = (List<UserDTO>) session.getAttribute("LIST_EMPLOYEE");
                     if (listUser1 != null && listUser1.size() > 0) { %>
                  -->
+                   <% String error = (String) request.getAttribute("ERROR"); if
+                    (error == null) { error = ""; } %>
+
+                    <!-- error -->
+                    <div>
+                      <h2 class="text-xl text-red-500 text-right mb-3"><%= error%></h2>
+                    </div>
 
                     <!-- table -->
                     <table class="min-w-full">
                       <thead class="bg-neutral-100">
-                        <tr class="bg-blue-500 text-white">
+                        <tr class="text-white">
                           <th
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                           >
@@ -222,17 +221,18 @@
                           <td
                             class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                           >
-                            <%=user.getPhoto()%>
+                            <img style="height: 100px;width: 100px" src="<%=user.getPhoto()%>">
                           </td>
                           <!-- form -->
                           <form action="MainController">
                             <td
-                              class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                              class="py-2 pr-5 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
                             >
                               <div class="flex justify-center items-center">
+                                <!-- update -->
                                 <div class="pl-2">
                                   <button
-                                    class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                                    class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-gray-400 transition-all duration-300 text-white"
                                   >
                                     <svg
                                       xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +280,7 @@
                                     />
                                     <input
                                       type="hidden"
-                                      name="Dêpndent"
+                                      name="photo"
                                       value="<%=user.getPhoto()%>"
                                     />
 
@@ -297,14 +297,23 @@
                                     />
                                   </button>
                                 </div>
-                                <!-- buttons -->
+                                <!-- update -->
+                                <!-- delete -->
                                 <div class="pl-2">
                                   <a
+                                    class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-gray-400 transition-all duration-300 text-white"
                                     href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_id()%>"
-                                    >Delete</a
                                   >
+                                    <i
+                                      fill="none"
+                                      viewBox="0 0 24 "
+                                      stroke="currentColor"
+                                      stroke-width="1"
+                                      class="  fas fa-trash-alt"
+                                    ></i
+                                  ></a>
                                 </div>
-                                <!-- end buttons -->
+                                <!-- end delete -->
                               </div>
                             </td>
                           </form>
@@ -314,10 +323,8 @@
                         <% } } %>
                       </tbody>
                     </table>
-                    <% String error = (String) request.getAttribute("ERROR"); if
-                    (error == null) { error = ""; } %>
-
-                    <h2><%= error%></h2>
+                  
+                    <!-- end error -->
                   </div>
                 </div>
               </div>
