@@ -46,8 +46,7 @@
         background: transparent; /* Make the iframe background transparent */
         pointer-events: none; /* Allow interaction with elements behind the iframe */
         transition: opacity 1s;
-      "
-    ></iframe>
+      "></iframe>
 
     <script>
       window.addEventListener("load", function () {

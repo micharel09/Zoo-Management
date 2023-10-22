@@ -64,6 +64,30 @@ public class View_Order_Detail_Controller extends HttpServlet {
                 session.setAttribute("TOTAL_TICKET_T02", Count_T02);
                 session.setAttribute("TOTAL_TICKET", Count_Ticket);
             }
+            
+            if (session.getAttribute("TOTAL_TICKET_T01_DASHBOARD") == null) {
+                List<OrderDetailDTO> listOrderDetail_Dashboard = dao.getListOrderDetail_Dashboard();
+                if (listOrderDetail.size() > 0) {
+                    session.setAttribute("LIST_ORDER_DETAIL", listOrderDetail_Dashboard);
+
+                    int Count_T01_Dashboard = 0;
+                    int Count_T02_Dashboard = 0;
+                    int Count_Ticket_Dashboard = 0;
+                    for (OrderDetailDTO orderDetail_Dashboard : listOrderDetail_Dashboard) {
+                        if (orderDetail_Dashboard.getTicket_ID().equals("T01")) {
+                            Count_T01_Dashboard = Count_T01_Dashboard + orderDetail_Dashboard.getQuantity();
+                            Count_Ticket_Dashboard = Count_Ticket_Dashboard + orderDetail_Dashboard.getQuantity();
+                        } else {
+                            Count_T02_Dashboard = Count_T02_Dashboard + orderDetail_Dashboard.getQuantity();
+                            Count_Ticket_Dashboard = Count_Ticket_Dashboard + orderDetail_Dashboard.getQuantity();
+                        }
+                    }
+                    session.setAttribute("TOTAL_TICKET_T01_DASHBOARD", Count_T01_Dashboard);
+                    session.setAttribute("TOTAL_TICKET_T02_DASHBOARD", Count_T02_Dashboard);
+                    session.setAttribute("TOTAL_TICKET_DASHBOARD", Count_Ticket_Dashboard);
+                }
+            }
+            
         } catch (Exception e) {
             log("Error at SreachControlelr: " + e.toString());
         } finally {

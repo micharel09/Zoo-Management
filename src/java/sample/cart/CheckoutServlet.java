@@ -184,7 +184,7 @@ public class CheckoutServlet extends HttpServlet {
         c.setMaxAge(0);
         response.addCookie(c);
 
-        request.getRequestDispatcher("checkout.jsp").forward(request, response);
+        request.getRequestDispatcher("thank.jsp").forward(request, response);
 
     }
 

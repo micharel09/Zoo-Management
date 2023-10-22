@@ -28,7 +28,7 @@ public class NewsDAO {
     try {
         conn = DBUtils.getConnection();
         if (conn != null) {
-            ptm = conn.prepareStatement("SELECT News_ID, Title, Content, Day, Photo from News");
+            ptm = conn.prepareStatement("SELECT News_ID, Title, Content, Day, Photo from News order by News_ID desc ");
             rs = ptm.executeQuery();
             
             while (rs.next()) {

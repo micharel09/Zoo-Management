@@ -1,207 +1,229 @@
-<%-- Document : edit Created on : Sep 29, 2023, 11:57:29 AM Author : ACER --%>
-<!-- prettier-ignore -->
 <%@page import="java.util.List"%>
 <%@page import="sample.user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<!-- Created By CodingLab - www.codinglabweb.com -->
+<html lang="en" dir="ltr">
   <head>
-    <title>Create Page</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Tailwind -->
-    <script src="https://cdn-tailwindcss.vercel.app/"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
-      rel="stylesheet"
-    />
-    <link href="./css/tailwind.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/5b0b34b925.js"
-      crossorigin="anonymous"
-    ></script>
-    <title>Update</title>
-  </head>
-  <body>
-    <!-- MAIN CONTENT -->
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+   </head>
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: linear-gradient(135deg, #52d789, #307964);
+}
+.container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+}
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #52d789, #307964);
+}
+.content form .user-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #52d789;
+}
+ form .gender-details .gender-title{
+  font-size: 20px;
+  font-weight: 500;
+ }
+ form .category{
+   display: flex;
+   width: 80%;
+   margin: 14px 0 ;
+   justify-content: space-between;
+ }
+ form .category label{
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+ }
+ form .category label .dot{
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #d9d9d9;
+  border: 5px solid transparent;
+  transition: all 0.3s ease;
+}
+ #dot-1:checked ~ .category label .one,
+ #dot-2:checked ~ .category label .two,
+ #dot-3:checked ~ .category label .three{
+   background: #52d789;
+   border-color: #d9d9d9;
+ }
+ form input[type="radio"]{
+   display: none;
+ }
+ form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #52d789, #376d50);
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #52d789, #376d50);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .user-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .user-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
+}
+   </style>
+<body>
+  <div class="container">
+    <div class="title">Update Account</div>
+    <div class="content">
+      <form action="MainController" method="POST">
+        <%  
+           UserDTO user =(UserDTO) session.getAttribute("EMPLOYEE_UPDATE");
+        %>
+        <div style="display: flex; align-items: center; margin-top: 4px">
+  <h1 style="margin: 0;">EDIT ACCOUNT</h1>
+  <h1 class="text-red-500" style="margin-left: 10px;"><%= user.getEmployee_id() %></h1>
+</div>
 
-    <div class="bg-green-500 min-h-screen flex items-center">
-      <div class="bg-white p-10 md:w-2/3 lg:w-1/2 mx-auto rounded">
-        <div class="max-w-2xl mx-auto">
-          <form action="MainController" method="POST">
-            <!--        <label for="userID">Employee ID:</label>
-                        <input type="text" name="userID" id="userID" required><br>-->
-            <% UserDTO user =(UserDTO) session.getAttribute("EMPLOYEE_UPDATE");
-            %>
-            <h1>EDIT ACCOUNT <%=user.getEmployee_id()%></h1>
-
-            <div class="relative z-0 mb-6 w-full group">
-              <input
-                class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-                type="hidden"
-                name="userID"
-                id="userID"
-                value="<%=user.getEmployee_id()%>"
-                required=""
-              />
-              <label
-                class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                for="fullName"
-                >Full Name:</label
-              >
-            </div>
-            <!-- div 1 -->
-            <div class="grid xl:grid-cols-2 xl:gap-6">
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  type="tel"
-                  name="Phone"
-                  id="Phone"
-                  placeholder=" "
-                  required
-                  pattern="[0-9]{10}"
-                  title="Số điện thoại phải có 10 chữ số"
-                />
-
-                <label
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  for="Phone"
-                  >Phone :</label
-                >
-              </div>
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  type="email"
-                  name="Email"
-                  value="<%=user.getEmail()%>"
-                  id="Email"
-                  required
-                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                />
-                <label
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  for="Email"
-                  >Email :</label
-                >
-              </div>
-            </div>
-            <!-- div 1 end -->
-            <!-- div 2-->
-            <div class="grid xl:grid-cols-2 xl:gap-6">
-              <div class="relative z-0 mb-6 w-full group">
-                <label for="Gender">Gender :</label>
-                <select name="Gender" id="Gender">
-                    <option value="Male" <%= user.getGender().equals("Male") ? "selected" : "" %>>Male</option>
-                    <option value="FeMale" <%= user.getGender().equals("FeMale") ? "selected" : "" %>>Female</option>
-                </select>
-              </div>
-              <div class="relative z-0 mb-6 w-full group">
-                <label for="roleID">Role ID : </label>
-                <select name="roleID" id="roleID">
-                    <option value="ADMIN" <%= user.getRoleID().equals("ADMIN") ? "selected" : "" %>>ADMIN</option>
-                    <option value="MANAGER" <%= user.getRoleID().equals("MANAGER") ? "selected" : "" %>>MANAGER</option>
-                    <option value="TRAINER" <%= user.getRoleID().equals("TRAINER") ? "selected" : "" %>>TRAINER</option>
-                </select>
-              </div>
-            </div>
-            <!-- end div 2 -->
-            <!-- div 3 -->
-            <!-- <div class="grid xl:grid-cols-2 xl:gap-6">
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  type="password"
-                  name="password"
-                  id="password"
-                  required
-                />
-                <label
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  for="password"
-                  >Password:</label
-                >
-              </div>
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                  type="password"
-                  name="confirm"
-                  id="confirm"
-                  required
-                />
-                <label
-                  class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  for="confirm"
-                  >Confirm:</label
-                >
-              </div>
-            </div> -->
-            <!-- end div 3  -->
-            <script>
-              // Lấy các phần tử DOM cần sử dụng
-              const passwordInput = document.getElementById("password");
-              const confirmInput = document.getElementById("confirm");
-              const showPasswordCheckbox =
-                document.getElementById("showPassword");
-
-              // Xử lý sự kiện khi checkbox "Show Password" thay đổi
-              showPasswordCheckbox.addEventListener("change", function () {
-                if (this.checked) {
-                  // Nếu checkbox được chọn, hiện mật khẩu
-                  passwordInput.type = "text";
-                  confirmInput.type = "text";
-                } else {
-                  // Nếu checkbox không được chọn, ẩn mật khẩu
-                  passwordInput.type = "password";
-                  confirmInput.type = "password";
-                }
-              });
-            </script>
-            <div class="flex justify-center">
-              <button
-                class="middle none center mr-4 rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true"
-                type="submit"
-                name="action"
-                value="Create"
-              >
-                Create
-              </button>
-
-              <button
-                type="reset"
-                value="Reset"
-                class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-light="true"
-              >
-                Reset
-              </button>
-            </div>
-            <a href="MainController?action=BackAdminPage">Back</a>
-          </form>
+        <div class="user-details">
+            <input type="hidden" name="userID" id="userID" value="<%=user.getEmployee_id()%>"required="">
+          <div class="input-box">
+            
+            <span class="details">Full Name</span>
+            <input type="text" name="FullName" id="fullName" value="<%=user.getFullname()%>"required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="email" name="Email" value="<%=user.getEmail()%>"id="Email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="tel" name="Phone" value="<%=user.getPhone()%>" id="Phone" required pattern="[0-9]{10}" title="Số điện thoại phải có 10 chữ số">
+          </div>
+          <div class="input-box">
+            <label class="font-medium" for="Gender">Gender :</label><br>
+            <select name="Gender" id="Gender">
+              <option value="Male" <%= user.getGender().equals("Male") ? "selected" : "" %>>Male</option>
+              <option value="Female" <%= user.getGender().equals("Female") ? "selected" : "" %>>Female</option>
+          </select><br> 
+          </div>
+          
         </div>
-      </div>
+        <div class="gender-details">
+          <input value="ADMIN" <%= user.getRoleID().equals("ADMIN") ? "selected" : "" %> type="radio" name="roleID"  id="dot-1">
+          <input value="MANAGER" <%= user.getRoleID().equals("MANAGER") ? "selected" : "" %> type="radio" name="roleID" id="dot-2">
+          <input value="TRAINER" <%= user.getRoleID().equals("TRAINER") ? "selected" : "" %> type="radio" name="roleID" id="dot-3">
+          <span  class="gender-title">ROLE</span>
+          
+          <div class="category">
+          <label  for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">ADMIN</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">MANAGER</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">TRAINER</span>
+          </label>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" name="action" value="Update_Acount">
+          <a class="text-center mx-auto " href="MainController?action=BackAdminPage">Back</a>   
+        </div>
+      </form>
     </div>
-  </body>
+  </div>
+
+</body>
 </html>

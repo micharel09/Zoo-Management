@@ -75,7 +75,6 @@
         <div class="flex flex-col flex-1 overflow-hidden">
           <!-- header -->
           <!-- prettier-ignore -->
-          <%@ include file="components/headeradmin.html" %>
           <main class="flex-1 overflow-x-hidden bg-gray-200">
             <% UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             if (loginUser == null || !"ADMIN".equals(loginUser.getRoleID())) {
@@ -89,12 +88,17 @@
             </div>
             <div class="container px-6 py-8 mx-auto">
               <div class="flex justify-between pb-2 border-b border-gray-300">
-                <h3 class="text-5xl font-medium text-gray-700">Dashboard</h3>
+                <h3 class="text-5xl font-medium text-gray-700">Employee</h3>
+                <a href="MainController?action=CreatePage" class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
+                    <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                    <span class="relative">Add Employee</span>
+                </a>
+               
                 <div>
                   <form action="MainController">
                     <div class="block relative">
                       <input
-                        class="text-xl cursor-pointer hover:text-green-500 transition-colors duration-300"
+                        class="hidden text-xl cursor-pointer hover:text-green-500 transition-colors duration-300"
                         type="submit"
                         name="action"
                         value="Search"
@@ -123,6 +127,13 @@
                     List<UserDTO> listUser1 = (List<UserDTO>) session.getAttribute("LIST_EMPLOYEE");
                     if (listUser1 != null && listUser1.size() > 0) { %>
                  -->
+                   <% String error = (String) request.getAttribute("ERROR"); if
+                    (error == null) { error = ""; } %>
+
+                    <!-- error -->
+                    <div>
+                      <h2 class="text-xl text-red-500 text-right mb-3"><%= error%></h2>
+                    </div>
 
                     <!-- table -->
                     <table class="min-w-full">
@@ -210,12 +221,12 @@
                           <td
                             class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                           >
-                            <%=user.getPhoto()%>
+                            <img style="height: 100px;width: 100px" src="<%=user.getPhoto()%>">
                           </td>
                           <!-- form -->
                           <form action="MainController">
                             <td
-                              class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                              class="py-2 pr-5 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
                             >
                               <div class="flex justify-center items-center">
                                 <!-- update -->
@@ -269,7 +280,7 @@
                                     />
                                     <input
                                       type="hidden"
-                                      name="Dêpndent"
+                                      name="photo"
                                       value="<%=user.getPhoto()%>"
                                     />
 
@@ -295,10 +306,10 @@
                                   >
                                     <i
                                       fill="none"
-                                      viewBox="0 0 24 24"
+                                      viewBox="0 0 24 "
                                       stroke="currentColor"
-                                      stroke-width="2"
-                                      class="h-4 w-4 fas fa-trash-alt"
+                                      stroke-width="1"
+                                      class="  fas fa-trash-alt"
                                     ></i
                                   ></a>
                                 </div>
@@ -312,13 +323,7 @@
                         <% } } %>
                       </tbody>
                     </table>
-                    <% String error = (String) request.getAttribute("ERROR"); if
-                    (error == null) { error = ""; } %>
-
-                    <!-- error -->
-                    <div>
-                      <h2><%= error%></h2>
-                    </div>
+                  
                     <!-- end error -->
                   </div>
                 </div>

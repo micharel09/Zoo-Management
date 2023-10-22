@@ -267,9 +267,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
           </div>
           <!-- View -->
           <div class="flex m-6 pr-10">
-            <a id="viewCartButton" 
-               style="display: none" 
-               href="show">
+            <a id="viewCartButton" style="display: none" href="show">
               <button
                 class="bg-neutral-200 border-2 border-black rounded-md px-6 py-2 text-xl text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
               >

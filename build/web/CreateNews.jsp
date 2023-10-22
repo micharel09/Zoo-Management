@@ -166,7 +166,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
               </button>
             </div>
             <!-- end submit -->
-            <!-- div 1 -->
             <!-- Title -->
             <div class="-mx-3 flex flex-wrap">
               <div class="w-full px-3 sm:w-1/2">
@@ -268,7 +267,70 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 />
               </div>
             </div>
-            <script src="js/createphoto.js"></script>
+            <script>
+              multiUploadButton = document.getElementById(
+                "multi-upload-button"
+              );
+              multiUploadInput = document.getElementById("multi-upload-input");
+              imagesContainer = document.getElementById("images-container");
+              multiUploadDisplayText =
+                document.getElementById("multi-upload-text");
+              multiUploadDeleteButton = document.getElementById(
+                "multi-upload-delete"
+              );
+
+              multiUploadButton.onclick = function () {
+                multiUploadInput.click(); // this will trigger the click event
+              };
+
+              multiUploadInput.addEventListener("change", function (event) {
+                if (multiUploadInput.files) {
+                  let files = multiUploadInput.files;
+
+                  // show the text for the upload button text filed
+                  multiUploadDisplayText.innerHTML =
+                    files.length + " files selected";
+
+                  // removes styles from the images wrapper container in case the user readd new images
+                  imagesContainer.innerHTML = "";
+
+                  // the delete button to delete all files
+                  multiUploadDeleteButton.classList.remove("hidden");
+
+                  Object.keys(files).forEach(function (key) {
+                    let file = files[key];
+
+                    // the FileReader object is needed to display the image
+                    let reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = function () {
+                      // for each file we create a div to contain the image
+                      let imageDiv = document.createElement("div");
+                      imageDiv.classList.add(
+                        "mb-4",
+                        "ml-20",
+                        "w-96",
+                        "h-64",
+                        "p-3",
+                        "rounded-lg",
+                        "bg-cover",
+                        "bg-center"
+                      );
+                      imageDiv.style.backgroundImage =
+                        "url(" + reader.result + ")";
+                      imagesContainer.appendChild(imageDiv);
+                    };
+                  });
+                }
+              });
+
+              function removeMultiUpload() {
+                imagesContainer.innerHTML = "";
+                multiUploadInput.value = "";
+                multiUploadDisplayText.innerHTML = "";
+                multiUploadDeleteButton.classList.add("hidden");
+              }
+            </script>
             <!-- end photo -->
           </form>
         </div>

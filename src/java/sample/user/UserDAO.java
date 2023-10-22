@@ -290,7 +290,7 @@ public class UserDAO {
                 }
                 // Tách phần số từ chuỗi
                 String prefix = NewID.substring(0, 1); // "Emp"
-                int number = Integer.parseInt(NewID.substring(3)); // 004
+                int number = Integer.parseInt(NewID.substring(1)); // 004
 
 // Tăng số lên 1
                 number++;
