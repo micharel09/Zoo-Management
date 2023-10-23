@@ -31,7 +31,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- loading -->
-    <!-- <iframe
+    <iframe
       id="loading-iframe"
       src="components/loading.html"
       frameborder="0"
@@ -63,7 +63,7 @@
       .hidden-iframe {
         opacity: 0;
       }
-    </style> -->
+    </style>
     <!-- end loading -->
 
     <title>Animal List</title>

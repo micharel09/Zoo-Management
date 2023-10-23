@@ -178,15 +178,6 @@ contentType="text/html" pageEncoding="UTF-8"%>
                     Upload Photo
                   </button>
                 </div>
-                <!-- script -->
-                <script>
-                  document
-                    .querySelector("#single-upload-button")
-                    .addEventListener("click", function (event) {
-                      event.preventDefault();
-                      // ....
-                    });
-                </script>
               </div>
               <input
                 type="file"

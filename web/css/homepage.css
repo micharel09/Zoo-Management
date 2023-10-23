@@ -1,0 +1,143 @@
+body {
+  text-align: center;
+}
+
+.slideshow-container {
+  width: 1519px;
+  height: 648px;
+  position: relative;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  animation: slideAnimation 9s infinite;
+}
+
+.slide:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+  animation-delay: 3s;
+}
+
+.slide:nth-child(3) {
+  animation-delay: 6s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes slideAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33.33% {
+    opacity: 1;
+  }
+  43.33% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fsp-image {
+  width: 425px;
+  height: 180px;
+  position: absolute;
+  bottom: 79%;
+  right: 36%;
+  z-index: 2; /* Make the FSP image appear in front of the slide */
+}
+
+.fade {
+  transition: opacity 0.7s ease-in;
+}
+.fadeOut {
+  opacity: 0;
+}
+
+.display-time {
+  font-size: 5rem;
+  font-weight: bold;
+  color: white;
+  margin-top: 170px;
+  margin-left: 350px;
+
+  -webkit-box-reflect: below linear-gradient(transparent, rgba(255, 255, 255));
+}
+
+.backgroundimg {
+  background-image: url(/wp-content/themes/halongcomplex/dist/images/bg-footer.png);
+}
+
+.reveal {
+  position: relative;
+  opacity: 0;
+}
+
+.reveal.active {
+  opacity: 1;
+}
+
+.active.fade-left {
+  animation: fade-left 1s ease-in;
+}
+.active.fade-right {
+  animation: fade-right 1s ease-in;
+}
+
+@keyframes fade-left {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-right {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.footer {
+  text-align: left;
+  color: white;
+  font-size: 20px;
+  line-height: 40px;
+}
+/* loading */
+.hidden-iframe {
+  opacity: 0;
+}
+
+.time-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  backdrop-filter: blur(5px);
+}

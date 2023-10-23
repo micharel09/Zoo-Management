@@ -68,7 +68,7 @@
         opacity: 0;
       }
     </style>
-    <style>
+    <!-- <style>
       .animated {
         -webkit-animation-duration: 1s;
         animation-duration: 1s;
@@ -110,7 +110,7 @@
           opacity: 0;
         }
       }
-    </style>
+    </style> -->
     <!-- end loading -->
     <title>Create Animal</title>
   </head>

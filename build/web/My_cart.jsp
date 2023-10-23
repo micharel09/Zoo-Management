@@ -341,13 +341,6 @@
                             </button>
                           </form>
                         </div>
-
-                        <script>
-                          function confirmDelete() {
-                            var result = confirm("Do you want to delete this?");
-                            return result;
-                          }
-                        </script>
                       </td>
                     </tr>
                   </c:forEach>
