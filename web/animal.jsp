@@ -31,7 +31,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- loading -->
-    <iframe
+    <!-- <iframe
       id="loading-iframe"
       src="components/loading.html"
       frameborder="0"
@@ -63,9 +63,17 @@
       .hidden-iframe {
         opacity: 0;
       }
-    </style>
+    </style> -->
     <!-- end loading -->
+    <style>
+      .fixed-width {
+        width: 32px;
+      }
 
+      .fixed-width div {
+        white-space: normal;
+      }
+    </style>
     <title>Animal List</title>
     <!-- prettier-ignore -->
     <!-- header -->
@@ -170,9 +178,9 @@
                         AnimalCage_ID
                       </th>
                       <th
-                        class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                        class="fixed-width px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
-                        Name
+                        <div class="w-32">Name</div>
                       </th>
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"

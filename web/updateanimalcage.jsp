@@ -77,7 +77,8 @@
         <!-- back button -->
         <div class="ml-0">
           <a
-            href="animalcagecontroller"
+            href="javascript:void(0);"
+            onclick="goBack()"
             class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
           >
             <svg
@@ -101,6 +102,11 @@
             >
           </a>
         </div>
+        <script>
+          function goBack() {
+            window.history.back();
+          }
+        </script>
         <!-- end back -->
         <header class="border-b border-gray-100 px-10 flex items-center">
           <div class="text-gray-800 mx-auto pb-4">
@@ -132,6 +138,7 @@
             <div class="relative z-0 mb-6 w-full group">
               <input
                 name="name"
+                maxlength="20"
                 type="text"
                 value="${aa.name}"
                 placeholder=" "
@@ -143,6 +150,17 @@
                 for="fullName"
                 >Name:</label
               >
+              <script>
+                const input = document.querySelector('input[name="name"]');
+
+                input.addEventListener("input", () => {
+                  if (input.value.length > 20) {
+                    input.disabled = true;
+                  } else {
+                    input.disabled = false;
+                  }
+                });
+              </script>
             </div>
             <p class="mt-3 text-xs text-red-400"></p>
             <!-- end name -->

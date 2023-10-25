@@ -60,20 +60,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       "
     ></iframe>
     <script>
-      window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
+      const loadingIframe = document.getElementById("loading-iframe");
+
+      setTimeout(() => {
+        loadingIframe.style.opacity = 0;
+        loadingIframe.classList.add("hidden-iframe");
+      }, 4000);
     </script>
     <link rel="stylesheet" href="css/homepage.css" />
     <!-- end loading -->
     <title>Home Page</title>
   </head>
-  <body class="block overflow-x-hidden mx-auto">
+  <body class="block overflow-x-hidden mx-auto bg-gray-300">
     <!-- header -->
     <div class="bg-green-600 leading-6 h-11">
       <div class="flex justify-end">
@@ -89,10 +87,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </a>
       </div>
     </div>
+    <!-- end header -->
 
+    <!-- navigation -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div
-        class="shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4"
+        class="shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4 pl-40"
       >
         <div
           class="mr-10 items-center justify-between hidden md:flex md:w-auto md:order-1"
@@ -162,7 +162,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           </ul>
         </div>
         <!-- buy ticket button -->
-        <!-- component -->
         <div class="animate-bounce relative items-center md:order-2">
           <button
             class="bg-gradient-to-b w-max mx-auto text-green-500 font-semibold from-slate-50 to-green-100 px-5 py-1 rounded-2xl shadow-green-400 duration shadow-md border-b-4 hover border-b border-green-200 hover:shadow-sm transition-all duration-500"
@@ -179,8 +178,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         ><img class="fsp-image" src="/img/FSP.png" alt=""
       /></a>
     </div>
+    <!-- end navigation -->
 
-    <!-- HERO SECTION -->
+    <!-- video SECTION -->
     <div>
       <div
         class="relative items-center justify-center w-full w-screen h-screen"
@@ -189,7 +189,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <div class="inset-0 h-screen">
             <iframe
               class="object-cover w-full h-full"
-              src="https://www.youtube.com/embed/XJyDQVZbQX8?autoplay=1&playlist=XJyDQVZbQX8&loop=1"
+              src="https://www.youtube.com/embed/TiEkGv-UszE?autoplay=1&playlist=TiEkGv-UszE&loop=1&hd=1&enablejsapi=1&start=0"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -222,8 +222,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           ></div>
         </div>
       </div>
+      <script>
+        // Khi tải lại trang
+        window.addEventListener("load", function () {
+          const youtubeIframe = document.getElementById("youtube-video");
+          youtubeIframe.contentWindow.postMessage(
+            '{"event":"command","func":"playVideo","args":""}',
+            "*"
+          );
+        });
+      </script>
     </div>
-    <!-- HERO SECTION END -->
+    <!-- video SECTION END -->
 
     <!--  -->
     <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
@@ -390,7 +400,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <div
       class="relative"
       style="
-        background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-green-sky-background.jpg');
+        background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-blue-sky-background.jpg');
         height: 1500px;
       "
     >

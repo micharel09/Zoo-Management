@@ -58,16 +58,19 @@ public class AreaController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String areaid = request.getParameter("areaid");
+        String animalcageid = request.getParameter("animalcageid");
         AnimalCageDAO a = new AnimalCageDAO();
         AreaDAO ad = new AreaDAO();
         List<AnimalCageDTO> list = a.getLocationAreaByAnimalCage(areaid);
+        AnimalCageDTO getAnimalByID = a.getAnimalCageByID("animalcageid");
         request.setAttribute("a", list);
         List<AreaDTO> area = ad.getAreaById(areaid);
         request.setAttribute("ad", area);
+
         request.getRequestDispatcher("area.jsp").forward(request, response);
     }
 

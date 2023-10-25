@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -56,24 +57,34 @@ public class DeleteAnimalCage extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String animalcageid = request.getParameter("animalcageID");
+        String areaid = request.getParameter("areaid");
         AnimalCageDAO a = new AnimalCageDAO();
         boolean canDelete = a.deleteanimalcage(animalcageid); // Tạo một phương thức kiểm tra có thể xóa hay không
 
         if (canDelete) {
             a.deleteanimalcage(animalcageid);
-            response.sendRedirect("animalcagecontroller");
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                String from = (String) session.getAttribute("froms");
+
+                // Kiểm tra và thực hiện chuyển hướng
+                if ("areacontroller".equals(from)) {
+                    response.sendRedirect("areacontroller?areaid=" + areaid);
+                } else {
+                    response.sendRedirect("animalcagecontroller");
+                }
+            }
         } else {
             // Hiển thị thông báo
             String errorMessage = "Please move animals out of the cage before deleting.";
             request.setAttribute("errorMessage", errorMessage);
             request.getRequestDispatcher("animalcagecontroller").forward(request, response);
-            
-        }
 
-    }
+        }
+}
 
     /**
      * Handles the HTTP <code>POST</code> method.

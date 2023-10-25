@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import sample.area.AreaDTO;
 import sample.user.UserDTO;
@@ -100,7 +101,7 @@ public class UpdateAnimalCage extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String animalcageid = request.getParameter("animalcage_id");
         String name = request.getParameter("name");
@@ -113,7 +114,7 @@ public class UpdateAnimalCage extends HttpServlet {
         String filename = extractFileName(photo);
 
         if (photo != null && photo.getSize() > 0) {
-              // Specify the relative path from your project root
+            // Specify the relative path from your project root
             String relativePath = File.separator + "animalcage_picture";
 
 // Get the project root directory
@@ -142,9 +143,20 @@ public class UpdateAnimalCage extends HttpServlet {
             photo.write(savePath);
 
         }
-        a.updateanimalcage(animalcageid, name, areaid, employeeid,filename);
+
+        a.updateanimalcage(animalcageid, name, areaid, employeeid, filename);
+ HttpSession session = request.getSession(false);
+if (session != null) {
+    String from = (String) session.getAttribute("from");
+    
+    // Kiểm tra và thực hiện chuyển hướng
+    if ("areacontroller".equals(from)) {
+        response.sendRedirect("areacontroller?areaid=" + areaid);
+    } else {
         response.sendRedirect("animalcagecontroller");
-        
+    }
+
+    }
     }
 
     /**
