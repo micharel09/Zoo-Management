@@ -1,6 +1,6 @@
 # World Wide Zoo - A Zoo Management Web Application
 <div align="center">
-    <img src="" alt="Logo" width="60" height="60" />
+    <img src="https://imgur.com/1DOp0lV" alt="Logo" width="60" height="60" />
     <p>The Wild World Zoo web application is a user-friendly platform designed to streamline and optimize the management of animal records, exhibits, staff, and visi</p>
 </div>
 
