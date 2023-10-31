@@ -29,6 +29,34 @@
     <title>Login</title>
   </head>
   <body>
+    <!-- back to home -->
+    <div class="absolute top-0 left-[45%] z-40">
+      <a
+        href="homepage.jsp"
+        class="cursor-pointer group flex items-center bg-transparent p-2 px-6 text-xl font-thin tracking-widest text-white"
+      >
+        <span
+          class="hover:text-green-400 duration-300 pr-4 text-gray-300 after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 transition-font"
+        >
+          Home Page
+        </span>
+        <svg
+          viewBox="0 0 46 16"
+          height="10"
+          width="30"
+          xmlns="http://www.w3.org/2000/svg"
+          id="arrow-horizontal"
+          class="-translate-x-2 fill-gray-300 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-x-105 group-hover:fill-green-400"
+        >
+          <path
+            transform="translate(30)"
+            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+            data-name="Path 10"
+            id="Path_10"
+          ></path>
+        </svg>
+      </a>
+    </div>
     <div
       class="bg-no-repeat bg-cover bg-center relative"
       style="
@@ -55,7 +83,7 @@
               <p class="text-gray-500">Please sign in to your account.</p>
             </div>
 
-            <form method="POST" action="MainController">
+            <form id="form" method="POST" action="MainController">
               <div class="relative z-0 mb-6 w-full group">
                 <input
                   type="text"
@@ -90,17 +118,48 @@
               <!-- footer -->
 
               <div class="mt-4">
+                <div
+                  class="g-recaptcha"
+                  data-sitekey="6LdNENwoAAAAAM0ePl6W3y3Z-HPfm3r0WwzOMNqK"
+                ></div>
+                <br />
                 <button
                   type="submit"
                   name="action"
                   value="Login"
-                  class="w-full flex justify-center bg-green-400 hover:bg-green-500 text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-500"
+                  class="w-full bg-green-400 rounded-md py-2 text-xl border-green-400 text-white border-2 hover:text-green-500 hover:shadow-[inset_20rem_0_0_0] hover:shadow-white duration-[200ms,550ms] transition-[color,box-shadow]"
                 >
-                  Sign in
+                  LOGIN
                 </button>
+                <div class="flex justify-center mt-2">
+                  <p class="text-red-500" id="error"></p>
+                </div>
               </div>
-              <% String error = (String) request.getAttribute("ERROR"); if
-              (error == null) { error = ""; } %> <%= error%>
+              <!-- recapcha -->
+              <script
+                src="https://www.google.com/recaptcha/api.js"
+                async
+                defer
+              ></script>
+              <script>
+                const form = document.getElementById("form");
+
+                form.addEventListener("submit", (e) => {
+                  const response = grecaptcha.getResponse();
+                  if (!response) {
+                    e.preventDefault();
+                    document.getElementById("error").innerHTML =
+                      "Please confirm reCAPTCHA!";
+                  }
+                });
+              </script>
+              <!-- end -->
+              <div class="flex justify-center mt-2">
+                <p class="text-red-500">
+                  <% String error = (String) request.getAttribute("ERROR"); if
+                  (error == null) { error = ""; } %> <%= error%>
+                </p>
+              </div>
               <div class="pt-5 text-center text-gray-400 text-xs">
                 <span>
                   Copyright © 2022-2023

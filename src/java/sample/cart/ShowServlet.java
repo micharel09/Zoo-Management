@@ -15,6 +15,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import sample.cart.Cart;
 import sample.cart.Product;
 
@@ -43,7 +44,7 @@ public class ShowServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ShowServlet</title>");            
+            out.println("<title>Servlet ShowServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ShowServlet at " + request.getContextPath() + "</h1>");
@@ -69,7 +70,7 @@ public class ShowServlet extends HttpServlet {
         Cookie[] arr = request.getCookies();
         String txt = "";
         if (arr != null) {
-            for (Cookie o:arr) {
+            for (Cookie o : arr) {
                 if (o.getName().equals("cart")) {
                     txt += o.getValue();
 
@@ -78,6 +79,10 @@ public class ShowServlet extends HttpServlet {
         }
         Cart cart = new Cart(txt, list);
         request.setAttribute("cart", cart);
+        HttpSession session = request.getSession();
+
+        String selectedDate = request.getParameter("date1");
+        session.setAttribute("selectedDate", selectedDate);
         request.getRequestDispatcher("My_cart.jsp").forward(request, response);
     }
 
@@ -92,7 +97,25 @@ public class ShowServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        DAO d = new DAO();
+        List<Product> list = d.getAll();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
+
+                }
+            }
+        }
+        Cart cart = new Cart(txt, list);
+        request.setAttribute("cart", cart);
+        HttpSession session = request.getSession();
+
+        String selectedDate = request.getParameter("date1");
+        session.setAttribute("selectedDate", selectedDate);
+        request.getRequestDispatcher("My_cart.jsp").forward(request, response);
     }
 
     /**

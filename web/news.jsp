@@ -131,10 +131,12 @@ contentType="text/html" pageEncoding="UTF-8"%>
             <c:forEach items="${listN}" var="n">
               <!-- Article -->
               <article
-                class="overflow-hidden border border-black rounded-lg shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                class="overflow-hidden border rounded-lg shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300"
               >
                 <!-- img -->
-                <img class="w-full" src="./news_picture/${n.photo}" alt="" />
+                <div class="bg-cover">
+                <img class="w-[400px] h-[200px] " src="./news_picture/${n.photo}" alt="" />
+                </div>
                 <!-- end img -->
                 <!-- footer -->
                 <div class="py-auto px-auto pb-2">

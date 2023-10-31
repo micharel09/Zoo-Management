@@ -10,6 +10,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -59,21 +60,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         transition: opacity 1s;
       "
     ></iframe>
-    <script>
-      window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
-    </script>
     <link rel="stylesheet" href="css/homepage.css" />
     <!-- end loading -->
     <title>Home Page</title>
   </head>
-  <body class="block overflow-x-hidden mx-auto">
+  <body class="block overflow-x-hidden mx-auto bg-gray-300">
     <!-- header -->
     <div class="bg-green-600 leading-6 h-11">
       <div class="flex justify-end">
@@ -83,16 +74,22 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <i class="fa-brands fa-instagram mr-3 mt-4"></i>
         </div>
         <a href="login.html">
-          <i class="fa-solid fa-arrow-right-to-bracket mr-3 mt-4 text-white">
-            Login
+          <i class="fa-solid fa-arrow-right-to-bracket mr-4 mt-4 text-white">
+            <span class="group">
+              Login
+              <div
+                class="w-0 mt-1 group-hover:w-full h-0.5 bg-white ease-in-out duration-200"
+              ></div>
+            </span>
           </i>
         </a>
       </div>
     </div>
-
+    <!-- end header -->
+    <!-- navigation -->
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div
-        class="shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4"
+        class="shadow-2xl flex items-center justify-center mx-auto p-3 space-x-4 pl-40"
       >
         <div
           class="mr-10 items-center justify-between hidden md:flex md:w-auto md:order-1"
@@ -103,7 +100,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >
             <li>
               <a
-                href="#"
+                href="homepage.jsp"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >Home</a
@@ -111,7 +108,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a
-                href="About.jsp"
+                href="about.jsp"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >About us</a
@@ -119,7 +116,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a
-                href="#"
+                href="Experience.jsp"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >Experience</a
@@ -162,13 +159,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           </ul>
         </div>
         <!-- buy ticket button -->
-        <!-- component -->
         <div class="animate-bounce relative items-center md:order-2">
-          <button
+          <a
+            href="/shop"
             class="bg-gradient-to-b w-max mx-auto text-green-500 font-semibold from-slate-50 to-green-100 px-5 py-1 rounded-2xl shadow-green-400 duration shadow-md border-b-4 hover border-b border-green-200 hover:shadow-sm transition-all duration-500"
-          >
-            <a href="/shop">Buy Ticket !</a>
-          </button>
+            >Buy Ticket!
+          </a>
         </div>
       </div>
     </nav>
@@ -176,11 +172,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <!--LOGO HERE-->
     <div style="z-index: 99">
       <a href="/homepage.jsp"
-        ><img class="fsp-image" src="/img/FSP.png" alt=""
+        ><img class="fsp-image" src="/img/FSP.png" alt="logo"
       /></a>
     </div>
+    <!-- end navigation -->
 
-    <!-- HERO SECTION -->
+    <!-- video SECTION -->
     <div>
       <div
         class="relative items-center justify-center w-full w-screen h-screen"
@@ -189,7 +186,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <div class="inset-0 h-screen">
             <iframe
               class="object-cover w-full h-full"
-              src="https://www.youtube.com/embed/XJyDQVZbQX8?autoplay=1&playlist=XJyDQVZbQX8&loop=1"
+              src="https://www.youtube.com/embed/TiEkGv-UszE?autoplay=1&playlist=TiEkGv-UszE&loop=1&mute=1"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -223,16 +220,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
     </div>
-    <!-- HERO SECTION END -->
-
-    <!--  -->
-    <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
-    <!-- end slideshow -->
+    <!-- video SECTION END -->
 
     <!-- section 1 -->
-    <!-- component -->
     <aside
-      class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80&w=2027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+      class="fade fadeOut overflow-hidden bg-[url(https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80&w=2027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
     >
       <div class="p-8 md:p-12 lg:px-16 lg:py-24 bg-slate-900/50">
         <div class="max-w-lg text-center sm:text-left">
@@ -245,8 +237,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <p
             class="max-w-md text-white/90 md:mt-6 md:text-lg md:leading-relaxed md:block"
           >
-            home to over 100 rare and exotic animal species from around the
-            globe. Visitors will have the chance to admire endangered wild
+            Home to over 100 rare and exotic animal species from around the
+            globe, visitors will have the chance to admire endangered wild
             animals such as tigers, lions, bears, elephants, rhinos...
           </p>
 
@@ -281,80 +273,101 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     </aside>
     <!-- end section -->
 
-    <!--Big img introduce-->
-
-    <div class="fade fadeOut">
-      <!-- Panel left -->
+    <!-- section 2 -->
+    <aside
+      class="fade fadeOut overflow-hidden bg-[url(https://images.unsplash.com/photo-1604605046985-3a8bacf389e2?auto=format&fit=crop&q=80&w=2072&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+    >
       <div
-        class="relative group w-2/3 h-96 overflow-hidden bg-black m-auto float-left"
+        class="p-8 md:p-12 lg:px-16 lg:py-24 bg-slate-900/50 flex justify-end"
       >
-        <img
-          class="object-cover w-full h-full transform duration-700 backdrop-opacity-100"
-          src="img/closeup-rectangle.jpg"
-        />
-        <div
-          class="absolute inset-0 flex items-center justify-center r-9 right-1/3"
-        >
-          <h1 class="text-7xl text-start font-bold text-white">
-            WORLD WIDE ZOO <br />
-            HO CHI MINH <br />
-            <i class="fa-solid fa-cloud mt-10"> 31°C</i>
-          </h1>
-
-          <!--Time-->
-          <div style="position: absolute; z-index: 2" class="container">
-            <div class="display-time"></div>
-          </div>
-          <script>
-            const displayTime = document.querySelector(".display-time");
-
-            // Time
-            function showTime() {
-              let time = new Date();
-              displayTime.innerText = time.toLocaleTimeString("en-US", {
-                hour12: false,
-              });
-              setTimeout(showTime, 1000);
-            }
-            // Call the functions
-            showTime();
-          </script>
-        </div>
-      </div>
-
-      <!-- panel right -->
-      <div
-        class="relative group w-1/3 h-96 overflow-hidden bg-black m-auto float-right"
-      >
-        <img
-          class="object-cover w-full h-full transform duration-700 backdrop-opacity-100"
-          src="img/khub.jpeg"
-        />
-        <div
-          class="absolute w-full h-full shadow-2xl opacity-20 transform duration-500 inset-y-full group-hover:-inset-y-0"
-        ></div>
-        <div
-          class="absolute bg-gradient-to-t from-black w-full h-full transform duration-500 inset-y-2/3 group-hover:-inset-y-0"
-        >
-          <a
-            href="about.jsp"
-            class="absolute w-full bottom-20 flex place-content-center"
+        <div class="max-w-lg text-center sm:text-left">
+          <h2
+            class="text-2xl font-extrabold text-white sm:text-3xl md:text-5xl mb-2"
           >
-            <p
-              class="capitalize font-sanf font-bold text-4xl text-center shadow-2xl text-white"
+            Fun Family Experiences!
+          </h2>
+
+          <p
+            class="max-w-md text-white/90 md:mt-6 md:text-lg md:leading-relaxed md:block"
+          >
+            You'll embark on a walking safari to observe the animals in action.
+            Experience our popular petting zoo where you can interact with
+            friendly goats, sheep, ponies and more. Don't miss our world-class
+            reptile house and aquarium exhibits too. We offer fun and
+            educational shows daily.
+          </p>
+
+          <div class="mt-4 sm:mt-8">
+            <a
+              href=""
+              class="btn group flex items-center bg-transparent p-2 px-6 text-xl font-thin tracking-widest text-white"
             >
-              Plan your visit
-            </p>
-          </a>
-          <a href="about.jsp">
-            <button
-              class="absolute bottom-4 left-1/3 bg-white item-center text-black font-bold rounded-lg h-10 w-40"
-            >
-              Get info
-            </button>
-          </a>
+              <span
+                class="hover:text-green-400 duration-300 shadow-md pr-4 pb-1 text-white after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 transition-font"
+              >
+                Explore More
+              </span>
+              <svg
+                viewBox="0 0 46 16"
+                height="10"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="-translate-x-2 fill-slate-700 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-x-105 group-hover:fill-green-400"
+              >
+                <path
+                  transform="translate(30)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
+    </aside>
+
+    <!-- end section -->
+
+    <!--section 3-->
+
+    <div class="bg-slate-900/50 fade fadeOut ">
+      <div
+        class="relative group w-full h-[500px] overflow-hidden bg-black m-auto bg-[url(https://images.unsplash.com/photo-1519874950331-12655cb7ae70?auto=format&fit=crop&q=80&w=1889&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+      >
+        <div class="p-8 md:p-12 lg:px-16 lg:py-24 h-full bg-slate-900/50">
+          <div
+            class="absolute inset-0 flex items-center justify-center r-9 right-1/3"
+          >
+            <h1 class="text-7xl text-start font-bold text-white">
+              WORLD WIDE ZOO <br />
+              HO CHI MINH <br />
+              <i class="fa-solid fa-cloud mt-10"> 31°C</i>
+            </h1>
+
+            <!--Time-->
+            <div style="position: absolute; z-index: 2" class="container">
+              <div class="display-time"></div>
+            </div>
+            <script>
+              const displayTime = document.querySelector(".display-time");
+
+              // Time
+              function showTime() {
+                let time = new Date();
+                displayTime.innerText = time.toLocaleTimeString("en-US", {
+                  hour12: false,
+                });
+                setTimeout(showTime, 1000);
+              }
+              // Call the functions
+              showTime();
+            </script>
+          </div>
+        </div>
+      </div>
+
       <script>
         const observerOptions = {
           root: null,
@@ -383,6 +396,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         fadeElms.forEach((el) => observer.observe(el));
       </script>
     </div>
+    <!-- end section 2 -->
 
     <h1 style="background-color: #cfcdcc; color: #cfcdcc">h</h1>
 
@@ -390,8 +404,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <div
       class="relative"
       style="
-        background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-green-sky-background.jpg');
-        height: 1500px;
+        background-image: url('/img/grassy-field-with-trees-giraffes-walking-around-with-light-blue-sky-background.jpg');
       "
     >
       <div
@@ -449,7 +462,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
       <!--map&news-->
 
-      <div class="mt-20 flex justify-evenly">
+      <div class="mt-20 mb-20 flex justify-evenly">
         <div style="margin-left: 90px" class="container reveal fade-left">
           <h2 class="text-gray-800 text-7xl text-left font-bold mb-16">MAP</h2>
           <a href=""
@@ -486,26 +499,124 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
 
-      <!--transition map&news-->
-      <script>
-        function reveal() {
-          var reveals = document.querySelectorAll(".reveal");
+      <!-- grid section -->
+      <div class="container mx-auto p-4 fade">
+        <div class="flex justify-center">
+          <h2 class="text-gray-800 text-7xl text-left font-bold mb-16">
+            Here is some photos on our land:
+          </h2>
+        </div>
 
-          for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 150;
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="grid gap-4">
+            <div class="fade">
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1621185831466-5409499eec67?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=700&dpr=2.0"
+                onclick="openLightbox(this)"
+                alt=""
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1503918756811-975bd3397178?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1525152334085-d5f17f22d5c8?auto=format&fit=crop&q=80&w=1968&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1532714845903-d7b2a053e92b?auto=format&fit=crop&q=80&w=1954&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1581098031793-61531ade4318?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1510272940641-589fcd43e485?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1617258683488-df59909f25f0?auto=format&fit=crop&q=80&w=1998&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1541804536-78217d100fb7?auto=format&fit=crop&q=80&w=1688&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1527118732049-c88155f2107c?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1601354458668-bc528609649e?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=700&dpr=2.0"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1417722009592-65fa261f5632?auto=format&fit=crop&q=80&w=1935&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+            <div>
+              <img
+                class="h-auto max-w-full rounded-lg cursor-pointer cursor hover:shadow-xl hover:transform hover:scale-105 duration-300"
+                src="https://images.unsplash.com/photo-1617796606112-557e8061d58a?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+                onclick="openLightbox(this)"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="js/homepage.js"></script>
 
-            if (elementTop < windowHeight - elementVisible) {
-              reveals[i].classList.add("active");
-            } else {
-              reveals[i].classList.remove("active");
-            }
-          }
-        }
-
-        window.addEventListener("scroll", reveal);
-      </script>
+      <!-- end grid -->
     </div>
 
     <img

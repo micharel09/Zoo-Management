@@ -39,3 +39,13 @@
 [x-cloak] {
   display: none;
 }
+
+/* Trong file CSS chính */
+@import "date-input.css";
+
+/* Trong file date-input.css */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* ... */

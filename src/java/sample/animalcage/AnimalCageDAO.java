@@ -201,7 +201,7 @@ public class AnimalCageDAO {
 
     public List<AnimalCageDTO> getLocationAreaByAnimalCage(String location) {
         List<AnimalCageDTO> list = new ArrayList<>();
-        String sql = " SELECT aa.AnimalCage_ID, aa.Name, a.AreaLocation, aa.Employee_ID, aa.Photo \n"
+        String sql = " SELECT aa.AnimalCage_ID, aa.Name, a.Area_ID, aa.Employee_ID, aa.Photo \n"
                 + "        FROM Area a \n"
                 + "        \n"
                 + "        JOIN AnimalCage aa ON a.Area_ID = aa.Area_ID \n"

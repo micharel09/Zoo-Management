@@ -61,8 +61,10 @@ public class CheckoutServlet extends HttpServlet {
         request.setAttribute("cart", cart);
         LocalDate curDate = LocalDate.now();
         String date = curDate.toString();
+HttpSession session = request.getSession();
 
-        String date1 = request.getParameter("date1");
+        String date1 = (String) session.getAttribute("selectedDate");
+
         String email = request.getParameter("email");
         String fullname = request.getParameter("fullname");
         String phone = request.getParameter("phone");
@@ -161,7 +163,7 @@ public class CheckoutServlet extends HttpServlet {
     "<p><strong>Người nhận:</strong> " + fullname + "</p>" +
     "<p><strong>Số điện thoại:</strong> " + phone + "</p>" +
     "<p><strong>Email:</strong> " + email + "</p>" +
-    
+     
     "<h2>Chi tiết đơn hàng</h2>" +
     "<p><strong>Loại vé: Standard</strong></p>" +
     "<p>Đơn giá: " + Price_T01_Ticket + "</p>" +
@@ -237,4 +239,3 @@ public class CheckoutServlet extends HttpServlet {
     }// </editor-fold>
 
 }
- 
