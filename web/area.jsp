@@ -81,7 +81,7 @@
         </div>
         <div class="py-8 ml-20">
           <!-- main -->
-          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-3 overflow-x-auto">
+          <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-3 overflow-x-hidden">
             <table class="min-w-full border-collapse border border-green-500">
               <thead class="bg-green-500">
                 <tr class="text-white">
