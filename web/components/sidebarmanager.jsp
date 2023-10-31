@@ -67,7 +67,7 @@
       <hr class="dark:border-gray-700/60" />
 
       <a
-        href="/"
+        href="login.html"
         class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-500"
       >
         <!-- HeroIcon - Home Modern -->

@@ -25,9 +25,6 @@ const imgUrls = [
   const bgImageEl = document.querySelector('.bg-no-repeat');
   bgImageEl.style.backgroundImage = `url(${getRandomImage()})`;
 
-  setTimeout(() => {
-    bgImageEl.style.backgroundImage = `url(${getRandomImage()})`; 
-  }, 1000);
 
 
 //   Quotes

@@ -138,7 +138,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         >
           <div class="w-full">
             <h4 class="mb-[14px] text-5xl font-bold text-white md:text-4xl">
-              Welcome back, <%=loginUser.getFullname()%>-sama
+              Welcome back, <%=loginUser.getFullname()%>
             </h4>
 
             <p class="mb-[40px] text-xl font-medium text-[#E3DAFF] md:text-2xl">
@@ -203,7 +203,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 </a>
 
                 <a
-                  href="/"
+                  href="login.html"
                   class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-slate-800"
                   style="transform: scale(2)"
                 >

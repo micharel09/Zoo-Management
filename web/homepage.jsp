@@ -332,7 +332,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!--section 3-->
 
-    <div class="bg-slate-900/50 fade fadeOut my-[200px]">
+    <div class="bg-slate-900/50 fade fadeOut ">
       <div
         class="relative group w-full h-[500px] overflow-hidden bg-black m-auto bg-[url(https://images.unsplash.com/photo-1519874950331-12655cb7ae70?auto=format&fit=crop&q=80&w=1889&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
       >

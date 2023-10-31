@@ -120,7 +120,7 @@
               <div class="mt-4">
                 <div
                   class="g-recaptcha"
-                  data-sitekey="6LfUBd4oAAAAAPT8AhFTgnkd-DkZ9v4Fg0cuasrd"
+                  data-sitekey="6LdNENwoAAAAAM0ePl6W3y3Z-HPfm3r0WwzOMNqK"
                 ></div>
                 <br />
                 <button
