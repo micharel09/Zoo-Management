@@ -5,27 +5,19 @@
     <link rel="import" href="components/header.html" />
     <!-- Tailwind -->
     <script src="https://cdn-tailwindcss.vercel.app/"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
-      rel="stylesheet"
-    />
+
     <link href="./css/tailwind.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
-    <script
-      src="https://kit.fontawesome.com/5b0b34b925.js"
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
       crossorigin="anonymous"
-    ></script>
+      referrerpolicy="no-referrer"
+    />
     <style>
       .header {
         background-image: url("../img/header.gif");
@@ -43,6 +35,31 @@
       /* Add any additional styles as needed */
     </style>
   </head>
+  <script>
+    var navItems = document.getElementById("home");
+
+    function adjustNavbar() {
+      screenWidth = parseInt(window.innerWidth);
+
+      if (screenWidth < 541) {
+        navItems.style.display = "none";
+        hamburger.style.display = "flex";
+      } else {
+        navItems.style.display = "flex";
+        hamburger.style.display = "none";
+      }
+    }
+
+    adjustNavbar();
+
+    window.addEventListener("resize", adjustNavbar);
+
+    hamburger.addEventListener("click", function () {
+      mobileNav.classList.toggle("left-[-70%]");
+      hamburger.classList.toggle("fa-bars");
+      hamburger.classList.toggle("fa-close");
+    });
+  </script>
   <body class="w-[1500] block overflow-x-hidden mx-auto">
     <!-- header -->
     <nav class="header leading-6 h-full">
@@ -67,40 +84,70 @@
             class="flex flex-col mt-4 borderrounded-lg md:flex-row md:space-x-8 md:mt-0 md:border-0"
           >
             <li>
-              <a
-                href="homepage.jsp"
-                class="navbar-text block py-4 pl-4 text-3xl text-gray-900 rounded before:ease relative h-full w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                aria-current="page"
-                >HOME</a
-              >
+              <div id="home">
+                <a
+                  href="homepage.jsp"
+                  class="navbar-text block text-white py-4 pl-4 text-3xl text-gray-900 rounded relative h-full w-28"
+                  aria-current="page"
+                  ><span class="group">
+                    HOME
+                    <div
+                      class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+                    ></div> </span
+                ></a>
+              </div>
             </li>
             <li>
-              <a
-                href="About.jsp"
-                class="navbar-text block py-4 pl-2 text-3xl text-gray-900 rounded before:ease relative h-full w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ABOUT</a
-              >
+              <div id="home">
+                <a
+                  href="about.jsp"
+                  class="navbar-text block text-white py-4 pl-2 text-3xl text-gray-900 rounded"
+                  ><span class="group">
+                    ABOUT
+                    <div
+                      class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+                    ></div> </span
+                ></a>
+              </div>
             </li>
             <li>
-              <a
-                href="animalcontroller"
-                class="navbar-text block py-4 pr-2 pl-2 text-3xl text-gray-900 rounded before:ease relative h-full w-30 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-10 before:translate-x-12 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >ANIMAL</a
-              >
+              <div id="home">
+                <a
+                  href="animalcontroller"
+                  class="navbar-text block text-white py-4 pr-2 pl-2 text-3xl text-gray-900 rounded"
+                  ><span class="group">
+                    ANIMAL
+                    <div
+                      class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+                    ></div> </span
+                ></a>
+              </div>
             </li>
             <li>
-              <a
-                href="news.jsp"
-                class="navbar-text block py-4 pl-4 text-3xl text-gray-900 rounded before:ease relative h-full w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >NEWS</a
-              >
+              <div id="home">
+                <a
+                  href="news.jsp"
+                  class="navbar-text block text-white py-4 pl-4 text-3xl text-gray-900 rounded"
+                  ><span class="group">
+                    NEWS
+                    <div
+                      class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+                    ></div> </span
+                ></a>
+              </div>
             </li>
             <li>
-              <a
-                href="Map.jsp"
-                class="navbar-text block py-4 pl-6 text-3xl text-gray-900 rounded before:ease relative h-full w-28 overflow-hidden text-white transition-all before:absolute before:right-0 before:top-0 before:h-16 before:w-6 before:translate-x-8 before:fa-rotate-2 before:bg-green-300 before:opacity-4 before:duration-700 hover:shadow-xl hover:before:-translate-x-40 hover:bg-green-700"
-                >MAP</a
-              >
+              <div id="home">
+                <a
+                  href="Map.jsp"
+                  class="navbar-text block text-white py-4 pl-6 text-3xl text-gray-900 rounded"
+                  ><span class="group">
+                    MAP
+                    <div
+                      class="w-0 group-hover:w-full h-0.5 bg-white ease-in-out duration-500"
+                    ></div> </span
+                ></a>
+              </div>
             </li>
           </ul>
         </div>

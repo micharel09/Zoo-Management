@@ -180,32 +180,12 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
         </div>
       </div>
 
-      <!-- input date -->
-
-      <!-- end input date -->
-
       <!-- end Progress Steps -->
       <!-- main -->
       <div>
         <div class="flex flex-row justify-center space-x-8">
           <div class="relative flex flex-wrap mx-auto justify-center">
             <form name="f" action="" method="post">
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  type="date"
-                  name="date1"
-                  id="date-input"
-                  class="flex-shrink-0 block py-2.5 px-0 text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder="MM/YY"
-                />
-              </div>
-              <script>
-                var currentDate = new Date();
-                var formattedDate = currentDate.toISOString().split("T")[0];
-                document
-                  .getElementById("date-input")
-                  .setAttribute("min", formattedDate);
-              </script>
               <div class="flex space-x-4">
                 <c:forEach items="${requestScope.data}" var="p">
                   <c:set var="id" value="${p.tid}" />
@@ -287,15 +267,37 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             </form>
           </div>
           <!-- View -->
-          <div class="flex m-6 pr-10">
-            <a href="show">
-              <button
-                class="bg-neutral-200 border-2 border-black rounded-md px-6 py-2 text-xl text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-              >
-                View Cart
-              </button>
-            </a>
-          </div>
+          <form action="show" method="post">
+            <!-- Thêm trường nhập date1 vào biểu mẫu -->
+            <div class="relative ml-6 mb-6 w-full group">
+              <input
+                type="date"
+                name="date1"
+                id="date-input"
+                class="flex-shrink-0 block text-white py-2.5 px-0 text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-500 peer"
+                placeholder="MM/YY"
+                required
+              />
+            </div>
+            <script>
+              var currentDate = new Date();
+              var formattedDate = currentDate.toISOString().split("T")[0];
+              document
+                .getElementById("date-input")
+                .setAttribute("min", formattedDate);
+            </script>
+
+            <div class="flex m-6 pr-10">
+              <a href="show">
+                <button
+                  class="bg-neutral-200 rounded-md px-5 py-2 text-xl text-neutral-600 hover:border-green-500 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                >
+                  View Cart
+                </button>
+              </a>
+            </div>
+          </form>
+
           <!-- end View -->
         </div>
         <!-- end main -->

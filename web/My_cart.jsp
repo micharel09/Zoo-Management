@@ -243,7 +243,7 @@
                     ></path>
                   </svg>
                   <span
-                    class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                    class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
                     >Back</span
                   >
                 </a>
@@ -353,23 +353,26 @@
               class="flex justify-end space-x-4 border-t border-gray-100 px-5 pt-4 pb-2 text-2xl font-bold"
             >
               <div>Total</div>
-              <div class="text-blue-600">$ ${o.totalMoney}</div>
+              <div class="text-green-600">$ ${o.totalMoney}</div>
             </div>
             <!-- end total -->
-
+            =
             <!-- Confirm -->
-            <div
-              class="flex justify-center pt-4 mb-4 mr-4 border-t border-gray-100"
-            >
+            <div>
               <form action="./checkout.jsp" method="post">
                 <button
-                  class="bg-transparent rounded-md px-12 py-4 text-2xl border-black text-black border-2 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[200ms,400ms] transition-[color,box-shadow]"
+                  class="w-full bg-green-400 rounded-md py-4 text-2xl border-green-400 text-white border-2 hover:text-green-500 hover:shadow-[inset_100rem_0_0_0] hover:shadow-white duration-[200ms,550ms] transition-[color,box-shadow]"
                 >
-                  <input type="submit" value="Checkout" />
+                  <input
+                    class="cursor-pointer"
+                    type="submit"
+                    value="CHECKOUT"
+                  />
                 </button>
               </form>
             </div>
             <!-- end confim -->
+
             <div class="flex justify-end">
               <!-- send this data to backend (note: use class 'hidden' to hide this input) -->
               <input

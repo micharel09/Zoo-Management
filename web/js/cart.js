@@ -1,3 +1,17 @@
+// loading
+window.addEventListener("load", function () {
+  // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
+  var iframe = document.getElementById("loading-iframe");
+  if (iframe) {
+    iframe.style.zIndex = 0;
+    iframe.classList.add("hidden-iframe");
+  }
+});
+//loading
+
+
+
+
 var quantities = {};
 var ticketTypes = {
   T01: "Child",

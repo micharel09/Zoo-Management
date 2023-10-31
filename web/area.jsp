@@ -152,7 +152,7 @@
 
                         <a href="${updateUrl}" class="your-class-name">
                           <button
-                            class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
+                            class="flex p-2.5 bg-green-400 rounded-xl hover:rounded-3xl hover:bg-green-500 transition-all duration-300 text-white"
                           >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +189,7 @@
                             onclick="return confirmDelete();"
                           >
                             <button
-                              class="flex p-2.5 bg-gray-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
+                              class="flex p-2.5 bg-red-400 rounded-xl hover:rounded-3xl hover:bg-red-500 transition-all duration-300 text-white"
                             >
                               <i
                                 fill="none"

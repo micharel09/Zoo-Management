@@ -1,8 +1,8 @@
 <%-- Document : Cart Created on : Sep 27, 2023, 10:16:31 AM Author : Quan --%>
 <!-- prettier-ignore -->
-<%@page contentType="text/html" pageEncoding="UTF-8"%> 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+      <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -37,10 +37,11 @@
     <title>Checkout</title>
     <!-- prettier-ignore -->
     <!-- header and breakcrumb -->
-    <%@ include file="components/header.html"%> <%@ include
+    <%@ include file="components/header.html" %> <%@ include
     file="components/breadcrumb.html" %>
     <!-- end header -->
   </head>
+
   <body>
     <div class="w-[1500] mx-auto bg-gray-50 h-screen custom-bg">
       <!-- Progress Steps -->
@@ -156,9 +157,7 @@
         method="post"
         class="mx-auto bg-gray-100 rounded-b-3xlf h-screen"
       >
-        <div
-          class="bg-gray-50 px-4 lg:mt-0 w-1/2 mx-auto rounded-b-3xl border-2 border-black shadow-2xl"
-        >
+        <div class="bg-gray-50 w-1/2 mx-auto rounded-xl border shadow-2xl">
           <!-- back button -->
           <div class="pt-2">
             <a
@@ -181,13 +180,13 @@
                 ></path>
               </svg>
               <span
-                class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                class="relative pb-1 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
                 >Back</span
               >
             </a>
           </div>
           <!-- end back -->
-          <div>
+          <div class="px-4">
             <div class="text-center">
               <p class="text-5xl font-medium">Checkout Details</p>
               <p class="text-gray-400">
@@ -201,7 +200,7 @@
                 id="email"
                 name="email"
                 required
-                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" "
               />
               <label
@@ -219,7 +218,7 @@
                 type="text"
                 id="email"
                 name="fullname"
-                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder=" "
                 required
               /><label
@@ -232,50 +231,34 @@
               ></div>
             </div>
             <!-- Phone -->
-            <div class="flex">
-              <div class="relative w-7/12 z-0 w-full group flex-shrink-0">
-                <input
-                  type="phone"
-                  required
-                  id="phone"
-                  name="phone"
-                  class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder=" "
-                />
-                <label
-                  for="phone"
-                  class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                  >Phone:
-                </label>
-                <div
-                  class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
-                ></div>
-              </div>
+            <div class="relative z-0 mb-6 w-full group">
+              <input
+                type="phone"
+                required
+                id="phone"
+                name="phone"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                placeholder=" "
+              />
+              <label
+                for="phone"
+                class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >Phone:
+              </label>
+              <div
+                class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3"
+              ></div>
               <!-- date -->
-              <div class="relative z-0 mb-6 w-full group">
-                <input
-                  type="date"
-                  name="date1"
-                  id="date-input"
-                  class="flex-shrink-0 block py-2.5 px-0 text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder="MM/YY"
-                />
-              </div>
-              <script>
-                var currentDate = new Date();
-                var formattedDate = currentDate.toISOString().split("T")[0];
-                document
-                  .getElementById("date-input")
-                  .setAttribute("min", formattedDate);
-              </script>
             </div>
             <!-- promotion -->
-            <div class="relative z-0 mb-6 w-full group">
+            <div
+              class="relative z-0 mb-6 w-full group mb-2 border-b border-gray-100"
+            >
               <input
                 type="text"
                 name="promotion"
                 placeholder=" "
-                class="flex-shrink-2 block py-2.5 px-0 text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
                 placeholder="Promotion"
               />
               <label
@@ -284,27 +267,19 @@
                 >Promotion</label
               >
             </div>
-            <!-- Total -->
-            <div class="mt-6 border-t border-b py-2">
-              <div>
-                <p class="text-sm font-medium text-gray-900">Total Amount</p>
-                <p
-                  id="total-amount"
-                  class="text-2xl font-semibold text-gray-900"
-                ></p>
-              </div>
-            </div>
-            <div
-              class="flex justify-center pt-4 mb-4 mr-4 border-t border-gray-100"
+          </div>
+          <!-- submit -->
+          <!-- Confirm -->
+          <form action="./checkout.jsp" method="post">
+            <button
+              class="w-full bg-green-400 rounded-b-xl py-4 text-2xl border-green-400 text-white border-2 hover:text-green-500 hover:shadow-[inset_70rem_0_0_0] hover:shadow-white duration-[150ms,400ms] transition-[color,box-shadow]"
             >
-              <button
-                class="bg-transparent rounded-md px-12 py-4 text-2xl border-black text-black border-2 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[200ms,400ms] transition-[color,box-shadow]"
-                onclick="showSuccessMessage()"
-              >
-                <input type="submit" value="FINISH" />
-              </button>
+              <input class="cursor-pointer" type="submit" value="FINISH" />
+            </button>
+          </form>
+          <!-- end confim -->
 
-              <!-- <div
+          <!-- <div
               id="success-message"
               style="display: none"
               class="bg-green-100 p-4 my-4"
@@ -312,8 +287,6 @@
               <p class="text-green-700 font-bold">Payment Success!</p>
               <p>Thank you, check your gmail for more information.</p>
             </div> -->
-            </div>
-          </div>
         </div>
       </form>
       <!-- end Main -->
