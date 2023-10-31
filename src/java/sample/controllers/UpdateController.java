@@ -45,12 +45,12 @@ public class UpdateController extends HttpServlet {
             try {
                 session.setAttribute("EMPLOYEE_UPDATE", null);
                 String userID = request.getParameter("userID");
-                String fullName = request.getParameter("FullName");
+                String fullName = request.getParameter("fullName");
 
                 String phone = request.getParameter("Phone");
                 String email = request.getParameter("Email");
                 String gender = request.getParameter("Gender");
-                String photo = request.getParameter("Photo");
+                String photo = request.getParameter("photo");
                 
                 String roleID = request.getParameter("roleID");
 
