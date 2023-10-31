@@ -177,6 +177,31 @@
                 </div>
           </div>
         </c:forEach>
+          
+          <div>
+              <form class="ml-auto" action="createanimalcage" method="get">
+              <button
+                type="submit"
+                class="flex animate-bounce items-center px-12 py-3 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-100hover:transform hover:scale-105"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                <span class="ml-1 text-2xl">Add</span>
+              </button>
+            </form>
+          </div>
       </div>
     </div>
 

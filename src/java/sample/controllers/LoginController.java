@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
     private static final String MN = "MANAGER";
     private static final String MANAGER_PAGE = "managercontroller";
     private static final String TN = "TRAINER";
-    private static final String TRAINER_PAGE = "trainer.jsp";
+    private static final String TRAINER_PAGE = "ListTrainerFeedback";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
