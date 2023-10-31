@@ -26,7 +26,7 @@ public class AnimalCageDAO {
 
     public List<AnimalCageDTO> getAllAnimalCage() {
         List<AnimalCageDTO> list = new ArrayList<>();
-        String sql = "select * from AnimalCage";
+        String sql = "select * from AnimalCage order by AnimalCage_ID desc";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);

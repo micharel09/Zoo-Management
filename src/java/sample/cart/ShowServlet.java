@@ -39,18 +39,26 @@ public class ShowServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ShowServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ShowServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        DAO d = new DAO();
+        List<Product> list = d.getAll();
+        Cookie[] arr = request.getCookies();
+        String txt = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cart")) {
+                    txt += o.getValue();
+
+                }
+            }
         }
+        Cart cart = new Cart(txt, list);
+        request.setAttribute("cart", cart);
+        HttpSession session = request.getSession();
+
+        String selectedDate = request.getParameter("date1");
+        session.setAttribute("selectedDate", selectedDate);
+        request.getRequestDispatcher("My_cart.jsp").forward(request, response);
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

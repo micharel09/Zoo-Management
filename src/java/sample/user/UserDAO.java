@@ -170,8 +170,16 @@ public class UserDAO {
                    ptm.setString(5, user.getPhoto());
                     ptm.setString(6, user.getRoleID());
                  ptm.setString(7, user.getEmployee_id());
-                    
-                checkUpdate = ptm.executeUpdate() > 0? true: false;
+                
+                 
+              
+try {
+    checkUpdate = ptm.executeUpdate() > 0;
+} catch (SQLException e) {
+    e.printStackTrace(); // In ra lỗi
+    // Hoặc có thể sử dụng Logger để ghi log lỗi
+}
+               // checkUpdate = ptm.executeUpdate() > 0? true: false;
             }
            
         } catch (Exception e) {
@@ -333,7 +341,7 @@ public class UserDAO {
                     String Phone = rs.getString("Phone");
                     String Email = rs.getString("Email");
                     String Gender = rs.getString("Gender");
-                    String Photo = rs.getString("Photo");
+                    String Photo = rs.getString("photo");
                     String RoleID = rs.getString("RoleID");
                   
                     user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Photo,RoleID);
@@ -356,10 +364,11 @@ public class UserDAO {
         return user;
     }
 
+    
+
    
  
 
    
 }
     
-

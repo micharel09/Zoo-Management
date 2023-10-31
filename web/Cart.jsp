@@ -288,7 +288,7 @@ uri="http://java.sun.com/jsp/jstl/fmt" %>
             </script>
 
             <div class="flex m-6 pr-10">
-              <a href="show">
+              <a href="/show">
                 <button
                   class="bg-neutral-200 rounded-md px-5 py-2 text-xl text-neutral-600 hover:border-green-500 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
                 >
