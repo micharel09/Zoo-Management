@@ -40,12 +40,29 @@ public class TrainerFeedbackController extends HttpServlet {
 //        FeedbackDTO f  = dao.getFeedbackByID(id);
 //        request.setAttribute("detail", f);
 //        request.getRequestDispatcher("trainer.jsp").forward(request, response);
-        HttpSession session = request.getSession();
-        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
-        String emp_ID= loginUser.getEmployee_id();
-        FeedbackDAO a = new FeedbackDAO();
-        List<FeedbackDTO> list = a.getListFeedBack(emp_ID);
-        request.setAttribute("listF", list);
+               HttpSession session = request.getSession();
+
+       UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        String indexPage = request.getParameter("index");
+        if (indexPage == null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+        
+        // get total list
+        FeedbackDAO dao = new FeedbackDAO();
+        int count = dao.getNumberPageTrainer(loginUser.getEmployee_id());
+        int endPage = count/5;
+        if (count % 5 != 0 ){
+            endPage++;
+        }
+  
+        
+        List<FeedbackDTO> list = dao.getPagingTrainer(loginUser.getEmployee_id(),index);
+        
+        
+        request.setAttribute("ListA", list);
+        request.setAttribute("endP", endPage);
         request.getRequestDispatcher("trainerfeedback.jsp").forward(request, response);
         }
     

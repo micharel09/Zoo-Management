@@ -46,6 +46,29 @@
         <% }%>
     </tbody>
 </table>
+            <form
+            action="importexcel_feedingSchedule_controller"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <div class="flex mb-2">
+              <p class="mt-2">
+                Choose Excel file(<span style="color: red">.xls</span>):
+              </p>
+              <input
+                type="file"
+                name="excelFile"
+                class="flex w-1/4 ml-2 text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400"
+              />
+              <input
+                class="middle none center rounded-lg py-3 px-3 text-xs uppercase transition-all hover:bg-green-500/10 active:bg-green-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-dark="true"
+                type="submit"
+                value="Import"
+              />
+            </div>
+          </form>
+          <!-- end import -->
 
 <%}%>
 </body>
