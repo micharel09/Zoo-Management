@@ -38,8 +38,8 @@ public class Check_Time_Attendance_Controller extends HttpServlet {
             String Id_Schedule = request.getParameter("Id_Schedule");
             
             
-             String StartTime = "10:00:00.0000000";
-            String EndTime = "12:00:00.0000000";
+             String StartTime = "15:00:00.0000000";
+            String EndTime = "22:00:00.0000000";
 
         // Chuyển đổi chuỗi thành đối tượng LocalDateTime
         LocalDateTime startDateTime = LocalDateTime.parse(Day + "T" + StartTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
@@ -55,7 +55,7 @@ public class Check_Time_Attendance_Controller extends HttpServlet {
             session.setAttribute("ID_SCHEDULE_ATTENDANCE", Id_Schedule);
         }
          else {
-           request.setAttribute("MESSAGE", "you're late or it's not time yet");
+           request.setAttribute("MESSAGE", "You're late or it's not time yet");
         }
         
         } catch (Exception e) {

@@ -96,7 +96,7 @@
               ></path>
             </svg>
             <span
-              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
               >Back</span
             >
           </a>
@@ -184,42 +184,52 @@
             </div>
             <!-- end ID -->
 
-                     <!-- photo -->
-            <div
-              class="container mt-4 mx-auto h-full flex flex-col justify-center items-center"
-            >
-              <div id="images-container">
-                <c:if test="${aa.photo != null}">
-                  <img
-                    src="./animalcage_picture/${aa.photo}"
-                    width="80"
-                    height="70"
-                    id="current-photo"
-                    class="flex justify-center mx-auto h-1/3 w-1/3 mb-2"
-                  />
-                </c:if>
-              </div>
-
-              <div class="flex w-full justify-center">
-                <div
-                  id="single-upload-button"
-                  class="cursor-pointer bg-neutral-200 rounded-md px-12 py-4 text-xl border-none text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-                >
-                  Upload Photo
+            <!-- photo -->
+            <div class="w-full bg-white">
+              <div
+                class="container mx-auto h-full flex flex-col justify-center items-center"
+              >
+                <div id="images-container"></div>
+                <div class="flex w-full justify-center">
+                  <div id="multi-upload-button">
+                    <button
+                      type="button"
+                      class="bg-white rounded-md px-12 py-4 text-xl border text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
+                    >
+                      Upload Photo
+                    </button>
+                  </div>
+                  <div
+                    class="border-gray-300 rounded-r-md flex items-center justify-between"
+                  >
+                    <span id="multi-upload-text" class="p-2 text-xl"></span>
+                    <button
+                      id="multi-upload-delete"
+                      class="hidden"
+                      onclick="removeMultiUpload()"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="fill-current text-red-700 w-3 h-3"
+                        viewBox="0 0 320 512"
+                      >
+                        <path
+                          d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                        />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
+                <input
+                  type="file"
+                  id="multi-upload-input"
+                  class="hidden"
+                  name="photo"
+                  multiple
+                />
               </div>
-              <input
-                type="file"
-                class="hidden"
-                name="photo"
-                id="photoInput"
-                placeholder="Enter photo"
-              />
             </div>
-            <!-- end photo -->
-
-            <!-- script photo -->
-            <script src="js/updatephoto.js"></script>
+            <script src="js/createphoto.js"></script>
             <!-- end photo -->
           </form>
         </div>

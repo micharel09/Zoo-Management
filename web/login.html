@@ -38,7 +38,7 @@
       <!-- back to home -->
       <div class="absolute top-0 left-[45%] z-40">
         <a
-          href="homepage.jsp"
+          href="homepage"
           class="cursor-pointer group flex items-center bg-transparent p-2 px-6 text-xl font-thin tracking-widest text-white"
         >
           <span
@@ -119,12 +119,13 @@
               <!-- footer -->
 
               <div class="mt-4">
-                <div
+                <!-- <div
                   class="g-recaptcha"
                   data-sitekey="6LdNENwoAAAAAM0ePl6W3y3Z-HPfm3r0WwzOMNqK"
-                ></div>
+                ></div> -->
                 <br />
                 <button
+                  onkeypress="if(event.keyCode==13){this.click();return false;}"
                   type="submit"
                   name="action"
                   value="Login"
@@ -143,16 +144,16 @@
                 defer
               ></script>
               <script>
-                const form = document.getElementById("form");
+                // const form = document.getElementById("form");
 
-                form.addEventListener("submit", (e) => {
-                  const response = grecaptcha.getResponse();
-                  if (!response) {
-                    e.preventDefault();
-                    document.getElementById("error").innerHTML =
-                      "Please confirm reCAPTCHA!";
-                  }
-                });
+                // form.addEventListener("submit", (e) => {
+                //   const response = grecaptcha.getResponse();
+                //   if (!response) {
+                //     e.preventDefault();
+                //     document.getElementById("error").innerHTML =
+                //       "Please confirm reCAPTCHA!";
+                //   }
+                // });
               </script>
               <!-- end -->
               <div class="pt-5 text-center text-gray-400 text-xs">

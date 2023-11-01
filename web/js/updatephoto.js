@@ -35,10 +35,3 @@ const uploadButton = document.getElementById(
       reader.readAsDataURL(file);
     }
   });
-  
-  // prevent automatic 
-  document
-  .querySelector("#single-upload-button")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
-  });

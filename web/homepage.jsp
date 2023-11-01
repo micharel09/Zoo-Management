@@ -100,7 +100,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >
             <li>
               <a
-                href="homepage.jsp"
+                href="homepage"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >Home</a
@@ -171,7 +171,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- end header -->
     <!--LOGO HERE-->
     <div style="z-index: 99">
-      <a href="/homepage.jsp"
+      <a href="homepage"
         ><img class="fsp-image" src="/img/FSP.png" alt="logo"
       /></a>
     </div>
@@ -198,6 +198,21 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <div
             class="absolute inset-0 flex items-center justify-center h-screen w-full bg-gray-900 bg-opacity-50"
           ></div>
+
+          <div
+            data-aos="flip-down"
+            class="absolute mt-4 inset-0 container flex flex-col items-center justify-center h-full max-w-6xl pl-0 mx-auto sm:pl-8 xl:pl-0 md:flex-row md:justify-between"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <!-- video SECTION END -->
+    <!-- weather and realtime-->
+    <aside
+      class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1583244697902-dccf09de6161?auto=format&fit=crop&q=80&w=1974&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+    >
+      <div class="bg-slate-900/50">
+        <div class="py-10 text-center">
           <!-- time -->
           <div class="time-container px-10 rounded-xl">
             <div class="flex items-center justify-center space-x-4">
@@ -213,18 +228,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
           </div>
           <!-- end time -->
-          <div
-            data-aos="flip-down"
-            class="absolute mt-4 inset-0 container flex flex-col items-center justify-center h-full max-w-6xl pl-0 mx-auto sm:pl-8 xl:pl-0 md:flex-row md:justify-between"
-          ></div>
+          <div id="clock">
+            <h1
+              id="date-time"
+              class="text-5xl w-screen font-extrabold text-white"
+            ></h1>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- video SECTION END -->
+    </aside>
 
+    <!-- end time -->
     <!-- section 1 -->
     <aside
-      class="fade fadeOut overflow-hidden bg-[url(https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80&w=2027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+      class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1504173010664-32509aeebb62?auto=format&fit=crop&q=80&w=2027&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
     >
       <div class="p-8 md:p-12 lg:px-16 lg:py-24 bg-slate-900/50">
         <div class="max-w-lg text-center sm:text-left">
@@ -271,11 +288,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
     </aside>
-    <!-- end section -->
 
+    <!-- end section 1 -->
     <!-- section 2 -->
     <aside
-      class="fade fadeOut overflow-hidden bg-[url(https://images.unsplash.com/photo-1604605046985-3a8bacf389e2?auto=format&fit=crop&q=80&w=2072&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
+      class="overflow-hidden bg-[url(https://images.unsplash.com/photo-1604605046985-3a8bacf389e2?auto=format&fit=crop&q=80&w=2072&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
     >
       <div
         class="p-8 md:p-12 lg:px-16 lg:py-24 bg-slate-900/50 flex justify-end"
@@ -328,76 +345,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </aside>
 
-    <!-- end section -->
-
-    <!--section 3-->
-
-    <div class="bg-slate-900/50 fade fadeOut ">
-      <div
-        class="relative group w-full h-[500px] overflow-hidden bg-black m-auto bg-[url(https://images.unsplash.com/photo-1519874950331-12655cb7ae70?auto=format&fit=crop&q=80&w=1889&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-no-repeat bg-cover"
-      >
-        <div class="p-8 md:p-12 lg:px-16 lg:py-24 h-full bg-slate-900/50">
-          <div
-            class="absolute inset-0 flex items-center justify-center r-9 right-1/3"
-          >
-            <h1 class="text-7xl text-start font-bold text-white">
-              WORLD WIDE ZOO <br />
-              HO CHI MINH <br />
-              <i class="fa-solid fa-cloud mt-10"> 31°C</i>
-            </h1>
-
-            <!--Time-->
-            <div style="position: absolute; z-index: 2" class="container">
-              <div class="display-time"></div>
-            </div>
-            <script>
-              const displayTime = document.querySelector(".display-time");
-
-              // Time
-              function showTime() {
-                let time = new Date();
-                displayTime.innerText = time.toLocaleTimeString("en-US", {
-                  hour12: false,
-                });
-                setTimeout(showTime, 1000);
-              }
-              // Call the functions
-              showTime();
-            </script>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        const observerOptions = {
-          root: null,
-          rootMargin: "0px",
-          threshold: 0.7,
-        };
-
-        function observerCallback(entries, observer) {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              // fade in observed elements that are in view
-              entry.target.classList.replace("fadeOut", "fadeIn");
-            } else {
-              // fade out observed elements that are not in view
-              // entry.target.classList.replace('fadeIn', 'fadeOut');
-            }
-          });
-        }
-
-        const observer = new IntersectionObserver(
-          observerCallback,
-          observerOptions
-        );
-
-        const fadeElms = document.querySelectorAll(".fade");
-        fadeElms.forEach((el) => observer.observe(el));
-      </script>
-    </div>
     <!-- end section 2 -->
-
     <h1 style="background-color: #cfcdcc; color: #cfcdcc">h</h1>
 
     <!-- delay-[600ms] duration-[1500ms] taos:translate-y-[200px] taos:opacity-0 -->
@@ -416,7 +364,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >
             <a href="#">
               <img
-                class="w-72 mx-auto rounded-lg mt-3"
+                class="w-72 h-[300px] mx-auto rounded-lg mt-3"
                 src="./news_picture/${n.photo}"
                 alt=""
               />
@@ -479,11 +427,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
 
         <div class="container reveal fade-right">
-          <h2 class="text-gray-800 text-7xl text-left font-bold mb-16">NEWS</h2>
+          <h2 class="text-gray-800 text-7xl text-left font-bold mb-24">NEWS</h2>
           <!--news here 1-->
           <!-- <c:forEach begin ='2' end='3' items="${listH}" var="n">
    <div class="max-w-sm w-full lg:max-w-full lg:flex mb-12">
-        <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./news_picture/${n.photo}')" title="Woman holding a mug"></div>
+        <div class="h-[200px] w-[300px] lg:h-auto  flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./news_picture/${n.photo}')" title="Woman holding a mug"></div>
           <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
               <div class="mb-8">
                                 

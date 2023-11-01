@@ -53,7 +53,7 @@ public class Foodingschedule_MainController extends HttpServlet {
              else if (ATTENDANCE.equals(action)) {
                   try {
                     // Tạo độ trễ 2 giây
-                    Thread.sleep(3000); // 2 giây = 2000 mili giây
+                    Thread.sleep(4000); // 2 giây = 2000 mili giây
                 } catch (InterruptedException e) {
                     // Xử lý ngoại lệ nếu có
                 }

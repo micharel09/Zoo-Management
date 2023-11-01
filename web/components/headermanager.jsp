@@ -36,16 +36,11 @@ pageEncoding="UTF-8"%>
         background-size: cover;
       }
       .header:hover a {
-        height: 100%; /* Đặt chiều cao của <a> bằng với chiều cao của <nav> */
+        height: 100%;
       }
-      /* Đổi màu chữ thành trắng */
+
       .navbar-text {
         color: white;
-      }
-      /* Header CSS */
-      .header {
-        z-index: 1000; /* Đảm bảo header luôn nằm phía trên cùng */
-        /* Các thiết lập khác của header */
       }
 
       /* Add any additional styles as needed */

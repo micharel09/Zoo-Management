@@ -135,7 +135,11 @@ contentType="text/html" pageEncoding="UTF-8"%>
               >
                 <!-- img -->
                 <div class="bg-cover">
-                <img class="w-[400px] h-[200px] " src="./news_picture/${n.photo}" alt="" />
+                  <img
+                    class="w-[400px] h-[200px]"
+                    src="./news_picture/${n.photo}"
+                    alt=""
+                  />
                 </div>
                 <!-- end img -->
                 <!-- footer -->
@@ -184,5 +188,37 @@ contentType="text/html" pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
+    <script>
+      // Lấy tham chiếu tới các ô td chứa thời gian
+      const timeCells = document.querySelectorAll(".time");
+
+      // Duyệt qua từng ô
+      timeCells.forEach((cell) => {
+        // Tạo mảng chứa các giờ
+        const hours = [8, 9, 10, 11, 12, 13, 14, 15, 16];
+
+        // Lấy ra giờ hiện tại
+        let currentHour = cell.textContent;
+
+        // Nếu không có giờ hiện tại thì đặt giờ đầu tiên
+        if (!currentHour) {
+          currentHour = hours[0];
+        }
+
+        // Tìm chỉ số của giờ hiện tại trong mảng giờ
+        let index = hours.indexOf(parseInt(currentHour));
+
+        // Tăng chỉ số lên 1 đơn vị cho giờ kế tiếp
+        index++;
+
+        // Kiểm tra nếu vượt quá chiều dài mảng thì quay lại đầu mảng
+        if (index >= hours.length) {
+          index = 0;
+        }
+
+        // Gán giờ kế tiếp vào ô td
+        cell.textContent = hours[index];
+      });
+    </script>
   </body>
 </html>

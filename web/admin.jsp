@@ -36,6 +36,8 @@
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
       .animate-charcter {
         text-transform: uppercase;
@@ -63,6 +65,20 @@
         to {
           background-position: 200% center;
         }
+      }
+      /* Add this to your external CSS file or style section */
+      .role-id {
+        color: black; /* Default text color */
+      }
+
+      .role-id:contains("ADMIN") {
+        color: red; /* Text color for 'ADMIN' */
+      }
+      .role-id:contains("MANAGER") {
+        color: violet; /* Text color for 'ADMIN' */
+      }
+      .role-id:contains("TRAINER") {
+        color: green; /* Text color for 'ADMIN' */
       }
     </style>
     <title>Admin</title>
@@ -149,7 +165,7 @@
                           >
                             Full Name
                           </th>
-                          <th
+                          <th 
                             class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                           >
                             Role_ID
@@ -200,7 +216,9 @@
                           <td
                             class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                           >
-                            <%=user.getRoleID()%>
+                          <span class="role-id">
+                            <%= user.getRoleID() %>
+                          </span>
                           </td>
 
                           <td
@@ -333,5 +351,13 @@
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function () {
+        // Find all elements with the class "role-id" and text content "ADMIN"
+        $('.role-id:contains("ADMIN")').css("color", "red");
+        $('.role-id:contains("TRAINER")').css("color", "green");
+        $('.role-id:contains("MANAGER")').css("color", "violet");
+      });
+    </script>
   </body>
 </html>

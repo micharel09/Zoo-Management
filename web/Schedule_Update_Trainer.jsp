@@ -1,53 +1,50 @@
-<%-- 
-    Document   : Schedule_Update_Manager
-    Created on : Oct 23, 2023, 9:29:29 AM
-    Author     : ACER
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Document : Schedule_Update_Manager Created on : Oct 23, 2023, 9:29:29 AM
+Author : ACER --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-        <link rel="stylesheet" href="./index.css" />
-    </head>
-    <body>
-        <form action="Foodingschedule_MainController" method="POST">
-        <div class="imageUpload">
-            <input type="file" class="inp"   onchange="getImageData(event)" />
-            <input id="photo" type="hidden" name="photo" >
-            <button onclick="selectImage()" >Select Images</button>
-            <span class="filedata"></span>
-            <div class="progressBar">
-                <div class="progress"></div>
-            </div><!--
-            <button onclick="uploadImage()" class="upload">Upload</button>
-            -->      <span class="loading">Loading...</span>
-            <img class="img" /><!--
-            -->
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <form action="Foodingschedule_MainController" method="POST">
+      <div class="imageUpload">
+        <input type="file" class="inp" onchange="getImageData(event)" />
+        <input id="photo" type="hidden" name="photo" />
+        <button onclick="selectImage()">Select Images</button>
+        <span class="filedata"></span>
+        <div class="progressBar">
+          <div class="progress"></div>
         </div>
-        
-        <button onclick="uploadImage()" name="action" value="Attendance">Attendance</button>
-        </form>
-        
-         <a href="Foodingschedule_MainController?action=BackSchedulePage">Back</a>     
-        
-        <script>
-  
+        <!--
+            <button onclick="uploadImage()" class="upload">Upload</button>
+            -->
+        <span class="loading">Loading...</span> <img class="img" /><!--
+            -->
+      </div>
+
+      <button onclick="uploadImage()" name="action" value="Attendance">
+        Attendance
+      </button>
+    </form>
+
+    <a href="Foodingschedule_MainController?action=BackSchedulePage">Back</a>
+
+    <script>
       const firebaseConfig = {
-  apiKey: "AIzaSyBShiRCu2h2Cel15zjkFXDpZs9h5i6k68g",
-  authDomain: "vantrungbg-342f3.firebaseapp.com",
-  //databaseURL: "https://vantrungbg-342f3-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "vantrungbg-342f3",
-  storageBucket: "vantrungbg-342f3.appspot.com",
-  messagingSenderId: "909264295486",
-  appId: "1:909264295486:web:d20dcf5eaad28b1890236f",
-  measurementId: "G-E3CVG5KK0J"
-};
+        apiKey: "AIzaSyBShiRCu2h2Cel15zjkFXDpZs9h5i6k68g",
+        authDomain: "vantrungbg-342f3.firebaseapp.com",
+        //databaseURL: "https://vantrungbg-342f3-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "vantrungbg-342f3",
+        storageBucket: "vantrungbg-342f3.appspot.com",
+        messagingSenderId: "909264295486",
+        appId: "1:909264295486:web:d20dcf5eaad28b1890236f",
+        measurementId: "G-E3CVG5KK0J",
+      };
 
       const app = firebase.initializeApp(firebaseConfig);
 
@@ -65,7 +62,7 @@
       let isLoading = false;
       let uploadedFileName;
       const selectImage = () => {
-          event.preventDefault();// chặn chuyển trang
+        event.preventDefault(); // chặn chuyển trang
         inp.click();
       };
       const getImageData = (e) => {
@@ -79,7 +76,6 @@
       };
 
       const uploadImage = () => {
-          
         loading.style.display = "block";
         const storageRef = storage.ref().child("myimages");
         const folderRef = storageRef.child(fileName);
@@ -109,30 +105,24 @@
                 } else {
                   img.style.display = "block";
                   loading.style.display = "none";
-                 
+
                   const photo = document.getElementById("photo");
-                 
+
                   photo.value = url;
                   console.log(photo);
-                  
-                  
+
                   // Thực hiện yêu cầu AJAX sau khi cập nhật giá trị `photo`
-            $.ajax({
-              type: "POST",
-              url: "Attendance_Controller", // Địa chỉ của máy chủ hoặc Servlet để xử lý yêu cầu
-              data: {
-        photo: photo.value
-       
-        
-    },
-              success: function(response) {
-                
-              },
-              error: function(error) {
-                console.log("Lỗi: " + error);
-              }
-            });
-            
+                  $.ajax({
+                    type: "POST",
+                    url: "Attendance_Controller", // Địa chỉ của máy chủ hoặc Servlet để xử lý yêu cầu
+                    data: {
+                      photo: photo.value,
+                    },
+                    success: function (response) {},
+                    error: function (error) {
+                      console.log("Lỗi: " + error);
+                    },
+                  });
                 }
                 img.setAttribute("src", url);
               });
@@ -140,12 +130,6 @@
           }
         );
       };
-
-      
-
-      
     </script>
-    </body>
-    
-    
+  </body>
 </html>
