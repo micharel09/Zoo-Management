@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
                 String roleID = loginUser.getRoleID();
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
-                
+                dao.setSchedule();
                 if (AD.equals(roleID)) {
                     url=ADMIN_PAGE;
                 }else if (MN.equals(roleID)) {

@@ -196,7 +196,10 @@ public class DAO {
     }
 
     String getDiscount(String promotion) {
-         String sql = "select Discount from Discount where ID=?";
+         String sql = "UPDATE [SWP4].[dbo].[Discount]\n" +
+"SET [quantity] = [quantity] - 1\n" +
+"OUTPUT Deleted.Discount\n" +
+"WHERE [ID] = ? AND [quantity] > 0;";
      
       String tmp="0";
         try {
