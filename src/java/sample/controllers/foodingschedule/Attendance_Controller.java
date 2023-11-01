@@ -48,7 +48,7 @@ public class Attendance_Controller extends HttpServlet {
             
             
             if (check) {
-                request.setAttribute("MESSAGE", "you're late or it's not time yet");
+                request.setAttribute("MESSAGE", "You're late or it's not time yet");
                 url = SUCCESS;
             }
            }

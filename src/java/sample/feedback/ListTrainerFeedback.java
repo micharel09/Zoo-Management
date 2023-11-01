@@ -42,6 +42,8 @@ public class ListTrainerFeedback extends HttpServlet {
 //        FeedbackDAO a = new FeedbackDAO();
 //        List<FeedbackDTO> list = a.getListFeedBack(emp_ID);
 //        
+       HttpSession session = request.getSession();
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
         String indexPage = request.getParameter("index");
         if (indexPage == null){
             indexPage ="1";
@@ -50,15 +52,14 @@ public class ListTrainerFeedback extends HttpServlet {
         
         // get total list
         FeedbackDAO dao = new FeedbackDAO();
-        int count = dao.getNumberPage();
+        int count = dao.getNumberPageTrainer(loginUser.getEmployee_id());
         int endPage = count/5;
         if (count % 5 != 0 ){
             endPage++;
         }
-         HttpSession session = request.getSession();
-        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+  
         
-        List<FeedbackDTO> list = dao.getPagingTrainer(index,loginUser.getEmployee_id());
+        List<FeedbackDTO> list = dao.getPagingTrainer(loginUser.getEmployee_id(),index);
         
         
         request.setAttribute("ListA", list);
@@ -79,7 +80,29 @@ public class ListTrainerFeedback extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+               HttpSession session = request.getSession();
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        String indexPage = request.getParameter("index");
+        if (indexPage == null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+        
+        // get total list
+        FeedbackDAO dao = new FeedbackDAO();
+        int count = dao.getNumberPageTrainer(loginUser.getEmployee_id());
+        int endPage = count/5;
+        if (count % 5 != 0 ){
+            endPage++;
+        }
+  
+        
+        List<FeedbackDTO> list = dao.getPagingTrainer(loginUser.getEmployee_id(),index);
+        
+        
+        request.setAttribute("ListA", list);
+        request.setAttribute("endP", endPage);
+        request.getRequestDispatcher("trainerfeedback.jsp").forward(request, response);
     }
 
     /**
@@ -93,7 +116,35 @@ public class ListTrainerFeedback extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                String indexPage = request.getParameter("index");
+        String status = request.getParameter("status");
+                 HttpSession session = request.getSession();
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        if (indexPage == null){
+            indexPage ="1";
+        }
+        int index = Integer.parseInt(indexPage);
+        
+        // get total list
+        FeedbackDAO dao = new FeedbackDAO();
+        int count = dao.getNumberPageTrainer(loginUser.getEmployee_id());
+        int endPage = count/5;
+        if (count % 5 != 0 ){
+            endPage++;
+        }
+
+        if("All".equalsIgnoreCase(status)){
+            List<FeedbackDTO> list1 = dao.getListFeedBack(loginUser.getEmployee_id());
+            request.setAttribute("ListA", list1);
+        }else{
+            List<FeedbackDTO> list2 = dao.searchstatusTrainer(status,loginUser.getEmployee_id());
+            request.setAttribute("ListA", list2);
+        }
+        
+        
+        request.setAttribute("endP", endPage);
+        request.getRequestDispatcher("trainerfeedback.jsp").forward(request, response);
+    
     }
 
     /**

@@ -1,6 +1,5 @@
 <!-- prettier-ignore -->
 <%@page import="java.util.List" %>
-  <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
@@ -32,7 +31,7 @@
       crossorigin="anonymous"
     ></script>
     <!-- loading -->
-    <iframe
+    <!-- <iframe
       id="loading-iframe"
       src="components/loading.html"
       frameborder="0"
@@ -64,7 +63,7 @@
       .hidden-iframe {
         opacity: 0;
       }
-    </style>
+    </style> -->
     <!-- end loading -->
     <style>
       /* Image Popup */
@@ -92,14 +91,55 @@
     </style>
 
     <title>Animal Cage List</title>
+    <!-- prettier-ignore -->
+    <!-- header -->
+    <%@ include file="components/headermanager.jsp" %>
+    <!-- end header -->
   </head>
 
   <body class="block overflow-x-hidden mx-auto">
+    <!-- prettier-ignore -->
+    <!-- sidebar-->
+    <%@ include file="components/sidebarmanager.jsp" %>
+    <!-- end sidebar -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
-          <h3 class="text-5xl font-medium text-gray-700">Animal Cages List</h3>
+        <!-- header -->
+        <div class="flex justify-between pb-2 pt-5 border-b border-gray-300">
+          <div class="mx-auto pl-64 text-center">
+            <h3 class="text-5xl font-medium text-gray-700">
+              Animal Cages List
+            </h3>
+          </div>
+          <div class="">
+            <a
+              href="animalcontroller"
+              class="cursor-pointer group flex items-center bg-transparent p-2 px-6 text-xl tracking-widest"
+            >
+              <span
+                class="hover:text-green-400 duration-300 pr-4 text-green-500 after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 transition-font"
+              >
+                Head To Animals
+              </span>
+              <svg
+                viewBox="0 0 46 16"
+                height="10"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="-translate-x-2 fill-green-500 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:scale-x-105 group-hover:fill-green-400"
+              >
+                <path
+                  transform="translate(30)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+            </a>
+          </div>
         </div>
+
         <div class="py-8 ml-20">
           <div class="my-2 flex justify-between sm:flex-row">
             <!-- Search -->
@@ -161,6 +201,14 @@
 
           <!-- Error message -->
           <p style="color: red">${errorMessage}</p>
+
+          <script>
+            const link = document.getElementById("link");
+            if (errorMessage.trim() !== "") {
+              link.style.display = "inline";
+            }
+          </script>
+
           <!-- end message -->
 
           <!-- main -->
@@ -297,6 +345,27 @@
                     </tbody>
                   </c:forEach>
                 </table>
+                <c:set
+                  var="lastRowIndex"
+                  value="${fn:length(animallist) - 1}"
+                />
+                <script>
+                  window.addEventListener("load", function () {
+                    // Assuming you want to highlight the last row of the first table
+                    var table = document.querySelector("table"); // Change this selector if needed
+
+                    if (table) {
+                      var lastRowIndex = table.rows.length - 1;
+                      if (lastRowIndex >= 0) {
+                        table.rows[lastRowIndex].classList.add(
+                          "bg-green-400",
+                          "text-white",
+                          "border-gray-100"
+                        );
+                      }
+                    }
+                  });
+                </script>
               </c:when>
               <c:otherwise>
                 <table
@@ -428,6 +497,27 @@
                     </tbody>
                   </c:forEach>
                 </table>
+                <c:set
+                  var="lastRowIndex"
+                  value="${fn:length(animallist) - 1}"
+                />
+                <script>
+                  window.addEventListener("load", function () {
+                    // Assuming you want to highlight the last row of the first table
+                    var table = document.querySelector("table"); // Change this selector if needed
+
+                    if (table) {
+                      var lastRowIndex = table.rows.length - 1;
+                      if (lastRowIndex >= 0) {
+                        table.rows[lastRowIndex].classList.add(
+                          "bg-green-400",
+                          "text-white",
+                          "border-gray-100"
+                        );
+                      }
+                    }
+                  });
+                </script>
               </c:otherwise>
             </c:choose>
             <!-- end -->
@@ -435,5 +525,18 @@
         </div>
       </div>
     </main>
+    <script>
+      window.addEventListener("load", function () {
+        // Assuming you want to highlight the last row of the first table
+        var table = document.querySelector("table"); // Change this selector if needed
+
+        if (table) {
+          var lastRowIndex = table.rows.length - 1;
+          if (lastRowIndex >= 0) {
+            table.rows[lastRowIndex].scrollIntoView({ behavior: "smooth" });
+          }
+        }
+      });
+    </script>
   </body>
 </html>

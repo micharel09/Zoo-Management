@@ -87,9 +87,41 @@
     <!-- end sidebar -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
-        <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
-          <h3 class="text-5xl font-medium text-gray-700">Animals List</h3>
+        <!-- header -->
+        <div class="flex justify-between pb-2 pt-5 border-b border-gray-300">
+          <div class="">
+            <a
+              href="animalcagecontroller"
+              class="cursor-pointer group flex items-center bg-transparent p-2 px-6 text-xl tracking-widest"
+            >
+              <svg
+                viewBox="0 0 46 16"
+                height="10"
+                width="30"
+                xmlns="http://www.w3.org/2000/svg"
+                id="arrow-horizontal"
+                class="translate-x-[-2px] fill-green-500 transition-all duration-300 ease-out group-hover:translate-x-[-4px] group-hover:scale-x-105 group-hover:fill-green-400"
+              >
+                <path
+                  transform="translate(30) scale(-1, 1)"
+                  d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                  data-name="Path 10"
+                  id="Path_10"
+                ></path>
+              </svg>
+
+              <span
+                class="hover:text-green-400 duration-300 pr-4 text-green-500 after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100 transition-font"
+              >
+                Head To Animal Cages List
+              </span>
+            </a>
+          </div>
+          <div class="mx-auto mr-auto pr-64 text-center">
+            <h3 class="text-5xl font-medium text-gray-700">Animals List</h3>
+          </div>
         </div>
+
         <div class="py-8 ml-20">
           <div class="my-2 flex justify-between sm:flex-row">
             <!-- Search -->

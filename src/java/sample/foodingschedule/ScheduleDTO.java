@@ -5,6 +5,10 @@
  */
 package sample.foodingschedule;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author ACER
@@ -138,16 +142,32 @@ public class ScheduleDTO {
         this.Name_Cage = Name_Cage;
     }
 
-    public String getStart_Time() {
-        return Start_Time;
+    public String getStart_Time() throws ParseException {
+         SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm:ss.SSSSSSS");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
+        
+        // Chuyển đổi chuỗi thời gian thành đối tượng Date
+        Date date = inputFormat.parse(Start_Time);
+        
+        // Định dạng lại đối tượng Date thành chuỗi
+        String formattedTime = outputFormat.format(date);
+        return formattedTime;
     }
 
     public void setStart_Time(String Start_Time) {
         this.Start_Time = Start_Time;
     }
 
-    public String getEnd_Time() {
-        return End_Time;
+    public String getEnd_Time() throws ParseException {
+         SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm:ss.SSSSSSS");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
+        
+        // Chuyển đổi chuỗi thời gian thành đối tượng Date
+        Date date = inputFormat.parse(End_Time);
+        
+        // Định dạng lại đối tượng Date thành chuỗi
+        String formattedTime = outputFormat.format(date);
+        return formattedTime;
     }
 
     public void setEnd_Time(String End_Time) {

@@ -32,7 +32,7 @@
     <!-- back to home -->
     <div class="absolute top-0 left-[45%] z-40">
       <a
-        href="homepage.jsp"
+        href="homepage"
         class="cursor-pointer group flex items-center bg-transparent p-2 px-6 text-xl font-thin tracking-widest text-white"
       >
         <span

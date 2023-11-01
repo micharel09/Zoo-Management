@@ -150,8 +150,8 @@ if (session != null) {
     String from = (String) session.getAttribute("from");
     
     // Kiểm tra và thực hiện chuyển hướng
-    if ("areacontroller".equals(from)) {
-        response.sendRedirect("areacontroller?areaid=" + areaid);
+    if ("animalcagecontroller".equals(from)) {
+        response.sendRedirect("animalcagecontroller" + areaid);
     } else {
         response.sendRedirect("managercontroller");
     }
