@@ -481,7 +481,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="container reveal fade-right">
           <h2 class="text-gray-800 text-7xl text-left font-bold mb-16">NEWS</h2>
           <!--news here 1-->
-          <!-- <c:forEach begin ='2' end='3' items="${listH}" var="n">
+           <c:forEach begin ='2' end='3' items="${listH}" var="n">
    <div class="max-w-sm w-full lg:max-w-full lg:flex mb-12">
         <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('./news_picture/${n.photo}')" title="Woman holding a mug"></div>
           <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
@@ -495,7 +495,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               </div>
             </div>
           </div>
-   </c:forEach>           -->
+   </c:forEach>           
         </div>
       </div>
 

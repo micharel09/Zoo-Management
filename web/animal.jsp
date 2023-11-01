@@ -218,7 +218,7 @@
                         <td
                           class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                         >
-                          ${animal.animalcage_id}
+                          ${animal.status}
                         </td>
                         <td
                           class="text-2xl px-6 border-b border-gray-200 border-r"
@@ -335,7 +335,7 @@
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
-                        AnimalCage_ID
+                        Status
                       </th>
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
@@ -360,6 +360,8 @@
                     </tr>
                   </thead>
                   <c:forEach var="animal" items="${animals}" varStatus="loop">
+                      <c:choose>
+    <c:when test="${animal.status ne 'DEATH'}">
                     <tbody
                       class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
                     >
@@ -373,7 +375,7 @@
                         <td
                           class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                         >
-                          ${animal.animalcage_id}
+                          ${animal.status}
                         </td>
                         <td
                           class="text-2xl px-6 border-b border-gray-200 border-r"
@@ -397,6 +399,8 @@
                             height="70"
                           />
                         </td>
+                        
+                        
                         <td
                           class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
                         >
@@ -423,7 +427,7 @@
                               </button>
                             </a>
                             <!-- delete -->
-                            <div class="pl-2">
+<!--                            <div class="pl-2">
                               <a
                                 href="animaldelete?animalID=${animal.animal_id}"
                                 class=""
@@ -443,13 +447,15 @@
                               ></a>
                             </div>
 
-                            <script src="js/possitionload.js"></script>
+                            <script src="js/possitionload.js"></script>-->
 
                             <!-- end delete -->
                           </div>
                         </td>
                       </tr>
                     </tbody>
+                       </c:when>
+                    </c:choose>
                   </c:forEach>
                 </table>
                 <c:set var="lastRowIndex" value="${fn:length(animals) - 1}" />

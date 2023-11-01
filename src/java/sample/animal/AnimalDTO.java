@@ -16,16 +16,18 @@ public class AnimalDTO {
     private String dayin;
     private String photo;
     private String animalcage_id;
+    private String status;
 
     public AnimalDTO() {
     }
 
-    public AnimalDTO(String animal_id, String name, String dayin, String photo, String animalcage_id) {
+    public AnimalDTO(String animal_id, String name, String dayin, String photo, String animalcage_id, String status) {
         this.animal_id = animal_id;
         this.name = name;
         this.dayin = dayin;
         this.photo = photo;
         this.animalcage_id = animalcage_id;
+        this.status = status;
     }
 
     public String getAnimal_id() {
@@ -68,11 +70,20 @@ public class AnimalDTO {
         this.animalcage_id = animalcage_id;
     }
 
-    @Override
-    public String toString() {
-        return "AnimalDTO{" + "animal_id=" + animal_id + ", name=" + name + ", dayin=" + dayin + ", photo=" + photo + ", animalcage_id=" + animalcage_id + '}';
+    public String getStatus() {
+        return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "AnimalDTO{" + "animal_id=" + animal_id + ", name=" + name + ", dayin=" + dayin + ", photo=" + photo + ", animalcage_id=" + animalcage_id + ", status=" + status + '}';
+    }
+
+   
     
 
 }

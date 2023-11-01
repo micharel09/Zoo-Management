@@ -35,9 +35,10 @@ contentType="text/html" pageEncoding="UTF-8"%>
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 mx-auto bg-white rounded-md shadow-md mt-20 w-1/2">
         <!-- back button -->
-        <div class="flex ml-0">
+        <div class="ml-0">
           <a
-            href="animalcontroller"
+            href="javascript:void(0);"
+            onclick="goBack()"
             class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
           >
             <svg
@@ -56,11 +57,16 @@ contentType="text/html" pageEncoding="UTF-8"%>
               ></path>
             </svg>
             <span
-              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-greeborder-green-400 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
               >Back</span
             >
           </a>
         </div>
+        <script>
+          function goBack() {
+            window.history.back();
+          }
+        </script>
         <!-- end back -->
         <header class="border-b border-gray-100 px-10 flex items-center">
           <div class="text-gray-800 mx-auto pb-4">
@@ -102,6 +108,16 @@ contentType="text/html" pageEncoding="UTF-8"%>
               >
             </div>
             <!-- end name -->
+            <!--status-->
+            <select class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    name="status"
+                    value="${aa.status}">
+                <option>NORMAL</option>
+                <option>DEATH</option>
+                <option>SICK</option>
+            </select>
+            
+            <!--end status-->
             <div class="-mx-3 flex flex-wrap">
               <!-- date -->
               <div class="w-full px-3 sm:w-1/2">

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sample.animal;
+package sample.animalreport;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author ADMIN
+ * @author khong phai Minh Tuan
  */
-@WebServlet(name = "AnimalController", urlPatterns = {"/animalcontroller"})
-public class AnimalController extends HttpServlet {
+@WebServlet(name = "AnimalReportControl", urlPatterns = {"/AnimalReportControl"})
+public class AnimalReportControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,19 +32,8 @@ public class AnimalController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AnimalDelete</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AnimalDelete at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+      
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -59,12 +48,11 @@ public class AnimalController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String animalid = request.getParameter("animalID");
-                AnimalDAO d = new AnimalDAO();
-        List<AnimalDTO> list = d.getAllAimal();
-        request.setAttribute("animallist", list);
-        //request.getRequestDispatcher("animal.jsp").forward(request, response);
-        request.getRequestDispatcher("createfeedback.jsp").forward(request, response);
+    AnimalReportDAO a = new AnimalReportDAO();
+        List<AnimalReportDTO> list = a.getListAnimalReport();
+        request.setAttribute("listR", list);
+        request.getRequestDispatcher("animalreport.jsp").forward(request, response);
+        
     }
 
     /**

@@ -118,10 +118,11 @@
     <div class="flex justify-center items-center w-full h-full">
       <section class="p-10 mx-auto bg-white rounded-md shadow-md mt-20 w-1/2">
         <!-- MAIN CONTENT -->
-        <!-- back button -->
-        <div class="flex ml-0">
+       <!-- back button -->
+        <div class="ml-0">
           <a
-            href="animalcontroller"
+            href="javascript:void(0);"
+            onclick="goBack()"
             class="group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
           >
             <svg
@@ -140,11 +141,16 @@
               ></path>
             </svg>
             <span
-              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-greeborder-green-400 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
               >Back</span
             >
           </a>
         </div>
+        <script>
+          function goBack() {
+            window.history.back();
+          }
+        </script>
         <!-- end back -->
         <header class="border-b border-gray-100 px-10 flex items-center">
           <div class="text-gray-800 mx-auto pb-4">

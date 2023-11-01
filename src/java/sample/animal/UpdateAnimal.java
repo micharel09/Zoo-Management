@@ -113,6 +113,7 @@ public class UpdateAnimal extends HttpServlet {
         String dayin = request.getParameter("dayin");
         Part photo = request.getPart("photo");
         String animalcageid = request.getParameter("animalcageid");
+        String status = request.getParameter("status");
 
         // Check if the user selected a file
         String filename = extractFileName(photo);
@@ -149,9 +150,9 @@ public class UpdateAnimal extends HttpServlet {
         }
         AnimalDAO d = new AnimalDAO();
 
-        d.updateanimal(animalid, name, dayin, filename, animalcageid);
+        d.updateanimal(animalid, name, dayin, filename, animalcageid,status);
 
-        response.sendRedirect("animalcontroller");
+        response.sendRedirect("managercontroller");
 
 
     }

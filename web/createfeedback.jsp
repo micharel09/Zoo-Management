@@ -119,14 +119,19 @@
                 <label for="name" class="mb-3 block text-2xl font-medium">
                   Title
                 </label>
-                <input
+<!--                <input
                   type="text"
                   name="title"
                   placeholder="Enter title"
                   min="0"
                   required
                   class="w-full font-extralight appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                />
+                />-->
+<select name="title" id='title'>
+    <option> Animal</option>
+    <option> AnimalCage</option>
+    <option> Other</option>
+</select>
 
                 <p class="mt-3 text-xs text-red-400"></p>
               </div>
@@ -144,6 +149,7 @@
 
                 <p class="mt-3 text-xs text-red-400"></p>
               </div>
+            
               <br>
               <input type="hidden" name="date">
               
@@ -160,6 +166,8 @@
 
               <!-- Button: Cancel and Save -->
               <div class="flex justify-center mt-6">
+                  
+                  
                 
                 <a href="ListTrainerFeedback">
                   <button type="submit" value="Submit"

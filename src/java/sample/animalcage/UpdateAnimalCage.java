@@ -153,7 +153,7 @@ if (session != null) {
     if ("areacontroller".equals(from)) {
         response.sendRedirect("areacontroller?areaid=" + areaid);
     } else {
-        response.sendRedirect("animalcagecontroller");
+        response.sendRedirect("managercontroller");
     }
 
     }

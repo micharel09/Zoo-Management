@@ -140,7 +140,7 @@ public class CreateAnimalCage extends HttpServlet {
          
         }
         a.createanimealcage(animalcageid, name, areaid, employeeid,filename);
-        response.sendRedirect("animalcagecontroller");
+        response.sendRedirect("managercontroller");
     }
 
     /**

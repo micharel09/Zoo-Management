@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="sample.foodingschedule.ScheduleDTO"%>
-
+<script src="https://cdn-tailwindcss.vercel.app/"></script>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,33 +47,52 @@
 
     <table> 
         <thead>
-            <tr>
-               
+        
+            <tr>               
                 <th>Day</th>
                 <th>Name Food</th>
                 <th>Time</th>
                 <th>Status</th>
                 <th>Photo</th>
             </tr>
+            
         </thead>
         <tbody>
             <%
-                for (ScheduleDTO schedule : listSchedule) {
-            %>
-            <tr >
+                int i;
+for (i = 0; i < 7; i++) {
+    ScheduleDTO schedule = listSchedule.get(i);
+%>
+        <ul class="">
+            <li><%= schedule.getDay_Feeding() %></li>
+            <li><%= schedule.getName_Food() %></li>
+            <li><%= schedule.getStart_Time() %> to <%= schedule.getEnd_Time() %></li>
+            <li><%= schedule.getNote() %></li>
+            <li><img style="height: 50px; width: 100px" src="<%= schedule.getPhoto() %>" /></li>
+        </ul>
 
-                <td><%=schedule.getDay_Feeding()%></td>
-                <td><%=schedule.getName_Food()%></td>
-                <td><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></td>
-                
-                <td><%=schedule.getNote()%></td>
-                <td><img style="height: 50px;width: 100px" src="<%=schedule.getPhoto()%>"  /></td>
-                           
-        
-        <!-- xoa o day ne-->
-           </tr>
 
-    <% }
+<%
+}
+%>
+       
+<%
+for (i = 7; i < 14; i++) {
+    ScheduleDTO schedule = listSchedule.get(i);
+%>
+<tr>
+    <td><%=schedule.getDay_Feeding()%></td>
+    <td><%=schedule.getName_Food()%></td>
+    <td><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></td>
+    <td><%=schedule.getNote()%></td>
+    <td><img style="height: 50px;width: 100px" src="<%=schedule.getPhoto()%>"  /></td>
+</tr>
+<%
+}
+%>
+
+
+    <% 
                 }  %>
 
 

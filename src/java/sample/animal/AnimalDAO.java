@@ -25,13 +25,13 @@ public class AnimalDAO {
 
     public List<AnimalDTO> getAllAimal() {
         List<AnimalDTO> list = new ArrayList<>();
-        String sql = "select * from Animal";
+        String sql = "select * from Animal ";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
             rs = ptm.executeQuery();
             while (rs.next()) {
-                AnimalDTO a = new AnimalDTO(rs.getString("Animal_ID"), rs.getString("Name"), rs.getString("DayIn"), rs.getString("Photo"), rs.getString("AnimalCage_ID"));
+                AnimalDTO a = new AnimalDTO(rs.getString("Animal_ID"), rs.getString("Name"), rs.getString("DayIn"), rs.getString("Photo"), rs.getString("AnimalCage_ID"),rs.getString("Status"));
                 list.add(a);
             }
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class AnimalDAO {
 
             rs = ptm.executeQuery();
             while (rs.next()) {
-                list.add(new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                list.add(new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
             }
         } catch (Exception e) {
         }
@@ -73,13 +73,13 @@ public class AnimalDAO {
         return list;
     }
 
-    public void updateanimal(String animalid, String name, String dayin, String photo, String animalcageid) {
+    public void updateanimal(String animalid, String name, String dayin, String photo, String animalcageid, String status) {
         String sql;
         if (photo != null && !photo.isEmpty()) {
-            sql = "UPDATE Animal SET Name=?, DayIn=?, Photo=?, AnimalCage_ID=? WHERE Animal_ID=?";
+            sql = "UPDATE Animal SET Name=?, DayIn=?, Photo=?, AnimalCage_ID=?, Status =? WHERE Animal_ID=?";
         } else {
             // If photo is not provided, don't update the Photo field
-            sql = "UPDATE Animal SET Name=?, DayIn=?, AnimalCage_ID=? WHERE Animal_ID=?";
+            sql = "UPDATE Animal SET Name=?, DayIn=?, AnimalCage_ID=?, Status =? WHERE Animal_ID=?";
         }
 
         try {
@@ -91,10 +91,14 @@ public class AnimalDAO {
             if (photo != null && !photo.isEmpty()) {
                 ptm.setString(3, photo);
                 ptm.setString(4, animalcageid);
-                ptm.setString(5, animalid);
+                ptm.setString(5, status);
+                ptm.setString(6, animalid);
+               
             } else {
                 ptm.setString(3, animalcageid);
-                ptm.setString(4, animalid);
+                ptm.setString(4,status);
+                ptm.setString(5, animalid);
+                
             }
             ptm.executeUpdate();
 
@@ -113,6 +117,7 @@ public class AnimalDAO {
             ptm.setString(3, dayin);
             ptm.setString(4, photo);
             ptm.setString(5, animalcageid);
+            
             ptm.executeUpdate();
 
         } catch (Exception e) {
@@ -128,7 +133,7 @@ public class AnimalDAO {
             ptm.setString(1, animalid);
             rs = ptm.executeQuery();
             if (rs.next()) {
-                return new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+                return new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6));
             }
         } catch (Exception e) {
         }
@@ -196,8 +201,8 @@ public class AnimalDAO {
 
     public static void main(String[] args) {
         AnimalDAO d = new AnimalDAO();
-        List<AnimalCageDTO> list = d.getAllAnimalCage();
-        for (AnimalCageDTO animalCageDTO : list) {
+        List<AnimalDTO> list = d.getAllAimal();
+        for (AnimalDTO animalCageDTO : list) {
             System.out.println(animalCageDTO);
         }
     }
