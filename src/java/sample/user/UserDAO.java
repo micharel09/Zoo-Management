@@ -46,6 +46,12 @@ public class UserDAO {
     private static final String INSERT = "INSERT INTO Employee (Employee_ID, Password,Fullname,Phone,Email,Gender,Photo,RoleID ) VALUES (?,?,?,?,?,?,?,?) ";
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderdeatil (productID,orderdeatilID,OrderID,Price,Quantity) VALUES (?,?,?,?,?) ";
     private static final String GET_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
+    private static final String UPDATE_SCHEDULE = "UPDATE S\n"
+            + "SET S.Note = 'Absent'\n"
+            + "FROM [SWP4].[dbo].[FeedingSchedule] AS S\n"
+            + "INNER JOIN [SWP4].[dbo].[FeedingTimes] AS F ON S.ID_Part_Time = F.ID_Time\n"
+            + "WHERE CONVERT(DATETIME, CONVERT(VARCHAR, S.Day_Feeding, 102) + ' ' + CONVERT(VARCHAR, F.End_Time, 108), 102) < GETDATE()\n"
+            + "AND S.Note = 'Not_Yet'";
     
     
     public int getQuantity(String id) throws SQLException {
@@ -362,6 +368,31 @@ try {
             }
         }
         return user;
+    }
+
+    public void setSchedule() throws SQLException {
+
+        Connection conn = null;
+        PreparedStatement ptm = null;
+
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_SCHEDULE);
+                ptm.executeQuery();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
     }
 
     

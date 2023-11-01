@@ -60,37 +60,70 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="py-8 ml-28">
           <!-- search -->
           <div class="my-2 flex">
-            <!-- <div class="flex">
-              <div class="relative">
-                <select
-                  class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
-                >
-                  <option>All</option>
-                  <option>Processing</option>
-                  <option>Approved</option>
-                  <option>Rejected</option>
-                </select>
-              </div>
-
-              <div class="block relative">
-                <span
-                  class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="h-4 w-4 fill-current text-gray-500"
+            <form action="ListTrainerFeedback" method="post">
+              <div class="flex">
+                <div class="relative">
+                  <select
+                    class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
+                    name="status"
                   >
-                    <path
-                      d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-                    ></path>
-                  </svg>
-                </span>
-                <input
-                  placeholder="Search"
-                  class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-                />
+                    <option value="All">All</option>
+                    <option value="PROCESSING">Processing</option>
+                    <option value="APPROVED">Approved</option>
+                    <option value="REJECTED">Rejected</option>
+                  </select>
+                </div>
+
+                <div class="block relative">
+                  <span
+                    class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      class="h-4 w-4 fill-current text-gray-500"
+                    >
+                      <path
+                        d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
+                  />
+                </div>
               </div>
-            </div> -->
+            </form>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const selectElement = document.querySelector(
+                  "select[name='status']"
+                );
+
+                // Kiểm tra xem đã lưu giá trị vào localStorage chưa
+                const storedValue = localStorage.getItem("selectedStatus");
+                if (storedValue) {
+                  selectElement.value = storedValue;
+                }
+
+                // Đặt sự kiện cho việc thay đổi giá trị trường select
+                selectElement.addEventListener("change", function () {
+                  const selectedValue = selectElement.value;
+                  // Lưu giá trị vào localStorage
+                  localStorage.setItem("selectedStatus", selectedValue);
+                });
+
+                // Đặt sự kiện cho việc gửi biểu mẫu
+                document
+                  .querySelector("form")
+                  .addEventListener("submit", function (event) {
+                    const selectedValue = selectElement.value;
+                    // Lưu giá trị vào localStorage
+                    localStorage.setItem("selectedStatus", selectedValue);
+                  });
+              });
+            </script>
             <!-- create -->
             <div class="ml-auto">
               <a

@@ -5,12 +5,26 @@
  */
 package sample.foodingschedule;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.POIFSFileSystem;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import sample.foodschedule.FoodScheduleDAO;
+import sample.foodschedule.FoodScheduleDTO;
 
 import sample.utils.DBUtils;
 
@@ -238,5 +252,74 @@ public class ScheduleDAO {
             }
         }
         return checkUpdate;
+    }
+      public static void ImportExcel(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        InputStream inp;
+        try {
+            Part filePart = request.getPart("excelFile");
+            InputStream fileContent = filePart.getInputStream();
+
+            // Xử lý tệp Excel
+            HSSFWorkbook wb = new HSSFWorkbook(new POIFSFileSystem(fileContent));
+            HSSFSheet sheet = wb.getSheetAt(0);
+
+            for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                Row row = sheet.getRow(i);
+                String id = getStringCellValue(row.getCell(0));
+                String id_cage = getStringCellValue(row.getCell(1));
+                String id_part_time = getStringCellValue(row.getCell(2));
+                String day_feeding = getStringCellValue(row.getCell(3));
+                String id_food = getStringCellValue(row.getCell(4));
+                String Note = getStringCellValue(row.getCell(5));
+
+                ScheduleDTO f = new ScheduleDTO();
+                f.setID(id);
+                f.setID_Cage(id_cage);
+                f.setID_Part_Time(id_part_time);
+                f.setDay_Feeding(day_feeding);
+                f.setID_Food(id_food);
+                f.setNote(Note);
+
+                ScheduleDAO fs = new ScheduleDAO();
+                fs.InsertData(request, f);
+            }
+        } catch (IOException | javax.servlet.ServletException ex) {
+            // Xử lý các ngoại lệ nếu có
+            request.setAttribute("message", ex.getMessage());
+        }
+        //request.getRequestDispatcher("foodschedulecontroller").forward(request, response);
+    }
+
+  private static String getStringCellValue(Cell cell) {
+    DataFormatter formatter = new DataFormatter();
+    return formatter.formatCellValue(cell);
+}
+
+    
+    
+    public void InsertData(HttpServletRequest request,ScheduleDTO schedule){
+          String sql = " insert into FeedingSchedule(ID,ID_Cage,ID_Part_Time,Day_Feeding,ID_Food,Note)\n"
+                + " values(?,?,?,?,?,?)";
+              Connection conn = null;
+    PreparedStatement ptm = null;
+    ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, schedule.getID());
+            ptm.setString(2, schedule.getID_Cage());
+            ptm.setString(3, schedule.getID_Part_Time());
+            ptm.setString(4, schedule.getDay_Feeding());
+            ptm.setString(5, schedule.getID_Food());
+            ptm.setString(6, schedule.getNote());
+            int kt = ptm.executeUpdate();
+            if(kt!=0){
+                request.setAttribute("message", "successfull sql");
+            }else{
+                request.setAttribute("message", "fail sql");
+            }
+
+        } catch (Exception e) {
+        }
     }
 }

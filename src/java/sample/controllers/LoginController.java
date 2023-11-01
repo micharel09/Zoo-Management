@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
     private static final String MN = "MANAGER";
     private static final String MANAGER_PAGE = "managercontroller";
     private static final String TN = "TRAINER";
-    private static final String TRAINER_PAGE = "ListTrainerFeedback";
+    private static final String TRAINER_PAGE = "TrainerFeedbackController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -48,7 +48,7 @@ public class LoginController extends HttpServlet {
                 String roleID = loginUser.getRoleID();
                 HttpSession session = request.getSession();
                 session.setAttribute("LOGIN_USER", loginUser);
-
+                dao.setSchedule();
                 if (AD.equals(roleID)) {
                     url = ADMIN_PAGE;
                 } else if (MN.equals(roleID)) {
