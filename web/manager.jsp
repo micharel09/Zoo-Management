@@ -130,7 +130,6 @@
 
     <!--Area List here-->
     <!--area A B-->
-
     <div class="fade-in container mx-auto px-4 md:px-28 mt-2 ">
       <div class="grid grid-cols-2 gap-4 ml-20">
         <c:forEach items="${a}" var="o">

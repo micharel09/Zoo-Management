@@ -67,17 +67,17 @@
         }
       }
       .role-id {
-        color: black; /* Default text color */
+        color: black;
       }
-
       .role-id:contains("ADMIN") {
-        color: red; /* Text color for 'ADMIN' */
+        background: rgb(255, 103, 103) (255, 0, 0);
+        color: red;
       }
       .role-id:contains("MANAGER") {
-        color: violet; /* Text color for 'ADMIN' */
+        color: violet;
       }
       .role-id:contains("TRAINER") {
-        color: green; /* Text color for 'ADMIN' */
+        color: green;
       }
     </style>
     <title>Admin</title>
@@ -326,10 +326,6 @@
       $(document).ready(function () {
         // Find all elements with the class "role-id" and text content "ADMIN"
         $('.role-id:contains("ADMIN")').css("color", "red");
-        $('.role-id:contains("ADMIN")').css(
-          "background-color",
-          "rgb(255, 103, 103)"
-        );
         $('.role-id:contains("TRAINER")').css("color", "green");
         $('.role-id:contains("MANAGER")').css("color", "violet");
       });
