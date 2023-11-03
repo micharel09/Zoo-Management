@@ -29,6 +29,8 @@
             src="https://kit.fontawesome.com/5b0b34b925.js"
             crossorigin="anonymous"
         ></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
         <title>View</title>
 
     </head>
@@ -79,6 +81,13 @@
                 opacity: 1;
             }
         }
+        .role-id {
+      color: green; /* Default text color */
+    }
+
+    .role-id:contains("REJECTED") {
+      color: red;
+    }
     </style>
 
     <!-- header -->
@@ -166,71 +175,77 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
 </script>
 
                     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
                         <div
                             class="inline-block min-w-full shadow rounded-lg overflow-hidden"
                             >
-                            <!-- table -->
-
-                            <table class="min-w-full">
-                                <thead>
-                                    <tr>
+                            <table
+                            class="min-w-full border-collapse border border-green-500"
+                          >
+                            <thead class="bg-neutral-100">
+                              <tr class="bg-green-500 text-white">
 
                                         <th
-                                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                                             >
                                             Tiltle
                                         </th>
                                         <th
-                                            class="break-all px-6 py-3 text-xs font-medium leading-4  text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="break-all mx-auto py-6 border-b-2 border-r text-xl text-left leading-4 tracking-wider text-center"
                                             >
                                             Purpose
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
+
                                             >
                                             Date
                                         </th>
                                         <th
-                                            class="break-all px-6 py-3 text-xs font-medium leading-4  text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                                            >
+                                            class="break-all mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
+                                    >
                                             ProcessNote
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
+
                                             >
                                             Employee_ID
                                         </th>
                                         <th
-                                            class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                                            >
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
+                                    >
                                             Status
                                         </th>
                                     </tr>
                                 </thead>
                                 <c:forEach var="f" items="${ListA}">
-                                    <tbody class="bg-white">
+                                    >
+                                    <tbody
+                                      class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
+                                    >
                                         <tr>
 
-                                            <td class="break-all text-xs px-6 py-4  border-b border-gray-200 border-r">
+                                            <td class="break-all pl-10 text-xl px-6 border-b border-gray-200 border-r">
                                                 ${f.title}
                                             </td>
-                                            <td class="  break-words text-xs px-6 py-4 border-b border-gray-200 border-r">
+                                            <td class="  break-words tpl-10 text-xl px-6 border-b border-gray-200 border-r">
                                                 ${f.purpose}
                                             </td>
-                                            <td class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r">
+                                            <td class="break-all pl-10 text-xl px-6 border-b border-gray-200 border-r whitespace-no-wrap ">
                                                 ${f.date}
                                             </td>
-                                            <td class=" break-all text-xs px-6 py-4 border-b border-gray-200 border-r">
+                                            <td class=" break-all pl-10 text-xl px-6 border-b border-gray-200 border-r">
                                                 ${f.processnote}
                                             </td>
-                                            <td class="px-6 py-4 font-bold text-center leading-5 text-black  border-b border-gray-200 border-r">
+                                            <td class="px-6 py-4 font-bold text-center pl-10 text-xl px-6 border-b border-gray-200 border-r">
                                                 ${f.employee_id}
                                             </td>
-                                            <td class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r">
-                                                ${f.status}
+                                            <td class="px-6 py-4 font-bold leading-5  pl-10 text-xl px-6 border-b border-gray-200 border-r">
+                                                <span class="role-id"> ${f.status}</span>
 
                                                 <button class="btn group flex bg-transparent text-xl tracking-widest text-white">
                                                     <span class="relative pr-4 pb-1 text-white after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-blue-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100">
@@ -248,10 +263,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                         </tr>
                                     </tbody>
                                 </c:forEach>
-
                             </table>
-
-
                             <!-- component -->
 
                             <div class="grid min-h-[140px] w-full place-items-center overflow-x-scroll rounded-lg p-6 lg:overflow-visible">
@@ -267,16 +279,17 @@ document.addEventListener("DOMContentLoaded", function() {
                                         </c:forEach>
                                     </ul>
                                 </nav>
-
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>// role color
+            $(document).ready(function () {
+                      $('.role-id:contains("REJECTED")').css("color", "red");
+                    });
+                    </script>
     </main>
 </body>
 </html>

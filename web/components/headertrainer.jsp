@@ -1,11 +1,6 @@
-<%-- 
-    Document   : headertrainer
-    Created on : Oct 19, 2023, 8:52:04 PM
-    Author     : Quan
---%>
-
-<%@page import="sample.user.UserDTO"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Document : headertrainer Created on : Oct 19, 2023, 8:52:04 PM Author :
+Quan --%> <%@page import="sample.user.UserDTO"%> <%@page contentType="text/html"
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -61,7 +56,10 @@
       <nav class="header">
         <div class="flex justify-between items-center">
           <!-- logo -->
-          <a href="trainer.jsp" class="flex items-center justify-center w-1/2">
+          <a
+            href="ListTrainerFeedback"
+            class="flex items-center justify-center w-1/2"
+          >
             <div class="">
               <img src="img/logo2.png" class="h-20 text-xl" alt="Logo" />
             </div>
@@ -73,7 +71,7 @@
           <!-- end logo -->
 
           <!-- user logo -->
-          <div class="flex items-center w-1/4">
+          <div class="flex items-center w-1/3">
             <img
               src="https://placekitten.com/30/30"
               class="rounded-full mr-2"
@@ -93,4 +91,3 @@
     </div>
   </body>
 </html>
-

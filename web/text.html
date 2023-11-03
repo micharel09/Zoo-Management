@@ -1,12 +1,12 @@
 <%-- 
-    Document   : Schedule_Animal_Cage
-    Created on : Oct 20, 2023, 9:58:24 AM
+    Document   : Schedule_Select_Cage_Manager
+    Created on : Oct 24, 2023, 3:40:43 PM
     Author     : ACER
 --%>
 
-<%@page import="sample.foodingschedule.ScheduleDTO"%>
-
+<%@page import="sample.foodingschedule.AnimalCageDTO"%>
 <%@page import="java.util.List"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,85 +14,177 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-
-    <body>
-
-       <%
-        String day = (String) session.getAttribute("DAY");
-        String name_cage = (String) session.getAttribute("NAME_CAGE");
-       
-       %>
-       <h4> <%= name_cage %> Cage</h4>
-
-       <%
-           String error = (String) request.getAttribute("MESSAGE");
-           if (error == null) {
-               error = "";
-           }
-       %>
-
-       <h3><%= error%></h3>
-       
-       
-        <form action="Foodingschedule_MainController">
-            <label for="Gender">Week</label>
-            <select name="Get_Day" id="Get_Day">
-                <option value="2023-10-16" <%=day.equals("2023-10-16") ? "selected" : ""%>>16-10 to 22-10</option>
-                <option value="2023-10-23" <%=day.equals("2023-10-23") ? "selected" : ""%>>23-10 to 29-10</option>
-                <option value="2023-10-30" <%=day.equals("2023-10-30") ? "selected" : ""%>>30-10 to 05-11</option>
-                <option value="2023-11-06" <%=day.equals("2023-11-06") ? "selected" : ""%>>06-11 to 12-11</option>
-                <option value="2023-11-13" <%=day.equals("2023-11-13") ? "selected" : ""%>>13-11 to 19-11</option>
-                <option value="2023-11-20" <%=day.equals("2023-11-20") ? "selected" : ""%>>20-11 to 26-11</option>
-            </select>
-            
-           
-             <input type="submit" name="action" name="Search" value="Search_For_Trainer"/>
-        </form>
+     <body>
         
-         <%
-        List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("LIST_SCHEDULE");
-        if (listSchedule != null && listSchedule.size() > 0) {
-    %>
+        <%
+            List<AnimalCageDTO> listCage = (List<AnimalCageDTO>) session.getAttribute("LIST_ANIMAL_CAGE");;
+            if (listCage != null && listCage.size() > 0) {
 
-    <table> 
-        <thead>
-            <tr>
+        %>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name Cage</th>
+                     
+                </tr>
+            </thead>
+            <tbody>
+                <%for (AnimalCageDTO Cage : listCage) {%>
+
+                <tr>
+                    <td></td>
+                  
+            <form action="Foodingschedule_MainController">
+                <td>
+                    <input type="hidden" name="ID_Animal_Cage" value="<%=Cage.getAnimalCage_ID()%>"/>
+                    <input type="hidden" name="Name_Cage" value="<%=Cage.getName()%>"/>
+                    <input type="submit" name="action" name="Select_Schecdule_Trainer" value="Select_Schecdule_Trainer"/>
+                </td>
+            </form>
+        </tr>
+
+        <% }%>
+    </tbody>
+</table>
+
+
+<%}%>
+</body>
+</html>
+
+----------------------------------------------------------------
+
+<%@page import="sample.foodingschedule.AnimalCageDTO"%>
+<%@page import="java.util.List"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind -->
+    <script src="https://cdn-tailwindcss.vercel.app/"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/tailwind.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/5b0b34b925.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Select Cages</title>
+    <style>
+      .top-100 {
+        top: 300px;
+      }
+    </style>
+    <!-- prettier-ignore -->
+    <%@ include file="components/headertrainer.jsp" %>
+    <!-- end header -->
+  </head>
+  <body class="bg-gray-200 w-screen overflow-x-hidden mx-auto">
+    <!-- prettier-ignore -->
+    <%@ include file="components/sidebartrainer.html" %>
+    <!-- end side bar -->
+    <div class="flex flex-col items-center">
+      <div class="w-full md:w-1/2 flex flex-col items-center h-64">
+        <div class="w-full px-4">
+          <%
+          List<AnimalCageDTO> listCage = (List<AnimalCageDTO>) session.getAttribute("LIST_ANIMAL_CAGE");;
+          if (listCage != null && listCage.size() > 0) {
+
+      %>
+   
+          <div class="flex flex-col items-center relative">
+            <!-- main -->
+            <div
+              class="absolute border shadow bg-white top-100 z-40 w-full lef-0 rounded max-h-select overflow-y-auto svelte-5uyqqj"
+            >   
+                <div
+                  class="cursor-pointer w-full border-gray-100 rounded-t border-b "
+                >
+                  <div
+                    class="flex w-full items-center p-2 pl-2 border-transparent border-l-2 relative bg-gray-100"
+                  >
+                    <div class="w-full justify-center flex">
+                      <h2 class="text-4xl">Select Cages</h2>
+                    </div>
+                  </div>
+                </div>
+                
+                <%for (AnimalCageDTO Cage : listCage) {%>
+                  <form action="Foodingschedule_MainController">
+                  <div class=" bg-white cursor-pointer hover:shadow-xl hover:transform duration-300 hover:bg-gray-100"
+                  >
+                <button type="submit" name="action" name="Select_Schecdule_Trainer" value="Select_Schecdule_Trainer"
+                  class="cursor-pointer w-full"
+                >
+                  <div
+                    class="flex w-full  focus:border-green-500 items-center p-2 pl-2 border-transparent border-l-2 relative hover:border-teal-100"
+                  >
+                    
+                    <div class="w-full items-center ">
+                      <div class="mx-2 -mt-1 text-2xl"><%=Cage.getName()%></div>
+                        <td>
+                            <input type="hidden" name="ID_Animal_Cage" value="<%=Cage.getAnimalCage_ID()%>"/>
+                            <input type="hidden" name="Name_Cage" value="<%=Cage.getName()%>"/>
+                        </td>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+                    </form>
+                <% }%>
+                <!-- end -->
                
-                <th>Day</th>
-                <th>Name Food</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Photo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                for (ScheduleDTO schedule : listSchedule) {
-            %>
-            <tr >
-
-                <td><%=schedule.getDay_Feeding()%></td>
-                <td><%=schedule.getName_Food()%></td>
-                <td><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></td>
-                 
-                <td><%=schedule.getNote()%></td>
-                <td><img style="height: 50px;width: 100px" src="<%=schedule.getPhoto()%>"  /></td>
-        <form action="Foodingschedule_MainController">
-            <td>
-                <input type="hidden" name="Id_Schedule" value="<%=schedule.getID()%>"/>
-                
-                <input type="hidden" name="Day" value="<%=schedule.getDay_Feeding()%>"/>
-                <input type="hidden" name="StartTime" value="<%=schedule.getStart_Time()%>"/>
-                <input type="hidden" name="EndTime" value="<%=schedule.getEnd_Time()%>"/>
-
-
-                
-                <input type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"/>
-            </td>
-        </form>         
-
-        <!-- xoa o day ne-->
-    </tr>
-
-    <% }
-        }%>
+              </div>
+             
+            </div>
+            <!-- end main -->
+          </div>
+                      <!-- import -->
+       <div class="flex mt-4">
+        <form
+        action="importexcel_feedingSchedule_controller"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="flex mb-2">
+          <p class="mt-2 mr-2">
+            Choose Excel file(<span style="color: red">only .xls</span>):
+          </p>
+          <input
+            type="file"
+            name="excelFile"
+            class="flex text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400"
+          />
+          <input
+            class="middle none center rounded-lg py-3 px-3 text-sm uppercase transition-all hover:bg-green-500/10 active:bg-green-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            data-ripple-dark="true"
+            type="submit"
+            value="Import"
+          />
+        </div>
+      </form>
+    </div>
+      <!-- end import -->
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
