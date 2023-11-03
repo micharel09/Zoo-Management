@@ -36,6 +36,8 @@
       src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <style>
       .animate-charcter {
         text-transform: uppercase;
@@ -63,6 +65,19 @@
         to {
           background-position: 200% center;
         }
+      }
+      .role-id {
+        color: black; /* Default text color */
+      }
+
+      .role-id:contains("ADMIN") {
+        color: red; /* Text color for 'ADMIN' */
+      }
+      .role-id:contains("MANAGER") {
+        color: violet; /* Text color for 'ADMIN' */
+      }
+      .role-id:contains("TRAINER") {
+        color: green; /* Text color for 'ADMIN' */
       }
     </style>
     <title>Admin</title>
@@ -96,8 +111,8 @@
                             <div class="flex justify-between pb-2 border-b border-gray-300">
                                 <h3 class="text-5xl font-medium text-gray-700">Employee</h3>
                                 <a href="MainController?action=CreatePage" class="relative rounded px-5 py-2.5 overflow-hidden group bg-green-500 relative hover:bg-gradient-to-r hover:from-green-500 hover:to-green-400 text-white hover:ring-2 hover:ring-offset-2 hover:ring-green-400 transition-all ease-out duration-300">
-                                    <span class="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-                                    <span class="relative">Add Employee</span>
+                                    <span class="absolute right-0 w-8 h-[30px] -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                                    <span class="relative"><i class="fa-solid fa-user-plus"></i>Add Employee</span>
                                 </a>
 
                                 <div>
@@ -208,7 +223,9 @@
                                                     <td
                                                         class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                                                         >
-                                                        <%=user.getRoleID()%>
+                                                        <span class="role-id">
+                                                            <%= user.getRoleID() %>
+                                                          </span>
                                                     </td>
 
                                                     <td
@@ -284,9 +301,6 @@
                                                         name="Update"
                                                         value="Update"
                                                         />
-
-
-
                                                 </td>
                                                 <td>
                                                     <a href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_id()%>">Delete</a>     
@@ -295,8 +309,7 @@
                                             <!-- end form -->
                                             <!-- xoa o day ne-->
                                             </tr>
-                                            <% }
-                            }%>
+                                            <% }   }%>
                                             </tbody>
                                         </table>
 
@@ -309,5 +322,17 @@
         </div>
       </div>
     </div>
+    <script>
+      $(document).ready(function () {
+        // Find all elements with the class "role-id" and text content "ADMIN"
+        $('.role-id:contains("ADMIN")').css("color", "red");
+        $('.role-id:contains("ADMIN")').css(
+          "background-color",
+          "rgb(255, 103, 103)"
+        );
+        $('.role-id:contains("TRAINER")').css("color", "green");
+        $('.role-id:contains("MANAGER")').css("color", "violet");
+      });
+    </script>
   </body>
 </html>

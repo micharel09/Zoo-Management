@@ -214,7 +214,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       <div class="bg-slate-900/50">
         <div class="py-10 text-center">
           <!-- time -->
-          <div class="time-container px-10 rounded-xl">
+          <div class="time-container px-10 rounded-xl border-b">
             <div class="flex items-center justify-center space-x-4">
               <div class="text-4xl font-large text-gray-800">
                 <span class="text-white">Open:</span>

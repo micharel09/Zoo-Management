@@ -68,7 +68,7 @@ pageEncoding="UTF-8"%>
           <!-- end logo -->
 
           <!-- user logo -->
-          <div class="flex items-center w-1/4">
+          <div class="flex items-center w-1/3">
             <img
               src="https://placekitten.com/30/30"
               class="rounded-full mr-2"

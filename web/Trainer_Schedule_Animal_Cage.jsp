@@ -43,13 +43,52 @@
         .notyet-text {
           color: black;
 }
+.tooltip {
+  position: relative;
+  z-index: 100;
+}
+
+.tooltip:before, 
+.tooltip:after {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  z-index: 100;
+
+}
+
+.tooltip:hover:before,
+.tooltip:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip-right:before, 
+.tooltip-right:after {
+  left: 100%;
+}
+.tooltip-right:after {
+  content: attr(data-tip);
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-align: center;
+  width: max-content;
+  min-width: 100px;
+  font-size: .75rem; 
+  background: #333;
+  color: #fff;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%); 
+  transform: translateY(-130%); 
+}
       </style>
-      
   </head>
   <!-- prettier-ignore -->
   <%@ include file="components/headertrainer.jsp" %>
   <!-- end header -->
-  <body class="overflow-y-hidden">
+  <body class="overflow-y-hidden ">
     <!-- prettier-ignore -->
     <%@ include file="components/sidebartrainer.html" %>
     <!-- end side bar -->
@@ -57,7 +96,7 @@
     <% String day = (String) session.getAttribute("DAY"); String name_cage =
     (String) session.getAttribute("NAME_CAGE"); String name_area = (String)
     session.getAttribute("NAME_AREA"); %>
-    <main class="antialiased font-sans bg-white h-screen">
+    <main class="antialiased font-sans bg-white h-screen w-[1500px] mx-auto">
       <div class="flex justify-center pb-2 pt-5 border-b bored-gray-300">
         <h3 class="text-5xl  text-gray-700">Schedule <%= name_cage %> Cage of <%= name_area %> Area</h3>
       </div>
@@ -67,11 +106,27 @@
           <!-- Component Start -->
           <div class="flex flex-grow w-full h-full overflow-auto">
             <div class="flex flex-col flex-grow">
+              <%
+              String error = (String) request.getAttribute("MESSAGE");
+              if (error == null) {
+                  error = "";
+              }
+          %>
+          <%
+          List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("LIST_SCHEDULE");
+          if (listSchedule != null && listSchedule.size() > 0) {
+      %>
               <div class="flex items-center mt-4">
                 <div class="flex">
-                    <form action="Foodingschedule_MainController">
-                        <label for="Gender">Week</label>
-                        <select name="Get_Day" id="Get_Day">
+                  
+                    <form class="flex" action="Foodingschedule_MainController">
+                      
+                      <label for="Gender" class="text-xl">Choose Week:</label>
+                      <div class="mr-2">
+                        <div>
+                        <select                    
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white  px-6 text-xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        name="Get_Day" id="Get_Day">
                             <option  class="text-xl" value="2023-10-16" <%=day.equals("2023-10-16") ? "selected" : ""%>>16-10 to 22-10</option>
                             <option  class="text-xl" value="2023-10-23" <%=day.equals("2023-10-23") ? "selected" : ""%>>23-10 to 29-10</option>
                             <option  class="text-xl" value="2023-10-30" <%=day.equals("2023-10-30") ? "selected" : ""%>>30-10 to 05-11</option>
@@ -79,16 +134,34 @@
                             <option  class="text-xl" value="2023-11-13" <%=day.equals("2023-11-13") ? "selected" : ""%>>13-11 to 19-11</option>
                             <option  class="text-xl" value="2023-11-20" <%=day.equals("2023-11-20") ? "selected" : ""%>>20-11 to 26-11</option>
                         </select>
-                         <input type="submit" name="action" name="Search" value="Search"/>
+                      </div>
+                      
+                      </div>
+                <!-- button search -->
+                <button
+                type="submit" name="action" name="Search" value="Search"
+                class="inline-flex items-center px-3 ml-2 text-sm text-white bg-green-500 rounded-lg border border-green-700 hover:bg-green-400 focus:ring-4 focus:outline-none focus:ring-green-300"
+              >
+                <svg
+                  class="mr-2 -ml-1 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  ></path>
+                </svg>
+                Search
+              </button>
                     </form>
                 </div>
               </div>
-              <%
-              String error = (String) request.getAttribute("MESSAGE");
-              if (error == null) {
-                  error = "";
-              }
-          %>
+         
     
           <h3 class="text-red-500"><%= error%></h3>
               <div class="grid grid-cols-7 mt-4">
@@ -100,12 +173,9 @@
                 <div class="pl-1 text-xl">Sat</div>
                 <div class="pl-1 text-xl">Sun</div>
               </div>
-              <%
-              List<ScheduleDTO> listSchedule = (List<ScheduleDTO>) session.getAttribute("LIST_SCHEDULE");
-              if (listSchedule != null && listSchedule.size() > 0) {
-          %>
+            
               <div
-                class="grid flex-grow w-full h-full grid-cols-7  gap-px pt-px mt-1 bg-gray-200"
+                class="grid flex-grow w-full h-full grid-cols-7  gap-px pt-px mt-1 bg-gray-200 overflow-x-hidden overflow-y-hidden"
               >
               <%
               int i;
@@ -124,7 +194,7 @@
                       <span
                         class="flex-shrink-0 w-2 h-2 border border-gray-500 rounded-full"
                       ></span>
-                      <span class="ml-2 text-xl leading-none truncate"><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></span>
+                      <span class="ml-2 text-lg leading-none truncate bg-green-500 text-white px-2 rounded py-1"><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></span>
                      
                     </button>
                     <%
@@ -143,36 +213,35 @@
                     <td><img style="height: 100px;width: 210px" src="<%=schedule.getPhoto()%>"  /></td>                  </div>
                   
                   <form action="Foodingschedule_MainController">
-                    <td>
+                 
                         <input type="hidden" name="Id_Schedule" value="<%=schedule.getID()%>"/>
                         
                         <input type="hidden" name="Day" value="<%=schedule.getDay_Feeding()%>"/>
                         <input type="hidden" name="StartTime" value="<%=schedule.getStart_Time()%>"/>
                         <input type="hidden" name="EndTime" value="<%=schedule.getEnd_Time()%>"/>
-        
-        
-                        <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
-                    class="absolute bottom-0 right-0 flex items-center justify-center  w-6 h-6 mb-2 mr-2 text-white bg-gray-400 rounded group-hover:flex hover:bg-gray-500"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="w-6 h-6 plus"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </button>
-                    </td>
+                  
+                      <!-- photo -->
+                        <div class="tooltip tooltip-right" data-tip="Click here to upload">
+                          <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
+                            class="absolute bottom-0 right-0 flex items-center justify-center  w-6 h-6 mb-2 mr-2 text-white bg-gray-400 rounded group-hover:flex hover:bg-gray-500"
+                          >
+                            <svg
+                              class="w-5 h-5"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              class="w-6 h-6 plus"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </button>
+                        </div>
                 </form>         
                 </div>
-                <%
-}
-%>
+                <%}%>
                 <!-- afternoon -->
                 <%
                 for (i = 7; i < 14; i++) {
@@ -186,17 +255,15 @@
                     <button
                       class="flex items-center flex-shrink-0 h-5 px-1 mb-4 hover:bg-gray-200"
                     >
-                      <span
-                        class="flex-shrink-0 w-2 h-2 border border-gray-500 rounded-full"
-                      ></span>
-                      <span class="ml-2 text-xl leading-none truncate"><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></span>
+                    <span class="flex-shrink-0 w-2 h-2 bg-gray-500 rounded-full"></span>
+                      <span class="ml-2 text-lg leading-none truncate bg-green-500 text-white px-2 rounded py-1"><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></span>
                      
                     </button>
                     <%
                     String note = schedule.getNote();
                     String cssClass = "notyet-text";
                     if ("Absent".equals(note)) {
-                      cssClass = "absent-text"; // Nếu trạng thái là "absent", sử dụng lớp "absent-text"
+                      cssClass = "absent-text";
                     } else if ("Present".equals(note)) {
                         cssClass = "present-text";
                     } 
@@ -207,15 +274,15 @@
                     <img style="height: 100px;width: 210px" src="<%=schedule.getPhoto()%>"  />
                   </div>
                   <form action="Foodingschedule_MainController">
-                    <td>
+              
                         <input type="hidden" name="Id_Schedule" value="<%=schedule.getID()%>"/>
                         
                         <input type="hidden" name="Day" value="<%=schedule.getDay_Feeding()%>"/>
                         <input type="hidden" name="StartTime" value="<%=schedule.getStart_Time()%>"/>
                         <input type="hidden" name="EndTime" value="<%=schedule.getEnd_Time()%>"/>
-        
-        
-                        <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
+                  <!-- photo -->
+                <div class="tooltip tooltip-right" data-tip="Click here to upload">
+                  <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
                     class="absolute bottom-0 right-0 flex items-center justify-center  w-6 h-6 mb-2 mr-2 text-white bg-gray-400 rounded group-hover:flex hover:bg-gray-500"
                   >
                     <svg
@@ -231,43 +298,30 @@
                       ></path>
                     </svg>
                   </button>
-                    </td>
+                </div>
                 </form>       
                 </div>
-                <%
-}
-%>
-               
-    <% 
-}  %>
-
-
-             
+                <%}%> 
           <!-- Component End  -->
         </div>
+            <!-- footer -->
+            <div class="mt-4 bg-white border-b">
 
-       
-          class="fixed flex items-center justify-center h-8 pr-2 pl-1 bg-blue-600 rounded-full bottom-0 right-0 mr-4 mb-4 shadow-lg text-blue-100 hover:bg-blue-600"
-          href="https://twitter.com/lofiui"
-          target="_top"
-        >
-          <div
-            class="flex items-center justify-center h-6 w-6 bg-blue-500 rounded-full"
-          >
-            <svg
-              class="w-4 h-4 fill-current"
-              viewBox="0 0 24 24"
-              class="r-jwli3a r-4qtqp9 r-yyyyoo r-16y2uox r-1q142lx r-8kz0gk r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1srniue"
-            >
-              <g>
-                <path
-                  d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"
-                ></path>
-              </g>
-            </svg>
+              <h2 class="font-bold">More Note:</h2>
+              <p class="pl-5 mb-2">
+                <span class="text-green-500">&#8226;</span> (<span class="text-green-500">Present</span>): You had attended this activity
+              </p>
+              <p class="pl-5 mb-2">
+                <span class="text-red-500">&#8226;</span> (<span class="text-red-500">Absent</span>): You had NOT attended this activity
+              </p>
+              <p class="pl-5 mb-2">
+                <span class="text-black">&#8226;</span> (<span class="text-black">Not Yet</span>): No data was given
+              </p>
+            </div>
+            <% } %>
+            </div>
           </div>
-          <span class="text-lg ml-1 leading-none">@lofiui</span>
-        </a> -->
+        </div>
       </div>
     </main>
   </body>
