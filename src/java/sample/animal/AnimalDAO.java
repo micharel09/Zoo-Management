@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -160,6 +160,26 @@ public class AnimalDAO {
 
         return null;
     }
+    
+     public List <AnimalDTO> getAnimalByEmpID(String employeeid) {
+        String sql = "select *from Animal a\n" +
+"  join AnimalCage ac on a.AnimalCage_ID = ac.AnimalCage_ID\n" +
+"  where Employee_ID = ?  AND a.status <> 'DEATH' ";
+        List<AnimalDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, employeeid);
+            rs = ptm.executeQuery();
+             while (rs.next()) {
+                list.add(new AnimalDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),rs.getString(6)));
+            }
+        } catch (Exception e) {
+        }
+
+        return list;
+    }
+    
 
     public String getNewIdAnimalID() {
         String sql = "select top 1 Animal_ID from Animal order by [Animal_ID] desc";
@@ -204,7 +224,8 @@ public class AnimalDAO {
 
     public static void main(String[] args) {
         AnimalDAO d = new AnimalDAO();
-        List<AnimalDTO> list = d.getAllAimal();
+        String empid = "E003";
+        List<AnimalDTO> list = d.getAnimalByEmpID(empid);
         for (AnimalDTO animalCageDTO : list) {
             System.out.println(animalCageDTO);
         }

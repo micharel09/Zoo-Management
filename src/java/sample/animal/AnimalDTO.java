@@ -83,15 +83,12 @@ public class AnimalDTO {
         this.status = status;
     }
 
-//    @Override
-//    public String toString() {
-//        return "AnimalDTO{" + "animal_id=" + animal_id + ", name=" + name + ", dayin=" + dayin + ", photo=" + photo + ", animalcage_id=" + animalcage_id + ", status=" + status + '}';
-//    }
-
-    @Override
+   @Override
     public String toString() {
-        return "AnimalDTO{" + "name=" + name + '}';
+        return "AnimalDTO{" + "animal_id=" + animal_id + ", name=" + name + ", dayin=" + dayin + ", photo=" + photo + ", animalcage_id=" + animalcage_id + ", status=" + status + '}';
     }
+
+
 
    
     

@@ -161,26 +161,23 @@
     <div class="container">
       <div class="title">Update Animal</div>
       <div class="content">
-        <form action="updateanimal"
+        <form action="TrainerUpdateAnimal"
             method="POST"
             enctype="multipart/form-data">
             <input type="hidden" name="animalid" value="${aa.animal_id}" />
           <div class="user-details">
             <div class="input-box ">
               <span class="details">Cage Name</span>
-              <input
-                type="text"
-                name="name"
-                id="fullName"
-                required
-                
-                value="${aa.name}"
-                required
-              />
+              <h1
+                        class="break-all w-full appearance-none rounded-md borderpy-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        >
+                        ${aa.name}
+                    </h1>
+              
             </div>
             
             <div class="input-box">
-              <span class="details">Choose Area</span>
+              <span class="details">Choose Status</span>
               <select
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   name="status"
@@ -198,24 +195,22 @@
             >
               Date
             </label>
-            <input
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              type="date"
-              name="dayin"
-              value="${aa.dayin}"
-            />
+                <h1
+                        class="break-all w-full appearance-none rounded-md borderpy-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        >
+                        ${aa.dayin}
+                    </h1>
+            
             </div>
             
             <div class="input-box ">
+                
               <span class="details">Select Cage_ID</span>
-              <select
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  name="animalcageid"
-                  >
-                  <c:forEach items="${cage}" var="c">
-                      <option>${c.animalcage_id}</option>
-                    </c:forEach>
-              </select>
+              <h1
+                        class="break-all w-full appearance-none rounded-md borderpy-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        >
+                        ${aa.animalcage_id}
+                    </h1>
             </div>
                    
                <!-- photo -->
