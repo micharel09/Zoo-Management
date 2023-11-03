@@ -17,11 +17,12 @@ public class FeedbackDTO {
     private String processnote;
     private String employee_id;
     private String status;
+    private String animal_id;
 
     public FeedbackDTO() {
     }
 
-    public FeedbackDTO(String feedback_id, String title, String purpose, String date, String processnote, String employee_id, String status) {
+    public FeedbackDTO(String feedback_id, String title, String purpose, String date, String processnote, String employee_id, String status, String animal_id) {
         this.feedback_id = feedback_id;
         this.title = title;
         this.purpose = purpose;
@@ -29,6 +30,7 @@ public class FeedbackDTO {
         this.processnote = processnote;
         this.employee_id = employee_id;
         this.status = status;
+        this.animal_id = animal_id;
     }
 
     public String getFeedback_id() {
@@ -87,10 +89,20 @@ public class FeedbackDTO {
         this.status = status;
     }
 
+    public String getAnimal_id() {
+        return animal_id;
+    }
+
+    public void setAnimal_id(String animal_id) {
+        this.animal_id = animal_id;
+    }
+
     @Override
     public String toString() {
-        return "FeedbackDTO{" + "feedback_id=" + feedback_id + ", title=" + title + ", purpose=" + purpose + ", date=" + date + ", processnote=" + processnote + ", employee_id=" + employee_id + ", status=" + status + '}';
+        return "FeedbackDTO{" + "feedback_id=" + feedback_id + ", title=" + title + ", purpose=" + purpose + ", date=" + date + ", processnote=" + processnote + ", employee_id=" + employee_id + ", status=" + status + ", animal_id=" + animal_id + '}';
     }
+
+    
     
     
 }

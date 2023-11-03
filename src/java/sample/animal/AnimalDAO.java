@@ -8,6 +8,7 @@ package sample.animal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import sample.animalcage.AnimalCageDTO;
@@ -107,6 +108,8 @@ public class AnimalDAO {
     }
 
     public void createanimal(String animalid, String name, String dayin, String photo, String animalcageid) {
+        LocalDate curDate = LocalDate.now();
+        dayin = curDate.toString();
         String sql = " insert into Animal(Animal_ID,Name,DayIn,Photo,AnimalCage_ID)\n"
                 + " values(?,?,?,?,?)";
         try {

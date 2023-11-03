@@ -145,18 +145,17 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         }
 
         a.updateanimalcage(animalcageid, name, areaid, employeeid, filename);
- HttpSession session = request.getSession(false);
-if (session != null) {
-    String from = (String) session.getAttribute("from");
-    
-    // Kiểm tra và thực hiện chuyển hướng
-    if ("animalcagecontroller".equals(from)) {
-        response.sendRedirect("animalcagecontroller" + areaid);
-    } else {
-        response.sendRedirect("managercontroller");
-    }
+// Check if animalID is not null
+        if (areaid != null) {
+            // Build the redirect URL
+            String redirectURL = "areacontroller?areaid=" + areaid;
 
-    }
+            // Redirect back to the animalsearch page with the specific animalID
+            response.sendRedirect(redirectURL);
+        } else {
+            // Handle the case where the feedback creation fails
+            // You can redirect to an error page or take appropriate action.
+        }
     }
 
     /**

@@ -174,16 +174,22 @@
                   >Area_ID</label
                 >
                 <span class="text-xl" style="color: red"
-                  >Old ${aa.area_id}</span
+                  > ${aa.area_id}</span
                 >
-                <select
-                  name="area_id"
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                >
-                  <c:forEach var="o" items="${area}">
-                    <option>${o.area_id}</option>
-                  </c:forEach>
-                </select>
+                <input
+                name="area_id"
+                maxlength="20"
+                type="hidden"
+                value="${aa.area_id}"
+                placeholder=" "
+                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                required
+              />
+              <label
+                class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                for="fullName"
+                >Name:</label
+              >
               </div>
               <p class="mt-3 text-xs text-red-400"></p>
 

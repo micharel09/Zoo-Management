@@ -152,7 +152,17 @@ public class UpdateAnimal extends HttpServlet {
 
         d.updateanimal(animalid, name, dayin, filename, animalcageid,status);
 
-        response.sendRedirect("managercontroller");
+        // Check if animalID is not null
+        if (animalcageid != null) {
+            // Build the redirect URL
+            String redirectURL = "animalsearch?animalID=" + animalcageid;
+
+            // Redirect back to the animalsearch page with the specific animalID
+            response.sendRedirect(redirectURL);
+        } else {
+            // Handle the case where the feedback creation fails
+            // You can redirect to an error page or take appropriate action.
+        }
 
 
     }
