@@ -87,21 +87,20 @@
 }
 
       </style>
-        <title>foodingschedule</title>
     </head>
   <!-- prettier-ignore -->
-  <%@ include file="components/headertrainer.jsp" %>
+  <%@ include file="components/headermanager.jsp" %>
   <!-- end header -->
-    <body class="overflow-y-hidden">
+  <body class="overflow-x-auto mx-auto">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
-    <!-- end side bar -->
+    <%@ include file="components/sidebarmanager.jsp" %>
+    <!-- end sidebar -->
        <%
         String day = (String) session.getAttribute("DAY");
         String name_cage = (String) session.getAttribute("NAME_CAGE");
         String name_area = (String) session.getAttribute("NAME_AREA");
        %>
-       <main class="antialiased font-sans bg-white h-screen w-[1500px] mx-auto">
+      <main class="antialiased font-sans bg-white h-screen w-[1500px] mx-auto">
         <div class="flex justify-center pb-2 pt-5 border-b bored-gray-300">
           <h3 class="text-5xl  text-gray-700">Schedule <%= name_cage %> Cage of <%= name_area %> Area</h3>
         </div>
@@ -169,8 +168,7 @@
                   <div class="pl-1 text-xl">Sat</div>
                   <div class="pl-1 text-xl">Sun</div>
                 </div>
-          
-                <div
+<div
                 class="grid flex-grow w-full h-full grid-cols-7  gap-px pt-px mt-1  overflow-x-hidden overflow-y-hidden bg-gray-800"
                 >
                 <!-- morning -->
@@ -197,17 +195,21 @@
                       <%
                       String note = schedule.getNote();
                       String cssClass = "notyet-text";
+                      String spanStyle = "";
+
                       if ("Absent".equals(note)) {
-                        cssClass = "absent-text"; // Nếu trạng thái là "absent", sử dụng lớp "absent-text"
+                        cssClass = "absent-text"; 
+                        spanStyle = "color: rgba(0, 0, 0, 0.5);";
                       } else if ("Present".equals(note)) {
                           cssClass = "present-text";
                       } 
                       %>
-                      <button class="flex items-center flex-shrink-0 h-5 px-1 mb-4 hover:bg-gray-200">
-                        <span class="<%= cssClass %> ml-2 text-xl leading-none truncate"><%= note %></span>
+                      <button style="<%= spanStyle %>" class="flex items-center flex-shrink-0 h-5 px-1 mb-4 hover:bg-gray-200">
+                        <span  class="<%= cssClass %> ml-2 text-xl leading-none truncate"><%= note %></span>
                       </button>
                       
-                      <td><img style="height: 100px;width: 210px" src="<%=schedule.getPhoto()%>"  /></td>                  </div>
+                      <td><img style="height: 100px;width: 210px" src="<%=schedule.getPhoto()%>"  /></td>                  
+                    </div>
                     
                     <form action="Foodingschedule_MainController">
                           <input type="hidden" name="Id_Schedule" value="<%=schedule.getID()%>"/>
@@ -215,27 +217,7 @@
                           <input type="hidden" name="Day" value="<%=schedule.getDay_Feeding()%>"/>
                           <input type="hidden" name="StartTime" value="<%=schedule.getStart_Time()%>"/>
                           <input type="hidden" name="EndTime" value="<%=schedule.getEnd_Time()%>"/>
-          
-          
-                            <!-- photo -->
-                            <div class="tooltip tooltip-right" data-tip="Click here to upload">
-                              <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
-                                class="absolute bottom-0 right-0 flex items-center justify-center  w-6 h-6 mb-2 mr-2 text-white bg-gray-400 rounded group-hover:flex hover:bg-gray-500"
-                              >
-                                <svg
-                                  class="w-5 h-5"
-                                  viewBox="0 0 20 20"
-                                  fill="currentColor"
-                                  class="w-6 h-6 plus"
-                                >
-                                  <path
-                                    fill-rule="evenodd"
-                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                                    clip-rule="evenodd"
-                                  ></path>
-                                </svg>
-                              </button>
-                            </div>
+
                   </form>         
                   </div>
                   <%}%>
@@ -252,9 +234,7 @@
                       <button
                         class="flex items-center flex-shrink-0 h-5 px-1 mb-4 hover:bg-gray-200"
                       >
-                        <span
-                          class="flex-shrink-0 w-2 h-2 border border-gray-500 rounded-full"
-                        ></span>
+                      <span class="flex-shrink-0 w-2 h-2 bg-gray-500 rounded-full"></span>
                         <span class="ml-2 text-lg leading-none truncate bg-green-500 text-white px-2 rounded py-1"><%=schedule.getStart_Time()%> to <%=schedule.getEnd_Time()%></span>
                        
                       </button>
@@ -278,27 +258,7 @@
                           <input type="hidden" name="Day" value="<%=schedule.getDay_Feeding()%>"/>
                           <input type="hidden" name="StartTime" value="<%=schedule.getStart_Time()%>"/>
                           <input type="hidden" name="EndTime" value="<%=schedule.getEnd_Time()%>"/>
-          
-          
-                      <!-- photo -->
-                <div class="tooltip tooltip-right" data-tip="Click here to upload">
-                  <button type="submit" name="action" name="Update_Picture_To_Attendance" value="Update_Picture_To_Attendance"
-                    class="absolute bottom-0 right-0 flex items-center justify-center  w-6 h-6 mb-2 mr-2 text-white bg-gray-400 rounded group-hover:flex hover:bg-gray-500"
-                  >
-                    <svg
-                      class="w-5 h-5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      class="w-6 h-6 plus"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
-                        clip-rule="evenodd"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
+
                   </form>       
                   </div>
                   <%  }  %>
@@ -309,10 +269,10 @@
 
                   <h2 class="font-bold">More Note:</h2>
                   <p class="pl-5 mb-2">
-                    <span class="text-green-500">&#8226;</span> (<span class="text-green-500">Present</span>): You had attended this activity
+                    <span class="text-green-500">&#8226;</span> (<span class="text-green-500">Present</span>): They had attended this activity
                   </p>
                   <p class="pl-5 mb-2">
-                    <span class="text-red-500">&#8226;</span> (<span class="text-red-500">Absent</span>): You had NOT attended this activity
+                    <span class="text-red-500">&#8226;</span> (<span class="text-red-500">Absent</span>): They had NOT attended this activity
                   </p>
                   <p class="pl-5 mb-2">
                     <span class="text-black">&#8226;</span> (<span class="text-black">Not Yet</span>): No data was given
