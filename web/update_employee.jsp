@@ -1,4 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="java.util.List"%> <%@page import="sample.user.UserDTO"%> <%@page
+contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -159,85 +160,119 @@
   </style>
   <body>
     <div class="container">
-      <div class="title">Add Animal</div>
+      <div class="flex justify-between">
+        <div class="title">Update Account</div>
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            onclick="backButton"
+            class="cursor-pointer group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+            >
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-greeborder-green-400 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <script>
+          // Lấy phần tử "Back" bằng cách sử dụng querySelector
+          const backButton = document.querySelector(".back-button");
+
+          // Thêm sự kiện click vào nút "Back"
+          backButton.addEventListener("click", function (event) {
+            // Ngăn chặn hành vi mặc định của liên kết
+            event.preventDefault();
+
+            // Thực hiện hành động "back" trên trình duyệt
+            window.history.back();
+          });
+        </script>
+        <!-- end back -->
+      </div>
       <div class="content">
-        <form action="createanimal" method="POST" enctype="multipart/form-data">
+        <form action="updatemanager" method="POST">
+          <div style="display: flex; align-items: center; margin-top: 4px">
+            <h1 style="margin: 0">EDIT ACCOUNT</h1>
+          </div>
+
           <div class="user-details">
-            <input type="hidden" name="animalid" />
-            <div class="input-box mx-auto">
-              <span class="details">Animal Name</span>
+            <input
+              type="hidden"
+              name="userID"
+              id="userID"
+              value="${employee.employee_id}"
+              required=""
+            />
+            <div class="input-box">
+              <span class="details">Full Name</span>
               <input
                 type="text"
-                name="name"
+                name="FullName"
                 id="fullName"
-                required
-                placeholder="Enter animal name"
+                value="${employee.fullname}"
+                readonly
+              />
+            </div>
+
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input
+                type="email"
+                name="Email"
+                value="${employee.email}"
+                id="Email"
                 required
               />
             </div>
             <div class="input-box">
-              <span class="details">Select Cage_ID</span>
-              <select
-                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                name="animalcageid"
-              >
-                <c:forEach items="${cage}" var="c">
-                  <option>${c.animalcage_id}</option>
-                </c:forEach>
-              </select>
+              <span class="details">Password</span>
+              <input
+                type="text"
+                name="Password"
+                value="${employee.password}"
+                id="Email"
+                required
+              />
             </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input
+                type="tel"
+                name="Phone"
+                value="${employee.phone}"
+                id="Phone"
+                required
+                pattern="[0-9]{10}"
+                title="Số điện thoại phải có 10 chữ số"
+              />
+            </div>
+            <a href="error404.jsp"></a>
 
-            <!-- photo -->
-            <div class="w-full bg-white">
-              <div
-                class="container mx-auto h-full flex flex-col justify-center items-center"
+            <div class="input-box mx-auto">
+              <span class="details text-center font-bold uppercase text-2xl"
+                >Photo</span
               >
-                <div id="images-container"></div>
-                <div class="flex w-full justify-center">
-                  <div id="multi-upload-button">
-                    <button
-                      type="button"
-                      class="bg-white rounded-md px-12 py-4 text-xl border text-neutral-600 hover:text-white hover:shadow-[inset_16rem_0_0_0] hover:shadow-green-500 duration-[400ms,700ms] transition-[color,box-shadow]"
-                    >
-                      Upload Photo
-                    </button>
-                  </div>
-                  <div
-                    class="border-gray-300 rounded-r-md flex items-center justify-between"
-                  >
-                    <span id="multi-upload-text" class="p-2 text-xl"></span>
-                    <button
-                      id="multi-upload-delete"
-                      class="hidden"
-                      onclick="removeMultiUpload()"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="fill-current text-red-700 w-3 h-3"
-                        viewBox="0 0 320 512"
-                      >
-                        <path
-                          d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <input
-                  type="file"
-                  id="multi-upload-input"
-                  class="hidden"
-                  name="photo"
-                  multiple
-                />
-              </div>
+              <img src="${employee.photo}" class="mx-auto w-1/2 h-full" />
             </div>
-            <script src="js/createphoto.js"></script>
-            <!-- end photo -->
           </div>
 
           <div class="button">
-            <input type="submit" name="action" value="Submit" />
+            <input type="submit" value="Update_Acount" />
           </div>
         </form>
       </div>

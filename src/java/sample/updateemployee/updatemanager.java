@@ -1,25 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package sample.animal;
+package sample.updateemployee;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sample.user.UserDAO;
+import sample.user.UserDTO;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "AnimalController", urlPatterns = {"/animalcontroller"})
-public class AnimalController extends HttpServlet {
+@WebServlet(name = "updatemanager", urlPatterns = {"/updatemanager"})
+public class updatemanager extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +29,16 @@ public class AnimalController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AnimalDelete</title>");            
+            out.println("<title>Servlet updatemanager</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AnimalDelete at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet updatemanager at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +56,12 @@ public class AnimalController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String animalid = request.getParameter("animalID");
-                AnimalDAO d = new AnimalDAO();
-        List<AnimalDTO> list = d.getAllAimal();
-        request.setAttribute("animalfeedback", list);
-        //request.getRequestDispatcher("animal.jsp").forward(request, response);
-        request.getRequestDispatcher("animalfeedback.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+        UserDAO u = new UserDAO();
+        UserDTO ud = u.getEmployeeByID(loginUser.getEmployee_id());
+        request.setAttribute("employee", ud);
+        request.getRequestDispatcher("update_employee.jsp").forward(request, response);
     }
 
     /**
@@ -78,7 +75,14 @@ public class AnimalController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String employeeid = request.getParameter("userID");
+        String fullname = request.getParameter("FullName");
+        String email = request.getParameter("Email");
+        String password = request.getParameter("Password");
+        String phone = request.getParameter("Phone");
+        UserDAO u = new UserDAO();
+        u.updateemployee(employeeid, password, phone, email);
+        response.sendRedirect("managercontroller");
     }
 
     /**

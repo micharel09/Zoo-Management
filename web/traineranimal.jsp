@@ -30,7 +30,7 @@
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-   
+
     <style>
       .fixed-width {
         width: 32px;
@@ -49,7 +49,7 @@
   <body class="block overflow-x-hidden mx-auto">
     <!-- prettier-ignore -->
     <!-- sidebar-->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end sidebar -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
@@ -127,7 +127,6 @@
               </div>
             </form>
             <!-- end Search -->
-            
           </div>
           <!-- main -->
           <div
@@ -158,6 +157,11 @@
                         <div class="w-32">Name</div>
                       </th>
                       <th
+                        class="fixed-width px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        <div class="w-32">Cage</div>
+                      </th>
+                      <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 200px"
                       >
@@ -183,13 +187,19 @@
                     <tbody
                       class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
                     >
+                   
+                        
                       <tr id="lastRow">
-                        <td
-                          class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
-                        >
-                          #${animal.animal_id}
-                        </td>
-
+                       <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                          >
+                           
+                          <a
+                        class="cursor-pointer duration-300 hover:text-green-600"
+                        href="AniFeedback?animalID=${animal.animal_id}"
+                        >#${animal.animal_id}</a
+                      >  
+                      </td>
                         <td
                           class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                         >
@@ -199,6 +209,12 @@
                           class="text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           ${animal.name}
+                        </td>
+                        
+                         <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          ${animal.animalcage_id}
                         </td>
 
                         <td
@@ -222,7 +238,9 @@
                         >
                           <div class="flex justify-center items-center">
                             <!-- edit -->
-                            <a href="TrainerUpdateAnimal?animalID=${animal.animal_id}">
+                            <a
+                              href="TrainerUpdateAnimal?animalID=${animal.animal_id}"
+                            >
                               <button
                                 class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
@@ -242,7 +260,6 @@
                                 </svg>
                               </button>
                             </a>
-                            
                           </div>
                         </td>
                       </tr>
@@ -311,80 +328,80 @@
                     </tr>
                   </thead>
                   <c:forEach var="animal" items="${animals}" varStatus="loop">
-                      <c:choose>
+                    <c:choose>
                       <c:when test="${animal.status ne 'DEATH'}">
-                    <tbody
-                      class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
-                    >
-                      <tr id="lastRow">
-                        <td
-                          class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                        <tbody
+                          class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
                         >
-                          #${animal.animal_id}
-                        </td>
+                          <tr id="lastRow">
+                            <td
+                              class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
+                            >
+                              #${animal.animal_id}
+                            </td>
 
-                        <td
-                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                        >
-                          ${animal.status}
-                        </td>
-                        <td
-                          class="text-2xl px-6 border-b border-gray-200 border-r"
-                        >
-                          ${animal.name}
-                        </td>
+                            <td
+                              class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                            >
+                              ${animal.status}
+                            </td>
+                            <td
+                              class="text-2xl px-6 border-b border-gray-200 border-r"
+                            >
+                              ${animal.name}
+                            </td>
 
-                        <td
-                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                        >
-                          ${animal.dayin}
-                        </td>
+                            <td
+                              class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                            >
+                              ${animal.dayin}
+                            </td>
 
-                        <td
-                          class="text-2xl px-6 border-b border-gray-200 border-r"
-                          width="100"
-                        >
-                          <img
-                            src="./animal_picture/${animal.photo}"
-                            width="80"
-                            height="70"
-                          />
-                        </td>
-                        
-                        
-                        <td
-                          class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
-                        >
-                          <div class="flex justify-center items-center">
-                            <!-- edit -->
-                            <a href="TrainerUpdateAnimal?animalID=${animal.animal_id}">
-                              <button
-                                class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
-                              >
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  class="h-5 w-5"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  stroke-width="2"
+                            <td
+                              class="text-2xl px-6 border-b border-gray-200 border-r"
+                              width="100"
+                            >
+                              <img
+                                src="./animal_picture/${animal.photo}"
+                                width="80"
+                                height="70"
+                              />
+                            </td>
+
+                            <td
+                              class="py-2 text-sm font-medium leading-5 whitespace-no-wrap border-b border-gray-200"
+                            >
+                              <div class="flex justify-center items-center">
+                                <!-- edit -->
+                                <a
+                                  href="TrainerUpdateAnimal?animalID=${animal.animal_id}"
                                 >
-                                  <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                                  />
-                                </svg>
-                              </button>
-                            </a>
-                           
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                       </c:when>
+                                  <button
+                                    class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="h-5 w-5"
+                                      fill="none"
+                                      viewBox="0 0 24 24"
+                                      stroke="currentColor"
+                                      stroke-width="2"
+                                    >
+                                      <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                      />
+                                    </svg>
+                                  </button>
+                                </a>
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </c:when>
                     </c:choose>
-                  </c:forEach>          
+                  </c:forEach>
                 </table>
                 <c:set var="lastRowIndex" value="${fn:length(animals) - 1}" />
                 <script>
@@ -425,4 +442,3 @@
     </script>
   </body>
 </html>
-            
