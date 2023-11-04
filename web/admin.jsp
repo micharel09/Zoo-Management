@@ -70,7 +70,7 @@
         color: black;
       }
       .role-id:contains("ADMIN") {
-        background: rgb(255, 103, 103) (255, 0, 0);
+        background: rgb(255, 103, 103) ;(255, 0, 0);
         color: red;
       }
       .role-id:contains("MANAGER") {
