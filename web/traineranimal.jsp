@@ -157,6 +157,11 @@
                         <div class="w-32">Name</div>
                       </th>
                       <th
+                        class="fixed-width px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
+                      >
+                        <div class="w-32">Cage</div>
+                      </th>
+                      <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                         style="width: 200px"
                       >
@@ -182,13 +187,19 @@
                     <tbody
                       class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
                     >
+                   
+                        
                       <tr id="lastRow">
-                        <td
-                          class="pl-10 text-2xl px-6 border-b border-gray-200 border-r"
-                        >
-                          #${animal.animal_id}
-                        </td>
-
+                       <td
+                          class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
+                          >
+                           
+                          <a
+                        class="cursor-pointer duration-300 hover:text-green-600"
+                        href="AniFeedback?animalID=${animal.animal_id}"
+                        >#${animal.animal_id}</a
+                      >  
+                      </td>
                         <td
                           class="px-6 text-2xl leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
                         >
@@ -198,6 +209,12 @@
                           class="text-2xl px-6 border-b border-gray-200 border-r"
                         >
                           ${animal.name}
+                        </td>
+                        
+                         <td
+                          class="text-2xl px-6 border-b border-gray-200 border-r"
+                        >
+                          ${animal.animalcage_id}
                         </td>
 
                         <td
