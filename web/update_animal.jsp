@@ -208,9 +208,11 @@
             
             <div class="input-box ">
               <span class="details">Select Cage_ID</span>
+              
               <select
                   class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
                   name="animalcageid"
+                  value="${aa.animalcage_id}"
                   >
                   <c:forEach items="${cage}" var="c">
                       <option>${c.animalcage_id}</option>

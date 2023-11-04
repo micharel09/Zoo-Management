@@ -41,7 +41,7 @@
       <hr class="dark:border-gray-700/60" />
 
       <a
-        href="login.html"
+        href="updatetrainer"
         class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-400"
       >
         <!-- HeroIcon - Home Modern -->
