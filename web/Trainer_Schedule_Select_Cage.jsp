@@ -35,7 +35,7 @@ import="java.util.List"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
   </head>
   <body class="overflow-x-auto mx-auto">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
     <!-- component -->
     <div class="px-3 md:lg:xl:px-40 border-t py-20 bg-opacity-10">

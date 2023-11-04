@@ -89,9 +89,9 @@ import="java.util.List"%>
                 text-align: center;
               "
             >
-              B</span
+              🐍</span
             >
-            <p class="text-4xl text-slate-700 mt-3">Unknown</p>
+            <p class="text-4xl text-slate-700 mt-3">Reptilia</p>
             <input type="hidden" name="Search_Area" value="Area002" />
           </button>
         </form>

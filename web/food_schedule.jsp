@@ -38,7 +38,7 @@ Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
   <!-- end header -->
   <body class="block overflow-x-hidden mx-auto">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
