@@ -364,7 +364,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >
             <a href="#">
               <img
-                class="w-72 h-[300px] mx-auto rounded-lg mt-3"
+                class="w-72 h-[200px] mx-auto rounded-lg mt-3"
                 src="./news_picture/${n.photo}"
                 alt=""
               />
