@@ -87,14 +87,8 @@
 }
 
       </style>
-    </head>
-  <!-- prettier-ignore -->
-  <%@ include file="components/headermanager.jsp" %>
-  <!-- end header -->
+    </head> 
   <body class="overflow-x-auto mx-auto">
-    <!-- prettier-ignore -->
-    <%@ include file="components/sidebarmanager.jsp" %>
-    <!-- end sidebar -->
        <%
         String day = (String) session.getAttribute("DAY");
         String name_cage = (String) session.getAttribute("NAME_CAGE");

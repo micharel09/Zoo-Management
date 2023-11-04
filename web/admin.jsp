@@ -251,9 +251,9 @@
                                                     <!-- form -->
                                             <form action="MainController">
                                                 <td
-
                                                     >
-
+                                                    <div class="flex">
+                                                        <span class="p-2 rounded-2xl text-white bg-green-500">
                                                     <input
                                                         type="hidden"
                                                         name="userID"
@@ -301,9 +301,10 @@
                                                         name="Update"
                                                         value="Update"
                                                         />
-                                                </td>
-                                                <td>
-                                                    <a href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_id()%>">Delete</a>     
+                                                    </span>
+                                                    <div></div>
+                                                    <a class="ml-2 mt-2" href="MainController?search=<%= search%>&action=Delete&userID=<%= user.getEmployee_id()%>"><span class=" p-2 rounded-2xl text-white bg-red-500">Delete</span></a>     
+                                                    </div></div>
                                                 </td>
                                             </form>
                                             <!-- end form -->
