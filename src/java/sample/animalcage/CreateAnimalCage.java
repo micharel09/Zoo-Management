@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import sample.area.AreaDTO;
 import sample.user.UserDTO;
@@ -140,7 +141,17 @@ public class CreateAnimalCage extends HttpServlet {
          
         }
         a.createanimealcage(animalcageid, name, areaid, employeeid,filename);
-        response.sendRedirect("animalcagecontroller");
+       // Check if animalID is not null
+        if (areaid != null) {
+            // Build the redirect URL
+            String redirectURL = "areacontroller?areaid=" + areaid;
+
+            // Redirect back to the animalsearch page with the specific animalID
+            response.sendRedirect(redirectURL);
+        } else {
+            // Handle the case where the feedback creation fails
+            // You can redirect to an error page or take appropriate action.
+        }
     }
 
     /**

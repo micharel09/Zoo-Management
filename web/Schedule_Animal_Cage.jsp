@@ -5,7 +5,7 @@
 --%>
 
 <%@page import="sample.foodingschedule.ScheduleDTO"%>
-
+<script src="https://cdn-tailwindcss.vercel.app/"></script>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

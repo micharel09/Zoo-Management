@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     >
                                         <tr>
 
-                                            <td class="break-all pl-10 text-xl px-6 border-b border-gray-200 border-r">
+                                            <td class="break-all text-xs uppercase font-bold px-6 py-4  border-b border-gray-200 border-r">
                                                 ${f.title}
                                             </td>
                                             <td class="  break-words tpl-10 text-xl px-6 border-b border-gray-200 border-r">

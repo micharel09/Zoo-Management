@@ -28,11 +28,11 @@ import sample.animalcage.AnimalCageDTO;
  *
  * @author ADMIN
  */
-@WebServlet(name = "UpdateAnimal", urlPatterns = {"/updateanimal"})
+@WebServlet(name = "TrainerUpdateAnimal", urlPatterns = {"/TrainerUpdateAnimal"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
         maxFileSize = 1024 * 1024 * 10, // 10MB
         maxRequestSize = 1024 * 1024 * 50)
-public class UpdateAnimal extends HttpServlet {
+public class TrainerUpdateAnimal extends HttpServlet {
 
 
     private String extractFileName(Part part) {//This method will print the file name.
@@ -92,7 +92,7 @@ public class UpdateAnimal extends HttpServlet {
         request.setAttribute("aa", a);
         List<AnimalCageDTO> list = d.getAllAnimalCage();
         request.setAttribute("cage", list);
-        request.getRequestDispatcher("update_animal.jsp").forward(request, response);
+        request.getRequestDispatcher("trainerupdateanimal.jsp").forward(request, response);
     }
 
     /**
@@ -150,20 +150,11 @@ public class UpdateAnimal extends HttpServlet {
         }
         AnimalDAO d = new AnimalDAO();
 
-        d.updateanimal(animalid, name, dayin, filename, animalcageid,status);
+        d.updateanimal(animalid, name, dayin, filename, animalcageid ,status);
 
-        // Check if animalID is not null
-        if (animalcageid != null) {
-            // Build the redirect URL
-            String redirectURL = "animalsearch?animalID=" + animalcageid;
-
-            // Redirect back to the animalsearch page with the specific animalID
-            response.sendRedirect(redirectURL);
-        } else {
-            // Handle the case where the feedback creation fails
-            // You can redirect to an error page or take appropriate action.
-        }
-
+       
+            response.sendRedirect("TrainnerAnimalControl");
+       
 
     }
 

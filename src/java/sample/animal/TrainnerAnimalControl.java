@@ -13,13 +13,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import sample.animalcage.AnimalCageDTO;
+import sample.user.UserDTO;
 
 /**
  *
- * @author ADMIN
+ * @author khong phai Minh Tuan
  */
-@WebServlet(name = "AnimalController", urlPatterns = {"/animalcontroller"})
-public class AnimalController extends HttpServlet {
+@WebServlet(name = "TrainnerAnimalControl", urlPatterns = {"/TrainnerAnimalControl"})
+public class TrainnerAnimalControl extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +35,16 @@ public class AnimalController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AnimalDelete</title>");            
+            out.println("<title>Servlet TrainnerAnimalControl</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AnimalDelete at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet TrainnerAnimalControl at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,12 +62,13 @@ public class AnimalController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String animalid = request.getParameter("animalID");
-                AnimalDAO d = new AnimalDAO();
-        List<AnimalDTO> list = d.getAllAimal();
+        HttpSession session = request.getSession();
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        AnimalDAO d = new AnimalDAO();
+        List<AnimalDTO> list = d.getAnimalByEmpID(loginUser.getEmployee_id());
         request.setAttribute("animallist", list);
-        //request.getRequestDispatcher("animal.jsp").forward(request, response);
-        request.getRequestDispatcher("createfeedback.jsp").forward(request, response);
+        request.getRequestDispatcher("traineranimal.jsp").forward(request, response);
+        
     }
 
     /**

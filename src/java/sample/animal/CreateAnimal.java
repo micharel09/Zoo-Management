@@ -150,7 +150,17 @@ public class CreateAnimal extends HttpServlet {
         String animalid = d.getNewIdAnimalID();
         response.getWriter().write("Image saved successfully!");
         d.createanimal(animalid, name, dayin, filename, animalcageid);
-        response.sendRedirect("animalcontroller");
+// Check if animalID is not null
+        if (animalcageid != null) {
+            // Build the redirect URL
+            String redirectURL = "animalsearch?animalID=" + animalcageid;
+
+            // Redirect back to the animalsearch page with the specific animalID
+            response.sendRedirect(redirectURL);
+        } else {
+            // Handle the case where the feedback creation fails
+            // You can redirect to an error page or take appropriate action.
+        }
     }
 
     /**

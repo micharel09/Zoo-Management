@@ -7,13 +7,17 @@ package sample.feedback;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import sample.animal.AnimalDTO;
+import sample.user.UserDTO;
 
 /**
  *
@@ -64,7 +68,12 @@ public class CreateFeedback extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        FeedbackDAO dao = new FeedbackDAO();
+              HttpSession session = request.getSession();
+        UserDTO loginUser= (UserDTO) session.getAttribute("LOGIN_USER");
+        List<AnimalDTO> list_animal_name= dao.getListAnimal_Name(loginUser.getEmployee_id());
+        request.setAttribute("listanimal", list_animal_name);
+        request.getRequestDispatcher("createfeedback.jsp").forward(request, response);
     }
 
     /**
@@ -84,10 +93,12 @@ public class CreateFeedback extends HttpServlet {
         String date = request.getParameter("date");
         String processnote = request.getParameter("processnote");
         String employeeid = request.getParameter("employeeid");
-
+        String animal_id = request.getParameter("animal_id");
+        
+    
 
         FeedbackDAO dao = new FeedbackDAO();
-        dao.createfeedback( title, purpose, date, processnote, employeeid);
+        dao.createfeedback( title, purpose, date, processnote, employeeid,animal_id);
         response.sendRedirect("ListTrainerFeedback");
 
     }

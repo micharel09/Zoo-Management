@@ -58,6 +58,11 @@ public class AnimalReportDTO {
     public void setAnimal_id(String animal_id) {
         this.animal_id = animal_id;
     }
+
+    @Override
+    public String toString() {
+        return "AnimalReportDTO{" + "report_id=" + report_id + ", date=" + date + ", note=" + note + ", animal_id=" + animal_id + '}';
+    }
     
     
 }

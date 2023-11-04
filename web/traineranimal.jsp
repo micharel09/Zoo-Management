@@ -30,41 +30,7 @@
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <!-- loading -->
-    <!-- <iframe
-      id="loading-iframe"
-      src="components/loading.html"
-      frameborder="0"
-      style="
-        border: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background: transparent; /* Make the iframe background transparent */
-        pointer-events: none; /* Allow interaction with elements behind the iframe */
-        transition: opacity 1s;
-      "
-    ></iframe>
-
-    <script>
-      window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
-    </script>
-    <style>
-      .hidden-iframe {
-        opacity: 0;
-      }
-    </style> -->
-    <!-- end loading -->
+   
     <style>
       .fixed-width {
         width: 32px;
@@ -77,13 +43,13 @@
     <title>Animal List</title>
     <!-- prettier-ignore -->
     <!-- header -->
-    <%@ include file="components/headermanager.jsp" %>
+    <%@ include file="components/headertrainer.jsp" %>
     <!-- end header -->
   </head>
   <body class="block overflow-x-hidden mx-auto">
     <!-- prettier-ignore -->
     <!-- sidebar-->
-    <%@ include file="components/sidebarmanager.jsp" %>
+    <%@ include file="components/sidebartrainer.html" %>
     <!-- end sidebar -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="container mx-auto px-4 sm:px-8">
@@ -161,30 +127,7 @@
               </div>
             </form>
             <!-- end Search -->
-            <!-- Create  -->
-            <form class="ml-auto" action="createanimal" method="get">
-              <button
-                type="submit"
-                class="flex animate-bounce items-center px-12 py-3 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-100hover:transform hover:scale-105"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-5 h-5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <span class="ml-1 text-2xl">Add</span>
-              </button>
-            </form>
-            <!-- end Create -->
+            
           </div>
           <!-- main -->
           <div
@@ -207,7 +150,7 @@
                       <th
                         class="px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
                       >
-                        AnimalCage_ID
+                        Status
                       </th>
                       <th
                         class="fixed-width px-6 py-3 border-b border-r text-2xl border-gray-300 text-left leading-4 tracking-wider"
@@ -279,7 +222,7 @@
                         >
                           <div class="flex justify-center items-center">
                             <!-- edit -->
-                            <a href="updateanimal?animalID=${animal.animal_id}">
+                            <a href="TrainerUpdateAnimal?animalID=${animal.animal_id}">
                               <button
                                 class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
@@ -299,31 +242,7 @@
                                 </svg>
                               </button>
                             </a>
-                            <!-- delete -->
-                            <div class="pl-2">
-                              <a
-                                href="animaldelete?animalID=${animal.animal_id}"
-                                class=""
-                                onclick="return confirmDelete();"
-                                onclick="saveScrollPosition(); return confirmDelete();"
-                              >
-                                <button
-                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
-                                >
-                                  <i
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    class="h-4 w-4 fas fa-trash-alt"
-                                  ></i>
-                                </button>
-                              </a>
-                            </div>
-
-                            <script src="js/possitionload.js"></script>
-
-                            <!-- end delete -->
+                            
                           </div>
                         </td>
                       </tr>
@@ -393,7 +312,7 @@
                   </thead>
                   <c:forEach var="animal" items="${animals}" varStatus="loop">
                       <c:choose>
-    <c:when test="${animal.status ne 'DEATH'}">
+                      <c:when test="${animal.status ne 'DEATH'}">
                     <tbody
                       class="cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 border-gray-100"
                     >
@@ -438,7 +357,7 @@
                         >
                           <div class="flex justify-center items-center">
                             <!-- edit -->
-                            <a href="updateanimal?animalID=${animal.animal_id}">
+                            <a href="TrainerUpdateAnimal?animalID=${animal.animal_id}">
                               <button
                                 class="flex p-2.5 bg-green-500 rounded-xl hover:rounded-3xl hover:bg-green-200 transition-all duration-300 text-white"
                               >
@@ -458,37 +377,14 @@
                                 </svg>
                               </button>
                             </a>
-                            <!-- delete -->
-<!--                            <div class="pl-2">
-                              <a
-                                href="animaldelete?animalID=${animal.animal_id}"
-                                class=""
-                                onclick="return confirmDelete();"
-                                onclick="saveScrollPosition(); return confirmDelete();"
-                              >
-                                <button
-                                  class="flex p-2.5 bg-red-500 rounded-xl hover:rounded-3xl hover:bg-red-200 transition-all duration-300 text-white"
-                                >
-                                  <i
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    class="h-4 w-4 fas fa-trash-alt"
-                                  ></i></button
-                              ></a>
-                            </div>
-
-                            <script src="js/possitionload.js"></script>-->
-
-                            <!-- end delete -->
+                           
                           </div>
                         </td>
                       </tr>
                     </tbody>
                        </c:when>
                     </c:choose>
-                  </c:forEach>
+                  </c:forEach>          
                 </table>
                 <c:set var="lastRowIndex" value="${fn:length(animals) - 1}" />
                 <script>
@@ -529,3 +425,4 @@
     </script>
   </body>
 </html>
+            

@@ -34,7 +34,7 @@ public class FeedbackDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement("SELECT FeedBack_ID, Title, Purpose, Date, ProcessNote, Employee_ID, Status FROM FeedBack ORDER BY FeedBack_ID DESC");
+                ptm = conn.prepareStatement("SELECT FeedBack_ID, Title, Purpose, Date, ProcessNote, Employee_ID, Status, Animal_ID FROM FeedBack ORDER BY FeedBack_ID DESC");
                 rs = ptm.executeQuery();
 
                 while (rs.next()) {
@@ -45,8 +45,9 @@ public class FeedbackDAO {
                     String processnote = rs.getString("ProcessNote");
                     String employee_id = rs.getString("Employee_ID");
                     String status = rs.getString("Status");
+                    String animal_id = rs.getString("animal_id");
 
-                    listFeedBack.add(new FeedbackDTO(news_id, title, purpose, date, processnote, employee_id, status));
+                    listFeedBack.add(new FeedbackDTO(news_id, title, purpose, date, processnote, employee_id, status,animal_id));
                 }
             }
         } catch (Exception e) {
@@ -72,7 +73,8 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)));
+                        rs.getString(7),
+                        rs.getString(8)));
             }
         } catch (Exception e) {
         }
@@ -96,7 +98,7 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)));
+                        rs.getString(7),rs.getString(8)));
             }
         } catch (Exception e) {
         }
@@ -104,11 +106,11 @@ public class FeedbackDAO {
         return list;
     }
 
-    public void createfeedback(String title, String purpose, String date, String processnote, String employee_id) {
+    public void createfeedback(String title, String purpose, String date, String processnote, String employee_id, String animal_id) {
         LocalDate curDate = LocalDate.now();
         date = curDate.toString();
-        String sql = " insert into FeedBack(Title,Purpose,Date,ProcessNote,Employee_ID)\n"
-                + " values(?,?,?,?,?)";
+        String sql = " insert into FeedBack(Title,Purpose,Date,ProcessNote,Employee_ID,Animal_ID)\n"
+                + " values(?,?,?,?,?,?)";
         try {
             conn = DBUtils.getConnection();
             ptm = conn.prepareStatement(sql);
@@ -117,7 +119,7 @@ public class FeedbackDAO {
             ptm.setString(3, date);
             ptm.setString(4, processnote);
             ptm.setString(5, employee_id);
-
+            ptm.setString(6, animal_id);
             ptm.executeUpdate();
 
         } catch (Exception e) {
@@ -139,7 +141,8 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7));
+                        rs.getString(7),
+                        rs.getString(8));
             }
         } catch (Exception e) {
         }
@@ -194,7 +197,7 @@ public class FeedbackDAO {
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement("SELECT FeedBack_ID, Title, Purpose, Date, ProcessNote, Employee_ID, Status FROM FeedBack where Employee_ID=?  ORDER BY FeedBack_ID DESC");
+                ptm = conn.prepareStatement("SELECT FeedBack_ID, Title, Purpose, Date, ProcessNote, Employee_ID, Status, Animal_ID FROM FeedBack where Employee_ID=?  ORDER BY FeedBack_ID DESC");
                 ptm.setString(1, emp_ID);
                 rs = ptm.executeQuery();
 
@@ -206,8 +209,8 @@ public class FeedbackDAO {
                     String processnote = rs.getString("ProcessNote");
                     String employee_id = rs.getString("Employee_ID");
                     String status = rs.getString("Status");
-
-                    listFeedBack.add(new FeedbackDTO(news_id, title, purpose, date, processnote, employee_id, status));
+                    String animal_id = rs.getString("animal_id");
+                    listFeedBack.add(new FeedbackDTO(news_id, title, purpose, date, processnote, employee_id, status,animal_id));
                 }
             }
         } catch (Exception e) {
@@ -263,7 +266,8 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)));
+                        rs.getString(7),
+                        rs.getString(8)));
             }
         } catch (Exception e) {
 
@@ -291,7 +295,8 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)));
+                        rs.getString(7),
+                        rs.getString(8)));
             }
         } catch (Exception e) {
 
@@ -316,7 +321,8 @@ public class FeedbackDAO {
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
-                        rs.getString(7)));
+                        rs.getString(7),
+                        rs.getString(8)));
             }
         } catch (Exception e) {
 
@@ -326,11 +332,74 @@ public class FeedbackDAO {
 
     public static void main(String[] args) throws SQLException {
         FeedbackDAO a = new FeedbackDAO();
-        String status = "E003";
-        int index = 0;
-        List<FeedbackDTO> list = a.getPagingTrainer(status,index);
-        for (FeedbackDTO o : list) {
+//        String status = "E004";
+//        int index = 0;
+        String empid = "E004";
+        List<AnimalDTO> list = a.getListAnimal_Name(empid);    //getPagingTrainer(status,index);
+        for (AnimalDTO o : list) {
             System.out.println(o);
         }
     }
+
+    List<String> getListAnimal_ID(String emp_id) throws SQLException {
+        List<String> list_ID = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement("SELECT a.Animal_ID\n" +
+"FROM Animal a\n" +
+"join AnimalCage ac on  a.AnimalCage_ID = ac.AnimalCage_ID\n" +
+"WHERE [Employee_ID] = ? ");
+                ptm.setString(1, emp_id);
+               
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String ID = rs.getString("FullName");
+                   
+                  
+                    list_ID.add(new String(ID));
+                   
+
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return list_ID;   
+    }
+    public List<AnimalDTO> getListAnimal_Name(String empid){
+       List<AnimalDTO> list = new ArrayList<>();
+        String sql = "SELECT a.Animal_ID\n" +
+"FROM Animal a\n" +
+"join AnimalCage ac on  a.AnimalCage_ID = ac.AnimalCage_ID\n" +
+"WHERE [Employee_ID] = ? AND a.status <> 'DEATH'";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, empid);
+            
+            rs = ptm.executeQuery();
+            while (rs.next()) {
+                list.add(new AnimalDTO(rs.getString(1)));
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
+    }
+    
+        
 }
