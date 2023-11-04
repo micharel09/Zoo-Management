@@ -90,7 +90,7 @@
   <!-- end header -->
   <body class="overflow-y-hidden ">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
 
     <% String day = (String) session.getAttribute("DAY"); String name_cage =

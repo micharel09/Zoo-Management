@@ -30,8 +30,8 @@ multiUploadInput.addEventListener("change", function (event) {
         // Tạo hình ảnh mới và thêm vào container
         const newImage = new Image();
         newImage.src = reader.result;
-        newImage.width = currentPhoto ? currentPhoto.width : 800; // Sử dụng kích thước của current-photo hoặc thiết lập một kích thước mặc định
-        newImage.height = currentPhoto ? currentPhoto.height : 500; // Sử dụng kích thước của current-photo hoặc thiết lập một kích thước mặc định
+        newImage.width = currentPhoto ? currentPhoto.width : 400; // Sử dụng kích thước của current-photo hoặc thiết lập một kích thước mặc định
+        newImage.height = currentPhoto ? currentPhoto.height : 200; // Sử dụng kích thước của current-photo hoặc thiết lập một kích thước mặc định
         newImage.classList.add("rounded", "mb-2");
         newImage.id = "current-photo";
         imagesContainer.appendChild(newImage);

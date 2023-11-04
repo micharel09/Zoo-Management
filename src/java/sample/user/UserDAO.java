@@ -20,29 +20,30 @@ import sample.utils.DBUtils;
  * @author HoangNQ
  */
 public class UserDAO {
+
     private static final String LOGIN = "SELECT Fullname,Phone,Email,Gender,Photo,RoleID FROM Employee"
             + " WHERE Employee_ID = ? AND Password= ? ";
     private static final String UPDATE0 = "SELECT Fullname,Phone,Email,Gender,Photo,RoleID FROM Employee"
             + " WHERE Employee_ID = ?  ";
-    
+
     // user = new  UserDTO(Employee_ID, String Password, String Fullname, String Phone, String Email, String Gender, String Dependent, String RoleID);
     private static final String SEARCH = "SELECT Employee_ID, FullName, Phone,Email,Gender,Photo, roleID FROM Employee"
             + " WHERE Employee_ID like ? ";
-    
-     private static final String GET_ORDER_ID = "SELECT OrderID FROM orders"
+
+    private static final String GET_ORDER_ID = "SELECT OrderID FROM orders"
             + " WHERE userID = ? AND order_date= ? ";
-     
+
     private static final String GET_DESC_EMPLOYEE_ID = " SELECT TOP 1 Employee_ID\n"
             + "FROM Employee\n"
             + "ORDER BY [Employee_ID] DESC; ";
-   private static final String DELETE = "DELETE Employee WHERE Employee_ID = ? ";
+    private static final String DELETE = "DELETE Employee WHERE Employee_ID = ? ";
     //private static final String DELETE = "DELETE FROM [SWP3].[dbo].[Employee] WHERE Employee_ID = ?";
 
-     private static final String UPDATE = "UPDATE Employee SET "
+    private static final String UPDATE = "UPDATE Employee SET "
             + "FullName=?,Phone=?,Email=? ,Gender=? ,Photo=? ,"
             + "roleID=? WHERE Employee_ID= ?";
     private static final String CHECK_DUPLICATE = "SELECT roleID FROM tblUsers WHERE userID = ?";
-     // UserDTO user = new UserDTO( employeeID,  password,  fullName, Phone, Email,  Gender,  Dependent,  roleID);
+    // UserDTO user = new UserDTO( employeeID,  password,  fullName, Phone, Email,  Gender,  Dependent,  roleID);
     private static final String INSERT = "INSERT INTO Employee (Employee_ID, Password,Fullname,Phone,Email,Gender,Photo,RoleID ) VALUES (?,?,?,?,?,?,?,?) ";
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO orderdeatil (productID,orderdeatilID,OrderID,Price,Quantity) VALUES (?,?,?,?,?) ";
     private static final String GET_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
@@ -52,22 +53,21 @@ public class UserDAO {
             + "INNER JOIN [SWP4].[dbo].[FeedingTimes] AS F ON S.ID_Part_Time = F.ID_Time\n"
             + "WHERE CONVERT(DATETIME, CONVERT(VARCHAR, S.Day_Feeding, 102) + ' ' + CONVERT(VARCHAR, F.End_Time, 108), 102) < GETDATE()\n"
             + "AND S.Note = 'Not_Yet'";
-    
-    
+
     public int getQuantity(String id) throws SQLException {
-        int quantity =0;
+        int quantity = 0;
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
-         try {
+        try {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_QUANTITY);
                 ptm.setString(1, id);
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    quantity= Integer.parseInt(rs.getString("quantity"));
-                   
+                    quantity = Integer.parseInt(rs.getString("quantity"));
+
                 }
             }
         } catch (Exception e) {
@@ -84,10 +84,10 @@ public class UserDAO {
             }
         }
         return quantity;
-        
+
     }
 
-      public UserDTO checkLogin(String Employee_ID, String Password) throws SQLException {
+    public UserDTO checkLogin(String Employee_ID, String Password) throws SQLException {
         UserDTO user = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -106,8 +106,8 @@ public class UserDAO {
                     String Gender = rs.getString("Gender");
                     String Photo = rs.getString("Photo");
                     String RoleID = rs.getString("RoleID");
-                  
-                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Photo,RoleID);
+
+                    user = new UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender, Photo, RoleID);
 
                 }
             }
@@ -127,26 +127,24 @@ public class UserDAO {
         return user;
     }
 
-
-
-   public boolean delete(String userID) throws SQLException {
+    public boolean delete(String userID) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
-        
+
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                    ptm = conn.prepareStatement(DELETE);
+                ptm = conn.prepareStatement(DELETE);
                 ptm.setString(1, userID);
-                check = ptm.executeUpdate()>0?true:false;
-                
+                check = ptm.executeUpdate() > 0 ? true : false;
+
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            
+
             if (ptm != null) {
                 ptm.close();
             }
@@ -158,46 +156,45 @@ public class UserDAO {
         return check;
     }
 
-   public boolean update(UserDTO user) throws SQLException {
-       boolean checkUpdate = false;
+    public boolean update(UserDTO user) throws SQLException {
+        boolean checkUpdate = false;
         Connection conn = null;
         PreparedStatement ptm = null;
-        
+
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(UPDATE);
-               
-               
+
                 ptm.setString(1, user.getFullname());
                 ptm.setString(2, user.getPhone());
-                 ptm.setString(3, user.getEmail());
-                  ptm.setString(4, user.getGender());
-                   ptm.setString(5, user.getPhoto());
-                    ptm.setString(6, user.getRoleID());
-                 ptm.setString(7, user.getEmployee_id());
-                
-                 
-              
-try {
-    checkUpdate = ptm.executeUpdate() > 0;
-} catch (SQLException e) {
-    e.printStackTrace(); // In ra lỗi
-    // Hoặc có thể sử dụng Logger để ghi log lỗi
-}
-               // checkUpdate = ptm.executeUpdate() > 0? true: false;
+                ptm.setString(3, user.getEmail());
+                ptm.setString(4, user.getGender());
+                ptm.setString(5, user.getPhoto());
+                ptm.setString(6, user.getRoleID());
+                ptm.setString(7, user.getEmployee_id());
+
+                try {
+                    checkUpdate = ptm.executeUpdate() > 0;
+                } catch (SQLException e) {
+                    e.printStackTrace(); // In ra lỗi
+                    // Hoặc có thể sử dụng Logger để ghi log lỗi
+                }
+                // checkUpdate = ptm.executeUpdate() > 0? true: false;
             }
-           
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (ptm != null) ptm.close();
-            if (conn != null) conn.close();
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
         return checkUpdate;
     }
-
-
 
     public boolean insertv2(UserDTO user) throws ClassNotFoundException, SQLException {
         boolean check = false;
@@ -217,13 +214,11 @@ try {
                 ptm.setString(6, user.getGender());
                 ptm.setString(7, user.getPhoto());
                 ptm.setString(8, user.getRoleID());
-               
-                
-                 
+
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
 
-        }finally {
+        } finally {
 
             if (ptm != null) {
                 ptm.close();
@@ -237,7 +232,7 @@ try {
     }
 
     public List<UserDTO> getListEmployee(String search) throws SQLException {
-         List<UserDTO> listEmployee = new ArrayList<>();
+        List<UserDTO> listEmployee = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
@@ -255,11 +250,10 @@ try {
                     String Gender = rs.getString("Gender");
                     String Photo = rs.getString("Photo");
                     String RoleID = rs.getString("RoleID");
-                     String password = "*****";
-                   // user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
-                    listEmployee.add(new UserDTO( Employee_ID, password ,  Fullname,  Phone,  Email,  Gender,  Photo,  RoleID));
-                    
-                    
+                    String password = "*****";
+                    // user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
+                    listEmployee.add(new UserDTO(Employee_ID, password, Fullname, Phone, Email, Gender, Photo, RoleID));
+
 //                     String userID = rs.getString("userID");
 //                    String fullname = rs.getString("fullName");
 //                    String roleID = rs.getString("roleID");
@@ -286,21 +280,21 @@ try {
     }
 
     public String getNewID() throws SQLException {
-         String NewID = null;
-         String newUserID = null;
+        String NewID = null;
+        String newUserID = null;
         Connection conn = null;
         PreparedStatement ptm = null;
 
-       ResultSet rs = null;
-         try {
+        ResultSet rs = null;
+        try {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_DESC_EMPLOYEE_ID);
-               
+
                 rs = ptm.executeQuery();
                 if (rs.next()) {
-                    NewID= rs.getString("Employee_ID");
-                   
+                    NewID = rs.getString("Employee_ID");
+
                 }
                 // Tách phần số từ chuỗi
                 String prefix = NewID.substring(0, 1); // "Emp"
@@ -326,8 +320,7 @@ try {
             }
         }
         return newUserID;
-        
-       
+
     }
 
     public UserDTO getEmployee(String Employee_ID) throws SQLException {
@@ -340,7 +333,7 @@ try {
             if (conn != null) {
                 ptm = conn.prepareStatement(UPDATE0);
                 ptm.setString(1, Employee_ID);
-               
+
                 rs = ptm.executeQuery();
                 if (rs.next()) {
                     String Fullname = rs.getString("FullName");
@@ -349,8 +342,8 @@ try {
                     String Gender = rs.getString("Gender");
                     String Photo = rs.getString("photo");
                     String RoleID = rs.getString("RoleID");
-                  
-                    user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Photo,RoleID);
+
+                    user = new UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender, Photo, RoleID);
 
                 }
             }
@@ -395,11 +388,46 @@ try {
 
     }
 
+    public UserDTO getEmployeeByID(String empid) {
+        String sql = "SELECT * FROM Employee"
+                + " WHERE Employee_ID like ?";
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+             ptm = conn.prepareStatement(sql);
+             ptm.setString(1, empid);
+             rs = ptm.executeQuery();
+             if(rs.next()){
+                 return (new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),rs.getString(7) , rs.getString(8)));
+             }
+        } catch (Exception e) {
+        }
+
+        return null;
+    }
     
-
-   
- 
-
-   
+    public void updateemployee(String employeeid, String password, String phone, String email){
+        String sql = "	update Employee set Password =?, Phone= ?, Email= ? where Employee_ID = ?";
+         Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1,password);
+            ptm.setString(2,phone);
+            ptm.setString(3,email);
+            ptm.setString(4,employeeid);
+            ptm.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+    public static void main(String[] args) {
+        UserDAO u = new UserDAO();
+        String empid = "E003";
+        UserDTO ud= u.getEmployeeByID(empid);
+        System.out.println(ud);
+    }
 }
-    

@@ -33,7 +33,7 @@ Author : ACER --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
   </head>
   <body class="overflow-y-hidden bg-green-500">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
     <!-- Component Start -->
     <div

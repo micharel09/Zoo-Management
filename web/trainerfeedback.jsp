@@ -48,7 +48,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   <body class="w-screen overflow-x-hidden mx-auto">
     <!-- side bar -->
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebartrainer.html" %>
+    <%@ include file="components/sidebartrainer.jsp" %>
 
     <!-- end side bar -->
     <!-- component -->

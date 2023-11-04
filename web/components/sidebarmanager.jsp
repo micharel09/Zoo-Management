@@ -1,5 +1,6 @@
 <%-- Document : sidebarmanager.jsp Created on : Oct 19, 2023, 9:29:37 PM Author
-: Quan --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+: Quan --%> <%@page import="sample.user.UserDTO"%> <%@page
+contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +17,8 @@
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100"
       >
         <!-- HeroIcon - User -->
-        <i class="fa-regular fa-folder-open text-3xl"></i>
+        <i class="fa-regular fa-folder-open text-2xl"></i>
+
         <small class="text-center text-xs font-medium"> Area </small>
       </a>
 
@@ -34,7 +36,8 @@
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100"
       >
         <!-- HeroIcon - Cog-6-tooth -->
-        <i class="fa-regular fa-newspaper text-3xl"></i>
+        <i class="fa-regular fa-newspaper text-2xl"></i>
+
         <small class="text-center text-xs font-medium"> News</small>
       </a>
 
@@ -43,14 +46,15 @@
         class="flex aspect-square min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 text-gray-700 hover:bg-gray-100"
       >
         <!-- HeroIcon - Cog-6-tooth -->
-        <i class="fa-solid fa-calendar-days text-3xl"></i>
+        <i class="fa-solid fa-calendar-days text-2xl"></i>
+
         <small class="text-center text-xs font-medium"> Schedule</small>
       </a>
 
       <hr class="dark:border-gray-700/60" />
 
       <a
-        href="login.html"
+        href="updatemanager"
         class="flex h-16 w-16 flex-col items-center justify-center gap-1 text-fuchsia-900 dark:text-gray-500"
       >
         <!-- HeroIcon - Home Modern -->
