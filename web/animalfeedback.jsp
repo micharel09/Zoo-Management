@@ -54,7 +54,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- component -->
     <main class="antialiased font-sans bg-white h-screen">
       <div class="flex justify-center pb-2 pt-5 border-b boredr-gray-300">
-        <h3 class="text-5xl font-medium text-gray-700">Feedback Information</h3>
+        <h3 class="text-5xl font-medium text-gray-700">Animal Report</h3>
       </div>
       <div class="container mx-auto px-4 sm:px-8">
         <div class="py-8 ml-28">
@@ -63,35 +63,16 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             <form action="ListTrainerFeedback" method="post">
               <div class="flex">
                 <div class="relative">
-                  <select
-                    class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block appearance-none w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
-                    name="status"
-                  >
-                    <option value="All">All</option>
-                    <option value="PROCESSING">Processing</option>
-                    <option value="APPROVED">Approved</option>
-                    <option value="REJECTED">Rejected</option>
-                  </select>
+                  
                 </div>
 
                 <div class="block relative">
                   <span
                     class="h-full absolute inset-y-0 left-0 flex items-center pl-2"
                   >
-                    <svg
-                      viewBox="0 0 24 24"
-                      class="h-4 w-4 fill-current text-gray-500"
-                    >
-                      <path
-                        d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"
-                      ></path>
-                    </svg>
+                    
                   </span>
-                  <input
-                    type="submit"
-                    value="Search"
-                    class="appearance-none rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
-                  />
+                 
                 </div>
               </div>
             </form>
@@ -124,30 +105,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   });
               });
             </script>
-            <!-- create -->
-            <div class="ml-auto">
-              <a
-                href="CreateFeedback"
-                class="flex animate-bounce items-center px-12 py-2.5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-green-400 focus:outline-none focus:bg-green-100hover:transform hover:scale-105"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-5 h-5"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-                <span class="ml-1 text-2xl">Create</span>
-              </a>
-            </div>
-            <!-- end create -->
+            
           </div>
 
           <div
@@ -178,20 +136,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                   >
                     Date
                   </th>
-                  <th
-                    class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
-                  >
-                    ProcessNote
-                  </th>
+                 
 
-                  <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                  >
-                    Status
-                  </th>
+                  
                 </tr>
               </thead>
-              <c:forEach var="f" items="${ListA}">
+              <c:forEach var="f" items="${anifeedback}">
                 <tbody
                   class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
                 >
@@ -216,15 +166,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                     >
                       ${f.date}
                     </td>
-                    <td
-                      class="break-all text-xs px-6 py-4 border-b border-gray-200 border-r"
-                    >
-                      ${f.processnote}
-                    </td>
-                    <td
-                      class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r"
-                    >
-                      <span class="role-id"> ${f.status}</span>
+                    
                     </td>
                   </tr>
                 </tbody>

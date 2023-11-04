@@ -334,11 +334,30 @@ public class FeedbackDAO {
         FeedbackDAO a = new FeedbackDAO();
 //        String status = "E004";
 //        int index = 0;
-        String empid = "E004";
-        List<AnimalDTO> list = a.getListAnimal_Name(empid);    //getPagingTrainer(status,index);
-        for (AnimalDTO o : list) {
+        String animal_id = "Ani001";  
+        List<FeedbackDTO> list = a.getListAnimalIDFeedback(animal_id);    //getPagingTrainer(status,index);
+        for (FeedbackDTO o : list) {
             System.out.println(o);
         }
+    }
+    
+    public List<FeedbackDTO> getListAnimalIDFeedback(String animal_id){
+       List<FeedbackDTO> list = new ArrayList<>();
+        String sql = "  select * from FeedBack\n" +
+                     "  where Animal_ID = ? ";
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, animal_id);
+            
+            rs = ptm.executeQuery();
+            while (rs.next()) {
+                list.add(new FeedbackDTO(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8)));
+            }
+        } catch (Exception e) {
+
+        }
+        return list;
     }
 
     List<String> getListAnimal_ID(String emp_id) throws SQLException {

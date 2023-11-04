@@ -89,11 +89,11 @@
       </style>
     </head>
   <!-- prettier-ignore -->
-  <%@ include file="components/headermanager.jsp" %>
+
   <!-- end header -->
   <body class="overflow-x-auto mx-auto">
     <!-- prettier-ignore -->
-    <%@ include file="components/sidebarmanager.jsp" %>
+
     <!-- end sidebar -->
        <%
         String day = (String) session.getAttribute("DAY");
@@ -177,8 +177,8 @@
                   for (i = 0; i < 7; i++) {
                   ScheduleDTO schedule = listSchedule.get(i);
                   %>
-                  <div class="relative flex flex-col bg-white group flex-grow">
-                    <div class="flex flex-col px-1 py-1 overflow-auto">
+                  <div class="bg-white group">
+                    <div class="flexpx-1 py-1 overflow-auto">
                       <span class=" text-lg font-bold">Morning (<%=schedule.getDay_Feeding()%>)</span>
   
                       <span class="ml-2 text-xl leading-none truncate mb-2">Food: <%=schedule.getName_Food()%></span>
