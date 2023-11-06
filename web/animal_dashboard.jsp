@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+       <form action="view_animal_dashboard" method="post">
         from
         <input
 
@@ -31,7 +32,9 @@
             placeholder="MM/YY"
             />
 
-        <a href="view_animal_dashboard">Search</a>
+        <input type="submit" name="action" value="Search_Order" />
+        
+        </form>
         
         
         
