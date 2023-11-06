@@ -142,7 +142,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a
-                href="news.jsp"
+                href="customernews.jsp"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >News</a
@@ -150,7 +150,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </li>
             <li>
               <a
-                href="Map.html"
+                href="map.jsp"
                 class="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-green-600 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-2 pl-3 pr-4 text-green-600 uppercase font-bold bg-green-700 rounded md:bg-transparent md:p-0 text-green"
                 aria-current="page"
                 >Map</a
