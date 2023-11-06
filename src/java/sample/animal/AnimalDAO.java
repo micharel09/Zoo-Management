@@ -8,6 +8,7 @@ package sample.animal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -229,5 +230,53 @@ public class AnimalDAO {
         for (AnimalDTO animalCageDTO : list) {
             System.out.println(animalCageDTO);
         }
+    }
+
+    List<AnimalDTO> getListAnimal(String Start_Day, String End_Day) throws SQLException {
+        String sql = "SELECT  [Animal_ID]\n" +
+"      ,[Name]\n" +
+"      ,[DayIn]\n" +
+"      ,[Photo]\n" +
+"      ,[AnimalCage_ID]\n" +
+"      ,[Status]\n" +
+"FROM [SWP4].[dbo].[Animal]\n" +
+"WHERE [DayIn] >= ? AND [DayIn] <= ?";
+        List<AnimalDTO> list = new ArrayList<>();
+        try {
+            conn = DBUtils.getConnection();
+            ptm = conn.prepareStatement(sql);
+            ptm.setString(1, Start_Day);
+            ptm.setString(2, End_Day);
+            rs = ptm.executeQuery();
+            while (rs.next()) {
+                String Animal_ID = rs.getString("Animal_ID");
+                    String Name = rs.getString("Name");
+                    String DayIn = rs.getString("DayIn");
+                    String Photo = rs.getString("Photo");
+                    String AnimalCage_ID = rs.getString("AnimalCage_ID");
+                    String Status = rs.getString("Status");
+                    if(Status==null){
+                        Status="";
+                    }
+                     
+                   // user = new  UserDTO(Employee_ID, "", Fullname, Phone, Email, Gender,Dependent,RoleID);
+                    list.add(new AnimalDTO( Animal_ID, Name, 
+                            DayIn,  Photo,  AnimalCage_ID,  Status));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
     }
 }
