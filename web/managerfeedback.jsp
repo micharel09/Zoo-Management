@@ -104,7 +104,7 @@
         </div>
 
         <!-- component -->
-        <main class="antialiased font-sans bg-white rounded-2xl w-[1500]">
+        <main class="antialiased font-sans bg-white rounded-2xl">
             <div class="container mx-auto px-4 sm:px-8">
                 <div class="py-8 ml-20">
                     <div></div>
@@ -178,11 +178,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
-                    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-                        <div
-                            class="inline-block min-w-full shadow rounded-lg overflow-hidden"
-                            >
-                            <table
+                    <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-hidden">
+                     <table
                             class="min-w-full border-collapse border border-green-500"
                           >
                             <thead class="bg-neutral-100">
@@ -191,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                         <th
                                             class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                                             >
-                                            Tiltle
+                                            Title
                                         </th>
                                         <th
                                             class="break-all mx-auto py-6 border-b-2 border-r text-xl text-left leading-4 tracking-wider text-center"
@@ -223,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     </tr>
                                 </thead>
                                 <c:forEach var="f" items="${ListA}">
-                                    >
+                                    
                                     <tbody
                                       class="bg-white cursor-pointer hover:shadow-xl hover:transform hover:scale-105 hover:rounded-2xl duration-300 hover:bg-gray-100 hover:bg-gray-100 hover:border-gray-100"
                                     >
@@ -279,7 +276,6 @@ document.addEventListener("DOMContentLoaded", function() {
                                         </c:forEach>
                                     </ul>
                                 </nav>
-                            </div>
                         </div>
                     </div>
                 </div>

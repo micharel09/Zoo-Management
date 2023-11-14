@@ -119,10 +119,10 @@
               <!-- footer -->
 
               <div class="mt-4">
-                <!-- <div
+                <div
                   class="g-recaptcha"
-                  data-sitekey="6LdNENwoAAAAAM0ePl6W3y3Z-HPfm3r0WwzOMNqK"
-                ></div> -->
+                  data-sitekey="6LdLRQwpAAAAAF62Lks0zeJTfn81oeY8Zp4JuhzK"
+                ></div>
                 <br />
                 <button
                   onkeypress="if(event.keyCode==13){this.click();return false;}"
@@ -138,23 +138,23 @@
                 </div>
               </div>
               <!-- recapcha -->
-              <script
+<!--              <script
                 src="https://www.google.com/recaptcha/api.js"
                 async
                 defer
               ></script>
               <script>
-                // const form = document.getElementById("form");
+                const form = document.getElementById("form");
 
-                // form.addEventListener("submit", (e) => {
-                //   const response = grecaptcha.getResponse();
-                //   if (!response) {
-                //     e.preventDefault();
-                //     document.getElementById("error").innerHTML =
-                //       "Please confirm reCAPTCHA!";
-                //   }
-                // });
-              </script>
+                form.addEventListener("submit", (e) => {
+                  const response = grecaptcha.getResponse();
+                  if (!response) {
+                    e.preventDefault();
+                    document.getElementById("error").innerHTML =
+                      "Please confirm reCAPTCHA!";
+                  }
+                });
+              </script>-->
               <!-- end -->
               <div class="pt-5 text-center text-gray-400 text-xs">
                 <span>

@@ -48,7 +48,7 @@
     <!-- prettier-ignore -->
     <%@ include file="components/sidebarmanager.jsp" %>
     <!-- end sidebar -->
-    <div class="px-3 md:lg:xl:px-40 border-t py-20 bg-opacity-10">
+    <div class="px-3 md:lg:xl:px-40 border-t py-10 bg-opacity-10">
       <div class="mx-auto border-b border-gray-300 text-center">
         <h3 class="text-5xl font-medium text-gray-700 mb-4">
         <%=NAME_AREA%>
@@ -97,7 +97,7 @@
 
         <%!
         String[] animalIcons = {
-          "🐶", "🐱", "🦁", "🐯", "🐴", "🦄", "🦌", "🐮", "🐷", "🐰", "🐻", "🐨", "🐼", "🦅", "🦉", "🦇", "🐍"
+          "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾"  
         };
         String getRandomAnimalIcon() {
           int randomIndex = (int) (Math.random() * animalIcons.length);

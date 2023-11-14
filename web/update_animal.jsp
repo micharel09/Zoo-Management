@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -159,75 +159,100 @@
   </style>
   <body>
     <div class="container">
-      <div class="title">Update Animal</div>
+      <div class="flex justify-between">
+        <div class="title">Update Animals</div>
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            href="animalsearch?animalID=A001"
+            class="group flex items-center bg-transparent text-xl font-thin tracking-widest text-white hover:text-green-500 back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+            >
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <!-- end back -->
+      </div>
       <div class="content">
-        <form action="updateanimal"
-            method="POST"
-            enctype="multipart/form-data">
-            <input type="hidden" name="animalid" value="${aa.animal_id}" />
+        <form action="updateanimal" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="animalid" value="${aa.animal_id}" />
           <div class="user-details">
-            <div class="input-box ">
+            <div class="input-box">
               <span class="details">Cage Name</span>
               <input
                 type="text"
                 name="name"
                 id="fullName"
                 required
-                
                 value="${aa.name}"
                 required
               />
             </div>
-            
+
             <div class="input-box">
-              <span class="details">Choose Area</span>
+              <span class="details">Choose status</span>
               <select
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  name="status"
-                  value="${aa.status}"
-                  >
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                name="status"
+                value="${aa.status}"
+              >
                 <option>NORMAL</option>
                 <option>DEATH</option>
                 <option>SICK</option>
               </select>
             </div>
-            <div class="input-box ">
+            <div class="input-box">
               <label
-              for="date"
-              class="mb-3 block text-2xl font-medium text-[#07074D]"
-            >
-              Date
-            </label>
-            <input
-              class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-              type="date"
-              name="dayin"
-              value="${aa.dayin}"
-            />
+                for="date"
+                class="mb-3 block text-xl font-medium text-[#07074D]"
+              >
+                Date
+              </label>
+              <input
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-2xl text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                type="date"
+                name="dayin"
+                value="${aa.dayin}"
+              />
             </div>
-            
-            <div class="input-box ">
-              <span class="details">Select Cage_ID</span>
-              
+
+            <div class="input-box">
+              <span class="details mt-2">Select Cage_ID</span>
+
               <select
-                  class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
-                  name="animalcageid"
-                  value="${aa.animalcage_id}"
-                  >
-                  <c:forEach items="${cage}" var="c">
-                      <option>${c.animalcage_id}</option>
-                    </c:forEach>
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-2 px-6 text-xl font-medium text-red-500 outline-none focus:border-[#6A64F1] focus:shadow-md"
+                name="animalcageid"
+                value="${aa.animalcage_id}"
+              >
+                <c:forEach items="${cage}" var="c">
+                  <option>${c.animalcage_id}</option>
+                </c:forEach>
               </select>
             </div>
-                   
-               <!-- photo -->
+
+            <!-- photo -->
             <div class="w-full bg-white">
               <div
                 class="container mx-auto h-full flex flex-col justify-center items-center"
               >
-                <div id="images-container">
-                    
-</div>
+                <div id="images-container"></div>
                 <div class="flex w-full justify-center">
                   <div id="multi-upload-button">
                     <button
@@ -269,7 +294,6 @@
             </div>
             <script src="js/createphoto.js"></script>
             <!-- end photo -->
-              
           </div>
 
           <div class="button">

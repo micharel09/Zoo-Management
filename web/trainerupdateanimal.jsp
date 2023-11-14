@@ -184,7 +184,7 @@
                   value="${aa.status}"
                   >
                 <option>NORMAL</option>
-                <option>DEATH</option>
+                <option>DIED</option>
                 <option>SICK</option>
               </select>
             </div>

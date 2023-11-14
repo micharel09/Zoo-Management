@@ -40,24 +40,6 @@
       z-index: 1;
     }
 
-    button::after {
-      content: "";
-      z-index: -1;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transform: translateX(-100%);
-      transition: transform 600ms cubic-bezier(0, 0.7, 0.6, 1);
-    }
-
-    button:hover::after {
-      transform: translateX(0);
-    }
-
     .fade-in {
       opacity: 1;
       animation-name: fadeInOpacity;
@@ -141,9 +123,13 @@
                             <h3 class="font-normal mb-7 text-grey-darkest">Location ${o.arealocation}</h3>
                             <span class="text-5xl text-grey-darkest">${o.genre}</span>
                         </div>
-                        <button class="relative overflow-hidden rounded shadow-inner px-2 py-3 font-sans uppercase ring-sky-500 transition-all after:bg-green-400 active:shadow-md active:ring-2">
-                            <p class="transition-all group-active:scale-90"><a href="/areacontroller?areaid=${o.area_id}">View <i class="ml-36 fas fa-chevron-right"></i> </a> </p>
-                        </button>
+                        <div><a href="/areacontroller?areaid=${o.area_id}">
+                        <button                   
+                        class="w-full bg-green-400 py-4 text-2xl border-green-400 text-white  hover:text-green-500 hover:shadow-[inset_30rem_0_0_0] hover:shadow-white duration-[200ms,550ms] transition-[color,box-shadow]"
+                        >
+                        View
+                        </button></a>
+                      </div>
                     </div>    
                 </div>
           </div>

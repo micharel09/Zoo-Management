@@ -34,40 +34,6 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <!-- loading -->
-    <iframe
-      id="loading-iframe"
-      src="components/loading.html"
-      frameborder="0"
-      style="
-        border: none;
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 999;
-        background: transparent; /* Make the iframe background transparent */
-        pointer-events: none; /* Allow interaction with elements behind the iframe */
-        transition: opacity 1s;
-      "
-    ></iframe>
-
-    <script>
-      window.addEventListener("load", function () {
-        // Code xử lý sau khi trang đã nạp hoàn toàn ở đây
-        var iframe = document.getElementById("loading-iframe");
-        if (iframe) {
-          iframe.style.zIndex = 0;
-          iframe.classList.add("hidden-iframe");
-        }
-      });
-    </script>
-    <style>
-      .hidden-iframe {
-        opacity: 0;
-      }
-    </style>
     <!-- modal  -->
     <style>
       .animated {
@@ -161,7 +127,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="px-10 py-3 leading-5 ml-auto relative overflow-hidden bg-black text-white rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-400 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-80"
+                class="border hover:border-green-400 border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
                 <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
@@ -193,11 +159,11 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                     for="content"
                     class="mb-3 block text-2xl font-medium text-[#07074D]"
                   >
-                    Cage_ID
+                    Content:
                   </label>
                   <textarea
                     name="description"
-                    placeholder="Lorem ipsum..."
+                    placeholder="Enter your content..."
                     class="block mt-2 w-full rounded-lg border bg-white px-4 h-36 py-2.5"
                   ></textarea>
                 </div>
@@ -208,7 +174,7 @@ prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
                 <div class="mb-5">
                   <label
                     for="release"
-                    class="mb-3 block text-xl font-medium text-[#07074D]"
+                    class="mb-3 block text-2xl font-medium text-[#07074D]"
                   >
                     Release Date
                   </label>

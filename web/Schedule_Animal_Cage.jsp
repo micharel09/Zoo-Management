@@ -90,10 +90,41 @@
     (String) session.getAttribute("NAME_CAGE"); String name_area = (String)
     session.getAttribute("NAME_AREA"); %>
     <main class="antialiased font-sans bg-white h-screen w-[1500px] mx-auto">
+      <!-- header -->
+      <div>
       <div class="flex justify-center pb-2 pt-5 border-b bored-gray-300">
-        <h3 class="text-5xl  text-gray-700">Food Schedule Of<%= name_cage %> In <%= name_area %> Area</h3>
+        <h3 class="text-5xl  text-gray-700">Food Schedule Of <%= name_cage %> In <%= name_area %> Area</h3>
       </div>
- 
+            <!-- back button -->
+            <div class="flex ml-0">
+              <a
+                href="Foodingschedule_MainController?action=Select_Area&Search_Area=Area001"
+                class="group flex items-center bg-transparent text-xl font-thin tracking-widest text-white hover:text-green-500 back-button"
+              >
+                <svg
+                  viewBox="0 0 46 16"
+                  height="15"
+                  width="35"
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="arrow-horizontal"
+                  class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+                >
+                  <path
+                    transform="scale(-1, 1) translate(-30)"
+                    d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                    data-name="Path 10"
+                    id="Path_10"
+                  ></path>
+                </svg>
+                <span
+                  class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-green-500 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+                  >Back</span
+                >
+              </a>
+            </div>
+            <!-- end back -->
+    </div>
+    <!-- header -->
       <div class="container mx-auto mt-10">
         <div class="text-gray-700">
           <!-- Component Start -->

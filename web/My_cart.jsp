@@ -29,7 +29,7 @@
       src="https://kit.fontawesome.com/5b0b34b925.js"
       crossorigin="anonymous"
     ></script>
-    <title>Choose ticket</title>
+    <title>Quantity</title>
     <style>
       [x-cloak] {
         display: none;

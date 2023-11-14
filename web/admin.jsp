@@ -70,14 +70,18 @@
         color: black;
       }
       .role-id:contains("ADMIN") {
-        background: rgb(255, 103, 103) ;(255, 0, 0);
-        color: red;
+        background-color: #CD2F00;
+        color: white;
       }
       .role-id:contains("MANAGER") {
-        color: violet;
+        color: white;
+        background-color: #3500BE;
+
       }
       .role-id:contains("TRAINER") {
-        color: green;
+        color: white;
+        background-color: #119200;
+
       }
     </style>
     <title>Admin</title>
@@ -223,7 +227,7 @@
                                                     <td
                                                         class="px-6 py-4 whitespace-no-wrap border-b border-gray-200"
                                                         >
-                                                        <span class="role-id">
+                                                        <span class="role-id rounded p-2">
                                                             <%= user.getRoleID() %>
                                                           </span>
                                                     </td>
@@ -326,10 +330,16 @@
     <script>
       $(document).ready(function () {
         // Find all elements with the class "role-id" and text content "ADMIN"
-        $('.role-id:contains("ADMIN")').css("color", "red");
-        $('.role-id:contains("TRAINER")').css("color", "green");
-        $('.role-id:contains("MANAGER")').css("color", "violet");
-      });
+        $('.role-id:contains("ADMIN")').css("color", "white");
+        $('.role-id:contains("ADMIN")').css("background-color", "#CD2F00");
+
+        $('.role-id:contains("TRAINER")').css("color", "white");
+        $('.role-id:contains("TRAINER")').css("background-color", "#119200");
+
+        $('.role-id:contains("MANAGER")').css("color", "white");
+        $('.role-id:contains("MANAGER")').css("background-color", "#3500BE");
+
+    });
     </script>
   </body>
 </html>

@@ -99,7 +99,7 @@ public class Importexcel_FeedingSchedule_Controller extends HttpServlet {
             Logger.getLogger(Importexcel_FeedingSchedule_Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
        
-        response.sendRedirect("Trainer_Search_Cage_Controller");
+        response.sendRedirect("Schedule_Select_Area.jsp");
            
     }
 

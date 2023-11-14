@@ -15,12 +15,12 @@ import java.sql.SQLException;
  */
 public class DBUtils {
     private static final String DB_NAME="SWP4";
-    private static final String DB_USER_NAME="sa";// hoa thuong deu dc
-    private static final String DB_PASSWORD="12345";
+    private static final String DB_USER_NAME="zoowebapp";// hoa thuong deu dc
+    private static final String DB_PASSWORD="1";
     public static Connection getConnection() throws ClassNotFoundException, SQLException{
         Connection conn=null;
        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-       String url="jdbc:sqlserver://localhost:1433;databaseName="+DB_NAME;
+       String url="jdbc:sqlserver://35.185.185.198:1433;databaseName="+DB_NAME;
        conn= DriverManager.getConnection(url,DB_USER_NAME,DB_PASSWORD);
        return conn;
     }

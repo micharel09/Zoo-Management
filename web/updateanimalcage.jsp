@@ -123,7 +123,7 @@
             <div class="flex justify-end">
               <button
                 type="submit"
-                class="border hover:border-none border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
+                class="border hover:border-green-400 border-black px-5 py-2 leading-5 relative overflow-hidden text-black rounded-md shadow-2xl transition-all duration-200 before:absolute before:bottom-0 before:left-0 before:right-0 before:top-0 before:m-auto before:h-0 before:w-0 before:rounded-sm before:bg-green-600 before:duration-300 before:ease-out hover:text-white hover:shadow-bg-green-500 hover:before:h-40 hover:before:w-40 hover:before:opacity-100"
               >
                 <p class="relative z-10 font-extralight text-xl">Save</p>
               </button>
@@ -173,23 +173,21 @@
                   class="mb-1 block text-2xl font-medium text-[#07074D]"
                   >Area_ID</label
                 >
-                <span class="text-xl" style="color: red"
-                  > ${aa.area_id}</span
-                >
+                <span class="text-xl" style="color: red"> ${aa.area_id}</span>
                 <input
-                name="area_id"
-                maxlength="20"
-                type="hidden"
-                value="${aa.area_id}"
-                placeholder=" "
-                class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
-                required
-              />
-              <label
-                class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                for="fullName"
-                >Name:</label
-              >
+                  name="area_id"
+                  maxlength="20"
+                  type="hidden"
+                  value="${aa.area_id}"
+                  placeholder=" "
+                  class="block py-2.5 px-0 w-full text-xl bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                  required
+                />
+                <label
+                  class="absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  for="fullName"
+                  >Name:</label
+                >
               </div>
               <p class="mt-3 text-xs text-red-400"></p>
 

@@ -38,7 +38,7 @@ import="java.util.List"%>
     <!-- prettier-ignore -->
     <%@ include file="components/sidebarmanager.jsp" %>
     <!-- end sidebar -->
-    <div class="px-3 md:lg:xl:px-40 border-t py-20 bg-opacity-10">
+    <div class="px-3 md:lg:xl:px-40 border-t py-10 bg-opacity-10">
       <div class="mx-auto border-b border-gray-300 text-center">
         <h3 class="text-5xl font-medium text-gray-700 mb-4">Select Areas</h3>
       </div>
@@ -67,7 +67,7 @@ import="java.util.List"%>
             >
               🦁</span
             >
-            <p class="text-4xl text-slate-700 mt-3">Carnivore Exhibit</p>
+            <p class="text-4xl text-slate-700 mt-3">Carnivores</p>
             <input type="hidden" name="Search_Area" value="Area001" />
           </button>
         </form>
@@ -91,7 +91,7 @@ import="java.util.List"%>
             >
               🐍</span
             >
-            <p class="text-4xl text-slate-700 mt-3">Reptilia</p>
+            <p class="text-4xl text-slate-700 mt-3">Reptiles</p>
             <input type="hidden" name="Search_Area" value="Area002" />
           </button>
         </form>
@@ -115,7 +115,7 @@ import="java.util.List"%>
             >
               🦅</span
             >
-            <p class="text-4xl text-slate-700 mt-3">Bird sanctuary</p>
+            <p class="text-4xl text-slate-700 mt-3">Feathered species</p>
             <input type="hidden" name="Search_Area" value="Area003" />
           </button>
         </form>
@@ -139,7 +139,7 @@ import="java.util.List"%>
             >
               🐴</span
             >
-            <p class="text-4xl text-slate-700 mt-3">herbivore exhibit</p>
+            <p class="text-4xl text-slate-700 mt-3">Herbivores</p>
             <input type="hidden" name="Search_Area" value="Area004" />
           </button>
         </form>

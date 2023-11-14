@@ -38,12 +38,12 @@ import="java.util.List"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
     <!-- component -->
-    <div class="px-3 md:lg:xl:px-40 border-t py-20 bg-opacity-10">
+    <div class="px-3 md:lg:xl:px-40 border-t py-10 bg-opacity-10">
       <div class="mx-auto border-b border-gray-300 text-center ">
         <% String day = (String) session.getAttribute("DAY"); String name_cage =
         (String) session.getAttribute("NAME_CAGE"); String name_area = (String)
         session.getAttribute("NAME_AREA"); %>
-        <h3 class="text-5xl font-medium text-gray-700 mb-4"><%= name_area %></h3>
+        <h3 class="text-5xl font-medium text-gray-700 mb-4"><%=name_area%></h3>
       </div>
       <%
       List<AnimalCageDTO> listCage = (List<AnimalCageDTO>) session.getAttribute("LIST_ANIMAL_CAGE");;
@@ -51,12 +51,12 @@ import="java.util.List"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
   %>
       <div
-        class="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border mt-20"
+        class="grid grid-cols-1 md:lg:xl:grid-cols-3 group bg-white shadow-xl shadow-neutral-100 border mt-10"
       >
 
       <%!
       String[] animalIcons = {
-        "🐶", "🐱", "🦁", "🐯", "🐴", "🦄", "🦌", "🐮", "🐷", "🐰", "🐻", "🐨", "🐼", "🦅", "🦉", "🦇", "🐍"
+        "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾", "🐾"  
       };
       String getRandomAnimalIcon() {
         int randomIndex = (int) (Math.random() * animalIcons.length);

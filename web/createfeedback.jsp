@@ -161,7 +161,50 @@
   </style>
   <body>
     <div class="container">
-      <div class="title">Create Report/Feedback</div>
+            <div class="flex justify-between">
+        <div class="title">Create Feedback</div>
+        <!-- back button -->
+        <div class="flex ml-0">
+          <a
+            onclick="backButton"
+            class="cursor-pointer group flex items-center bg-transparent text-2xl font-thin tracking-widest text-white back-button"
+          >
+            <svg
+              viewBox="0 0 46 16"
+              height="15"
+              width="35"
+              xmlns="http://www.w3.org/2000/svg"
+              id="arrow-horizontal"
+              class="fill-slate-700 transition-all duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-105 group-hover:fill-white"
+            >
+              <path
+                transform="scale(-1, 1) translate(-30)"
+                d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+                data-name="Path 10"
+                id="Path_10"
+              ></path>
+            </svg>
+            <span
+              class="ml-2 text-black after:transition-transform after:duration-500 after:ease-out after:absolute after:bottom-0 after:left-0 after:block after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-greeborder-green-400 after:content-[''] after:group-hover:origin-bottom-left after:group-hover:scale-x-100"
+              >Back</span
+            >
+          </a>
+        </div>
+        <script>
+          // Lấy phần tử "Back" bằng cách sử dụng querySelector
+          const backButton = document.querySelector(".back-button");
+
+          // Thêm sự kiện click vào nút "Back"
+          backButton.addEventListener("click", function (event) {
+            // Ngăn chặn hành vi mặc định của liên kết
+            event.preventDefault();
+
+            // Thực hiện hành động "back" trên trình duyệt
+            window.history.back();
+          });
+        </script>
+        <!-- end back -->
+      </div>
       <div class="content">
         <form action="CreateFeedback" method="POST">
           <div class="user-details">
@@ -174,7 +217,7 @@
                   <option> Animal no eat</option>
                   <option> Animal injured</option>
                   <option> Animal sick</option>
-                  <option> AnimalCage</option>
+                  <option> Animal Cage</option>
                   <option> Other</option>
               </select>
             </div>

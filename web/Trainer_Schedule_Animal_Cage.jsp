@@ -85,6 +85,9 @@
 }
       </style>
   </head>
+  <%
+  String NAME_AREA = (String) session.getAttribute("NAME_AREA");
+   %>
   <!-- prettier-ignore -->
   <%@ include file="components/headertrainer.jsp" %>
   <!-- end header -->
@@ -98,7 +101,7 @@
     session.getAttribute("NAME_AREA"); %>
     <main class="antialiased font-sans bg-white h-screen w-[1500px] mx-auto">
       <div class="flex justify-center pb-2 pt-5 border-b bored-gray-300">
-        <h3 class="text-5xl  text-gray-700">Food Schedule Of<%= name_cage %> In <%= name_area %> Area</h3>
+        <h3 class="text-5xl  text-gray-700">Food Schedule Of <%= name_cage %> In <%= name_area %> Area</h3>
       </div>
  
       <div class="container mx-auto mt-10">

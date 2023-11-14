@@ -159,33 +159,33 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               <thead class="bg-neutral-100">
                 <tr class="bg-green-500 text-white">
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                      class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                   >
-                    Tiltle
+                    Title
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="break-all mx-auto py-6 border-b-2 border-r text-xl text-left leading-4 tracking-wider text-center"
                   >
                     Animal_ID
                   </th>
                   <th
-                    class="break-all px-6 py-3 text-xs font-medium leading-4 text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="break-all mx-auto py-6 border-b-2 border-r text-xl text-left leading-4 tracking-wider text-center"
                   >
                     Purpose
                   </th>
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                   >
                     Date
                   </th>
                   <th
-                    class="break-words px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50 border-r"
+                                            class="break-all mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                   >
                     ProcessNote
                   </th>
 
                   <th
-                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                                            class="mx-auto py-6 border-b-2 border-r text-xl  text-left leading-4 tracking-wider text-center"
                   >
                     Status
                   </th>
@@ -197,33 +197,32 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 >
                   <tr>
                     <td
-                      class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
-                    >
+                                            <td class="break-all text-xs uppercase font-bold px-6 py-4  border-b border-gray-200 border-r">
                       ${f.title}
                     </td>
                     <td
-                      class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
-                    >
+                                            <td class="  break-words tpl-10 text-xl px-6 border-b border-gray-200 border-r">
+                  
                       ${f.animal_id}
                     </td>
                     <td
-                      class="break-words text-xs px-6 py-4 border-b border-gray-200 border-r"
-                    >
+                                            <td class="  break-words tpl-10 text-xl px-6 border-b border-gray-200 border-r">
+                  
                       ${f.purpose}
                     </td>
                     <td
-                      class="break-all px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b border-gray-200 border-r"
-                    >
+                                            <td class="break-all pl-10 text-xl px-6 border-b border-gray-200 border-r whitespace-no-wrap ">
+                   
                       ${f.date}
                     </td>
                     <td
-                      class="break-all text-xs px-6 py-4 border-b border-gray-200 border-r"
-                    >
+                                            <td class=" break-all pl-10 text-xl px-6 border-b border-gray-200 border-r">
+                   
                       ${f.processnote}
                     </td>
                     <td
-                      class="px-6 py-4 font-bold leading-5 text-green-500 border-b border-gray-200 border-r"
-                    >
+                                            <td class="px-6 py-4 font-bold leading-5  pl-10 text-xl px-6 border-b border-gray-200 border-r">
+                   
                       <span class="role-id"> ${f.status}</span>
                     </td>
                   </tr>

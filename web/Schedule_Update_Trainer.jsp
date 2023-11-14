@@ -36,10 +36,7 @@ Author : ACER --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
     <%@ include file="components/sidebartrainer.jsp" %>
     <!-- end side bar -->
     <!-- Component Start -->
-    <div
-      class="shadow-2xl w-1/2 h-1/4 p-5 bg-white rounded-2xl"
-      style="position: relative"
-    >
+    <div class="shadow-2xl w-1/2 p-5 bg-white rounded-2xl">
       <!-- back button -->
       <div class="flex ml-0">
         <a
@@ -88,17 +85,16 @@ Author : ACER --%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
           <span class="loading">Loading...</span>
           <img class="img" /><!--
             -->
-        </div>
-        <div class="justify-end">
-          <button
-            class="text-xl px-1 bg-gray-200 hover:bg-green-500 hover:text-white duration-300 rounded"
-            onclick="uploadImage()"
-            name="action"
-            value="Attendance"
-            style="position: absolute; bottom: 5%; right: 5%"
-          >
-            Attendance
-          </button>
+          <div class="mt-2">
+            <button
+              class="text-xl px-1 bg-gray-200 hover:bg-green-500 hover:text-white duration-300 rounded"
+              onclick="uploadImage()"
+              name="action"
+              value="Attendance"
+            >
+              Attendance
+            </button>
+          </div>
         </div>
       </form>
     </div>

@@ -215,7 +215,7 @@ ACER --%> <%@page import="sample.ticket.OrderDetailDTO"%> <%@page
                                                             <!-- end div 2 -->
                                                             
                                                             <input
-                                                                class="disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-2xl mt-4 cursor-pointer hover:text-blue-500 transition-colors duration-300"
+                                                                class="disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none text-2xl mt-4 cursor-pointer hover:text-green-500 transition-colors duration-300"
                                                                 type="submit"
                                                                 name="action"
                                                                 value="Search_Order"
