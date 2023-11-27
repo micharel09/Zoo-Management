@@ -60,7 +60,7 @@ ACER --%> <%@page import="sample.ticket.OrderDetailDTO"%> <%@page
                                     int Count_T01_DASHBOARD = (int) session.getAttribute("TOTAL_TICKET_T01_DASHBOARD");
                                     int Count_T02_DASHBOARD = (int) session.getAttribute("TOTAL_TICKET_T02_DASHBOARD");
                                     int Count_Ticket_DASHBOARD = (int) session.getAttribute("TOTAL_TICKET_DASHBOARD");
-                                    Double Price_Total_Tmp_DASHBOARD = (Double) session.getAttribute("PRICE_TOTAL_TMP_DASHBOARD");
+                                    String Price_Total_Tmp_DASHBOARD = (String) session.getAttribute("PRICE_TOTAL_TMP_DASHBOARD");
 
                                 %>
 
@@ -150,9 +150,7 @@ ACER --%> <%@page import="sample.ticket.OrderDetailDTO"%> <%@page
                                                            href="#">
                                                             <div class="p-5">
                                                                 <div class="flex justify-between">
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                    </svg>
+                                                                    <h1>VND</h1>
 
                                                                     <div
                                                                         class="bg-blue-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">

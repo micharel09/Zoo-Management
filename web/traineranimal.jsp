@@ -362,7 +362,7 @@
                               width="100"
                             >
                               <img
-                                src="./animal_picture/${animal.photo}"
+                                src="./img/${animal.photo}"
                                 width="80"
                                 height="70"
                               />

@@ -33,13 +33,13 @@ public class Check_Time_Attendance_Controller extends HttpServlet {
         try {
             HttpSession session = request.getSession();
             String Day = request.getParameter("Day");
-//            String StartTime = request.getParameter("StartTime");
-//            String EndTime = request.getParameter("EndTime");
+            String StartTime = request.getParameter("StartTime");
+            String EndTime = request.getParameter("EndTime");
             String Id_Schedule = request.getParameter("Id_Schedule");
             
             
-             String StartTime = "11:00:00.0000000";
-            String EndTime = "22:00:00.0000000";
+//             String StartTime = "11:00:00.0000000";
+//            String EndTime = "22:00:00.0000000";
 
         // Chuyển đổi chuỗi thành đối tượng LocalDateTime
         LocalDateTime startDateTime = LocalDateTime.parse(Day + "T" + StartTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);

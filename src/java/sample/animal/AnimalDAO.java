@@ -164,7 +164,7 @@ public class AnimalDAO {
     
      public List <AnimalDTO> getAnimalByEmpID(String employeeid) {
         String sql = "select *from Animal a\n" +
-"  join AnimalCage ac on a.AnimalCage_ID = ac.AnimalCage_ID\n" +
+"  join AnimalCage ac  on a.AnimalCage_ID = ac.AnimalCage_ID\n" +
 "  where Employee_ID = ?  AND a.status <> 'DEATH' ";
         List<AnimalDTO> list = new ArrayList<>();
         try {

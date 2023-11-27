@@ -7,6 +7,7 @@ package sample.controllers.ticket;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,48 +25,41 @@ import sample.ticket.TicketDAO;
  */
 @WebServlet(name = "View_Order_Controller", urlPatterns = {"/View_Order_Controller"})
 public class View_Order_Controller extends HttpServlet {
-    
- private static final String ERROR = "ticket_dasboard.jsp";
+
+    private static final String ERROR = "ticket_dasboard.jsp";
     private static final String SUCCESS = "ticket_dasboard.jsp";
-  
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       response.setContentType("text/html;charset=UTF-8");
-         String url = ERROR;
+        response.setContentType("text/html;charset=UTF-8");
+        String url = ERROR;
         try {
             HttpSession session = request.getSession();
-              
-           
+
             TicketDAO dao = new TicketDAO();
-            Double Price_Total_Tmp=0.0;
-            String Start_Day= request.getParameter("start_day_order");
-            if(Start_Day== null){
-                Start_Day="2000-09-21";
+            Double Price_Total_Tmp = 0.0;
+            String Start_Day = request.getParameter("start_day_order");
+            if (Start_Day == null) {
+                Start_Day = "2000-09-21";
             }
-             String End_Day= request.getParameter("end_day_order");
-              if(End_Day== null){
-                End_Day="2100-09-21";
-            }            
-            List<OrdersDTO> listOrders = dao.getListOrders(Start_Day,End_Day);
-            if (listOrders.size()>0) {
+            String End_Day = request.getParameter("end_day_order");
+            if (End_Day == null) {
+                End_Day = "2100-09-21";
+            }
+            List<OrdersDTO> listOrders = dao.getListOrders(Start_Day, End_Day);
+            if (listOrders.size() > 0) {
                 session.setAttribute("LIST_ORDERS", listOrders);
-              
-               
+
                 url = SUCCESS;
                 for (OrdersDTO orders : listOrders) {
-                    Price_Total_Tmp=orders.getTotalPrice()+Price_Total_Tmp;
+                    Price_Total_Tmp = orders.getTotalPrice() + Price_Total_Tmp;
                 }
                 session.setAttribute("PRICE_TOTAL_TMP", Price_Total_Tmp);
             }
-            
-            
-            
-            
-                                
-            
-            int Count_T01=0;
-            int Count_T02=0;
-            int Count_Ticket=0;
+
+            int Count_T01 = 0;
+            int Count_T02 = 0;
+            int Count_Ticket = 0;
 //            String Start_Day_Order_Detail= request.getParameter("start_day_order_detail");
 //            if(Start_Day_Order_Detail== null){
 //                Start_Day_Order_Detail="2000-09-21";
@@ -74,29 +68,26 @@ public class View_Order_Controller extends HttpServlet {
 //              if(End_Day_Order_Detail== null){
 //                End_Day_Order_Detail="2100-09-21";
 //            }
-             
-            List<OrderDetailDTO> listOrderDetail = dao.getListOrderDetail(Start_Day,End_Day);
-            if (listOrderDetail.size()>0) {
+
+            List<OrderDetailDTO> listOrderDetail = dao.getListOrderDetail(Start_Day, End_Day);
+            if (listOrderDetail.size() > 0) {
                 session.setAttribute("LIST_ORDER_DETAIL", listOrderDetail);
-              
-               
+
                 url = SUCCESS;
                 for (OrderDetailDTO orderDetail : listOrderDetail) {
-                   if(orderDetail.getTicket_ID().equals("T01")){
-                       Count_T01=Count_T01+orderDetail.getQuantity();
-                       Count_Ticket=Count_Ticket+orderDetail.getQuantity();
-                   }else {
-                       Count_T02=Count_T02+orderDetail.getQuantity();
-                       Count_Ticket=Count_Ticket+orderDetail.getQuantity();
-                   }
+                    if (orderDetail.getTicket_ID().equals("T01")) {
+                        Count_T01 = Count_T01 + orderDetail.getQuantity();
+                        Count_Ticket = Count_Ticket + orderDetail.getQuantity();
+                    } else {
+                        Count_T02 = Count_T02 + orderDetail.getQuantity();
+                        Count_Ticket = Count_Ticket + orderDetail.getQuantity();
+                    }
                 }
                 session.setAttribute("TOTAL_TICKET_T01", Count_T01);
                 session.setAttribute("TOTAL_TICKET_T02", Count_T02);
                 session.setAttribute("TOTAL_TICKET", Count_Ticket);
             }
-            
-            
-             
+
             if (session.getAttribute("TOTAL_TICKET_T01_DASHBOARD") == null) {
                 List<OrderDetailDTO> listOrderDetail_Dashboard = dao.getListOrderDetail_Dashboard();
                 if (listOrderDetail.size() > 0) {
@@ -120,7 +111,7 @@ public class View_Order_Controller extends HttpServlet {
                 }
 
                 List<OrdersDTO> listOrders_Dashboard = dao.getListOrders();
-                Double Price_Total_Tmp_Dashboard=0.0;
+                Double Price_Total_Tmp_Dashboard = 0.0;
                 if (listOrders_Dashboard.size() > 0) {
                     session.setAttribute("LIST_ORDERS_DASHBOARD", listOrders_Dashboard);
 
@@ -128,7 +119,20 @@ public class View_Order_Controller extends HttpServlet {
                     for (OrdersDTO orders : listOrders_Dashboard) {
                         Price_Total_Tmp_Dashboard = orders.getTotalPrice() + Price_Total_Tmp_Dashboard;
                     }
-                    session.setAttribute("PRICE_TOTAL_TMP_DASHBOARD", Price_Total_Tmp_Dashboard);
+                    // Tạo một đối tượng DecimalFormat với định dạng mong muốn
+                     DecimalFormat decimalFormat = new DecimalFormat("#,###,##0.00");
+
+
+
+                    // Chuyển đổi double thành chuỗi với định dạng đã chỉ định
+                    String formattedString = decimalFormat.format(Price_Total_Tmp_Dashboard);
+
+                    // Replace dấu phẩy thành dấu chấm
+                     formattedString = formattedString.replace(",", ";").replace(".", ",").replace(";", ".");
+
+
+
+                    session.setAttribute("PRICE_TOTAL_TMP_DASHBOARD", formattedString);
                 }
             }
         } catch (Exception e) {

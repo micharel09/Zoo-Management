@@ -116,8 +116,8 @@
       <div class="grid grid-cols-2 gap-4 ml-20">
         <c:forEach items="${a}" var="o">
           <div class="mt-10 fade-in">
-            <div id="app" class="fade-in bg-white h-60 rounded shadow-md flex card text-grey-darkest">
-                   <img class="w-1/2 h-full rounded-l-sm" src="${o.photo}" alt="Room Image">
+            <div id="app" class="fade-in bg-white  rounded shadow-xl flex card text-grey-darkest">
+                   <img class="w-[290px] h-[280px] rounded-l-sm" src="${o.photo}" alt="Room Image">
                     <div class="w-full flex flex-col">
                         <div class="p-4 pb-0 flex-1">
                             <h3 class="font-normal mb-7 text-grey-darkest">Location ${o.arealocation}</h3>

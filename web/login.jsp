@@ -136,7 +136,7 @@
                 </div>
               </div>
               <!-- recapcha -->
-              <script
+<!--              <script
                 src="https://www.google.com/recaptcha/api.js"
                 async
                 defer
@@ -152,8 +152,8 @@
                       "Please confirm reCAPTCHA!";
                   }
                 });
-              </script>
-              <!-- end -->
+              </script>-->
+               end 
               <div class="flex justify-center mt-2">
                 <p class="text-red-500">
                   <% String error = (String) request.getAttribute("ERROR"); if

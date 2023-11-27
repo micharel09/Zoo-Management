@@ -235,10 +235,9 @@ import="java.util.List"%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
                             <td>
                               <img
                                 style="height: 100px; width: 100px"
-                                src="<%=animal.getPhoto()%>"
+                                src="./img/${animal.getPhoto()}"
                               />
                             </td>
-                            <!-- xoa o day ne-->
                             <td >
                                 <span class="role-id p-2 rounded"><%=animal.getStatus()%></span></td>
                           </tr>
