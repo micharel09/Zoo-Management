@@ -1,10 +1,6 @@
-dist/prj301_T4S3_JSP_tmp.war
 
 ### NetBean###
 /nbproject/private/
-dist/prj301_T4S3_JSP_tmp.war
-/build/
-build/
-/dist/
+/build
 ### VS Code ###
 .vscode/

@@ -5,7 +5,7 @@ FROM tomcat:9.0-jre11
 WORKDIR /usr/local/tomcat/webapps
 
 # Copy the WAR file into the ROOT directory
-COPY build/netclick.war ./ROOT.war
+COPY /dist/prj301_T4S3_JSP_tmp.war ./ROOT.war
 
 # Expose the default Tomcat port
 EXPOSE 8080
